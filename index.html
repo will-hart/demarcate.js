@@ -2,31 +2,60 @@
 <html>
     <head>
         <title>DemarcateJS demo</title>
+        
+        <style type="text/css">
+            div#wrapper {
+                width: 90%;
+                padding: 0 4%;
+                min-height: 100%;
+            }
+            
+            div#container, div#output {
+                width: 45%;
+                padding: 2%;
+                margin: 2%;
+                float: left;
+                max-width: 300px;
+                border: 1px solid #ccc;
+                background: #eee;
+            }
+            
+            div#output {
+                background: #303030;
+                color: white;
+            }
+        </style>
     </head>
 
     <body>
-        <div id="container">
-            <h1>Some Text</h1>
-            <h2>Some Text</h2>
-            <h3>Some Text</h3>
-            <h4>Some Text</h4>
-            <h5>Some Text</h5>
-            <h6>Some Text</h6>
+        <div id="wrapper">
+            <div id="container">
+                <h1>Some Text</h1>
+                <h2>Some Text</h2>
+                <h3>Some Text</h3>
+                <h4>Some Text</h4>
+                <h5>Some Text</h5>
+                <h6>Some Text</h6>
 
-            <p>Some more text</p>
+                <p>Some more text</p>
 
-            <blockquote>A blockquote</blockquote>
+                <blockquote>A blockquote</blockquote>
 
-            <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
+                <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
 
-            <hr>
+                <hr>
 
-            <ul>
-                <li>What about lists?</li>
-                <li>At least a couple of items</li>
-            </ul>
+                <ul>
+                    <li>What about lists?</li>
+                    <li>At least a couple of items</li>
+                </ul>
 
-            <hr />
+                <hr />
+            </div>
+            
+            <div id="output">
+                <p>Double click an element on the left and the markdown will appear here</p>
+            </div>
         </div>
 
         <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
@@ -35,8 +64,10 @@
             $(document).ready( function() {
                 $('#container').enable_demarcate();
                 
-                $(".demarcate_button").click( function() {
-                    console.log($('#container').demarcate());
+                $(document).bind('demarcate_editor_closed', function(e, elem) {
+                    var op = demarcate_editor.demarcate();
+                    op = op.replace(/\n/g, '<br/>');
+                    $("#output").html(op);
                 });
             });
         </script>
