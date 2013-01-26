@@ -67,7 +67,7 @@
                 $('#container').enable_demarcate();
                 
                 $(document).bind('demarcate_editor_closed', function(e, elem) {
-                    var op = demarcate_editor.demarcate();
+                    var op = demarcate_dom_root.demarcate();
                     op = op.replace(/\n/g, '<br/>');
                     $("#output").html(op);
                 });

@@ -5,3 +5,16 @@
 textarea#demarcate {
     width: 100%;
 }
+
+div#demarcate_toolbar {
+    display: block;
+    width: 96%;
+    padding: 2%;
+    background: #eee;
+    border: 1px solid #AAA;
+    margin-bottom: 3px;
+}
+
+div#demarcate_toolbar a { 
+    padding-right: 5px;
+}

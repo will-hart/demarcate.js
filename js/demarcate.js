@@ -177,6 +177,24 @@ function demarkdown(elem, ignore_extras) {
 }
 
 /* 
+ * generate a toolbar for setting the type of node
+ * and saving or cancelling the results
+ */
+function generate_toolbar() {
+    var toolbar = $("<div />", {id: 'demarcate_toolbar'});
+    toolbar.append($("<a />", {id: 'demarcate_h1', text: 'H1', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h2', text: 'H2', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h3', text: 'H3', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h4', text: 'H4', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h5', text: 'H5', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h6', text: 'H6', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_p', text: 'P', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_save', text: 'Save', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_cancel', text: 'Cancel', href:"#" }));
+    return toolbar;
+}
+
+/* 
  * Display an editor textarea
  */
 function display_editor(elem) {
@@ -187,26 +205,69 @@ function display_editor(elem) {
     if (editor_whitelist.contains(tag_name.toLowerCase())) {
         console.log("Displaying editor for " + tag_name);
 
-        // store the element currently being edited
-        window.current_demarcate_element = elem;
-
         // create the new text editor - ignore front matter
         var md = demarkdown(elem, true);
         var ed = $("<textarea id='demarcate'>" + $.trim(md) + "</textarea>");
+        var tb = generate_toolbar();
+
         elem.after(ed);
+        elem.after(tb);
         elem.addClass("demarcate_hide");
 
         // hook up jquery.autosize.js if present
         if (typeof elem.autosize != undefined) {
             ed.autosize({'append': '\n'});
         }
+
+        // store the element currently being edited
+        window.current_demarcate_element = elem;
+        window.current_demarcate_editor = ed;
+
+        // connect handlers
+        restore_demarcate_toolbar_handlers()
     }
     else 
     {
         console.log("darn");
     }
-    elem.trigger('demarcate_editor_closed', [elem]);
 }
+
+/* 
+ * Hides the editor textarea and restores the hidden div
+ */
+function hide_editor(e) {
+    e.preventDefault();
+    $("div#demarcate_toolbar").remove();
+    current_demarcate_editor.remove();
+    current_demarcate_editor = null;
+    current_demarcate_element.removeClass("demarcate_hide");
+    current_demarcate_element = null;
+}
+
+/* 
+ * Connect all the demarcate_toolbar button events
+ */
+function restore_demarcate_toolbar_handlers() {
+
+    current_demarcate_editor.keydown(function(key) {
+        if (key.keyCode == 13) {
+            $("#demarcate_save").click();
+        }
+    });
+
+    // cancel button
+    $("#demarcate_cancel").on('click', function(e) {
+        hide_editor(e);
+        $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
+    });
+
+    // save button
+    $("#demarcate_save").on('click', function(e) {
+        current_demarcate_element.html(current_demarcate_editor.val());
+        hide_editor(e)
+        $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
+    });
+};
 
 /*
  * Hook up the 'demarcate' function as a jQuery plugin
@@ -225,7 +286,7 @@ function display_editor(elem) {
 (function( $ ){
     $.fn.enable_demarcate = function() {
         // give global access to the demarcate_editor object
-        window.demarcate_editor = $(this);
+        window.demarcate_dom_root = $(this);
 
         len = editor_whitelist.length
         for (var i = 0; i < len; i++) {
@@ -236,4 +297,5 @@ function display_editor(elem) {
         }
     };
 })( jQuery );
+
 
