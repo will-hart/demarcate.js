@@ -139,7 +139,7 @@ function demarkdown(elem) {
     var node_type = node.nodeType;
 
     // check we are allowed to decode the tag
-    if (! whitelist.contains(tag_name) && node_type != 3) {
+    if (! demarcate_whitelist.contains(tag_name) && node_type != 3) {
         return "";
     }
 
@@ -183,7 +183,10 @@ function demarkdown(elem) {
  * Display an editor textarea
  */
 function display_editor(elem) {
-    console.log("Displaying editor for " + $(elem).get(0).tagName);
+    elem = $(elem);
+    var tag_name = elem.get(0).tagName;
+    console.log("Displaying editor for " + tag_name);
+    elem.trigger('demarcate_editor_closed', [elem]);
 }
 
 /* 
@@ -191,6 +194,9 @@ function display_editor(elem) {
  */
 (function( $ ){
     $.fn.enable_demarcate = function() {
+        // give global access to the demarcate_editor object
+        window.demarcate_editor = $(this);
+
         len = editor_whitelist.length
         for (var i = 0; i < len; i++) {
             live_selector = "#" + this.attr('id') + " " + editor_whitelist[i];
