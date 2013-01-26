@@ -131,12 +131,16 @@ var include_internal = [
  * Recursively reverse the markdown of the element
  * and its child objects
  */
-function demarkdown(elem) {
+function demarkdown(elem, ignore_extras) {
+
+    // check if ignore_extras was defined. Default is true
+    ignore_extras = ignore_extras || false;
 
     // work out what we are looking at
     var node = elem.get(0);
     var tag_name = node.tagName;
     var node_type = node.nodeType;
+    var result = "";
 
     // check we are allowed to decode the tag
     if (! demarcate_whitelist.contains(tag_name) && node_type != 3) {
@@ -144,8 +148,10 @@ function demarkdown(elem) {
     }
 
     // open the tag
-    var result = line_starts[tag_name] == undefined ? "" : line_starts[tag_name];
-
+    if (! ignore_extras) {
+        result = line_starts[tag_name] == undefined ? "" : line_starts[tag_name];
+    }
+    
     // add any inner html
     if (node_type == 3) {
         result += $.trim(node.nodeValue);
@@ -153,11 +159,13 @@ function demarkdown(elem) {
 
     // add child elements
     $.each(elem.contents(), function(index, value) {
-        result += demarkdown($(value));
+        result += demarkdown($(value), ignore_extras);
     });
 
     // close the tag
-    result += line_ends[elem.get(0).tagName] == undefined ? "" : line_ends[tag_name];
+    if (! ignore_extras) {
+        result += line_ends[elem.get(0).tagName] == undefined ? "" : line_ends[tag_name];
+    }
 
     // apply special behaviour for <a> tags
     if (tag_name == 'A') {
@@ -166,6 +174,38 @@ function demarkdown(elem) {
 
     // return the result
     return result;
+}
+
+/* 
+ * Display an editor textarea
+ */
+function display_editor(elem) {
+    elem = $(elem);
+    var tag_name = elem.get(0).tagName;
+    console.log(tag_name);
+    // double check we are allowed to edit this
+    if (editor_whitelist.contains(tag_name.toLowerCase())) {
+        console.log("Displaying editor for " + tag_name);
+
+        // store the element currently being edited
+        window.current_demarcate_element = elem;
+
+        // create the new text editor - ignore front matter
+        var md = demarkdown(elem, true);
+        var ed = $("<textarea id='demarcate'>" + $.trim(md) + "</textarea>");
+        elem.after(ed);
+        elem.addClass("demarcate_hide");
+
+        // hook up jquery.autosize.js if present
+        if (typeof elem.autosize != undefined) {
+            ed.autosize({'append': '\n'});
+        }
+    }
+    else 
+    {
+        console.log("darn");
+    }
+    elem.trigger('demarcate_editor_closed', [elem]);
 }
 
 /*
@@ -178,16 +218,6 @@ function demarkdown(elem) {
         return result;
     };
 })( jQuery );
-
-/* 
- * Display an editor textarea
- */
-function display_editor(elem) {
-    elem = $(elem);
-    var tag_name = elem.get(0).tagName;
-    console.log("Displaying editor for " + tag_name);
-    elem.trigger('demarcate_editor_closed', [elem]);
-}
 
 /* 
  * Now hookup whitelisted elements for auto-edit.

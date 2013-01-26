@@ -1,0 +1,7 @@
+.demarcate_hide {
+    display: none;
+}
+
+textarea#demarcate {
+    width: 100%;
+}
