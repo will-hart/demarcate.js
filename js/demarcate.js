@@ -39,7 +39,7 @@ Array.prototype.contains = function(obj) {
 /*
  * Whitelist of tags to include
  */
-var whitelist = [
+var demarcate_whitelist = [
     'BODY',
     'DIV',
     'SPAN',
@@ -59,6 +59,20 @@ var whitelist = [
     'OL',
     'HR',
 ];
+
+var editor_whitelist = [
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'li',
+    'blockquote',
+    'pre',
+    'code',
+    'p',
+]
 
 /*
  * Lookup table for line starts
@@ -153,6 +167,7 @@ function demarkdown(elem) {
     // return the result
     return result;
 }
+
 /*
  * Hook up the 'demarcate' function as a jQuery plugin
  */
@@ -163,3 +178,26 @@ function demarkdown(elem) {
         return result;
     };
 })( jQuery );
+
+/* 
+ * Display an editor textarea
+ */
+function display_editor(elem) {
+    console.log("Displaying editor for " + $(elem).get(0).tagName);
+}
+
+/* 
+ * Now hookup whitelisted elements for auto-edit.
+ */
+(function( $ ){
+    $.fn.enable_demarcate = function() {
+        len = editor_whitelist.length
+        for (var i = 0; i < len; i++) {
+            live_selector = "#" + this.attr('id') + " " + editor_whitelist[i];
+            $(live_selector).on('dblclick', function() {
+                display_editor(this);
+            });
+        }
+    };
+})( jQuery );
+
