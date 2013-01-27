@@ -10,13 +10,44 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="320"
-   height="320"
+   height="384"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="icons.svg">
+   sodipodi:docname="icons.svg"
+   inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+   inkscape:export-xdpi="45"
+   inkscape:export-ydpi="45">
   <defs
      id="defs4">
+    <inkscape:path-effect
+       fuse_tolerance="0"
+       vertical_pattern="false"
+       prop_units="false"
+       tang_offset="0"
+       normal_offset="0"
+       spacing="0"
+       scale_y_rel="false"
+       prop_scale="1"
+       copytype="single_stretched"
+       pattern="m 3.0304576,137.52923 c 0,-2.76 2.24,-5 5,-5 2.7600004,0 5.0000004,2.24 5.0000004,5 0,2.76 -2.24,5 -5.0000004,5 -2.76,0 -5,-2.24 -5,-5 z"
+       is_visible="true"
+       id="path-effect3236"
+       effect="skeletal" />
+    <inkscape:path-effect
+       fuse_tolerance="0"
+       vertical_pattern="false"
+       prop_units="false"
+       tang_offset="0"
+       normal_offset="0"
+       spacing="0"
+       scale_y_rel="false"
+       prop_scale="1"
+       copytype="single_stretched"
+       pattern="m 3.0304576,137.52923 c 0,-2.76 2.24,-5 5,-5 2.7600004,0 5.0000004,2.24 5.0000004,5 0,2.76 -2.24,5 -5.0000004,5 -2.76,0 -5,-2.24 -5,-5 z"
+       is_visible="true"
+       id="path-effect3234"
+       effect="skeletal" />
     <inkscape:path-effect
        effect="skeletal"
        id="path-effect3064"
@@ -35,7 +66,7 @@
        effect="skeletal"
        id="path-effect3835"
        is_visible="true"
-       pattern="m 3.0304576,8.5355339 c 0,-2.76 2.24,-5 5,-5 2.7600004,0 5.0000004,2.24 5.0000004,5 0,2.7600001 -2.24,5.0000001 -5.0000004,5.0000001 -2.76,0 -5,-2.24 -5,-5.0000001 z"
+       pattern="m 3.0304576,-55.464466 c 0,-2.76 2.24,-5 5,-5 2.7600004,0 5.0000004,2.24 5.0000004,5 0,2.76 -2.24,5 -5.0000004,5 -2.76,0 -5,-2.24 -5,-5 z"
        copytype="single_stretched"
        prop_scale="1"
        scale_y_rel="false"
@@ -49,7 +80,7 @@
        effect="skeletal"
        id="path-effect3831"
        is_visible="true"
-       pattern="m 3.0304576,8.5355339 c 0,-2.76 2.24,-5 5,-5 2.7600004,0 5.0000004,2.24 5.0000004,5 0,2.7600001 -2.24,5.0000001 -5.0000004,5.0000001 -2.76,0 -5,-2.24 -5,-5.0000001 z"
+       pattern="m 3.0304576,-55.464466 c 0,-2.76 2.24,-5 5,-5 2.7600004,0 5.0000004,2.24 5.0000004,5 0,2.76 -2.24,5 -5.0000004,5 -2.76,0 -5,-2.24 -5,-5 z"
        copytype="single_stretched"
        prop_scale="1"
        scale_y_rel="false"
@@ -68,16 +99,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="50.555966"
-     inkscape:cy="229.62274"
+     inkscape:cx="154.93934"
+     inkscape:cy="160.8063"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
-     showgrid="false"
+     showgrid="true"
      inkscape:window-width="1904"
      inkscape:window-height="1178"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     inkscape:snap-global="true">
     <inkscape:grid
        type="xygrid"
        id="grid2985"
@@ -105,250 +137,372 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layout"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:none"
+     transform="translate(0,64)">
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3788"
        width="64"
        height="64"
-       x="0"
-       y="0"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_h1.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       x="4.9004854e-009"
+       y="668.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3790"
        width="64"
        height="64"
-       x="64"
-       y="0"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_h2.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       x="63.999996"
+       y="668.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3792"
        width="64"
        height="64"
        x="128"
-       y="0"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_h3.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       y="668.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3794"
        width="64"
        height="64"
        x="192"
-       y="0"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_h4.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       y="668.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3796"
        width="64"
        height="64"
        x="256"
-       y="0"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_h5.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       y="668.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3798"
        width="64"
        height="64"
-       x="0"
-       y="64"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_h6.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       x="4.9004854e-009"
+       y="732.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3800"
        width="64"
        height="64"
-       x="64"
-       y="64"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_ul.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       x="63.999996"
+       y="732.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3802"
        width="64"
        height="64"
        x="128"
-       y="64"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_ol.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       y="732.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3804"
        width="64"
        height="64"
        x="192"
-       y="64"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_code.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       y="732.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       transform="translate(0,-732.36217)"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
        id="rect3806"
        width="64"
        height="64"
        x="256"
-       y="64"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_p.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       y="732.36218"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       y="128"
-       x="0"
+       transform="translate(0,-732.36217)"
+       y="796.36218"
+       x="4.9004854e-009"
        height="64"
        width="64"
        id="rect3808"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_save.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       y="128"
-       x="64"
+       transform="translate(0,-732.36217)"
+       y="796.36218"
+       x="63.999996"
        height="64"
        width="64"
        id="rect3810"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_cancel.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       y="128"
+       transform="translate(0,-732.36217)"
+       y="796.36218"
        x="127.44956"
        height="64"
        width="64"
        id="rect3812"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_blockquote.png"
-       inkscape:export-xdpi="44.310001"
-       inkscape:export-ydpi="44.310001" />
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       y="128"
+       transform="translate(0,-732.36217)"
+       y="796.36218"
        x="192"
        height="64"
        width="64"
        id="rect3814"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       y="128"
+       transform="translate(0,-732.36217)"
+       y="796.36218"
        x="256"
        height="64"
        width="64"
        id="rect3816"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <rect
-       y="192"
-       x="0"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="860.36603"
+       x="4.9004854e-009"
        height="64"
        width="64"
-       id="rect3818"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       id="rect3096"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       y="192"
-       x="64"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="860.36603"
+       x="63.999996"
        height="64"
        width="64"
-       id="rect3820"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       id="rect3098"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       y="192"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="860.36603"
        x="128"
        height="64"
        width="64"
-       id="rect3822"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       id="rect3100"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       y="192"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="860.36603"
        x="192"
        height="64"
        width="64"
-       id="rect3824"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       id="rect3102"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       y="192"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="860.36603"
        x="256"
        height="64"
        width="64"
-       id="rect3826"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       id="rect3104"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       id="rect3828"
-       width="64"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="924.36603"
+       x="4.9004854e-009"
        height="64"
-       x="0"
-       y="256" />
+       width="64"
+       id="rect3106"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       id="rect3830"
-       width="64"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="924.36603"
+       x="63.999996"
        height="64"
-       x="64"
-       y="256" />
+       width="64"
+       id="rect3108"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       id="rect3832"
-       width="64"
-       height="64"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="924.36603"
        x="128"
-       y="256" />
+       height="64"
+       width="64"
+       id="rect3110"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       id="rect3834"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="924.36603"
+       x="192"
+       height="64"
+       width="64"
+       id="rect3112"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+    <rect
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       y="924.36603"
+       x="256"
+       height="64"
+       width="64"
+       id="rect3114"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+    <rect
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="rect3116"
+       width="64"
+       height="64"
+       x="4.9004854e-009"
+       y="988.36603" />
+    <rect
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="rect3118"
+       width="64"
+       height="64"
+       x="63.999996"
+       y="988.36603" />
+    <rect
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="rect3120"
+       width="64"
+       height="64"
+       x="127.44956"
+       y="988.36603" />
+    <rect
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="rect3122"
        width="64"
        height="64"
        x="192"
-       y="256" />
+       y="988.36603" />
     <rect
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
-       id="rect3836"
+       transform="translate(0,-732.36217)"
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       style="display:inline;opacity:0.15044250000000001;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="rect3124"
        width="64"
        height="64"
        x="256"
-       y="256" />
+       y="988.36603" />
   </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-732.36217)"
+     transform="translate(0,-668.36217)"
      style="display:inline">
     <text
        xml:space="preserve"
        style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
        x="3.8563921"
-       y="781.36847"
+       y="717.36853"
        id="text3755"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
          sodipodi:role="line"
          id="tspan3757"
          x="3.8563921"
-         y="781.36847"
+         y="717.36853"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#303030;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">H1</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3763"
-       y="781.36847"
+       y="717.36853"
        x="65.199158"
        style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#303030;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold"
-         y="781.36847"
+         y="717.36853"
          x="65.199158"
          id="tspan3765"
          sodipodi:role="line">H2</tspan></text>
@@ -356,23 +510,29 @@
        xml:space="preserve"
        style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
        x="129.02586"
-       y="781.07965"
+       y="717.07965"
        id="text3767"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
          sodipodi:role="line"
          id="tspan3769"
          x="129.02586"
-         y="781.07965"
+         y="717.07965"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#303030;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">H3</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3771"
-       y="781.36847"
+       y="717.36853"
        x="192.55217"
        style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#303030;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold"
-         y="781.36847"
+         y="717.36853"
          x="192.55217"
          id="tspan3773"
          sodipodi:role="line">H4</tspan></text>
@@ -380,29 +540,38 @@
        xml:space="preserve"
        style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
        x="0.85255861"
-       y="845.07965"
+       y="781.07965"
        id="text3775"
-       sodipodi:linespacing="125%"><tspan
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
          sodipodi:role="line"
          id="tspan3777"
          x="0.85255861"
-         y="845.07965"
+         y="781.07965"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#303030;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">H6</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3779"
-       y="781.01031"
+       y="717.01038"
        x="256.72546"
        style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#303030;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold"
-         y="781.01031"
+         y="717.01038"
          x="256.72546"
          id="tspan3781"
          sodipodi:role="line">H5</tspan></text>
     <g
        id="g3870"
-       transform="translate(1.3571434,0.28573658)">
+       transform="translate(1.3571434,-63.714251)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
       <g
          id="g3850">
         <rect
@@ -458,7 +627,10 @@
     </g>
     <g
        id="g3866"
-       transform="translate(64.714285,0.82143)">
+       transform="translate(64.714285,-63.178557)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
       <path
          sodipodi:nodetypes="cccc"
          inkscape:connector-curvature="0"
@@ -474,7 +646,10 @@
     </g>
     <g
        id="g3928"
-       transform="translate(0.64166201,0.42545796)">
+       transform="translate(0.64166201,-63.574529)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
       <rect
          y="810.93359"
          x="145.72119"
@@ -535,7 +710,10 @@
     </g>
     <g
        id="g3974"
-       transform="translate(-1.2556763,0.4643078)">
+       transform="translate(-1.2556763,-63.53568)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
       <rect
          y="810.93359"
          x="264.41412"
@@ -558,29 +736,45 @@
          id="rect3957"
          style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none" />
     </g>
-    <path
-       style="fill:#aa0000;fill-rule:evenodd;stroke:none"
-       d="m 73.485403,872.34391 c 0.265652,-0.63681 1.262707,-0.94371 2.856411,-0.87805 1.593703,0.0657 3.782357,0.51047 6.356789,1.40509 2.574431,0.89462 5.53176,2.24337 8.623274,4.06167 3.091513,1.8183 6.313935,4.10717 9.426123,6.7868 0.16727,0.14403 0.33339,0.28843 0.49833,0.43316 3.04213,2.61447 5.76678,5.44 7.9688,8.25027 2.20202,2.81027 3.88011,5.59884 5.00511,8.0719 1.12499,2.47306 1.70359,4.62346 1.84237,6.19467 0.13878,1.5712 -0.14968,2.55843 -0.77174,2.8349 -0.62206,0.27647 -1.51437,-0.17154 -2.64465,-1.10141 -1.13027,-0.92986 -2.51038,-2.33556 -4.1996,-4.01998 -1.68922,-1.68443 -3.69602,-3.64737 -6.01344,-5.78342 -2.31743,-2.13605 -4.947225,-4.44917 -7.738234,-6.89504 -0.152842,-0.13095 -0.306152,-0.26214 -0.459918,-0.39355 -2.86089,-2.44484 -5.612504,-4.729 -8.143695,-6.78259 -2.53119,-2.05359 -4.842716,-3.87775 -6.789638,-5.46229 -1.946921,-1.58453 -3.528864,-2.93355 -4.563229,-4.05719 -1.034365,-1.12365 -1.518715,-2.02813 -1.253063,-2.66494 0,0 0,0 0,0 z"
-       id="path3829"
-       inkscape:path-effect="#path-effect3831"
-       inkscape:original-d="m 73.485403,872.34391 c 16.086103,6.71046 35.272707,22.46171 41.805467,37.16041"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#aa0000;fill-rule:evenodd;stroke:none"
-       d="m 114.71023,870.60202 c 0.4403,0.53126 0.23622,1.54119 -0.42867,2.92496 -0.6649,1.38376 -1.78476,3.14764 -3.19038,5.25416 -1.40562,2.10653 -3.0953,4.561 -4.97147,7.30326 -1.87617,2.74226 -3.94099,5.77433 -6.163815,8.95739 -0.18873,0.27026 -0.377115,0.53939 -0.565139,0.80728 -2.14633,3.07586 -4.218045,6.01454 -6.188116,8.65885 -1.97007,2.6443 -3.838427,4.99195 -5.532378,6.89222 -3.387903,3.80056 -6.071884,5.78762 -7.217282,5.07175 -1.145398,-0.71587 -0.565278,-3.9655 1.289081,-8.70903 0.927179,-2.37176 2.17778,-5.12084 3.744264,-8.10412 1.566485,-2.98328 3.450921,-6.20175 5.670029,-9.47308 0.190664,-0.28271 0.38386,-0.56596 0.5796,-0.84959 2.305384,-3.34051 4.75431,-6.41351 7.197673,-9.03681 2.443363,-2.6233 4.877853,-4.79499 7.083503,-6.42372 2.20564,-1.62874 4.17705,-2.71728 5.69015,-3.25957 1.5131,-0.5423 2.56265,-0.54521 3.00295,-0.0139 0,0 0,0 0,0 z"
-       id="path3833"
-       inkscape:path-effect="#path-effect3835"
-       inkscape:original-d="m 114.71023,870.60202 c -14.56548,12.0715 -25.84657,32.41279 -34.25725,45.86987"
-       inkscape:connector-curvature="0" />
+    <g
+       id="g4180"
+       transform="translate(0,-1.0491254)">
+      <path
+         inkscape:export-ydpi="44.860001"
+         inkscape:export-xdpi="44.860001"
+         inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 73.485403,808.34391 c 16.086103,6.71046 35.272707,22.46171 41.805467,37.16041"
+         inkscape:path-effect="#path-effect3831"
+         id="path3829"
+         d="m 73.485403,808.34391 c 0.265652,-0.63681 1.262707,-0.94371 2.856411,-0.87805 1.593703,0.0657 3.782357,0.51047 6.356789,1.40509 2.574431,0.89462 5.53176,2.24337 8.623274,4.06167 3.091513,1.8183 6.313935,4.10717 9.426123,6.7868 0.16727,0.14403 0.33339,0.28843 0.49833,0.43316 3.04213,2.61447 5.76678,5.44 7.9688,8.25027 2.20202,2.81027 3.88011,5.59884 5.00511,8.0719 1.12499,2.47306 1.70359,4.62346 1.84237,6.19467 0.13878,1.5712 -0.14968,2.55843 -0.77174,2.8349 -0.62206,0.27647 -1.51437,-0.17154 -2.64465,-1.10141 -1.13027,-0.92986 -2.51038,-2.33556 -4.1996,-4.01998 -1.68922,-1.68443 -3.69602,-3.64737 -6.01344,-5.78342 -2.31743,-2.13605 -4.947225,-4.44917 -7.738234,-6.89504 -0.152842,-0.13095 -0.306152,-0.26214 -0.459918,-0.39355 -2.86089,-2.44484 -5.612504,-4.729 -8.143695,-6.78259 -2.53119,-2.05359 -4.842716,-3.87775 -6.789638,-5.46229 -1.946921,-1.58453 -3.528864,-2.93355 -4.563229,-4.05719 -1.034365,-1.12365 -1.518715,-2.02813 -1.253063,-2.66494 0,0 0,0 0,0 z"
+         style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
+      <path
+         inkscape:export-ydpi="44.860001"
+         inkscape:export-xdpi="44.860001"
+         inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+         inkscape:connector-curvature="0"
+         inkscape:original-d="m 114.71023,806.60202 c -14.56548,12.0715 -25.84657,32.41279 -34.25725,45.86987"
+         inkscape:path-effect="#path-effect3835"
+         id="path3833"
+         d="m 114.71023,806.60202 c 0.4403,0.53126 0.23622,1.54119 -0.42867,2.92496 -0.6649,1.38376 -1.78476,3.14764 -3.19038,5.25416 -1.40562,2.10653 -3.0953,4.561 -4.97147,7.30326 -1.87617,2.74226 -3.94099,5.77433 -6.163815,8.95739 -0.18873,0.27026 -0.377115,0.53939 -0.565139,0.80728 -2.14633,3.07586 -4.218045,6.01454 -6.188116,8.65885 -1.97007,2.6443 -3.838427,4.99195 -5.532378,6.89222 -3.387903,3.80056 -6.071884,5.78762 -7.217282,5.07175 -1.145398,-0.71587 -0.565278,-3.9655 1.289081,-8.70903 0.927179,-2.37176 2.17778,-5.12084 3.744264,-8.10412 1.566485,-2.98328 3.450921,-6.20175 5.670029,-9.47308 0.190664,-0.28271 0.38386,-0.56596 0.5796,-0.84959 2.305384,-3.34051 4.75431,-6.41351 7.197673,-9.03681 2.443363,-2.6233 4.877853,-4.79499 7.083503,-6.42372 2.20564,-1.62874 4.17705,-2.71728 5.69015,-3.25957 1.5131,-0.5423 2.56265,-0.54521 3.00295,-0.0139 0,0 0,0 0,0 z"
+         style="fill:#aa0000;fill-rule:evenodd;stroke:none" />
+    </g>
     <path
        style="fill:#338000;fill-rule:evenodd;stroke:none"
-       d="m 10.101525,898.31391 c 1.999232,-0.92223 4.097489,0.85099 5.83723,1.76923 3.531678,2.28782 6.661489,5.13744 9.61803,8.11653 1.365162,-2.87184 5.250251,-11.1561 6.27729,-14.11637 5.131871,-8.73814 2.071364,-3.78877 14.571962,-19.40692 2.419923,-1.78989 5.195808,-3.72901 8.333758,-3.613 2.371709,1.27426 -1.159962,4.02167 -1.829006,5.58167 -6.220111,8.85113 -6.575572,11.72254 -12.250376,20.90592 -3.35154,3.55947 -10.8589,14.10482 -14.699418,17.14114 -5.208159,-4.02525 -10.683577,-7.91028 -14.802538,-13.10978 -0.578546,-0.92651 -1.6323562,-2.1244 -1.056932,-3.26842 z"
+       d="m 10.101525,833.80083 c 1.999232,-0.92223 4.097489,0.85099 5.83723,1.76923 3.531678,2.28782 6.661489,5.13744 9.61803,8.11653 1.365162,-2.87184 5.250251,-11.1561 6.27729,-14.11637 5.131871,-8.73814 2.071364,-3.78877 14.571962,-19.40692 2.419923,-1.78989 5.195808,-3.72901 8.333758,-3.613 2.371709,1.27426 -1.159962,4.02167 -1.829006,5.58167 -6.220111,8.85113 -6.575572,11.72254 -12.250376,20.90592 -3.35154,3.55947 -10.8589,14.10482 -14.699418,17.14114 -5.208159,-4.02525 -10.683577,-7.91028 -14.802538,-13.10978 -0.578546,-0.92651 -1.6323562,-2.1244 -1.056932,-3.26842 z"
        id="path3062"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccc" />
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001" />
     <g
        id="g3087"
-       transform="translate(-3.0304546,-2.8591232e-5)">
+       transform="translate(-3.0304546,-64.000016)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
       <rect
          style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none"
          id="rect3064"
@@ -617,6 +811,428 @@
          width="34.025738"
          id="rect3085"
          style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
+    <g
+       id="g3076"
+       transform="translate(-0.50508,-66.134502)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
+      <path
+         style="fill:none;stroke:#303030;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 208.61222,915.42525 15.71429,-18.92856 16.07143,18.92856 0,0"
+         id="path3070"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3072"
+         d="m 208.61222,892.49668 15.71429,-18.92856 16.07143,18.92856 0,0"
+         style="fill:none;stroke:#303030;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       id="g3080"
+       transform="matrix(1,0,0,-1,63.49492,1722.8589)"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3082"
+         d="m 208.61222,915.42525 15.71429,-18.92856 16.07143,18.92856 0,0"
+         style="fill:none;stroke:#303030;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         style="fill:none;stroke:#303030;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 208.61222,892.49668 15.71429,-18.92856 16.07143,18.92856 0,0"
+         id="path3084"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc" />
+    </g>
+    <text
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       sodipodi:linespacing="125%"
+       id="text3126"
+       y="909.37238"
+       x="3.8563921"
+       style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0044aa;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         y="909.37238"
+         x="3.8563921"
+         id="tspan3128"
+         sodipodi:role="line">H1</tspan></text>
+    <text
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       xml:space="preserve"
+       style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       x="65.19915"
+       y="909.37238"
+       id="text3130"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3132"
+         x="65.19915"
+         y="909.37238"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0044aa;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">H2</tspan></text>
+    <text
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       sodipodi:linespacing="125%"
+       id="text3134"
+       y="909.0835"
+       x="129.02586"
+       style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0044aa;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         y="909.0835"
+         x="129.02586"
+         id="tspan3136"
+         sodipodi:role="line">H3</tspan></text>
+    <text
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       xml:space="preserve"
+       style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       x="192.55217"
+       y="909.37238"
+       id="text3138"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3140"
+         x="192.55217"
+         y="909.37238"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0044aa;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">H4</tspan></text>
+    <text
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       sodipodi:linespacing="125%"
+       id="text3142"
+       y="973.0835"
+       x="0.85255861"
+       style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0044aa;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         y="973.0835"
+         x="0.85255861"
+         id="tspan3144"
+         sodipodi:role="line">H6</tspan></text>
+    <text
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       xml:space="preserve"
+       style="font-size:47.32192993px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       x="256.72546"
+       y="909.01422"
+       id="text3146"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3148"
+         x="256.72546"
+         y="909.01422"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#0044aa;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">H5</tspan></text>
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="translate(1.3571434,128.28962)"
+       id="g3150"
+       style="fill:#0044aa">
+      <g
+         id="g3152"
+         style="fill:#0044aa">
+        <rect
+           y="810.93359"
+           x="69.64286"
+           height="7.1428571"
+           width="7.1428571"
+           id="rect3154"
+           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <rect
+           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="rect3156"
+           width="38.571426"
+           height="6.7857146"
+           x="81.071426"
+           y="810.93359" />
+      </g>
+      <g
+         id="g3158"
+         transform="translate(0,1.7857056)"
+         style="fill:#0044aa">
+        <rect
+           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="rect3160"
+           width="7.1428571"
+           height="7.1428571"
+           x="69.64286"
+           y="822.7193" />
+        <rect
+           y="822.7193"
+           x="81.071426"
+           height="6.7857146"
+           width="38.571426"
+           id="rect3162"
+           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      </g>
+      <g
+         id="g3164"
+         style="fill:#0044aa">
+        <rect
+           y="838.07642"
+           x="69.64286"
+           height="7.1428571"
+           width="7.1428571"
+           id="rect3166"
+           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+        <rect
+           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="rect3168"
+           width="38.571426"
+           height="6.7857146"
+           x="81.071426"
+           y="838.07642" />
+      </g>
+    </g>
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="translate(64.714285,128.82532)"
+       id="g3170"
+       style="stroke:#0044aa">
+      <path
+         style="fill:none;stroke:#0044aa;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 154.28571,811.64788 -18.92856,15.71429 18.92856,16.07143 0,0"
+         id="path3172"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3174"
+         d="m 164.28572,811.64788 18.92856,15.71429 -18.92856,16.07143 0,0"
+         style="fill:none;stroke:#0044aa;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </g>
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="translate(0.64166201,128.42934)"
+       id="g3176"
+       style="fill:#0044aa">
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3178"
+         width="38.571426"
+         height="6.7857146"
+         x="145.72119"
+         y="810.93359" />
+      <rect
+         y="824.505"
+         x="145.72119"
+         height="6.7857146"
+         width="38.571426"
+         id="rect3180"
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3182"
+         width="38.571426"
+         height="6.7857146"
+         x="145.72119"
+         y="838.07642" />
+      <text
+         xml:space="preserve"
+         style="font-size:12.7255373px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         x="134.10716"
+         y="818.89972"
+         id="text3184"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3186"
+           x="134.10716"
+           y="818.89972"
+           style="font-weight:bold;fill:#0044aa;fill-opacity:1;-inkscape-font-specification:Sans Bold">1</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3188"
+         y="832.47113"
+         x="134.10716"
+         style="font-size:12.7255373px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         xml:space="preserve"><tspan
+           style="font-weight:bold;fill:#0044aa;fill-opacity:1;-inkscape-font-specification:Sans Bold"
+           y="832.47113"
+           x="134.10716"
+           id="tspan3190"
+           sodipodi:role="line">2</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:12.7255373px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0044aa;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Bold"
+         x="134.10716"
+         y="845.96484"
+         id="text3192"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3194"
+           x="134.10716"
+           y="845.96484"
+           style="font-weight:bold;fill:#0044aa;fill-opacity:1;-inkscape-font-specification:Sans Bold">3</tspan></text>
+    </g>
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="translate(-1.2556763,128.46819)"
+       id="g3196"
+       style="fill:#0044aa">
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3198"
+         width="49.683105"
+         height="6.7857146"
+         x="264.41412"
+         y="810.93359" />
+      <rect
+         y="824.505"
+         x="264.41412"
+         height="6.7857146"
+         width="49.683105"
+         id="rect3200"
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3202"
+         width="49.683105"
+         height="6.7857146"
+         x="264.41412"
+         y="838.07642" />
+    </g>
+    <g
+       id="g4176"
+       transform="translate(1.2447404,-2.0389519)">
+      <path
+         style="fill:#ff1818;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         d="m 73.485403,1001.3376 c 0.265653,-0.6368 1.262709,-0.9437 2.856411,-0.878 1.593703,0.066 3.782355,0.5104 6.356785,1.4051 2.574429,0.8946 5.531756,2.2433 8.623268,4.0616 3.091512,1.8183 6.313934,4.1072 9.426123,6.7868 0.16728,0.144 0.33339,0.2884 0.49834,0.4332 3.04213,2.6144 5.76678,5.44 7.9688,8.2502 2.20202,2.8103 3.88011,5.5989 5.00511,8.0719 1.12499,2.4731 1.70359,4.6235 1.84237,6.1947 0.13878,1.5712 -0.14968,2.5584 -0.77174,2.8349 -0.62206,0.2765 -1.51437,-0.1715 -2.64465,-1.1014 -1.13027,-0.9299 -2.51038,-2.3356 -4.1996,-4.02 -1.68921,-1.6844 -3.69602,-3.6474 -6.01344,-5.7834 -2.31742,-2.136 -4.947222,-4.4492 -7.738232,-6.895 -0.152844,-0.131 -0.306156,-0.2622 -0.459925,-0.3936 -2.86089,-2.4448 -5.612506,-4.729 -8.143697,-6.7826 -2.531191,-2.0536 -4.842718,-3.8777 -6.789639,-5.4623 -1.946921,-1.5845 -3.528863,-2.9335 -4.563226,-4.0572 -1.034363,-1.1236 -1.518711,-2.0281 -1.253058,-2.6649 0,0 0,0 0,0 z"
+         id="path3204"
+         inkscape:path-effect="#path-effect3234"
+         inkscape:original-d="m 73.485403,1001.3376 c 16.086103,6.7105 35.272707,22.4617 41.805467,37.1604"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+         inkscape:export-xdpi="44.860001"
+         inkscape:export-ydpi="44.860001" />
+      <path
+         style="fill:#ff1818;fill-opacity:1;fill-rule:evenodd;stroke:none"
+         d="m 114.71023,999.5957 c 0.4403,0.5313 0.23622,1.5412 -0.42867,2.925 -0.6649,1.3837 -1.78476,3.1476 -3.19038,5.2541 -1.40563,2.1066 -3.0953,4.561 -4.97147,7.3033 -1.87617,2.7422 -3.94099,5.7743 -6.163818,8.9574 -0.188729,0.2702 -0.377113,0.5394 -0.565135,0.8073 -2.146331,3.0758 -4.218046,6.0145 -6.188116,8.6588 -1.970071,2.6443 -3.838428,4.992 -5.532379,6.8922 -3.387902,3.8006 -6.071884,5.7877 -7.217282,5.0718 -1.145398,-0.7159 -0.56528,-3.9655 1.289079,-8.709 0.927179,-2.3718 2.177779,-5.1209 3.744264,-8.1042 1.566485,-2.9832 3.450922,-6.2017 5.67003,-9.4731 0.190663,-0.2827 0.383858,-0.5659 0.579596,-0.8495 2.305384,-3.3405 4.754311,-6.4136 7.197673,-9.0369 2.443368,-2.6233 4.877858,-4.7949 7.083498,-6.4237 2.20565,-1.6287 4.17706,-2.7173 5.69016,-3.25955 1.5131,-0.5423 2.56265,-0.54521 3.00295,-0.014 0,0 0,0 0,0 z"
+         id="path3206"
+         inkscape:path-effect="#path-effect3236"
+         inkscape:original-d="m 114.71023,999.5957 c -14.56548,12.0715 -25.84657,32.4128 -34.25725,45.8699"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+         inkscape:export-xdpi="44.860001"
+         inkscape:export-ydpi="44.860001" />
+    </g>
+    <path
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:connector-curvature="0"
+       id="path3208"
+       d="m 9.3596384,1025.8047 c 1.9992316,-0.9222 4.0974886,0.851 5.8372296,1.7692 3.531678,2.2879 6.661489,5.1375 9.61803,8.1166 1.365162,-2.8719 5.250251,-11.1561 6.27729,-14.1164 5.131871,-8.7381 2.071364,-3.7888 14.571962,-19.4069 2.419923,-1.7899 5.195808,-3.729 8.333758,-3.613 2.371709,1.27416 -1.159962,4.0217 -1.829006,5.5817 -6.220111,8.8511 -6.575572,11.7225 -12.250376,20.9059 -3.35154,3.5594 -10.8589,14.1048 -14.699418,17.1411 -5.208159,-4.0252 -10.683577,-7.9103 -14.802538,-13.1098 -0.5785456,-0.9265 -1.6323558,-2.1244 -1.0569316,-3.2684 z"
+       style="fill:#45ae00;fill-opacity:1;fill-rule:evenodd;stroke:none" />
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="translate(-3.0304546,128.00386)"
+       id="g3210"
+       style="fill:#0044aa">
+      <rect
+         y="871.54425"
+         x="151.53659"
+         height="6.7857146"
+         width="34.025738"
+         id="rect3212"
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3214"
+         width="34.025738"
+         height="6.7857146"
+         x="151.53659"
+         y="895.10309" />
+      <rect
+         y="906.88251"
+         x="151.53659"
+         height="6.7857146"
+         width="34.025738"
+         id="rect3216"
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3218"
+         width="42.612038"
+         height="6.7857146"
+         x="-913.66821"
+         y="139.39771"
+         transform="matrix(0,-1,1,0,0,0)" />
+      <rect
+         style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3220"
+         width="34.025738"
+         height="6.7857146"
+         x="151.53659"
+         y="883.32367" />
+    </g>
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="translate(-0.50508,125.86937)"
+       id="g3222"
+       style="stroke:#0044aa">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3224"
+         d="m 208.61222,915.42525 15.71429,-18.92856 16.07143,18.92856 0,0"
+         style="fill:none;stroke:#0044aa;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+      <path
+         style="fill:none;stroke:#0044aa;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 208.61222,892.49668 15.71429,-18.92856 16.07143,18.92856 0,0"
+         id="path3226"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc" />
+    </g>
+    <g
+       inkscape:export-ydpi="44.860001"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       transform="matrix(1,0,0,-1,63.49492,1914.8628)"
+       id="g3228"
+       style="stroke:#0044aa">
+      <path
+         style="fill:none;stroke:#0044aa;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         d="m 208.61222,915.42525 15.71429,-18.92856 16.07143,18.92856 0,0"
+         id="path3230"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc" />
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3232"
+         d="m 208.61222,892.49668 15.71429,-18.92856 16.07143,18.92856 0,0"
+         style="fill:none;stroke:#0044aa;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
   </g>
 </svg>

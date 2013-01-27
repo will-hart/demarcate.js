@@ -5,6 +5,7 @@
 textarea#demarcate {
     margin-top: 5px;
     width: 100%;
+    font-size: 1.2em;
 }
 
 div#demarcate_toolbar {
@@ -21,31 +22,32 @@ div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
     min-height: 32px;
 }
 
-div#demarcate_toolbar a:hover {
-    border: 1px solid #ccc;
-    margin: 4px 4px 0 0;
-}
-
-div#demarcate_toolbar a#demarcate_h1 { background: url(../img/demarcate_h1.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_h2 { background: url(../img/demarcate_h2.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_h3 { background: url(../img/demarcate_h3.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_h4 { background: url(../img/demarcate_h4.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_h5 { background: url(../img/demarcate_h5.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_h6 { background: url(../img/demarcate_h6.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_p { background: url(../img/demarcate_p.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_code { background: url(../img/demarcate_code.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_ul { background: url(../img/demarcate_ul.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_ol.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_blockquote.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_save.png) no-repeat; }
-div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_cancel.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_h1 { background: url(../img/demarcate_sprite.png) no-repeat 0 0; }
+div#demarcate_toolbar a#demarcate_h2 { background: url(../img/demarcate_sprite.png) no-repeat -32px 0; }
+div#demarcate_toolbar a#demarcate_h3 { background: url(../img/demarcate_sprite.png) no-repeat -64px 0; }
+div#demarcate_toolbar a#demarcate_h4 { background: url(../img/demarcate_sprite.png) no-repeat -96px 0; }
+div#demarcate_toolbar a#demarcate_h5 { background: url(../img/demarcate_sprite.png) no-repeat -128px 0; }
+div#demarcate_toolbar a#demarcate_h6 { background: url(../img/demarcate_sprite.png) no-repeat 0 -32px; }
+div#demarcate_toolbar a#demarcate_p { background: url(../img/demarcate_sprite.png) no-repeat -128px -32px; }
+div#demarcate_toolbar a#demarcate_code { background: url(../img/demarcate_sprite.png) no-repeat -96px -32px; }
+div#demarcate_toolbar a#demarcate_ul { background: url(../img/demarcate_sprite.png) no-repeat -32px -32px; }
+div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_sprite.png) no-repeat -64px -32px; }
+div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_sprite.png) no-repeat -64px -64px; }
+div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_sprite.png) no-repeat 0 -64px; }
+div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_sprite.png) no-repeat -32px -64px; }
+div#demarcate_toolbar a#demarcate_up { background: url(../img/demarcate_sprite.png) no-repeat -96px -64px; }
+div#demarcate_toolbar a#demarcate_down { background: url(../img/demarcate_sprite.png) no-repeat -128px -64px; }
 
 div#demarcate_toolbar a.active {
     border: 1px solid #303030;
     margin: 4px 4px 0 0;
 }
 
-.demarcate_hover_editable {
+.demarcate_editable:hover {
     background: #EEE;
     cursor: pointer;
+}
+
+.demarcate_droppable {
+    border: 1px dashed #ccc;
 }

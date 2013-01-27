@@ -1,17 +1,17 @@
 demarcate.js
 ============
 
-**Version 1.0**
+**Version 1.1**
 
-demarcate is an in-place Markdown Editor under development by 
+demarcate.js is an in-place Markdown Editor under development by 
 [William Hart](http://www.williamhart.info) for [textr](http://to-textr.com/).
 The editor works directly on the DOM, tags with a textarea for editing and then
 closing returning the markdown "code" when requested.
 
-It weighs in with 1KB of CSS (which you are free to modify as you wish) and either
-14KB of JS or 8KB minified.
+It weighs in at under 30KB including a 15KB menu image sprite, 3KB of CSS (which 
+you are free to modify as you wish) and either 18KB of JS or 10KB minified.
 
-demarcate allows you to apply your own stylesheets to a document and then have users
+demarcate.js allows you to apply your own stylesheets to a document and then have users
 edit it using simple textareas.  Users are not required to know markdown, instead
 they just click on a DOM element and start typing!
 
