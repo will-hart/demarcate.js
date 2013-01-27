@@ -203,16 +203,18 @@ function demarkdown(elem, ignore_extras) {
  */
 function generate_toolbar() {
     var toolbar = $("<div />", {id: 'demarcate_toolbar'});
-    toolbar.append($("<a />", {id: 'demarcate_h1', class: 'demarcate_style', text: 'H1', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h2', class: 'demarcate_style', text: 'H2', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h3', class: 'demarcate_style', text: 'H3', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h4', class: 'demarcate_style', text: 'H4', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h5', class: 'demarcate_style', text: 'H5', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h6', class: 'demarcate_style', text: 'H6', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_p', class: 'demarcate_style', text: 'P', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_code', class: 'demarcate_style', text: 'CODE', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_cancel', text: 'Cancel', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_save', text: 'Save', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h1', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h2', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h3', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h4', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h5', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h6', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_p', class: 'demarcate_style',  href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_code', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_ul', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_ol', class: 'demarcate_style', thref:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_cancel', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_save', href:"#" }));
     return toolbar;
 }
 
