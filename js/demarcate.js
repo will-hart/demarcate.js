@@ -15,123 +15,30 @@
 *************************************************************************/
 
 /*
- * Bash in an 'indexOf' function if not available
- * (looking at IE I think!)
- */
-if(!Array.indexOf){
-    Array.prototype.indexOf = function(obj){
-        for (var i=0; i<this.length; i++){
-            if (this[i]==obj){
-                return i;
-            }
-        }
-        return -1;
-    }
-}
-
-/*
- * Now make a handy 'contains' function which returns true
- * if the element is in the array and false otherwise
- */
-Array.prototype.contains = function(obj) {
-    return this.indexOf(obj) >= 0;
-}
-
-/*
  * Whitelist of tags to include
  */
-var demarcate_whitelist = [
-    'DIV',
-    'SPAN',
-    'H1',
-    'H2',
-    'H3',
-    'H4',
-    'H5',
-    'H6',
-    'LI',
-    'BLOCKQUOTE',
-    'PRE',
-    'CODE',
-    'A',
-    'P',
-    'UL',
-    'OL',
-    'HR',
-    'STRONG',
-    'EM',
-];
-
-var editor_whitelist = [
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'li',
-    'blockquote',
-    'pre',
-    'code',
-    'p',
-]
-
-/*
- * Lookup table for line starts
- */
-var line_starts = {
-    'H1': '# ',
-    'H2': '## ',
-    'H3': '### ',
-    'H4': '#### ',
-    'H5': '##### ',
-    'H6': '###### ',
-    'LI': ' - ',
-    'BLOCKQUOTE': '> ',
-    'PRE': '    ',
-    'CODE': '`',
-    'A': '[',
-    'HR': '\n---------------------\n\n',
-    'STRONG': '**',
-    'EM': '*',
+var tag_dict = {
+    'div': {editable: false, markdownable: true, prefix: '', postfix: '', post_newline: false, childprefix: ''},
+    'span': {editable: false, markdownable: true, prefix: '', postfix: '', post_newline: false, childprefix: ''},
+    'h1': {editable: true, markdownable: true, prefix: '#', postfix: '\n', post_newline: true, childprefix: ''},
+    'h2': {editable: true, markdownable: true, prefix: '##', postfix: '\n', post_newline: true, childprefix: ''},
+    'h3': {editable: true, markdownable: true, prefix: '###', postfix: '\n', post_newline: true, childprefix: ''},
+    'h4': {editable: true, markdownable: true, prefix: '####', postfix: '\n', post_newline: true, childprefix: ''},
+    'h5': {editable: true, markdownable: true, prefix: '#####', postfix: '\n', post_newline: true, childprefix: ''},
+    'h6': {editable: true, markdownable: true, prefix: '######', postfix: '\n', post_newline: true, childprefix: ''},
+    'li': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ''},
+    'ul': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ' - '},
+    'ol': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ' 1. '},
+    'blockquote': {editable: true, markdownable: true, prefix: '>', postfix: '\n', post_newline: true, childprefix: '>'},
+    'pre': {editable: true, markdownable: true, prefix: '    ', postfix: '\n', post_newline: true, childprefix: '    '},
+    'code': {editable: true, markdownable: true, prefix: '`', postfix: '`', post_newline: false, childprefix: ''},
+    'a': {editable: true, markdownable: true, prefix: '[', postfix: ']', post_newline: false, childprefix: ''},
+    'hr': {editable: false, markdownable: true, prefix: '\n---------------------', postfix: '\n', post_newline: true, childprefix: ''},
+    'em': {editable: false, markdownable: true, prefix: '*', postfix: '*', post_newline: false, childprefix: ''},
+    'strong': {editable: false, markdownable: true, prefix: '**', postfix: '**', post_newline: false, childprefix: ''},
+    'p': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ''},
+    '_text': {editable: false, markdownable: true, prefix: '', postfix: '', post_newline: false, childprefix: ''},
 };
-
-/*
- * Lookup table for line ends
- */
-var line_ends = {
-    'H1': '\n\n',
-    'H2': '\n\n',
-    'H3': '\n\n',
-    'H4': '\n\n',
-    'H5': '\n\n',
-    'H6': '\n\n',
-    'LI': '\n',
-    'BLOCKQUOTE': '\n\n',
-    'PRE': '\n\n',
-    'CODE': '`',
-    'A': ']',
-    'P': '\n\n',
-    'DIV': '\n\n',
-    'STRONG': '**',
-    'EM': '*',
-};
-
-/*
- * A list of elements which have their internal
- * HTML added to the markdown document
- */
-var include_internal = [
-    'H1',
-    'H2',
-    'H3',
-    'H4',
-    'H5',
-    'H6',
-    'P',
-    'BLOCKQUOTE',
-    'A', //- not included here as requires special treatment
-];
 
 /*
  * Performs a number of manipulations on the edited string before adding 
@@ -156,30 +63,30 @@ function modifyHtml(str){
  * and its child objects
  */
 function demarkdown(elem, ignore_extras) {
-
     // check if ignore_extras was defined. Default is true
     ignore_extras = ignore_extras || false;
 
     // work out what we are looking at
     var node = elem.get(0);
-    var tag_name = node.tagName;
     var node_type = node.nodeType;
+    var tag_name = node_type == 3 ? '_text' : node.tagName.toLowerCase();
     var result = "";
 
     // do not parse temporary dom elements
-    if (elem.hasClass("demarcate_temporary")) return "";
-    
+    if (elem.hasClass("demarcate_temporary")) return result;
+
+    // check if the element is in the tag_dict
+    if (!(tag_name in tag_dict)) return result;
+
     // check we are allowed to decode the tag
-    if (! demarcate_whitelist.contains(tag_name) && node_type != 3) {
-        return "";
-    }
+    if (! tag_dict[tag_name].markdownable && node_type != 3) return result;
 
     // open the tag
-    if (! ignore_extras || tag_name == 'A') {
-        result = line_starts[tag_name] == undefined ? "" : line_starts[tag_name];
+    if (! ignore_extras || tag_name == 'a') {
+        result = tag_dict[tag_name].prefix;
     }
     
-    // add any inner html
+    // add any text inside text nodes
     if (node_type == 3) {
         result += $.trim(node.nodeValue);
     }
@@ -190,12 +97,17 @@ function demarkdown(elem, ignore_extras) {
     });
 
     // close the tag
-    if (! ignore_extras || tag_name == 'A') {
-        result += line_ends[elem.get(0).tagName] == undefined ? "" : line_ends[tag_name];
+    if (! ignore_extras || tag_name == 'a') {
+        result += tag_dict[tag_name].postfix;
+    }
+
+    // apply a new line if required
+    if (tag_dict[tag_name].post_newline) {
+        result += '\n';
     }
 
     // apply special behaviour for <a> tags
-    if (tag_name == 'A') {
+    if (tag_name == 'a') {
         result = " " + result + "(" + elem.attr('href') + ") ";
     }
 
@@ -235,14 +147,14 @@ function toolbar_set_active() {
     if (current_demarcate_element == null) {
         return;
     } else {
-        tag_name = current_demarcate_element.get(0).tagName;
+        tag_name = current_demarcate_element.get(0).tagName.toLowerCase();
     }
 
     // remove old active tags
     $(".demarcate_style").removeClass("active");
 
     // apply new active tags
-    $("#demarcate_" + tag_name.toLowerCase()).addClass("active");
+    $("#demarcate_" + tag_name).addClass("active");
 }
 
 /* 
@@ -250,10 +162,11 @@ function toolbar_set_active() {
  */
 function display_editor(elem) {
     elem = $(elem);
-    var tag_name = elem.get(0).tagName;
+    var tag_name = elem.get(0).tagName.toLowerCase();
 
     // double check we are allowed to edit this
-    if (editor_whitelist.contains(tag_name.toLowerCase())) {
+    if (tag_name in tag_dict) {
+        console.log("Displaying editor");
 
         // create the new text editor - ignore front matter
         var md = demarkdown(elem, true);
@@ -271,12 +184,12 @@ function display_editor(elem) {
         // insert the markdown into the editor and focus 
         // on the last character. Set toolbar buttons to active
         toolbar_set_active();
-        
+
         // hook up jquery.autosize.js if present
         if (typeof elem.autosize != undefined) {
             ed.autosize({'append': '\n'});
         }
-        ed.focus().val($.trim(md)).trigger('autosize');
+        ed.focus().val($.trim(md));
     }
 }
 
@@ -286,6 +199,7 @@ function display_editor(elem) {
 function hide_editor(e) {
     e.preventDefault();
 
+    console.log("Hiding editor");
     // remove the toolbar and editor
     $("div#demarcate_toolbar").remove();
     current_demarcate_editor.remove();
@@ -354,6 +268,7 @@ function enable_demarcate_toolbar_handlers() {
                 }
             }
         } else if (e.keyCode == 27) { //escape
+            e.preventDefault();
             $("#demarcate_cancel").click();
         }
     });
@@ -380,7 +295,7 @@ function enable_demarcate_toolbar_handlers() {
         var id = $(this).attr('id').replace("demarcate_", "");
 
         // check this is an allowable tag
-        if (editor_whitelist.contains(id)) {
+        if (id in tag_dict) {
             // replace the element with the new type
             var new_elem = $("<" + id + "></" + id + ">");
             current_demarcate_element.after(new_elem);
@@ -421,21 +336,28 @@ function enable_demarcate_toolbar_handlers() {
         window.current_demarcate_editor = null;
         window.current_demarcate_element = null;
 
-        len = editor_whitelist.length
-        for (var i = 0; i < len; i++) {
-            live_selector = "#" + this.attr('id') + " " + editor_whitelist[i];
-            
-            $(document).on('click', live_selector, function() {
-                display_editor(this);
-            });
+        for (var tag_name in tag_dict) {
+            if (tag_dict[tag_name].editable) {
+                live_selector = "#" + this.attr('id') + " " + tag_name;
 
-            $(document).on('mouseenter', live_selector, function() {
-                $(this).addClass("demarcate_hover_editable");
-            });
-            
-            $(document).on('mouseleave', live_selector, function() {
-                $(this).removeClass("demarcate_hover_editable");
-            });
+                $(document).on('click', live_selector, function(e) {
+                    if ($("#demarcate_toolbar").has(e.target).length > 0 ||
+                            $("#demarcate_toolbar").is(e.target) ||
+                            $(this).attr('id') === 'demarcate') {
+
+                        return;
+                    }
+                    display_editor(this);
+                });
+
+                $(document).on('mouseenter', live_selector, function() {
+                    $(this).addClass("demarcate_hover_editable");
+                });
+                
+                $(document).on('mouseleave', live_selector, function() {
+                    $(this).removeClass("demarcate_hover_editable");
+                });
+            }
         }
 
         enable_demarcate_toolbar_handlers();
