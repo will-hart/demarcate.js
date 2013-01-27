@@ -3,51 +3,49 @@
 }
 
 textarea#demarcate {
+    margin-top: 5px;
     width: 100%;
 }
 
 div#demarcate_toolbar {
     display: block;
-    width: 100%;
+    max-width: 100%;
     margin-bottom: 15px;
 }
 
 div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
-    color: black;
-    padding: 8px;
-    background: #EEE;
-    border: 1px solid #666;
-    text-decoration: none;
-    font-weight: bolder;
-    margin: 0 5px 0 0;
-    min-width: 30px;
+    padding: 0;
+    margin: 5px 5px 1px 1px;
+    float: left;
+    min-width: 32px;
+    min-height: 32px;
 }
 
 div#demarcate_toolbar a:hover {
-    background: #CCC;
+    border: 1px solid #ccc;
+    margin: 4px 4px 0 0;
 }
 
-div#demarcate_toolbar a#demarcate_save {
-    background: #5D5;
-}
-
-div#demarcate_toolbar a#demarcate_save:hover {
-    background: #2A2;
-}
-
-div#demarcate_toolbar a#demarcate_cancel {
-    background: #D55;
-}
-
-div#demarcate_toolbar a#demarcate_cancel:hover {
-    background: #A22;
-}
+div#demarcate_toolbar a#demarcate_h1 { background: url(../img/demarcate_h1.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_h2 { background: url(../img/demarcate_h2.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_h3 { background: url(../img/demarcate_h3.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_h4 { background: url(../img/demarcate_h4.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_h5 { background: url(../img/demarcate_h5.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_h6 { background: url(../img/demarcate_h6.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_p { background: url(../img/demarcate_p.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_code { background: url(../img/demarcate_code.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_ul { background: url(../img/demarcate_ul.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_ol.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_blockquote.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_save.png) no-repeat; }
+div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_cancel.png) no-repeat; }
 
 div#demarcate_toolbar a.active {
-    background: #303030;
-    color: white;
+    border: 1px solid #303030;
+    margin: 4px 4px 0 0;
 }
 
 .demarcate_hover_editable {
     background: #EEE;
+    cursor: pointer;
 }
