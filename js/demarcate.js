@@ -399,8 +399,17 @@ function enable_demarcate_toolbar_handlers() {
         len = editor_whitelist.length
         for (var i = 0; i < len; i++) {
             live_selector = "#" + this.attr('id') + " " + editor_whitelist[i];
+            
             $(document).on('click', live_selector, function() {
                 display_editor(this);
+            });
+
+            $(document).on('mouseenter', live_selector, function() {
+                $(this).addClass("demarcate_hover_editable");
+            });
+            
+            $(document).on('mouseleave', live_selector, function() {
+                $(this).removeClass("demarcate_hover_editable");
             });
         }
 
@@ -412,10 +421,10 @@ function enable_demarcate_toolbar_handlers() {
                 $.trim(demarcate_dom_root.html()) == "") {
 
             demarcate_dom_root.append(
-                    $('<p />', {
-                            class: 'demarcate_temporary',
-                            text: 'Click me to start editing'
-                    })
+                $('<p />', {
+                        class: 'demarcate_temporary',
+                        text: 'Click me to start editing'
+                })
             );
         }
     };

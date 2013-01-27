@@ -47,3 +47,7 @@ div#demarcate_toolbar a.active {
     background: #303030;
     color: white;
 }
+
+.demarcate_hover_editable {
+    background: #EEE;
+}
