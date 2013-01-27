@@ -68,7 +68,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="110.91258"
+     inkscape:cx="50.555966"
      inkscape:cy="229.62274"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
@@ -229,11 +229,14 @@
        inkscape:export-ydpi="44.310001" />
     <rect
        y="128"
-       x="128"
+       x="127.44956"
        height="64"
        width="64"
        id="rect3812"
-       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1" />
+       style="opacity:0.1504425;fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_blockquote.png"
+       inkscape:export-xdpi="44.310001"
+       inkscape:export-ydpi="44.310001" />
     <rect
        y="128"
        x="192"
@@ -575,5 +578,45 @@
        id="path3062"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccccccc" />
+    <g
+       id="g3087"
+       transform="translate(-3.0304546,-2.8591232e-5)">
+      <rect
+         style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3064"
+         width="34.025738"
+         height="6.7857146"
+         x="151.53659"
+         y="871.54425" />
+      <rect
+         y="895.10309"
+         x="151.53659"
+         height="6.7857146"
+         width="34.025738"
+         id="rect3066"
+         style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="rect3068"
+         width="34.025738"
+         height="6.7857146"
+         x="151.53659"
+         y="906.88251" />
+      <rect
+         transform="matrix(0,-1,1,0,0,0)"
+         y="139.39771"
+         x="-913.66821"
+         height="6.7857146"
+         width="42.612038"
+         id="rect3073"
+         style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+      <rect
+         y="883.32367"
+         x="151.53659"
+         height="6.7857146"
+         width="34.025738"
+         id="rect3085"
+         style="fill:#303030;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+    </g>
   </g>
 </svg>

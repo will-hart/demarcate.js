@@ -115,7 +115,7 @@
                 });
                 
                 $("#output").click( function() {
-                    $(this).slideUp(600, function() { $(this).trigger('demarcate_editor_closed'); });
+                    $(this).fadeOut(300, function() { $(this).trigger('demarcate_editor_closed'); });
                     $(this).slideDown();
                 });
                 

@@ -18,26 +18,26 @@
  * Whitelist of tags to include
  */
 var tag_dict = {
-    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''},
-    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''},
-    'h1':         {editable: true,  markdownable: true, prefix: '#',      postfix: '\n', post_newline: true,  childprefix: ''},
-    'h2':         {editable: true,  markdownable: true, prefix: '##',     postfix: '\n', post_newline: true,  childprefix: ''},
-    'h3':         {editable: true,  markdownable: true, prefix: '###',    postfix: '\n', post_newline: true,  childprefix: ''},
-    'h4':         {editable: true,  markdownable: true, prefix: '####',   postfix: '\n', post_newline: true,  childprefix: ''},
-    'h5':         {editable: true,  markdownable: true, prefix: '#####',  postfix: '\n', post_newline: true,  childprefix: ''},
-    'h6':         {editable: true,  markdownable: true, prefix: '######', postfix: '\n', post_newline: true,  childprefix: ''},
-    'li':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ' - '},
-    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''},
-    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''},
-    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>'},
+    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''    },
+    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''    },
+    'h1':         {editable: true,  markdownable: true, prefix: '#',      postfix: '\n', post_newline: true,  childprefix: ''    },
+    'h2':         {editable: true,  markdownable: true, prefix: '##',     postfix: '\n', post_newline: true,  childprefix: ''    },
+    'h3':         {editable: true,  markdownable: true, prefix: '###',    postfix: '\n', post_newline: true,  childprefix: ''    },
+    'h4':         {editable: true,  markdownable: true, prefix: '####',   postfix: '\n', post_newline: true,  childprefix: ''    },
+    'h5':         {editable: true,  markdownable: true, prefix: '#####',  postfix: '\n', post_newline: true,  childprefix: ''    },
+    'h6':         {editable: true,  markdownable: true, prefix: '######', postfix: '\n', post_newline: true,  childprefix: ''    },
+    'li':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: false, childprefix: ' - ' },
+    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''    },
+    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''    },
+    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>'   },
     'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n', post_newline: true,  childprefix: '    '},
-    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: ''},
-    'a':          {editable: true,  markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: ''},
-    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n', post_newline: true,  childprefix: ''},
-    'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: ''},
-    'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: ''},
-    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''},
-    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''},
+    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: ''    },
+    'a':          {editable: true,  markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: ''    },
+    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n', post_newline: true,  childprefix: ''    },
+    'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: ''    },
+    'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: ''    },
+    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''    },
+    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''    },
 };
 
 /*
@@ -134,6 +134,7 @@ function generate_toolbar() {
     toolbar.append($("<a />", {id: 'demarcate_code', class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_ul', class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_ol', class: 'demarcate_style', thref:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_blockquote', class: 'demarcate_style', thref:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_cancel', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_save', href:"#" }));
     return toolbar;
@@ -233,6 +234,24 @@ function demarcate_click_elsewhere_save(e) {
     }
 }
 
+/*
+ * Replaces the element with the new type
+ */
+function replace_tag(id) {
+    var new_elem = $("<" + id + "></" + id + ">");
+    current_demarcate_element.after(new_elem);
+    current_demarcate_element.remove();
+    current_demarcate_element = new_elem;
+
+    // currently cannot 'cancel' once the tag has changed 
+    // therefore lets hide the cancel button
+    $("a#demarcate_cancel").fadeOut('fast',function() { this.remove(); });
+
+    // set the current button classes and focus back on the editor
+    toolbar_set_active()
+    current_demarcate_editor.focus();
+}
+
 /* 
  * Connect all the demarcate_toolbar button events
  */
@@ -297,19 +316,26 @@ function enable_demarcate_toolbar_handlers() {
 
         // check this is an allowable tag
         if (id in tag_dict) {
-            // replace the element with the new type
-            var new_elem = $("<" + id + "></" + id + ">");
-            current_demarcate_element.after(new_elem);
-            current_demarcate_element.remove();
-            current_demarcate_element = new_elem;
-
-            // currently cannot 'cancel' once the tag has changed 
-            // therefore lets hide the cancel button
-            $("a#demarcate_cancel").fadeOut('fast',function() { this.remove(); });
-
-            // set the current button classes and focus back on the editor
-            toolbar_set_active()
-            current_demarcate_editor.focus();
+            // handle lists
+            if (id == 'ul' || id == 'ol') {
+                // if there is a parent ol or ul, just add a new li
+                var parent_tag_name = $(this).parent().tagName;
+                console.log(parent_tag_name);
+                if (parent_tag_name == 'OL' || parent_tag_name == 'UL') {
+                    console.log("inserting new tag");
+                    replace_tag(li);
+                } else {
+                    var list = $("<" + id + "/>");
+                    var el2 = current_demarcate_element.clone();
+                    current_demarcate_element.before(list);
+                    current_demarcate_element.remove()
+                    current_demarcate_element = el2;
+                    list.append(el2);
+                    replace_tag('li');
+                }
+            } else {
+                replace_tag(id);
+            }
         } else {
             console.log("Unknown or disallowed tag type - " + id + ". Aborting tag change.");
         }
