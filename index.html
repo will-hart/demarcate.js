@@ -8,7 +8,7 @@
         <style type="text/css">
             body, html { margin: 0; font-family: 'Open Sans', sans-serif; }
             body { padding: 30px; }
-            
+
             div#container, div#output {
                 width: 42%;
                 padding: 2%;
@@ -16,22 +16,47 @@
                 float: left;
                 border: 1px solid #ccc;
             }
-            
+
             div#output {
                 background: #666;
                 color: white;
                 margin-left: 2%;
             }
+
+            div#instructions h1 {
+                display: inline;
+                margin-right: 20px;
+            }
+
+            .clearfix { clear:both; }
+
+            div#instructions p {
+                color: #0047FF;
+                font-style: italic;
+                display: inline;
+            }
+            
+            div#instructions {
+                border: 1px solid #666;
+                background: #ccc;
+                margin-bottom: 10px;
+                padding: 10px;
+            }
         </style>
     </head>
 
     <body>
-        <h1>demarcate.js demonstration</h1>
-        <p>
-            Click on an element in the left hand box below to edit.  Click outside
-            the editor or hit <strong>enter</strong> to close.  When the editor box 
-            closes, the markdown will appear in the right hand box.
-        </p>
+        <div id="instructions">
+            <h1>demarcate.js instructions</h1>
+            <p>Click to close these instructions</p>
+            <br class="clearfix" />
+            <ul>
+                <li>Click on an element in the left hand box below to edit.</li>
+                <li>Click outside the editor or hit <strong>enter</strong> to save and close.</li>
+                <li>Hit <strong>shift+enter</strong> inside the editor to save, close and add a new paragraph.</li>
+                <li>When the editor box closes, the markdown will appear in the right hand box.</li>
+            </ul>
+        </div>
 
         <div id="container">
             <h1>Some Text</h1>
@@ -83,6 +108,11 @@
                     var op = demarcate_dom_root.demarcate();
                     op = op.replace(/\n/g, '<br/>');
                     $("#output").html(op);
+                });
+                
+                // unrelated - click to close instructions
+                $("#instructions").click( function() {
+                    $(this).slideUp();
                 });
             });
         </script>
