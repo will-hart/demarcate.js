@@ -9,17 +9,18 @@ textarea#demarcate {
 div#demarcate_toolbar {
     display: block;
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
 div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
     color: black;
-    padding: 3px 3px 3px 0;
+    padding: 8px;
     background: #EEE;
     border: 1px solid #666;
     text-decoration: none;
     font-weight: bolder;
-    margin: 0 3px 0 0;
+    margin: 0 5px 0 0;
+    min-width: 30px;
 }
 
 div#demarcate_toolbar a:hover {
