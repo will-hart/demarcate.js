@@ -15,7 +15,7 @@ div#demarcate_toolbar {
     margin-bottom: 15px;
 }
 
-div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar img {
+div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar p {
     padding: 0;
     margin: 5px 5px 1px 1px;
     float: left;
@@ -23,7 +23,7 @@ div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar 
     min-height: 24px;
 }
 
-div#demarcate_toolbar img {
+div#demarcate_toolbar p {
     min-width: 12px;
 }
 
@@ -44,6 +44,8 @@ div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_spri
 div#demarcate_toolbar a#demarcate_up { background: url(../img/demarcate_sprite.png) no-repeat -72px -48px; }
 div#demarcate_toolbar a#demarcate_down { background: url(../img/demarcate_sprite.png) no-repeat -96px -48px; }
 div#demarcate_toolbar a#demarcate_help { background: url(../img/demarcate_sprite.png) no-repeat -120px -24px; }
+
+div#demarcate_toolbar p { background: url(../img/demarcate_separator.png) no-repeat; }
 
 div#demarcate_toolbar a.active {
     border: 1px solid #303030;

@@ -135,11 +135,11 @@ function generate_toolbar() {
     toolbar.append($("<a />",  {id: 'demarcate_pre',        class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />",  {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />",  {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<img/>", {src: 'img/demarcate_separator.png' }));
+    toolbar.append($("<p/>"));
     toolbar.append($("<a />",  {id: 'demarcate_up',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />",  {id: 'demarcate_down',       class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />",  {id: 'demarcate_help',       class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<img/>", {src: 'img/demarcate_separator.png' }));
+    toolbar.append($("<p/>"));
     toolbar.append($("<a />",  {id: 'demarcate_cancel',                               href:"#" }));
     toolbar.append($("<a />",  {id: 'demarcate_save',                                 href:"#" }));
     return toolbar;
@@ -172,7 +172,7 @@ function toolbar_set_active() {
 function display_editor(elem) {
 
     // Check if we have a current editor - if yes, exit
-    if (current_demarcate_editor == null) {
+    if (current_demarcate_editor != null) {
         console.log("Aborting editor open - another editor is already open");
         return;
     }
