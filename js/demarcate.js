@@ -124,22 +124,24 @@ function demarkdown(elem, ignore_extras, child_prefix) {
  */
 function generate_toolbar() {
     var toolbar = $("<div />", {id: 'demarcate_toolbar'});
-    toolbar.append($("<a />", {id: 'demarcate_h1',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h2',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h3',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h4',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h5',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h6',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_p',          class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_code',       class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_pre',        class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_cancel',                               href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_save',                                 href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_up',         class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_down',       class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_help',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_h1',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_h2',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_h3',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_h4',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_h5',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_h6',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_p',          class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_code',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_pre',        class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<img/>", {src: 'img/demarcate_separator.png' }));
+    toolbar.append($("<a />",  {id: 'demarcate_up',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_down',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_help',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<img/>", {src: 'img/demarcate_separator.png' }));
+    toolbar.append($("<a />",  {id: 'demarcate_cancel',                               href:"#" }));
+    toolbar.append($("<a />",  {id: 'demarcate_save',                                 href:"#" }));
     return toolbar;
 }
 

@@ -15,12 +15,16 @@ div#demarcate_toolbar {
     margin-bottom: 15px;
 }
 
-div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
+div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar img {
     padding: 0;
     margin: 5px 5px 1px 1px;
     float: left;
     min-width: 24px;
     min-height: 24px;
+}
+
+div#demarcate_toolbar img {
+    min-width: 12px;
 }
 
 div#demarcate_toolbar a#demarcate_h1 { background: url(../img/demarcate_sprite.png) no-repeat 0 0; }
