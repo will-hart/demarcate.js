@@ -132,8 +132,8 @@ function generate_toolbar() {
     toolbar.append($("<a />", {id: 'demarcate_h6',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_p',          class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_code',       class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_cancel',                               href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_save',                                 href:"#" }));
     return toolbar;
@@ -309,6 +309,19 @@ function enable_demarcate_toolbar_handlers() {
         $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
     });
 
+    // hover events for toolbars
+    $(document).on('mouseover', '.demarcate_style', function(e) {
+        var bg_pos = $(e.target).css('backgroundPosition').split(' ');
+        $(e.target).css('backgroundPosition', bg_pos[0] + " " + (parseInt(bg_pos[1]) - 96)+ "px") ;
+    });
+
+    // hover events for toolbars
+    $(document).on('mouseout', '.demarcate_style', function(e) {
+        var bg_pos = $(e.target).css('backgroundPosition').split(' ');
+        $(e.target).css('backgroundPosition', bg_pos[0] + " " + (parseInt(bg_pos[1]) + 96) + "px");
+    });
+
+    // handle clicking of style selection buttons
     $(document).on('click', '.demarcate_style', function(e) {
         e.preventDefault();
         var target_tag = $(this).attr('id').replace("demarcate_", "");
@@ -360,11 +373,16 @@ function enable_demarcate_toolbar_handlers() {
         window.current_demarcate_editor = null;
         window.current_demarcate_element = null;
 
+        // add a sortable class
+        $(this).addClass("demarcate_sortable");
+
+        // add permanent event handlers for clicking editable elements
         for (var tag_name in tag_dict) {
             if (tag_dict[tag_name].editable) {
                 live_selector = "#" + this.attr('id') + " " + tag_name;
 
                 $(document).on('click', live_selector, function(e) {
+                    // avoid trying to edit toolbar items
                     if ($("#demarcate_toolbar").has(e.target).length > 0 ||
                             $("#demarcate_toolbar").is(e.target) ||
                             $(this).attr('id') === 'demarcate') {
@@ -376,12 +394,12 @@ function enable_demarcate_toolbar_handlers() {
                     display_editor(this);
                 });
 
-                $(document).on('mouseenter', live_selector, function() {
-                    $(this).addClass("demarcate_hover_editable");
-                });
-                
-                $(document).on('mouseleave', live_selector, function() {
-                    $(this).removeClass("demarcate_hover_editable");
+                $(live_selector).addClass("demarcate_editable");
+
+                // add a DOMNodeInserted event - not supported in all browsers
+                // deprecated in some!
+                $(document).on('DOMNodeInserted', live_selector, function(e) {
+                    $(e.target).addClass("demarcate_editable");
                 });
             }
         }
