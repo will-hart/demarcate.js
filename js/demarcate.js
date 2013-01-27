@@ -18,26 +18,26 @@
  * Whitelist of tags to include
  */
 var tag_dict = {
-    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''    },
-    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''    },
-    'h1':         {editable: true,  markdownable: true, prefix: '#',      postfix: '\n', post_newline: true,  childprefix: ''    },
-    'h2':         {editable: true,  markdownable: true, prefix: '##',     postfix: '\n', post_newline: true,  childprefix: ''    },
-    'h3':         {editable: true,  markdownable: true, prefix: '###',    postfix: '\n', post_newline: true,  childprefix: ''    },
-    'h4':         {editable: true,  markdownable: true, prefix: '####',   postfix: '\n', post_newline: true,  childprefix: ''    },
-    'h5':         {editable: true,  markdownable: true, prefix: '#####',  postfix: '\n', post_newline: true,  childprefix: ''    },
-    'h6':         {editable: true,  markdownable: true, prefix: '######', postfix: '\n', post_newline: true,  childprefix: ''    },
-    'li':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: false, childprefix: ' - ' },
-    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''    },
-    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''    },
-    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>'   },
-    'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n', post_newline: true,  childprefix: '    '},
-    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: ''    },
-    'a':          {editable: false, markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: ''    },
-    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n', post_newline: true,  childprefix: ''    },
-    'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: ''    },
-    'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: ''    },
-    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''    },
-    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''    },
+    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false },
+    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false },
+    'h1':         {editable: true,  markdownable: true, prefix: '#',      postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'h2':         {editable: true,  markdownable: true, prefix: '##',     postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'h3':         {editable: true,  markdownable: true, prefix: '###',    postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'h4':         {editable: true,  markdownable: true, prefix: '####',   postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'h5':         {editable: true,  markdownable: true, prefix: '#####',  postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'h6':         {editable: true,  markdownable: true, prefix: '######', postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'li':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: false, childprefix: ' - ',  allow_newline: false },
+    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>',    allow_newline: false },
+    'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n', post_newline: true,  childprefix: '    ', allow_newline: true  },
+    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: '',     allow_newline: false },
+    'a':          {editable: false, markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: '',     allow_newline: false },
+    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: '',     allow_newline: false },
+    'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: '',     allow_newline: false },
+    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
+    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false },
 };
 
 /*
@@ -132,12 +132,14 @@ function generate_toolbar() {
     toolbar.append($("<a />", {id: 'demarcate_h6',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_p',          class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_code',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_pre',        class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_cancel',                               href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_save',                                 href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_up',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_down',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_help',       class: 'demarcate_style', href:"#" }));
     return toolbar;
 }
 
@@ -254,28 +256,42 @@ function replace_tag(id) {
 }
 
 /* 
+ * Saves an existing editor area and creates a new one of the same type
+ * immediately below it
+ */
+function save_and_new_editor_area() {
+    // create another element of the same type after this one
+    var tag_name = current_demarcate_element.get(0).tagName;
+    var new_elem = $("<" + tag_name + "/>");
+    new_elem.insertAfter(current_demarcate_element);
+
+    // force a save on the previous element
+    $("#demarcate_save").click();
+
+    // add the class after saving to prevent it being immediately pruned
+    new_elem.addClass("demarcate_temporary");
+    new_elem.click();   
+}
+
+/* 
  * Connect all the demarcate_toolbar button events
  */
 function enable_demarcate_toolbar_handlers() {
 
     // handle hitting the return key inside the editor - saves it
     $(document).on('keydown', '#demarcate', function(e) {
-        if (e.keyCode == 13) { // enter  >>  save
+        if (e.keyCode == 13) { // enter  >>  save, save and add or newline
             e.preventDefault();
-            if (e.shiftKey) {
+            if (e.shiftKey) { // shift key held - save and exit
                 $("#demarcate_save").click();
-            } else {
-                // create another element of the same type after this one
-                var tag_name = current_demarcate_element.get(0).tagName;
-                var new_elem = $("<" + tag_name + "/>");
-                new_elem.insertAfter(current_demarcate_element);
-
-                // force a save on the previous element
-                $("#demarcate_save").click();
-
-                // add the class after saving to prevent it being immediately pruned
-                new_elem.addClass("demarcate_temporary");
-                new_elem.click();
+            } else if (e.ctrlKey) { // ctrl key held - save and create new
+                save_and_new_editor_area();
+            } else { // new line if editing elem allows newlines, otherwise save and new
+                if (tag_dict[current_demarcate_element.get(0).tagName.toLowerCase()].allow_newline) {
+                    current_demarcate_editor.insertAtCaret("\n");
+                } else {
+                    save_and_new_editor_area();
+                }
             }
         } else if (e.keyCode == 32) { // ctrl+space  >>  cycle element types
             // check for control space
@@ -291,6 +307,9 @@ function enable_demarcate_toolbar_handlers() {
         } else if (e.keyCode == 27) { //escape
             e.preventDefault();
             $("#demarcate_cancel").click();
+        } else if (e.keyCode == 9) { // tab - add four spaces
+            e.preventDefault();
+            current_demarcate_editor.insertAtCaret("    ");
         }
     });
 
@@ -314,13 +333,13 @@ function enable_demarcate_toolbar_handlers() {
     // hover events for toolbars
     $(document).on('mouseover', '.demarcate_style', function(e) {
         var bg_pos = $(e.target).css('backgroundPosition').split(' ');
-        $(e.target).css('backgroundPosition', bg_pos[0] + " " + (parseInt(bg_pos[1]) - 96)+ "px") ;
+        $(e.target).css('backgroundPosition', bg_pos[0] + " " + (parseInt(bg_pos[1]) - 72)+ "px") ;
     });
 
     // hover events for toolbars
     $(document).on('mouseout', '.demarcate_style', function(e) {
         var bg_pos = $(e.target).css('backgroundPosition').split(' ');
-        $(e.target).css('backgroundPosition', bg_pos[0] + " " + (parseInt(bg_pos[1]) + 96) + "px");
+        $(e.target).css('backgroundPosition', bg_pos[0] + " " + (parseInt(bg_pos[1]) + 72) + "px");
     });
 
     // handle clicking of style selection buttons
@@ -348,6 +367,14 @@ function enable_demarcate_toolbar_handlers() {
             } else {
                 replace_tag(target_tag);
             }
+        } else {
+            if (target_tag == 'help') {
+                alert(
+                    "SHIFT+ENTER - save your changes\nESCAPE - cancel your changes\n" + 
+                    "CTRL+ENTER - save your changes, insert a new section\n" + 
+                    "ENTER - save your changes (or add new line in a code block)"
+                );
+            }
         }
     });
 
@@ -358,15 +385,17 @@ function enable_demarcate_toolbar_handlers() {
         if (next.length > 0) {
             next.insertBefore(current_demarcate_element);
         }
+        current_demarcate_editor.focus();
     });
 
-    // handle clicking "move ip" button
+    // handle clicking "move up" button
     $(document).on('click', '#demarcate_up', function(e) {
         e.preventDefault();
         var previous = current_demarcate_element.prev(".demarcate_editable");
         if (previous.length > 0) {
             previous.insertAfter(current_demarcate_editor);
         }
+        current_demarcate_editor.focus();
     });
 };
 
@@ -437,5 +466,23 @@ function enable_demarcate_toolbar_handlers() {
             );
         }
     };
+})( jQuery );
+
+(function( $ ){
+    // a jquery extension for textrarea elements which inserts some
+    // text at the caret position.
+    $.fn.insertAtCaret = function(my_value) {
+
+        // get the selection parameters
+        var orig_val = this.val().replace(/\r\n/g, "\n");
+        var start_repl = this.get(0).selectionStart;
+        var end_repl = this.get(0).selectionEnd;
+
+        // cut up the substring
+        var new_val = orig_val.substring(0, start_repl) + my_value + orig_val.substring(end_repl);
+
+        // set the new value
+        this.val(new_val.replace(/\n/g, "\r\n"));
+    }
 })( jQuery );
 
