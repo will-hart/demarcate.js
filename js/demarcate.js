@@ -18,26 +18,26 @@
  * Whitelist of tags to include
  */
 var tag_dict = {
-    'div': {editable: false, markdownable: true, prefix: '', postfix: '', post_newline: false, childprefix: ''},
-    'span': {editable: false, markdownable: true, prefix: '', postfix: '', post_newline: false, childprefix: ''},
-    'h1': {editable: true, markdownable: true, prefix: '#', postfix: '\n', post_newline: true, childprefix: ''},
-    'h2': {editable: true, markdownable: true, prefix: '##', postfix: '\n', post_newline: true, childprefix: ''},
-    'h3': {editable: true, markdownable: true, prefix: '###', postfix: '\n', post_newline: true, childprefix: ''},
-    'h4': {editable: true, markdownable: true, prefix: '####', postfix: '\n', post_newline: true, childprefix: ''},
-    'h5': {editable: true, markdownable: true, prefix: '#####', postfix: '\n', post_newline: true, childprefix: ''},
-    'h6': {editable: true, markdownable: true, prefix: '######', postfix: '\n', post_newline: true, childprefix: ''},
-    'li': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ''},
-    'ul': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ' - '},
-    'ol': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ' 1. '},
-    'blockquote': {editable: true, markdownable: true, prefix: '>', postfix: '\n', post_newline: true, childprefix: '>'},
-    'pre': {editable: true, markdownable: true, prefix: '    ', postfix: '\n', post_newline: true, childprefix: '    '},
-    'code': {editable: true, markdownable: true, prefix: '`', postfix: '`', post_newline: false, childprefix: ''},
-    'a': {editable: true, markdownable: true, prefix: '[', postfix: ']', post_newline: false, childprefix: ''},
-    'hr': {editable: false, markdownable: true, prefix: '\n---------------------', postfix: '\n', post_newline: true, childprefix: ''},
-    'em': {editable: false, markdownable: true, prefix: '*', postfix: '*', post_newline: false, childprefix: ''},
-    'strong': {editable: false, markdownable: true, prefix: '**', postfix: '**', post_newline: false, childprefix: ''},
-    'p': {editable: true, markdownable: true, prefix: '', postfix: '\n', post_newline: true, childprefix: ''},
-    '_text': {editable: false, markdownable: true, prefix: '', postfix: '', post_newline: false, childprefix: ''},
+    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''},
+    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''},
+    'h1':         {editable: true,  markdownable: true, prefix: '#',      postfix: '\n', post_newline: true,  childprefix: ''},
+    'h2':         {editable: true,  markdownable: true, prefix: '##',     postfix: '\n', post_newline: true,  childprefix: ''},
+    'h3':         {editable: true,  markdownable: true, prefix: '###',    postfix: '\n', post_newline: true,  childprefix: ''},
+    'h4':         {editable: true,  markdownable: true, prefix: '####',   postfix: '\n', post_newline: true,  childprefix: ''},
+    'h5':         {editable: true,  markdownable: true, prefix: '#####',  postfix: '\n', post_newline: true,  childprefix: ''},
+    'h6':         {editable: true,  markdownable: true, prefix: '######', postfix: '\n', post_newline: true,  childprefix: ''},
+    'li':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''},
+    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ' - '},
+    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ' 1. '},
+    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>'},
+    'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n', post_newline: true,  childprefix: '    '},
+    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: ''},
+    'a':          {editable: true,  markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: ''},
+    'hr':         {editable: false, markdownable: true, prefix: '\n----', postfix: '\n', post_newline: true,  childprefix: ''},
+    'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: ''},
+    'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: ''},
+    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: ''},
+    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: ''},
 };
 
 /*
@@ -62,9 +62,7 @@ function modifyHtml(str){
  * Recursively reverse the markdown of the element
  * and its child objects
  */
-function demarkdown(elem, ignore_extras) {
-    // check if ignore_extras was defined. Default is true
-    ignore_extras = ignore_extras || false;
+function demarkdown(elem, ignore_extras, child_prefix) {
 
     // work out what we are looking at
     var node = elem.get(0);
@@ -76,24 +74,26 @@ function demarkdown(elem, ignore_extras) {
     if (elem.hasClass("demarcate_temporary")) return result;
 
     // check if the element is in the tag_dict
-    if (!(tag_name in tag_dict)) return result;
+    if (!tag_name in tag_dict) return result;
 
     // check we are allowed to decode the tag
-    if (! tag_dict[tag_name].markdownable && node_type != 3) return result;
+    if (! tag_dict[tag_name].markdownable && node_type != 3) {
+        return result;
+    }
 
     // open the tag
     if (! ignore_extras || tag_name == 'a') {
-        result = tag_dict[tag_name].prefix;
+        result += tag_dict[tag_name].prefix;
     }
-    
+
     // add any text inside text nodes
     if (node_type == 3) {
-        result += $.trim(node.nodeValue);
+        result = child_prefix + $.trim(node.nodeValue);
     }
 
     // add child elements
     $.each(elem.contents(), function(index, value) {
-        result += demarkdown($(value), ignore_extras);
+        result += demarkdown($(value), ignore_extras, tag_dict[tag_name].childprefix);
     });
 
     // close the tag
@@ -166,10 +166,9 @@ function display_editor(elem) {
 
     // double check we are allowed to edit this
     if (tag_name in tag_dict) {
-        console.log("Displaying editor");
 
         // create the new text editor - ignore front matter
-        var md = demarkdown(elem, true);
+        var md = demarkdown(elem, true, "");
         var ed = $("<textarea id='demarcate'></textarea>");
         var tb = generate_toolbar();
 
@@ -199,7 +198,6 @@ function display_editor(elem) {
 function hide_editor(e) {
     e.preventDefault();
 
-    console.log("Hiding editor");
     // remove the toolbar and editor
     $("div#demarcate_toolbar").remove();
     current_demarcate_editor.remove();
@@ -320,7 +318,7 @@ function enable_demarcate_toolbar_handlers() {
  */
 (function( $ ){
     $.fn.demarcate = function() {
-        result = demarkdown(this);
+        result = demarkdown(this, false, "");
         $(document).trigger("demarcation_complete", [result]);
         return result;
     };
@@ -347,6 +345,8 @@ function enable_demarcate_toolbar_handlers() {
 
                         return;
                     }
+
+                    // display an editor
                     display_editor(this);
                 });
 
