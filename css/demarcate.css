@@ -14,19 +14,27 @@ div#demarcate_toolbar {
 
 div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
     color: black;
-    padding: 3px;
+    padding: 3px 3px 3px 0;
     background: #EEE;
     border: 1px solid #666;
     text-decoration: none;
     font-weight: bolder;
-    margin: 0 3px;
+    margin: 0 3px 0 0;
 }
 
 #demarcate_save {
     background: #5D5 !important;
 }
 
+#demarcate_save:hover {
+    background: #2A2 !important;
+}
+
 #demarcate_cancel {
+    background: #D55 !important;
+}
+
+#demarcate_cancel:hover {
     background: #A22 !important;
 }
 
