@@ -208,7 +208,7 @@ function display_editor(elem) {
 
         // create the new text editor - ignore front matter
         var md = demarkdown(elem, true);
-        var ed = $("<textarea id='demarcate'>" + $.trim(md) + "</textarea>");
+        var ed = $("<textarea id='demarcate'></textarea>");
         var tb = generate_toolbar();
 
         elem.after(ed);
@@ -226,6 +226,10 @@ function display_editor(elem) {
 
         // connect handlers
         restore_demarcate_toolbar_handlers()
+
+        // insert the markdown into the editor and focus 
+        // on the last character
+        ed.focus().val($.trim(md));
     }
     else 
     {
