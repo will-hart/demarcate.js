@@ -129,6 +129,13 @@ var include_internal = [
 ];
 
 /*
+ * Strips html tags from the textareas to prevent injection
+ */
+function stripHTML(str){
+  return strippedText = $("<div/>").html(str).text();
+}
+
+/*
  * Recursively reverse the markdown of the element
  * and its child objects
  */
@@ -236,11 +243,21 @@ function display_editor(elem) {
  */
 function hide_editor(e) {
     e.preventDefault();
+
+    // remove the toolbar and editor
     $("div#demarcate_toolbar").remove();
     current_demarcate_editor.remove();
     current_demarcate_editor = null;
+
+    // prune empty elements
+    if (current_demarcate_element.html() === "") {
+        current_demarcate_element.remove();
+    }
     current_demarcate_element.removeClass("demarcate_hide");
     current_demarcate_element = null;
+
+    // prune any unsaved temporary elements
+    $(".demarcate_temporary").remove(); // remove any unsaved temporary classes
 }
 
 /* 
@@ -262,14 +279,25 @@ function demarcate_click_elsewhere_save(e) {
 function enable_demarcate_toolbar_handlers() {
 
     // handle hitting the return key inside the editor - saves it
-    $(document).on('keydown', '#demarcate', function(key) {
-        if (key.keyCode == 13) {
-            $("#demarcate_save").click();
+    $(document).on('keydown', '#demarcate', function(e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            if (!e.shiftKey) {
+                $("#demarcate_save").click();
+            } else {
+                var new_elem = $("<p/>");
+                new_elem.insertAfter(current_demarcate_element);
+                $("#demarcate_save").click();
+
+                // add the class after saving to prevent it being immediately pruned
+                new_elem.addClass("demarcate_temporary");
+                new_elem.click();
+            }
         }
     });
 
     // handle clicking outside the div
-    $(document).bind('mouseup', demarcate_click_elsewhere_save);
+    $(document).bind('mousedown', demarcate_click_elsewhere_save);
 
     // cancel button
     $(document).on('click', '#demarcate_cancel', function(e) {
@@ -279,7 +307,8 @@ function enable_demarcate_toolbar_handlers() {
 
     // save button
     $(document).on('click', '#demarcate_save', function(e) {
-        current_demarcate_element.html(current_demarcate_editor.val());
+        current_demarcate_element.html(stripHTML(current_demarcate_editor.val()));
+        current_demarcate_element.removeClass("demarcate_temporary");
         hide_editor(e)
         $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
     });
