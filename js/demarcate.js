@@ -190,8 +190,8 @@ function generate_toolbar() {
     toolbar.append($("<a />", {id: 'demarcate_h5', class: 'demarcate_style', text: 'H5', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_h6', class: 'demarcate_style', text: 'H6', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_p', class: 'demarcate_style', text: 'P', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_save', text: 'Save', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_cancel', text: 'Cancel', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_save', text: 'Save', href:"#" }));
     return toolbar;
 }
 

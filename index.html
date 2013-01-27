@@ -3,61 +3,61 @@
     <head>
         <title>DemarcateJS demo</title>
 
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/demarcate.css">
         <style type="text/css">
-            div#wrapper {
-                width: 90%;
-                padding: 0 4%;
-                min-height: 100%;
-            }
+            body, html { margin: 0; font-family: 'Open Sans', sans-serif; }
+            body { padding: 30px; }
             
             div#container, div#output {
-                width: 45%;
+                width: 42%;
                 padding: 2%;
-                margin: 2%;
+                margin: auto;
                 float: left;
-                max-width: 300px;
                 border: 1px solid #ccc;
-                background: #eee;
             }
             
             div#output {
                 background: #666;
                 color: white;
+                margin-left: 2%;
             }
         </style>
     </head>
 
     <body>
-        <div id="wrapper">
-            <div id="container">
-                <h1>Some Text</h1>
-                <h2>Some Text</h2>
-                <h3>Some Text</h3>
-                <h4>Some Text</h4>
-                <h5>Some Text</h5>
-                <h6>Some Text</h6>
+        <h1>demarcate.js demonstration</h1>
+        <p>
+            Click on an element in the left hand box below to edit.  Click outside
+            the editor or hit <strong>enter</strong> to close.  When the editor box 
+            closes, the markdown will appear in the right hand box.
+        </p>
 
-                <p>Some more text</p>
+        <div id="container">
+            <h1>Some Text</h1>
+            <h2>Some Text</h2>
+            <h3>Some Text</h3>
+            <h4>Some Text</h4>
+            <h5>Some Text</h5>
+            <h6>Some Text</h6>
 
-                <blockquote>A blockquote</blockquote>
+            <p>Some more text</p>
 
-                <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
+            <blockquote>A blockquote</blockquote>
 
-                <hr>
+            <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
 
-                <ul>
-                    <li>What about lists?</li>
-                    <li>At least a couple of items</li>
-                </ul>
+            <hr>
 
-                <hr />
-            </div>
-            
-            <div id="output">
-                <p>Double click an element on the left and the markdown will appear here</p>
-            </div>
+            <ul>
+                <li>What about lists?</li>
+                <li>At least a couple of items</li>
+            </ul>
+
+            <hr />
         </div>
+        
+        <div id="output"></div>
 
         <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
         <script src="js/jquery.autosize.js" type="text/javascript"></script>
