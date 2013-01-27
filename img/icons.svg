@@ -99,10 +99,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="69.581451"
+     inkscape:cx="9.2248368"
      inkscape:cy="161.05884"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1904"
      inkscape:window-height="1178"
@@ -129,7 +129,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1300,10 +1300,11 @@
          ry="16.162441" />
     </g>
     <g
-       id="g3994">
+       id="g3994"
+       transform="matrix(1.1739891,0,0,1.1739891,-61.206622,-132.99066)">
       <path
          transform="translate(-1.2640152,668.76073)"
-         d="m 375.27167,95.601448 a 22.223356,22.223356 0 1 1 -44.44672,0 22.223356,22.223356 0 1 1 44.44672,0 z"
+         d="m 375.27167,95.601448 c 0,12.273622 -9.94974,22.223352 -22.22336,22.223352 -12.27362,0 -22.22336,-9.94973 -22.22336,-22.223352 0,-12.273621 9.94974,-22.223356 22.22336,-22.223356 12.27362,0 22.22336,9.949735 22.22336,22.223356 z"
          sodipodi:ry="22.223356"
          sodipodi:rx="22.223356"
          sodipodi:cy="95.601448"
@@ -1327,37 +1328,30 @@
            y="779.71191"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">?</tspan></text>
     </g>
-    <g
-       id="g3999">
-      <g
-         id="g3983"
-         transform="translate(0,192.00387)">
-        <path
-           transform="translate(-1.2640152,668.76073)"
-           d="m 375.27167,95.601448 c 0,12.273622 -9.94974,22.223352 -22.22336,22.223352 -12.27362,0 -22.22336,-9.94973 -22.22336,-22.223352 0,-12.273621 9.94974,-22.223356 22.22336,-22.223356 12.27362,0 22.22336,9.949735 22.22336,22.223356 z"
-           sodipodi:ry="22.223356"
-           sodipodi:rx="22.223356"
-           sodipodi:cy="95.601448"
-           sodipodi:cx="353.04831"
-           id="path3985"
-           style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:#0044aa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-           sodipodi:type="arc" />
-        <text
-           xml:space="preserve"
-           style="font-size:42.4527359px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
-           x="351.65994"
-           y="779.71191"
-           id="text3987"
-           sodipodi:linespacing="125%"
-           inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
-           inkscape:export-xdpi="44.860001"
-           inkscape:export-ydpi="44.860001"><tspan
-             sodipodi:role="line"
-             id="tspan3989"
-             x="351.65994"
-             y="779.71191"
-             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">?</tspan></text>
-      </g>
-    </g>
+    <path
+       transform="matrix(1.1739891,0,0,1.1739891,-62.690562,844.13099)"
+       d="m 375.27167,95.601448 a 22.223356,22.223356 0 1 1 -44.44672,0 22.223356,22.223356 0 1 1 44.44672,0 z"
+       sodipodi:ry="22.223356"
+       sodipodi:rx="22.223356"
+       sodipodi:cy="95.601448"
+       sodipodi:cx="353.04831"
+       id="path3159"
+       style="fill:#0044aa;fill-opacity:1;fill-rule:nonzero;stroke:#0044aa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       sodipodi:type="arc" />
+    <text
+       xml:space="preserve"
+       style="font-size:49.83905029px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Droid Sans;-inkscape-font-specification:Sans Bold"
+       x="351.63831"
+       y="974.38647"
+       id="text3161"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="C:\Users\mecharius\Desktop\demarcate\img\demarcate_sprite.png"
+       inkscape:export-xdpi="44.860001"
+       inkscape:export-ydpi="44.860001"><tspan
+         sodipodi:role="line"
+         id="tspan3163"
+         x="351.63831"
+         y="974.38647"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans Bold">?</tspan></text>
   </g>
 </svg>
