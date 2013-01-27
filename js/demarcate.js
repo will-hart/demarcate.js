@@ -322,8 +322,12 @@ function enable_demarcate_toolbar_handlers() {
             if (e.shiftKey) {
                 $("#demarcate_save").click();
             } else {
-                var new_elem = $("<p/>");
+                // create another element of the same type after this one
+                var tag_name = current_demarcate_element.get(0).tagName;
+                var new_elem = $("<" + tag_name + "/>");
                 new_elem.insertAfter(current_demarcate_element);
+
+                // force a save on the previous element
                 $("#demarcate_save").click();
 
                 // add the class after saving to prevent it being immediately pruned
