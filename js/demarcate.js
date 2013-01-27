@@ -124,19 +124,18 @@ function demarkdown(elem, ignore_extras, child_prefix) {
  */
 function generate_toolbar() {
     var toolbar = $("<div />", {id: 'demarcate_toolbar'});
-    toolbar.append($("<a />", {id: 'demarcate_h1', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h2', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h3', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h4', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h5', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_h6', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_p', class: 'demarcate_style',  href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_code', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_ul', class: 'demarcate_style', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_ol', class: 'demarcate_style', thref:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_blockquote', class: 'demarcate_style', thref:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_cancel', href:"#" }));
-    toolbar.append($("<a />", {id: 'demarcate_save', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h1',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h2',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h3',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h4',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h5',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_h6',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_p',          class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_code',       class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_cancel',                               href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_save',                                 href:"#" }));
     return toolbar;
 }
 
@@ -238,7 +237,7 @@ function demarcate_click_elsewhere_save(e) {
  * Replaces the element with the new type
  */
 function replace_tag(id) {
-    var new_elem = $("<" + id + "></" + id + ">");
+    var new_elem = $("<" + id + "/>");
     current_demarcate_element.after(new_elem);
     current_demarcate_element.remove();
     current_demarcate_element = new_elem;
@@ -312,29 +311,27 @@ function enable_demarcate_toolbar_handlers() {
 
     $(document).on('click', '.demarcate_style', function(e) {
         e.preventDefault();
-        var id = $(this).attr('id').replace("demarcate_", "");
+        var target_tag = $(this).attr('id').replace("demarcate_", "");
 
         // check this is an allowable tag
-        if (id in tag_dict) {
+        if (target_tag in tag_dict) {
             // handle lists
-            if (id == 'ul' || id == 'ol') {
-                // if there is a parent ol or ul, just add a new li
-                var parent_tag_name = $(this).parent().tagName;
-                console.log(parent_tag_name);
-                if (parent_tag_name == 'OL' || parent_tag_name == 'UL') {
-                    console.log("inserting new tag");
-                    replace_tag(li);
-                } else {
-                    var list = $("<" + id + "/>");
-                    var el2 = current_demarcate_element.clone();
-                    current_demarcate_element.before(list);
-                    current_demarcate_element.remove()
-                    current_demarcate_element = el2;
-                    list.append(el2);
-                    replace_tag('li');
-                }
+            var current_tag = current_demarcate_element.get(0).tagName.toLowerCase();
+            var parent_tag = current_demarcate_element.parent().get(0).tagName.toLowerCase();
+
+            if (current_tag == 'li' && target_tag != 'ul') {
+                // moving a list item out of a list
+                par = current_demarcate_element.parent();
+                current_demarcate_element.detach().insertBefore(par);
+                replace_tag(target_tag);
+
+            } else if (current_tag != 'li' && target_tag == 'ul') {
+                var list = $("<" + target_tag + "/>");
+                list.insertBefore(current_demarcate_element);
+                current_demarcate_element.appendTo(list);
+                replace_tag('li');
             } else {
-                replace_tag(id);
+                replace_tag(target_tag);
             }
         } else {
             console.log("Unknown or disallowed tag type - " + id + ". Aborting tag change.");
