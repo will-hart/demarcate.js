@@ -128,10 +128,21 @@ var include_internal = [
 ];
 
 /*
- * Strips html tags from the textareas to prevent injection
+ * Performs a number of manipulations on the edited string before adding 
+ * it back into the DOM.  For instance:
+ *   - Strips html tags from the textareas to prevent injection
+ *   - Restores links from []() syntax to <a></a> syntax
  */
-function stripHTML(str){
-  return strippedText = $("<div/>").html(str).text();
+function modifyHtml(str){
+    // remove HTML tags
+    var strippedText = $("<div/>").html(str).text();
+
+    // restore links to HTML.  
+    var full_regex = new RegExp("\\[(.*?)\\]\\((.*?)\\)", "gi");
+    strippedText = strippedText.replace(full_regex, "<a href='$2'>$1</a>");
+
+    // all done!
+    return strippedText;
 }
 
 /*
@@ -242,11 +253,6 @@ function display_editor(elem) {
         elem.after(tb);
         elem.addClass("demarcate_hide");
 
-        // hook up jquery.autosize.js if present
-        if (typeof elem.autosize != undefined) {
-            ed.autosize({'append': '\n'});
-        }
-
         // store the element currently being edited
         current_demarcate_element = elem;
         current_demarcate_editor = ed;
@@ -254,7 +260,12 @@ function display_editor(elem) {
         // insert the markdown into the editor and focus 
         // on the last character. Set toolbar buttons to active
         toolbar_set_active();
-        ed.focus().val($.trim(md));
+        
+        // hook up jquery.autosize.js if present
+        if (typeof elem.autosize != undefined) {
+            ed.autosize({'append': '\n'});
+        }
+        ed.focus().val($.trim(md)).trigger('autosize');
     }
 }
 
@@ -272,12 +283,15 @@ function hide_editor(e) {
     // prune empty elements
     if (current_demarcate_element.html() === "") {
         current_demarcate_element.remove();
+    } else {
+        current_demarcate_element.removeClass("demarcate_hide");
     }
-    current_demarcate_element.removeClass("demarcate_hide");
     current_demarcate_element = null;
 
-    // prune any unsaved temporary elements
-    $(".demarcate_temporary").remove(); // remove any unsaved temporary classes
+    // prune any unsaved temporary elements. The save method 
+    // removes this class to prevent new elements from being 
+    // removed.
+    $(".demarcate_temporary").remove();
 }
 
 /* 
@@ -302,7 +316,7 @@ function enable_demarcate_toolbar_handlers() {
     $(document).on('keydown', '#demarcate', function(e) {
         if (e.keyCode == 13) {
             e.preventDefault();
-            if (!e.shiftKey) {
+            if (e.shiftKey) {
                 $("#demarcate_save").click();
             } else {
                 var new_elem = $("<p/>");
@@ -327,7 +341,7 @@ function enable_demarcate_toolbar_handlers() {
 
     // save button
     $(document).on('click', '#demarcate_save', function(e) {
-        current_demarcate_element.html(stripHTML(current_demarcate_editor.val()));
+        current_demarcate_element.html(modifyHtml(current_demarcate_editor.val()));
         current_demarcate_element.removeClass("demarcate_temporary");
         hide_editor(e)
         $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
