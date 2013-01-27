@@ -22,22 +22,27 @@ div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
     margin: 0 3px 0 0;
 }
 
-#demarcate_save {
-    background: #5D5 !important;
-}
-
-#demarcate_save:hover {
-    background: #2A2 !important;
-}
-
-#demarcate_cancel {
-    background: #D55 !important;
-}
-
-#demarcate_cancel:hover {
-    background: #A22 !important;
-}
-
 div#demarcate_toolbar a:hover {
     background: #CCC;
+}
+
+div#demarcate_toolbar a#demarcate_save {
+    background: #5D5;
+}
+
+div#demarcate_toolbar a#demarcate_save:hover {
+    background: #2A2;
+}
+
+div#demarcate_toolbar a#demarcate_cancel {
+    background: #D55;
+}
+
+div#demarcate_toolbar a#demarcate_cancel:hover {
+    background: #A22;
+}
+
+div#demarcate_toolbar a.active {
+    background: #303030;
+    color: white;
 }
