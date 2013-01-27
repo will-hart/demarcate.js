@@ -35,6 +35,8 @@ div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_sprite.p
 div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_sprite.png) no-repeat -64px -64px; }
 div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_sprite.png) no-repeat 0 -64px; }
 div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_sprite.png) no-repeat -32px -64px; }
+div#demarcate_toolbar a#demarcate_up { background: url(../img/demarcate_sprite.png) no-repeat -96px -64px; }
+div#demarcate_toolbar a#demarcate_down { background: url(../img/demarcate_sprite.png) no-repeat -128px -64px; }
 
 div#demarcate_toolbar a.active {
     border: 1px solid #303030;

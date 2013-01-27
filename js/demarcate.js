@@ -32,7 +32,7 @@ var tag_dict = {
     'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>'   },
     'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n', post_newline: true,  childprefix: '    '},
     'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: ''    },
-    'a':          {editable: true,  markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: ''    },
+    'a':          {editable: false, markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: ''    },
     'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n', post_newline: true,  childprefix: ''    },
     'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: ''    },
     'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: ''    },
@@ -136,6 +136,8 @@ function generate_toolbar() {
     toolbar.append($("<a />", {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_cancel',                               href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_save',                                 href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_up',         class: 'demarcate_style', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_down',       class: 'demarcate_style', href:"#" }));
     return toolbar;
 }
 
@@ -346,8 +348,24 @@ function enable_demarcate_toolbar_handlers() {
             } else {
                 replace_tag(target_tag);
             }
-        } else {
-            console.log("Unknown or disallowed tag type - " + id + ". Aborting tag change.");
+        }
+    });
+
+    // handle clicking "move down" button
+    $(document).on('click', '#demarcate_down', function(e) {
+        e.preventDefault();
+        var next = current_demarcate_editor.next(".demarcate_editable");
+        if (next.length > 0) {
+            next.insertBefore(current_demarcate_element);
+        }
+    });
+
+    // handle clicking "move ip" button
+    $(document).on('click', '#demarcate_up', function(e) {
+        e.preventDefault();
+        var previous = current_demarcate_element.prev(".demarcate_editable");
+        if (previous.length > 0) {
+            previous.insertAfter(current_demarcate_editor);
         }
     });
 };
