@@ -58,6 +58,8 @@ var demarcate_whitelist = [
     'UL',
     'OL',
     'HR',
+    'STRONG',
+    'EM',
 ];
 
 var editor_whitelist = [
@@ -87,9 +89,11 @@ var line_starts = {
     'LI': ' - ',
     'BLOCKQUOTE': '> ',
     'PRE': '    ',
-    'CODE': '    ',
+    'CODE': '`',
     'A': '[',
-    'HR': '\n---------------------\n\n'
+    'HR': '\n---------------------\n\n',
+    'STRONG': '**',
+    'EM': '*',
 };
 
 /*
@@ -105,10 +109,12 @@ var line_ends = {
     'LI': '\n',
     'BLOCKQUOTE': '\n\n',
     'PRE': '\n\n',
-    'CODE': '\n\n',
+    'CODE': '`',
     'A': ']',
     'P': '\n\n',
     'DIV': '\n\n',
+    'STRONG': '**',
+    'EM': '*',
 };
 
 /*
