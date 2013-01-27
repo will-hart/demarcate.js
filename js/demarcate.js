@@ -198,6 +198,8 @@ function display_editor(elem) {
             ed.autosize({'append': '\n'});
         }
         ed.focus().val($.trim(md));
+        
+        $(window).resize();
     }
 }
 
