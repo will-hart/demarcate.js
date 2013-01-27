@@ -170,6 +170,13 @@ function toolbar_set_active() {
  * Display an editor textarea
  */
 function display_editor(elem) {
+
+    // Check if we have a current editor - if yes, exit
+    if (current_demarcate_editor == null) {
+        console.log("Aborting editor open - another editor is already open");
+        return;
+    }
+
     elem = $(elem);
     var tag_name = elem.get(0).tagName.toLowerCase();
 
