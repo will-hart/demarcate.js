@@ -388,7 +388,7 @@ function enable_demarcate_toolbar_handlers() {
  */
 (function( $ ){
     $.fn.enable_demarcate = function() {
-        // give global access to the demarcate_editor object
+        // give global access to the demarcate_editor object and other elements
         window.demarcate_dom_root = $(this);
         window.current_demarcate_editor = null;
         window.current_demarcate_element = null;
@@ -402,6 +402,17 @@ function enable_demarcate_toolbar_handlers() {
         }
 
         enable_demarcate_toolbar_handlers();
+
+        // if our editor box is empty, add an initial 'edit me' paragraph
+        // add a class to ensure this isn't parsed by the demarkdown function
+        if (demarcate_dom_root.is(":empty")) {
+            demarcate_dom_root.append(
+                    $('<p />', {
+                            class: 'demarcate_temporary',
+                            text: 'Click me to start editing'
+                    })
+            );
+        }
     };
 })( jQuery );
 
