@@ -360,7 +360,7 @@ function enable_demarcate_toolbar_handlers() {
             if (current_tag == 'li' && target_tag != 'ul') {
                 // moving a list item out of a list
                 par = current_demarcate_element.parent();
-                current_demarcate_element.detach().insertBefore(par);
+                current_demarcate_element.detach().insertAfter(par);
                 replace_tag(target_tag);
 
             } else if (current_tag != 'li' && target_tag == 'ul') {
