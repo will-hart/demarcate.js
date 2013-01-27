@@ -3,51 +3,51 @@
 }
 
 textarea#demarcate {
+    margin-top: 5px;
     width: 100%;
+    font-size: 1.2em;
 }
 
 div#demarcate_toolbar {
     display: block;
-    width: 100%;
+    max-width: 100%;
     margin-bottom: 15px;
 }
 
 div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
-    color: black;
-    padding: 8px;
-    background: #EEE;
-    border: 1px solid #666;
-    text-decoration: none;
-    font-weight: bolder;
-    margin: 0 5px 0 0;
-    min-width: 30px;
+    padding: 0;
+    margin: 5px 5px 1px 1px;
+    float: left;
+    min-width: 32px;
+    min-height: 32px;
 }
 
-div#demarcate_toolbar a:hover {
-    background: #CCC;
-}
-
-div#demarcate_toolbar a#demarcate_save {
-    background: #5D5;
-}
-
-div#demarcate_toolbar a#demarcate_save:hover {
-    background: #2A2;
-}
-
-div#demarcate_toolbar a#demarcate_cancel {
-    background: #D55;
-}
-
-div#demarcate_toolbar a#demarcate_cancel:hover {
-    background: #A22;
-}
+div#demarcate_toolbar a#demarcate_h1 { background: url(../img/demarcate_sprite.png) no-repeat 0 0; }
+div#demarcate_toolbar a#demarcate_h2 { background: url(../img/demarcate_sprite.png) no-repeat -32px 0; }
+div#demarcate_toolbar a#demarcate_h3 { background: url(../img/demarcate_sprite.png) no-repeat -64px 0; }
+div#demarcate_toolbar a#demarcate_h4 { background: url(../img/demarcate_sprite.png) no-repeat -96px 0; }
+div#demarcate_toolbar a#demarcate_h5 { background: url(../img/demarcate_sprite.png) no-repeat -128px 0; }
+div#demarcate_toolbar a#demarcate_h6 { background: url(../img/demarcate_sprite.png) no-repeat 0 -32px; }
+div#demarcate_toolbar a#demarcate_p { background: url(../img/demarcate_sprite.png) no-repeat -128px -32px; }
+div#demarcate_toolbar a#demarcate_code { background: url(../img/demarcate_sprite.png) no-repeat -96px -32px; }
+div#demarcate_toolbar a#demarcate_ul { background: url(../img/demarcate_sprite.png) no-repeat -32px -32px; }
+div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_sprite.png) no-repeat -64px -32px; }
+div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_sprite.png) no-repeat -64px -64px; }
+div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_sprite.png) no-repeat 0 -64px; }
+div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_sprite.png) no-repeat -32px -64px; }
+div#demarcate_toolbar a#demarcate_up { background: url(../img/demarcate_sprite.png) no-repeat -96px -64px; }
+div#demarcate_toolbar a#demarcate_down { background: url(../img/demarcate_sprite.png) no-repeat -128px -64px; }
 
 div#demarcate_toolbar a.active {
-    background: #303030;
-    color: white;
+    border: 1px solid #303030;
+    margin: 4px 4px 0 0;
 }
 
-.demarcate_hover_editable {
+.demarcate_editable:hover {
     background: #EEE;
+    cursor: pointer;
+}
+
+.demarcate_droppable {
+    border: 1px dashed #ccc;
 }

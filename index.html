@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DemarcateJS demo</title>
+        <title>demarcate.js demo</title>
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/demarcate.css">
@@ -54,6 +54,8 @@
                 <li>Click on an element in the left hand box below to edit.</li>
                 <li>Click outside the editor or hit <strong>shift + enter</strong> to save and close.</li>
                 <li>Hit <strong>enter</strong> inside the editor to save, close and add a new paragraph.</li>
+                <li>Hit <strong>escape</strong> to cancel editing.  Note that if the style of element has changed, cancel won't undo this</li>
+                <li>Use <strong>ctrl + space</strong> to cycle between element styles</li>
                 <li>When the editor box closes, the markdown will appear in the right hand box.</li>
             </ul>
         </div>
@@ -83,7 +85,7 @@
         </div>
 
         <div id="output">
-            <input type="button" value="Render Markdown" id="trigger_render" />
+            Click this box to render markdown
         </div>
 
         <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
@@ -112,8 +114,9 @@
                     $("#output").html(op);
                 });
                 
-                $("#trigger_render").click( function() {
-                    $(this).trigger('demarcate_editor_closed');
+                $("#output").click( function() {
+                    $(this).fadeOut(300, function() { $(this).trigger('demarcate_editor_closed'); });
+                    $(this).slideDown();
                 });
                 
                 // unrelated - click to close instructions
