@@ -20,8 +20,8 @@
  */
 if(!Array.indexOf){
     Array.prototype.indexOf = function(obj){
-        for(var i=0; i<this.length; i++){
-            if(this[i]==obj){
+        for (var i=0; i<this.length; i++){
+            if (this[i]==obj){
                 return i;
             }
         }
@@ -190,6 +190,7 @@ function generate_toolbar() {
     toolbar.append($("<a />", {id: 'demarcate_h5', class: 'demarcate_style', text: 'H5', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_h6', class: 'demarcate_style', text: 'H6', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_p', class: 'demarcate_style', text: 'P', href:"#" }));
+    toolbar.append($("<a />", {id: 'demarcate_code', class: 'demarcate_style', text: 'CODE', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_cancel', text: 'Cancel', href:"#" }));
     toolbar.append($("<a />", {id: 'demarcate_save', text: 'Save', href:"#" }));
     return toolbar;
@@ -221,19 +222,12 @@ function display_editor(elem) {
         }
 
         // store the element currently being edited
-        window.current_demarcate_element = elem;
-        window.current_demarcate_editor = ed;
-
-        // connect handlers
-        restore_demarcate_toolbar_handlers()
+        current_demarcate_element = elem;
+        current_demarcate_editor = ed;
 
         // insert the markdown into the editor and focus 
         // on the last character
         ed.focus().val($.trim(md));
-    }
-    else 
-    {
-        console.log("darn");
     }
 }
 
@@ -247,15 +241,14 @@ function hide_editor(e) {
     current_demarcate_editor = null;
     current_demarcate_element.removeClass("demarcate_hide");
     current_demarcate_element = null;
-    $(document).unbind('mouseup', demarcate_click_elsewhere_save);
 }
 
 /* 
  * A mouseup handler that checks if the toolbar or editor was clicked.
- * If not, it hides the editor.  Implemented as a separate function so
- * it can be unbound.
+ * If not, it hides the editor.  
  */
 function demarcate_click_elsewhere_save(e) {
+    if (current_demarcate_editor == null) return;
     var tb = $("#demarcate_toolbar");
     if (! current_demarcate_editor.is(e.target) && 
         ! tb.is(e.target) && tb.has(e.target).length === 0) {
@@ -266,10 +259,10 @@ function demarcate_click_elsewhere_save(e) {
 /* 
  * Connect all the demarcate_toolbar button events
  */
-function restore_demarcate_toolbar_handlers() {
+function enable_demarcate_toolbar_handlers() {
 
     // handle hitting the return key inside the editor - saves it
-    current_demarcate_editor.keydown(function(key) {
+    $(document).on('keydown', '#demarcate_editor', function(key) {
         if (key.keyCode == 13) {
             $("#demarcate_save").click();
         }
@@ -279,16 +272,36 @@ function restore_demarcate_toolbar_handlers() {
     $(document).bind('mouseup', demarcate_click_elsewhere_save);
 
     // cancel button
-    $("#demarcate_cancel").on('click', function(e) {
+    $(document).on('click', '#demarcate_cancel', function(e) {
         hide_editor(e);
         $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
     });
 
     // save button
-    $("#demarcate_save").on('click', function(e) {
+    $(document).on('click', '#demarcate_save', function(e) {
         current_demarcate_element.html(current_demarcate_editor.val());
         hide_editor(e)
         $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
+    });
+
+    $(document).on('click', '.demarcate_style', function(e) {
+        e.preventDefault();
+        var id = $(this).attr('id').replace("demarcate_", "");
+
+        // check this is an allowable tag
+        if (editor_whitelist.contains(id)) {
+            // replace the element with the new type
+            var new_elem = $("<" + id + "></" + id + ">");
+            current_demarcate_element.after(new_elem);
+            current_demarcate_element.remove();
+            current_demarcate_element = new_elem;
+
+            // currently cannot 'cancel' once the tag has changed 
+            // therefore lets hide the cancel button
+            $("a#demarcate_cancel").fadeOut('fast',function() { this.remove(); });
+        } else {
+            console.log("Unknown or disallowed tag type - " + id + ". Aborting tag change.");
+        }
     });
 };
 
@@ -310,15 +323,18 @@ function restore_demarcate_toolbar_handlers() {
     $.fn.enable_demarcate = function() {
         // give global access to the demarcate_editor object
         window.demarcate_dom_root = $(this);
+        window.current_demarcate_editor = null;
+        window.current_demarcate_element = null;
 
         len = editor_whitelist.length
         for (var i = 0; i < len; i++) {
             live_selector = "#" + this.attr('id') + " " + editor_whitelist[i];
-            $(live_selector).on('click', function() {
+            $(document).on('click', live_selector, function() {
                 display_editor(this);
             });
         }
+
+        enable_demarcate_toolbar_handlers();
     };
 })( jQuery );
-
 
