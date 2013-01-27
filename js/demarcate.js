@@ -41,7 +41,6 @@ Array.prototype.contains = function(obj) {
  * Whitelist of tags to include
  */
 var demarcate_whitelist = [
-    'BODY',
     'DIV',
     'SPAN',
     'H1',
@@ -204,15 +203,35 @@ function generate_toolbar() {
 }
 
 /* 
+ * Sets an 'active' class for the toolbar item that matches the 
+ * current editing class
+ */
+function toolbar_set_active() {
+    var tag_name = "";
+
+    // get the type of tag we are editing
+    if (current_demarcate_element == null) {
+        return;
+    } else {
+        tag_name = current_demarcate_element.get(0).tagName;
+    }
+
+    // remove old active tags
+    $(".demarcate_style").removeClass("active");
+
+    // apply new active tags
+    $("#demarcate_" + tag_name.toLowerCase()).addClass("active");
+}
+
+/* 
  * Display an editor textarea
  */
 function display_editor(elem) {
     elem = $(elem);
     var tag_name = elem.get(0).tagName;
-    console.log(tag_name);
+
     // double check we are allowed to edit this
     if (editor_whitelist.contains(tag_name.toLowerCase())) {
-        console.log("Displaying editor for " + tag_name);
 
         // create the new text editor - ignore front matter
         var md = demarkdown(elem, true);
@@ -233,7 +252,8 @@ function display_editor(elem) {
         current_demarcate_editor = ed;
 
         // insert the markdown into the editor and focus 
-        // on the last character
+        // on the last character. Set toolbar buttons to active
+        toolbar_set_active();
         ed.focus().val($.trim(md));
     }
 }
@@ -328,6 +348,10 @@ function enable_demarcate_toolbar_handlers() {
             // currently cannot 'cancel' once the tag has changed 
             // therefore lets hide the cancel button
             $("a#demarcate_cancel").fadeOut('fast',function() { this.remove(); });
+
+            // set the current button classes and focus back on the editor
+            toolbar_set_active()
+            current_demarcate_editor.focus();
         } else {
             console.log("Unknown or disallowed tag type - " + id + ". Aborting tag change.");
         }
