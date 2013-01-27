@@ -334,6 +334,17 @@ function enable_demarcate_toolbar_handlers() {
                 new_elem.addClass("demarcate_temporary");
                 new_elem.click();
             }
+        } else if (e.keyCode == 32) {
+            // check for control space
+            if (e.ctrlKey) {
+                e.preventDefault();
+                var next_style = $("div#demarcate_toolbar a.active").next().filter(".demarcate_style");
+                if (next_style.length != 0) {
+                    next_style.click();
+                } else {
+                    $("div#demarcate_toolbar a.demarcate_style").first().click();
+                }
+            }
         }
     });
 
