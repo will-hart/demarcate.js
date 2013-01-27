@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DemarcateJS demo</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/demarcate.css">
+        <style type="text/css">
+            body, html { margin: 0; font-family: 'Open Sans', sans-serif; }
+            body { padding: 30px; }
+
+            div#container, div#output {
+                width: 42%;
+                padding: 2%;
+                margin: auto;
+                float: left;
+                border: 1px solid #ccc;
+            }
+
+            div#output {
+                background: #666;
+                color: white;
+                margin-left: 2%;
+            }
+
+            div#instructions h1 {
+                display: inline;
+                margin-right: 20px;
+            }
+
+            .clearfix { clear:both; }
+
+            div#instructions p {
+                color: #0047FF;
+                font-style: italic;
+                display: inline;
+            }
+            
+            div#instructions {
+                border: 1px solid #666;
+                background: #ccc;
+                margin-bottom: 10px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="instructions">
+            <h1>demarcate.js instructions</h1>
+            <p>Click to close these instructions</p>
+            <br class="clearfix" />
+            <ul>
+                <li>Click on an element in the left hand box below to edit.</li>
+                <li>Click outside the editor or hit <strong>shift + enter</strong> to save and close.</li>
+                <li>Hit <strong>enter</strong> inside the editor to save, close and add a new paragraph.</li>
+                <li>When the editor box closes, the markdown will appear in the right hand box.</li>
+            </ul>
+        </div>
+
+        <div id="container">
+            <h1>Some Text</h1>
+            <h2>Some Text</h2>
+            <h3>Some Text</h3>
+            <h4>Some Text</h4>
+            <h5>Some Text</h5>
+            <h6>Some Text</h6>
+
+            <p>Some more text</p>
+
+            <blockquote>A blockquote</blockquote>
+
+            <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
+
+            <hr>
+
+            <ul>
+                <li>What about lists?</li>
+                <li>At least a couple of items</li>
+            </ul>
+
+            <hr />
+        </div>
+
+        <div id="output">
+            <input type="button" value="Render Markdown" id="trigger_render" />
+        </div>
+
+        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jquery.autosize.js" type="text/javascript"></script>
+        
+        <!-- Include demarcate.js -->
+        <script src="js/demarcate.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+            /* 
+             * The following code is all that is required to get demarcate running
+             * on your web page.  To get the rendered output you can call demarcate()
+             * on any div.
+             */
+            $(document).ready( function() {
+                // Enable all whitelisted elements in the '#container' dom element
+                // for demarcation.  
+                $('#container').enable_demarcate();
+
+                // bind a handler to the 'demarcate_editor_closed' event.  This allows
+                // the rendered markdown to be immediately placed in the '#output' div.
+                // new lines are replaced with <br> tags for rending in browser
+                $(document).bind('demarcate_editor_closed', function(e, elem) {
+                    var op = demarcate_dom_root.demarcate();
+                    op = op.replace(/\n/g, '<br/>');
+                    $("#output").html(op);
+                });
+                
+                $("#trigger_render").click( function() {
+                    $(this).trigger('demarcate_editor_closed');
+                });
+                
+                // unrelated - click to close instructions
+                $("#instructions").click( function() {
+                    $(this).slideUp();
+                });
+            });
+        </script>
+    </body>
+</html>
