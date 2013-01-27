@@ -149,7 +149,7 @@ function demarkdown(elem, ignore_extras) {
     }
 
     // open the tag
-    if (! ignore_extras) {
+    if (! ignore_extras || tag_name == 'A') {
         result = line_starts[tag_name] == undefined ? "" : line_starts[tag_name];
     }
     
@@ -164,7 +164,7 @@ function demarkdown(elem, ignore_extras) {
     });
 
     // close the tag
-    if (! ignore_extras) {
+    if (! ignore_extras || tag_name == 'A') {
         result += line_ends[elem.get(0).tagName] == undefined ? "" : line_ends[tag_name];
     }
 
@@ -262,7 +262,7 @@ function demarcate_click_elsewhere_save(e) {
 function enable_demarcate_toolbar_handlers() {
 
     // handle hitting the return key inside the editor - saves it
-    $(document).on('keydown', '#demarcate_editor', function(key) {
+    $(document).on('keydown', '#demarcate', function(key) {
         if (key.keyCode == 13) {
             $("#demarcate_save").click();
         }
