@@ -160,6 +160,9 @@ function demarkdown(elem, ignore_extras) {
     var node_type = node.nodeType;
     var result = "";
 
+    // do not parse temporary dom elements
+    if (elem.hasClass("demarcate_temporary")) return "";
+    
     // check we are allowed to decode the tag
     if (! demarcate_whitelist.contains(tag_name) && node_type != 3) {
         return "";
@@ -405,7 +408,9 @@ function enable_demarcate_toolbar_handlers() {
 
         // if our editor box is empty, add an initial 'edit me' paragraph
         // add a class to ensure this isn't parsed by the demarkdown function
-        if (demarcate_dom_root.is(":empty")) {
+        if (demarcate_dom_root.is(":empty") ||
+                $.trim(demarcate_dom_root.html()) == "") {
+
             demarcate_dom_root.append(
                     $('<p />', {
                             class: 'demarcate_temporary',
