@@ -39,13 +39,14 @@
                 background: #ccc;
                 margin-bottom: 10px;
                 padding: 10px;
+                display:none;
             }
         </style>
     </head>
 
     <body>
+        <h1 class="show_instructions">demarcate.js (click here for instructions)</h1>
         <div id="instructions">
-            <h1>demarcate.js instructions</h1>
             <p>Note: this demo is running from the 'develop' branch.  Click to close these instructions.  </p>
             <br class="clearfix" />
             <ul>
@@ -60,17 +61,17 @@
         </div>
 
         <div id="container">
-            <h1>Some Text</h1>
-            <h2>Some Text</h2>
-            <h3>Some Text</h3>
-            <h4>Some Text</h4>
-            <h5>Some Text</h5>
-            <h6>Some Text</h6>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
 
             <p>Some more text</p>
 
             <blockquote>
-                <p>A blockquote</p>
+                <p>A blockquote with some further <strong>strong</strong> and <em>em'd</em> text to test our capabilities.</p>
             </blockquote>
 
             <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
@@ -78,7 +79,8 @@
             <hr>
 
             <ul>
-                <li>What about lists?</li>
+                <li>What about lists? </li>
+                <li>Even some <a href="index.html">links inside lists</a>?</li>
                 <li>At least a couple of items</li>
             </ul>
 
@@ -121,8 +123,12 @@
                 });
                 
                 // unrelated - click to close instructions
-                $("#instructions").click( function() {
-                    $(this).slideUp();
+                $("h1.show_instructions").click( function() {
+                    $("#instructions").slideDown();
+                });
+                
+                $("#instructions").click( function() { 
+                    $("#instructions").slideUp();
                 });
             });
         </script>

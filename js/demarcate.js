@@ -18,26 +18,26 @@
  * Whitelist of tags to include
  */
 var tag_dict = {
-    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false },
-    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false },
-    'h1':         {editable: true,  markdownable: true, prefix: '#',      postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'h2':         {editable: true,  markdownable: true, prefix: '##',     postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'h3':         {editable: true,  markdownable: true, prefix: '###',    postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'h4':         {editable: true,  markdownable: true, prefix: '####',   postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'h5':         {editable: true,  markdownable: true, prefix: '#####',  postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'h6':         {editable: true,  markdownable: true, prefix: '######', postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'li':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: false, childprefix: ' - ',  allow_newline: false },
-    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '>',    allow_newline: false },
-    'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n', post_newline: true,  childprefix: '    ', allow_newline: true  },
-    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',  post_newline: false, childprefix: '',     allow_newline: false },
-    'a':          {editable: false, markdownable: true, prefix: '[',      postfix: ']',  post_newline: false, childprefix: '',     allow_newline: false },
-    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    'em':         {editable: false, markdownable: true, prefix: '*',      postfix: '*',  post_newline: false, childprefix: '',     allow_newline: false },
-    'strong':     {editable: false, markdownable: true, prefix: '**',     postfix: '**', post_newline: false, childprefix: '',     allow_newline: false },
-    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n', post_newline: true,  childprefix: '',     allow_newline: false },
-    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false },
+    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false },
+    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false },
+    'h1':         {editable: true,  markdownable: true, prefix: '# ',     postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'h2':         {editable: true,  markdownable: true, prefix: '## ',    postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'h3':         {editable: true,  markdownable: true, prefix: '### ',   postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'h4':         {editable: true,  markdownable: true, prefix: '#### ',  postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'h5':         {editable: true,  markdownable: true, prefix: '##### ', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'h6':         {editable: true,  markdownable: true, prefix: '###### ',postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'li':         {editable: true,  markdownable: true, prefix: ' - ',    postfix: '\n',  post_newline: false, childprefix: '',     allow_newline: false },
+    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '> ',   allow_newline: false },
+    'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n',  post_newline: true,  childprefix: '    ', allow_newline: true  },
+    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',   post_newline: false, childprefix: '',     allow_newline: false },
+    'a':          {editable: false, markdownable: true, prefix: ' [',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false },
+    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    'em':         {editable: false, markdownable: true, prefix: ' *',     postfix: '* ',  post_newline: false, childprefix: '',     allow_newline: false },
+    'strong':     {editable: false, markdownable: true, prefix: ' **',    postfix: '** ', post_newline: false, childprefix: '',     allow_newline: false },
+    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false },
+    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false },
 };
 
 /*
@@ -52,7 +52,7 @@ function modifyHtml(str){
 
     // restore links to HTML.  
     var full_regex = new RegExp("\\[(.*?)\\]\\((.*?)\\)", "gi");
-    strippedText = strippedText.replace(full_regex, "<a href='$2'>$1</a>");
+    strippedText = strippedText.replace(full_regex, " <a href='$2'>$1</a> ");
 
     // all done!
     return strippedText;
@@ -83,7 +83,7 @@ function demarkdown(elem, ignore_extras, child_prefix) {
 
     // open the tag
     if (! ignore_extras || tag_name == 'a') {
-        result += child_prefix + tag_dict[tag_name].prefix;
+        result += tag_dict[tag_name].prefix;
     }
 
     // add any text inside text nodes
@@ -95,8 +95,9 @@ function demarkdown(elem, ignore_extras, child_prefix) {
     }
 
     // add child elements
+    result += tag_dict[tag_name].childprefix;
     $.each(elem.contents(), function(index, value) {
-        result += demarkdown($(value), ignore_extras, tag_dict[tag_name].childprefix);
+        result += demarkdown($(value), ignore_extras, "");
     });
 
     // close the tag
