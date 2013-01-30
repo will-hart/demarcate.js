@@ -189,7 +189,8 @@ function display_editor(elem) {
         }).css("font", elem.css("font"))
             .css("outline", "none")
             .css("border", elem.css("border"))
-            .css("margin", elem.css("margin"));
+            .css("margin", elem.css("margin"))
+            .css("textAlign", elem.css("textAlign"));
         var tb = generate_toolbar();
 
         elem.after(tb).slideDown();
@@ -270,6 +271,7 @@ function replace_tag(id) {
     current_demarcate_editor.css("font", current_demarcate_element.css("font"))
             .css("border", current_demarcate_element.css("border"))
             .css("margin", current_demarcate_element.css("margin"))
+            .css("textAlign", current_demarcate_element.css("textAlign"));
     
     // set the current button classes and focus back on the editor
     toolbar_set_active()
@@ -331,6 +333,24 @@ function enable_demarcate_toolbar_handlers() {
         } else if (e.keyCode == 9) { // tab - add four spaces
             e.preventDefault();
             current_demarcate_editor.insertAtCaret("    ");
+        } else if (e.keyCode == 40) { // down arrow - navigate to the next editable area
+            if (e.altKey) {
+                var next = $("#demarcate_toolbar").next(".demarcate_editable");
+                if (next.length > 0) {
+                    console.log("Moving down to next");
+                    $("#demarcate_save").click();
+                    next.first().click();
+                }
+            }
+        } else if (e.keyCode == 38) { // up arrow - navigate to the next editable area
+            if (e.altKey) {
+                var previous = current_demarcate_element.prev(".demarcate_editable");
+                if (previous.length > 0) {
+                    console.log("Moving up to previous");
+                    $("#demarcate_save").click();
+                    previous.first().click();
+                }
+            }
         }
     });
 
@@ -409,7 +429,8 @@ function enable_demarcate_toolbar_handlers() {
                 alert(
                     "SHIFT+ENTER - save your changes\nESCAPE - cancel your changes\n" + 
                     "CTRL+ENTER - save your changes, insert a new section\n" + 
-                    "ENTER - save your changes (or add new line in a code block)"
+                    "ENTER - save your changes (or add new line in a code block)\n" + 
+                    "ALT+UP/DOWN - navigate up and down through elemnts"
                 );
             }
         }
