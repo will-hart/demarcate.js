@@ -428,7 +428,8 @@ function enable_demarcate_toolbar_handlers() {
                 alert(
                     "SHIFT+ENTER - save your changes\nESCAPE - cancel your changes\n" + 
                     "CTRL+ENTER - save your changes, insert a new section\n" + 
-                    "ENTER - save your changes (or add new line in a code block)"
+                    "ENTER - save your changes (or add new line in a code block)\n" + 
+                    "ALT+UP/DOWN - navigate up and down through elemnts"
                 );
             }
         }
