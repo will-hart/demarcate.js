@@ -26,14 +26,14 @@ var tag_dict = {
     'h4':         {editable: true,  markdownable: true, prefix: '#### ',  postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
     'h5':         {editable: true,  markdownable: true, prefix: '##### ', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
     'h6':         {editable: true,  markdownable: true, prefix: '###### ',postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
-    'li':         {editable: true,  markdownable: true, prefix: ' - ',    postfix: '\n',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
-    'ul':         {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
-    'ol':         {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
+    'li':         {editable: true,  markdownable: true, prefix: ' - ',    postfix: '\n',  post_newline: false, childprefix: '',     allow_newline: false,  force_prefix: true  },
+    'ul':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true, force_prefix: false },
+    'ol':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true, force_prefix: false },
     'blockquote': {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '> ',   allow_newline: false, force_prefix: false },
     'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n',  post_newline: true,  childprefix: '    ', allow_newline: true , force_prefix: false },
     'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
     'a':          {editable: false, markdownable: true, prefix: ' [',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
-    'hr':         {editable: false, markdownable: true, prefix: '------', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
+    'hr':         {editable: true,  markdownable: true, prefix: '------', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
     'em':         {editable: false, markdownable: true, prefix: ' *',     postfix: '* ',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'strong':     {editable: false, markdownable: true, prefix: ' **',    postfix: '** ', post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
@@ -48,7 +48,9 @@ var tag_dict = {
  */
 function modifyHtml(str){
     var convertor = new Showdown.converter();
-    return convertor.makeHtml(str);
+    var op = convertor.makeHtml(str);
+    console.log("------------------------\nShowdown rendering: \n\t" + str + "\n\nProduced:\n\t" + op + "\n------------------------");
+    return op;
 }
 
 /*
@@ -174,6 +176,7 @@ function display_editor(elem) {
 
     elem = $(elem);
     var tag_name = elem.get(0).tagName.toLowerCase();
+    console.log("Editing " + tag_name);
 
     // double check we are allowed to edit this
     if (tag_name in tag_dict) {
@@ -267,8 +270,9 @@ function replace_tag(id) {
  */
 function save_and_new_editor_area() {
     // create another element of the same type after this one
-    var tag_name = current_demarcate_element.get(0).tagName;
+    var tag_name = current_demarcate_element.get(0).tagName.toLowerCase();
     var new_elem = $("<" + tag_name + "/>");
+    console.log("Creating " + tag_name);
     new_elem.insertAfter(current_demarcate_element);
 
     // force a save on the previous element
@@ -330,8 +334,19 @@ function enable_demarcate_toolbar_handlers() {
 
     // save button
     $(document).on('click', '#demarcate_save', function(e) {
-        current_demarcate_element.html(modifyHtml(current_demarcate_editor.val()));
-        current_demarcate_element.removeClass("demarcate_temporary");
+        // get the current editor and wrap in the correct outer tag
+        var tag_name = current_demarcate_element.get(0).tagName.toLowerCase();
+        var curr_value = tag_dict[tag_name].prefix + tag_dict[tag_name].childprefix +
+                current_demarcate_editor.val() + tag_dict[tag_name].postfix;
+        curr_value = curr_value.replace(/\n/g, "\n" + tag_dict[tag_name].childprefix);
+        var new_elem = $(modifyHtml(curr_value));
+
+        // update the html element and save a reference to the new elem
+        new_elem.insertBefore(current_demarcate_element);
+        current_demarcate_element.remove();
+        current_demarcate_element = new_elem;
+
+        // close the editor and send the update event
         hide_editor(e)
         $(document).trigger('demarcate_editor_closed', [current_demarcate_element]);
     });
@@ -432,7 +447,7 @@ function enable_demarcate_toolbar_handlers() {
         // add permanent event handlers for clicking editable elements
         for (var tag_name in tag_dict) {
             if (tag_dict[tag_name].editable) {
-                live_selector = "#" + this.attr('id') + " " + tag_name;
+                live_selector = "#" + this.attr('id') + " > " + tag_name;
 
                 $(document).on('click', live_selector, function(e) {
                     // avoid trying to edit toolbar items
