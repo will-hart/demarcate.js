@@ -332,6 +332,24 @@ function enable_demarcate_toolbar_handlers() {
         } else if (e.keyCode == 9) { // tab - add four spaces
             e.preventDefault();
             current_demarcate_editor.insertAtCaret("    ");
+        } else if (e.keyCode == 40) { // down arrow - navigate to the next editable area
+            if (e.altKey) {
+                var next = $("#demarcate_toolbar").next(".demarcate_editable");
+                if (next.length > 0) {
+                    console.log("Moving down to next");
+                    $("#demarcate_save").click();
+                    next.first().click();
+                }
+            }
+        } else if (e.keyCode == 38) { // up arrow - navigate to the next editable area
+            if (e.altKey) {
+                var previous = current_demarcate_element.prev(".demarcate_editable");
+                if (previous.length > 0) {
+                    console.log("Moving up to previous");
+                    $("#demarcate_save").click();
+                    previous.first().click();
+                }
+            }
         }
     });
 
