@@ -1,5 +1,5 @@
 /*************************************************************************
-*      DemarcateJS v1.1 is an in-place Markdown editor and decoder       *
+*      DemarcateJS v1.1.1 is an in-place Markdown editor and decoder     *
 *                                                                        *
 *      It was written by William Hart (http://www.williamhart.info) to   *
 *      run on "textr" (http://to-textr.com/) a new Markdown enabled      *
@@ -29,9 +29,9 @@ var tag_dict = {
     'li':         {editable: true,  markdownable: true, prefix: '- ',     postfix: '\n',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'ul':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true,  force_prefix: false },
     'ol':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true,  force_prefix: false },
-    'blockquote': {editable: true,  markdownable: true, prefix: '>',      postfix: '\n',  post_newline: true,  childprefix: '',    allow_newline: false, force_prefix: false },
+    'blockquote': {editable: true,  markdownable: true, prefix: '>',      postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
     'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n',  post_newline: true,  childprefix: '    ', allow_newline: true , force_prefix: false },
-    'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
+    'code':       {editable: true,  markdownable: true, prefix: ' `',     postfix: '` ',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'a':          {editable: false, markdownable: true, prefix: ' [',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'hr':         {editable: true,  markdownable: true, prefix: '------', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: true  },
     'em':         {editable: false, markdownable: true, prefix: ' *',     postfix: '* ',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
