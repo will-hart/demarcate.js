@@ -1,5 +1,5 @@
 /*************************************************************************
-*      DemarcateJS v1.1.1 is an in-place Markdown editor and decoder     *
+*      DemarcateJS v1.1.2dev is an in-place Markdown editor and decoder  *
 *                                                                        *
 *      It was written by William Hart (http://www.williamhart.info) to   *
 *      run on "textr" (http://to-textr.com/) a new Markdown enabled      *
@@ -188,11 +188,12 @@ function display_editor(elem) {
             id: 'demarcate'
         }).css("font", elem.css("font"))
             .css("outline", "none")
-            .css("border", elem.css("border"));
+            .css("border", elem.css("border"))
+            .css("margin", elem.css("margin"));
         var tb = generate_toolbar();
 
-        elem.after(ed);
-        elem.after(tb);
+        elem.after(tb).slideDown();
+        elem.after(ed).slideDown();
         elem.addClass("demarcate_hide");
 
         // store the element currently being edited
@@ -265,6 +266,11 @@ function replace_tag(id) {
     // therefore lets hide the cancel button
     $("a#demarcate_cancel").fadeOut('fast',function() { this.remove(); });
 
+    // update the editor css
+    current_demarcate_editor.css("font", current_demarcate_element.css("font"))
+            .css("border", current_demarcate_element.css("border"))
+            .css("margin", current_demarcate_element.css("margin"))
+    
     // set the current button classes and focus back on the editor
     toolbar_set_active()
     current_demarcate_editor.focus();
@@ -412,7 +418,7 @@ function enable_demarcate_toolbar_handlers() {
     // handle clicking "move down" button
     $(document).on('click', '#demarcate_down', function(e) {
         e.preventDefault();
-        var next = current_demarcate_editor.next(".demarcate_editable");
+        var next = $("#demarcate_toolbar").next(".demarcate_editable");
         if (next.length > 0) {
             next.insertBefore(current_demarcate_element);
         }
@@ -424,7 +430,7 @@ function enable_demarcate_toolbar_handlers() {
         e.preventDefault();
         var previous = current_demarcate_element.prev(".demarcate_editable");
         if (previous.length > 0) {
-            previous.insertAfter(current_demarcate_editor);
+            previous.insertAfter($("#demarcate_toolbar"));
         }
         current_demarcate_editor.focus();
     });
