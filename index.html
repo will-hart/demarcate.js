@@ -42,8 +42,6 @@
                 max-width: 100%;
             }
 
-            .clearfix { clear:both; }
-
             /* set some text-aligns to test editor formatting*/
             h2 { text-align: center; }
             h3 { text-align: right; }
@@ -81,9 +79,7 @@
         </div>
 
         <div id="output">
-            <h2>demarcate.js Notes</h2>
-            <p><strong>Note:</strong> this demo is running from the 'develop' branch. Click this box to refresh the markdown output</p>
-            <br class="clearfix" />
+            <strong>Note</strong> this demo is running from the 'develop' branch.
 
             <h2>Usage Notes</h2>
             <ul>
@@ -96,6 +92,10 @@
                 <li>Use <strong>alt+up</strong> and <strong>alt+down</strong> to navigate between editable elements.</li>
             </ul>
             
+            <h2>See it in action</h2>
+            <p>
+                See demarcate in action (creating screenplays, documents and slide shows) at <a href="http://to-textr.com/demarcate/">http://to-textr.com/demarcate/</a>
+            </p>
         </div>
 
         <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
@@ -123,11 +123,6 @@
                     var op = demarcate_dom_root.demarcate();
                     op = op.replace(/\n/g, '<br/>');
                     $("#output").html(op);
-                });
-                
-                $("#output").click( function() {
-                    $(this).fadeOut(300, function() { $(this).trigger('demarcate_editor_closed'); });
-                    $(this).fadeIn();
                 });
             });
         </script>
