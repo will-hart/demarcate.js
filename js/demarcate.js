@@ -29,7 +29,7 @@ var tag_dict = {
     'li':         {editable: true,  markdownable: true, prefix: '- ',     postfix: '\n',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'ul':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true,  force_prefix: false },
     'ol':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true,  force_prefix: false },
-    'blockquote': {editable: true,  markdownable: true, prefix: '>',       postfix: '\n',  post_newline: true,  childprefix: '',    allow_newline: false, force_prefix: false },
+    'blockquote': {editable: true,  markdownable: true, prefix: '>',      postfix: '\n',  post_newline: true,  childprefix: '',    allow_newline: false, force_prefix: false },
     'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n',  post_newline: true,  childprefix: '    ', allow_newline: true , force_prefix: false },
     'code':       {editable: true,  markdownable: true, prefix: '`',      postfix: '`',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
     'a':          {editable: false, markdownable: true, prefix: ' [',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
@@ -341,11 +341,13 @@ function enable_demarcate_toolbar_handlers() {
     $(document).on('click', '#demarcate_save', function(e) {
         // get the current editor and wrap in the correct outer tag
         var tag_name = current_demarcate_element.get(0).tagName.toLowerCase();
-        var curr_value = current_demarcate_editor.val();
-        
-        if (tag_name != "hr") {
-            curr_value = tag_dict[tag_name].prefix + tag_dict[tag_name].childprefix +
-                    curr_value + tag_dict[tag_name].postfix;
+        var curr_value = current_demarcate_editor.val(); 
+
+        if (curr_value != "") {
+            if (tag_name != "hr") {
+                curr_value = tag_dict[tag_name].prefix + tag_dict[tag_name].childprefix +
+                        curr_value + tag_dict[tag_name].postfix;
+            }
         }
         var new_elem = $(modifyHtml(curr_value));
 
