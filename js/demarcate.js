@@ -418,7 +418,7 @@ function enable_demarcate_toolbar_handlers() {
     // handle clicking "move down" button
     $(document).on('click', '#demarcate_down', function(e) {
         e.preventDefault();
-        var next = current_demarcate_editor.next(".demarcate_editable");
+        var next = $("#demarcate_toolbar").next(".demarcate_editable");
         if (next.length > 0) {
             next.insertBefore(current_demarcate_element);
         }
@@ -430,7 +430,7 @@ function enable_demarcate_toolbar_handlers() {
         e.preventDefault();
         var previous = current_demarcate_element.prev(".demarcate_editable");
         if (previous.length > 0) {
-            previous.insertAfter(current_demarcate_editor);
+            previous.insertAfter($("#demarcate_toolbar"));
         }
         current_demarcate_editor.focus();
     });
