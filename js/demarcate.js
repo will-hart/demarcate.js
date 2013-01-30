@@ -184,7 +184,11 @@ function display_editor(elem) {
 
         // create the new text editor - ignore front matter
         var md = demarkdown(elem, true, "");
-        var ed = $("<textarea id='demarcate'></textarea>");
+        var ed = $("<textarea />", {
+            id: 'demarcate'
+        }).css("font", elem.css("font"))
+            .css("outline", "none")
+            .css("border", elem.css("border"));
         var tb = generate_toolbar();
 
         elem.after(ed);
