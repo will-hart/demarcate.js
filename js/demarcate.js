@@ -47,19 +47,8 @@ var tag_dict = {
  *   - Restores links from []() syntax to <a></a> syntax
  */
 function modifyHtml(str){
-    // remove HTML tags
-    var strippedText = $("<div/>").html(str).text();
-
-    // restore links to HTML.
-    var full_a_regex = new RegExp("\\[(.*?)\\]\\((.*?)\\)", "gi");
-    strippedText = strippedText.replace(full_a_regex, " <a href='$2'>$1</a> ");
-
-    // bold and em courtesy - https://github.com/coreyti/showdown (BSD License)
-    strippedText = strippedText.replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g,"<strong>$2</strong>");
-    strippedText = strippedText.replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g,"<em>$2</em>");
-
-    // all done!
-    return strippedText;
+    var convertor = new Showdown.converter();
+    return convertor.makeHtml(str);
 }
 
 /*
@@ -502,4 +491,3 @@ function enable_demarcate_toolbar_handlers() {
         this.val(new_val.replace(/\n/g, "\r\n"));
     }
 })( jQuery );
-
