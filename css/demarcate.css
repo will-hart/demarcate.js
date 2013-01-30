@@ -12,7 +12,10 @@ textarea#demarcate {
 div#demarcate_toolbar {
     display: block;
     width: 100%;
+    min-height: 35px;
     margin-bottom: 40px;
+    border-top: 1px solid #303030;
+    border-bottom: 1px solid #303030;
 }
 
 div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar p {
