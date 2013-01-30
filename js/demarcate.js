@@ -50,16 +50,21 @@ function modifyHtml(str){
     // remove HTML tags
     var strippedText = $("<div/>").html(str).text();
 
-    // restore links to HTML.  
-    var full_regex = new RegExp("\\[(.*?)\\]\\((.*?)\\)", "gi");
-    strippedText = strippedText.replace(full_regex, " <a href='$2'>$1</a> ");
+    // restore links to HTML.
+    var full_a_regex = new RegExp("\\[(.*?)\\]\\((.*?)\\)", "gi");
+    strippedText = strippedText.replace(full_a_regex, " <a href='$2'>$1</a> ");
+
+    // bold and em courtesy - https://github.com/coreyti/showdown
+    strippedText = strippedText.replace(/(\*\*|__)(?=\S)([^\r]*?\S[*_]*)\1/g,"<strong>$2</strong>");
+    strippedText = strippedText.replace(/(\*|_)(?=\S)([^\r]*?\S)\1/g,"<em>$2</em>");
 
     // all done!
     return strippedText;
 }
 
 /*
- * Recursively reverse the markdown of the element
+ * Recursively reverse the md
+ markdown of the element
  * and its child objects
  */
 function demarkdown(elem, ignore_extras, child_prefix) {
