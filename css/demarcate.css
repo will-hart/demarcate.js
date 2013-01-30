@@ -6,6 +6,7 @@ textarea#demarcate {
     margin-top: 5px;
     width: 100%;
     font-size: 1.2em;
+    min-height: 100px;
 }
 
 div#demarcate_toolbar {
@@ -14,29 +15,37 @@ div#demarcate_toolbar {
     margin-bottom: 15px;
 }
 
-div#demarcate_toolbar a, div#demarcate_toolbar a:visited {
+div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar p {
     padding: 0;
     margin: 5px 5px 1px 1px;
     float: left;
-    min-width: 32px;
-    min-height: 32px;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+div#demarcate_toolbar p {
+    min-width: 12px;
 }
 
 div#demarcate_toolbar a#demarcate_h1 { background: url(../img/demarcate_sprite.png) no-repeat 0 0; }
-div#demarcate_toolbar a#demarcate_h2 { background: url(../img/demarcate_sprite.png) no-repeat -32px 0; }
-div#demarcate_toolbar a#demarcate_h3 { background: url(../img/demarcate_sprite.png) no-repeat -64px 0; }
-div#demarcate_toolbar a#demarcate_h4 { background: url(../img/demarcate_sprite.png) no-repeat -96px 0; }
-div#demarcate_toolbar a#demarcate_h5 { background: url(../img/demarcate_sprite.png) no-repeat -128px 0; }
-div#demarcate_toolbar a#demarcate_h6 { background: url(../img/demarcate_sprite.png) no-repeat 0 -32px; }
-div#demarcate_toolbar a#demarcate_p { background: url(../img/demarcate_sprite.png) no-repeat -128px -32px; }
-div#demarcate_toolbar a#demarcate_code { background: url(../img/demarcate_sprite.png) no-repeat -96px -32px; }
-div#demarcate_toolbar a#demarcate_ul { background: url(../img/demarcate_sprite.png) no-repeat -32px -32px; }
-div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_sprite.png) no-repeat -64px -32px; }
-div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_sprite.png) no-repeat -64px -64px; }
-div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_sprite.png) no-repeat 0 -64px; }
-div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_sprite.png) no-repeat -32px -64px; }
-div#demarcate_toolbar a#demarcate_up { background: url(../img/demarcate_sprite.png) no-repeat -96px -64px; }
-div#demarcate_toolbar a#demarcate_down { background: url(../img/demarcate_sprite.png) no-repeat -128px -64px; }
+div#demarcate_toolbar a#demarcate_h2 { background: url(../img/demarcate_sprite.png) no-repeat -24px 0; }
+div#demarcate_toolbar a#demarcate_h3 { background: url(../img/demarcate_sprite.png) no-repeat -48px 0; }
+div#demarcate_toolbar a#demarcate_h4 { background: url(../img/demarcate_sprite.png) no-repeat -72px 0; }
+div#demarcate_toolbar a#demarcate_h5 { background: url(../img/demarcate_sprite.png) no-repeat -96px 0; }
+div#demarcate_toolbar a#demarcate_h6 { background: url(../img/demarcate_sprite.png) no-repeat 0 -24px; }
+div#demarcate_toolbar a#demarcate_p { background: url(../img/demarcate_sprite.png) no-repeat -96px -24px; }
+div#demarcate_toolbar a#demarcate_code { background: url(../img/demarcate_sprite.png) no-repeat -72px -24px; }
+div#demarcate_toolbar a#demarcate_pre { background: url(../img/demarcate_sprite.png) no-repeat -120px 0; }
+div#demarcate_toolbar a#demarcate_ul { background: url(../img/demarcate_sprite.png) no-repeat -24px -24px; }
+div#demarcate_toolbar a#demarcate_ol { background: url(../img/demarcate_sprite.png) no-repeat -48px -24px; }
+div#demarcate_toolbar a#demarcate_blockquote { background: url(../img/demarcate_sprite.png) no-repeat -48px -48px; }
+div#demarcate_toolbar a#demarcate_save { background: url(../img/demarcate_sprite.png) no-repeat 0 -48px; }
+div#demarcate_toolbar a#demarcate_cancel { background: url(../img/demarcate_sprite.png) no-repeat -24px -48px; }
+div#demarcate_toolbar a#demarcate_up { background: url(../img/demarcate_sprite.png) no-repeat -72px -48px; }
+div#demarcate_toolbar a#demarcate_down { background: url(../img/demarcate_sprite.png) no-repeat -96px -48px; }
+div#demarcate_toolbar a#demarcate_help { background: url(../img/demarcate_sprite.png) no-repeat -120px -24px; }
+
+div#demarcate_toolbar p { background: url(../img/demarcate_separator.png) no-repeat; }
 
 div#demarcate_toolbar a.active {
     border: 1px solid #303030;

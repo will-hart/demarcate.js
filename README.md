@@ -1,15 +1,14 @@
 demarcate.js
 ============
 
-**Version 1.1**
+**Version 1.1.1**
 
 demarcate.js is an in-place Markdown Editor under development by 
 [William Hart](http://www.williamhart.info) for [textr](http://to-textr.com/).
 The editor works directly on the DOM, tags with a textarea for editing and then
-closing returning the markdown "code" when requested.
-
-It weighs in at under 30KB including a 15KB menu image sprite, 3KB of CSS (which 
-you are free to modify as you wish) and either 18KB of JS or 10KB minified.
+closing returning the markdown "code" when requested.  It uses the 
+[showdown js library](https://github.com/coreyti/showdown) to render markdown 
+in the browser once it has been entered.
 
 demarcate.js allows you to apply your own stylesheets to a document and then have users
 edit it using simple textareas.  Users are not required to know markdown, instead
@@ -19,8 +18,8 @@ they just click on a DOM element and start typing!
 LIMITATIONS
 ===============
 
-Support for lists and extensions such as syntax highlighted code, tables 
-and footnotes is currently non-existant.
+Support for extensions such as footnotes and tables is not implemented, and 
+list functionality is also limited with ordered lists only partially supported.
 
 USAGE
 ===========
@@ -31,9 +30,13 @@ It can be [viewed here](http://will-hart.github.com/demarcate.js/).
 Two files need to be included in order to use demarcate - one js and one CSS file:
 
     <link rel="stylesheet" href="css/demarcate.css">
+    <script src="js/showdown.min.js" type="text/javascript"></script>
     <script src="js/demarcate.js" type="text/javascript"></script>
 
-Optionally, you may wish to use a plugin like [jquery.autosize.js](http://www.jacklmoore.com/autosize)
+> **NOTE** the minified version of demarcate includes the showdown library automatically 
+so if you include the minified version you do not need to include showdown separately.
+
+You may wish to use a plugin like [jquery.autosize.js](http://www.jacklmoore.com/autosize)
 to allow the text editor fields to resize as you type.  (This is not a requirement)
 
 Next you need to add a script tag to the bottom of your page.  Use a jquery selector 
