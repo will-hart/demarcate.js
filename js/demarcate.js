@@ -271,6 +271,7 @@ function replace_tag(id) {
     current_demarcate_editor.css("font", current_demarcate_element.css("font"))
             .css("border", current_demarcate_element.css("border"))
             .css("margin", current_demarcate_element.css("margin"))
+            .css("textAlign", current_demarcate_element.css("textAlign"));
     
     // set the current button classes and focus back on the editor
     toolbar_set_active()
