@@ -189,7 +189,8 @@ function display_editor(elem) {
         }).css("font", elem.css("font"))
             .css("outline", "none")
             .css("border", elem.css("border"))
-            .css("margin", elem.css("margin"));
+            .css("margin", elem.css("margin"))
+            .css("textAlign", elem.css("textAlign"));
         var tb = generate_toolbar();
 
         elem.after(tb).slideDown();
