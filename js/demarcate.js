@@ -567,9 +567,6 @@ function enable_demarcate_toolbar_handlers() {
         window.current_demarcate_editor = null;
         window.current_demarcate_element = null;
 
-        // add a sortable class
-        $(this).addClass("demarcate_sortable");
-
         // add permanent event handlers for clicking editable elements
         for (var tag_name in tag_dict) {
             if (tag_dict[tag_name].editable) {
