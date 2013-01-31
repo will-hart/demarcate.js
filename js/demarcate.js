@@ -17,9 +17,9 @@
 /* 
  * Extend string prototype to easily manage table padding
  */
-String.prototype.repeat = function( num )
+String.prototype.repeat = function(num)
 {
-    return new Array( num + 1 ).join( this );
+    return new Array(num + 1).join(this);
 }
 
 /*
@@ -46,8 +46,8 @@ var tag_dict = {
     'strong':     {editable: false, markdownable: true, prefix: ' **',    postfix: '** ', post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
     'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
     'table':      {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'th':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
-    'td':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
+    'th':         {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
+    'td':         {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
     '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '   },
 };
 

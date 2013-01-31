@@ -72,9 +72,12 @@
             <div class="toc">
                 <ul>
                     <li><a href="#supported-elements">Supported Elements</a></li>
+                    <li><a href="#partially-supported-elements">Partially Supported Elements</a></li>
                     <li><a href="#unsupported-elements">Unsupported Elements</a></li>
                 </ul>
             </div>
+
+            <p><strong>Note</strong>:<br /> A <code>div</code> with class <code>toc</code> is automatically converted to a <code>TOC</code> Markdown tag</p>
 
             <h2 id="supported-elements">Supported Elements</h2>
             <h3>Heading 3</h3>
@@ -97,7 +100,11 @@
                 <li>At least a couple of items</li>
             </ul>
 
-            <h3>Tables</h3>
+            <hr>
+            
+            <h2 id="partially-supported-elements">Partially Supported Elements</h2>
+            <h4>Tables</h4>
+            <p>Tables retain their formatting in the document, however cannot be edited</p>
 
             <table>
                 <thead>
@@ -112,22 +119,29 @@
 
             <hr>
 
-            <h2 id="unsupported-elements">Unsupported Elements<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></h2>
+            <h2 id="unsupported-elements">Unsupported Elements</h2>
+            <p>These elements are completely unsupported and may be removed from the document if edited using demarcate</p>
+            
+            <h4>Footnotes<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></h4>
 
-            <h3>Source Code</h3>
+
+            <h4>Source Code</h4>
             <div class="codehilite"><pre><span class="c1">// select all &quot;div&quot; elements &lt;div&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
-    
-    <span class="c1">// select all &quot;div&quot; elements with class &quot;myclass&quot; e.g &lt;div class=&quot;myclass&quot;&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div.myclass&quot;</span><span class="p">)</span>
-    
-    <span class="c1">// select any element with id &quot;myid&quot; (e.g. &lt;h1 id=&quot;myid&quot;&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#myid&quot;</span><span class="p">)</span>
-    
-    <span class="c1">// select only the &quot;div&quot; element with the id &quot;myid&quot; - i.e.</span>
-    <span class="c1">// will ignore &lt;h1 id=&quot;myid&quot;&gt;</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div#myid&quot;</span><span class="p">)</span>
-    </pre></div>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+
+<span class="c1">// select all &quot;div&quot; elements with class &quot;myclass&quot; e.g &lt;div class=&quot;myclass&quot;&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div.myclass&quot;</span><span class="p">)</span>
+
+<span class="c1">// select any element with id &quot;myid&quot; (e.g. &lt;h1 id=&quot;myid&quot;&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#myid&quot;</span><span class="p">)</span>
+
+<span class="c1">// select only the &quot;div&quot; element with the id &quot;myid&quot; - i.e.</span>
+<span class="c1">// will ignore &lt;h1 id=&quot;myid&quot;&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div#myid&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+
     <div class="footnote">
         <hr />
         <ol>
