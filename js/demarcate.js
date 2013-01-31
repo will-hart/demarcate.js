@@ -76,7 +76,6 @@ function demarkdown(elem, ignore_extras, child_prefix) {
     if (!(tag_name in tag_dict)) return result;
 
     // check we are allowed to decode the tag
-    console.log(tag_name);
     if (! tag_dict[tag_name].markdownable && node_type != 3) {
         return result;
     }
@@ -206,13 +205,14 @@ function display_editor(elem) {
         // on the last character. Set toolbar buttons to active
         toolbar_set_active();
 
+        // set the value of the textarea
+        ed.val($.trim(md));
+
         // hook up jquery.autosize.js if present
         if (typeof elem.autosize != undefined) {
             ed.autosize({'append': '\n'});
         }
-        ed.focus().val($.trim(md));
-        
-        $(window).resize();
+        ed.focus();
     }
 }
 
@@ -338,7 +338,6 @@ function enable_demarcate_toolbar_handlers() {
             if (e.altKey) {
                 var next = $("#demarcate_toolbar").next(".demarcate_editable");
                 if (next.length > 0) {
-                    console.log("Moving down to next");
                     $("#demarcate_save").click();
                     next.first().click();
                 }
@@ -347,7 +346,6 @@ function enable_demarcate_toolbar_handlers() {
             if (e.altKey) {
                 var previous = current_demarcate_element.prev(".demarcate_editable");
                 if (previous.length > 0) {
-                    console.log("Moving up to previous");
                     $("#demarcate_save").click();
                     previous.first().click();
                 }
