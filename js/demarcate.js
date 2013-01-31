@@ -73,9 +73,10 @@ function demarkdown(elem, ignore_extras, child_prefix) {
     if (elem.hasClass("demarcate_temporary")) return result;
 
     // check if the element is in the tag_dict
-    if (!tag_name in tag_dict) return result;
+    if (!(tag_name in tag_dict)) return result;
 
     // check we are allowed to decode the tag
+    console.log(tag_name);
     if (! tag_dict[tag_name].markdownable && node_type != 3) {
         return result;
     }
