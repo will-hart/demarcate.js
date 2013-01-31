@@ -14,6 +14,14 @@
 *                                                                        *
 *************************************************************************/
 
+/* 
+ * Extend string prototype to easily manage table padding
+ */
+String.prototype.repeat = function( num )
+{
+    return new Array( num + 1 ).join( this );
+}
+
 /*
  * Whitelist of tags to include
  */
@@ -37,6 +45,9 @@ var tag_dict = {
     'em':         {editable: false, markdownable: true, prefix: ' *',     postfix: '* ',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'strong':     {editable: false, markdownable: true, prefix: ' **',    postfix: '** ', post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true  },
     'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
+    'table':      {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false },
+    'th':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
+    'td':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
     '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false },
 };
 
@@ -53,6 +64,79 @@ function modifyHtml(str){
     // convert using showdown
     var convertor = new Showdown.converter();
     var op = convertor.makeHtml(strippedText);
+    return op;
+}
+
+/* 
+ * Table generator - build up a markdown table from the HTML.
+ * Colspan and Rowspan not currently supported
+ */
+function demarkdown_table(elem) {
+
+    // store column lengths
+    var maxColLen = [];
+    var rowLen = 0;
+    var cells = [];
+    var op = "";
+    var headerRow = true;
+    var col = 0;
+    var row = 0;
+
+    // build up the cell array in memory and track max cell length
+    // first traverse each row
+    elem.find("tr").each( function() {
+        cells[row] = [];
+        col = 0;
+
+        // then each cell in each row
+        $(this).children().each( function() {
+            // get the text
+            var contents = $(this).text();
+            var contentLen = contents.length;
+
+            // store max length
+            if (maxColLen.length <= col) {
+                maxColLen.push(contentLen);
+            } else {
+                if (contentLen > maxColLen[col]) {
+                    maxColLen[col] = contentLen;
+                }
+            }
+
+            // store the contents
+            cells[row][col] = demarkdown($(this));
+
+            col++;
+        });
+        row++;
+    });
+
+    // calculate the row length
+    for (var r = 0; r < maxColLen.length; r++) {
+        rowLen += maxColLen[r] + 1; // "pipe character column delimiter"
+    }
+
+    // now build up the output MD
+    for (var r = 0; r < cells.length; r++) {
+        // write the cell contents
+        var row = cells[r];
+        for (var c = 0; c < row.length; c++) {
+            var cellLen = row[c].length;
+            var padding = maxColLen[c] - cellLen;
+            console.log(cellLen + "," + padding);
+            op += row[c] + " ".repeat(padding) + "|";
+        }
+        
+        // write the '=' signs under the top row
+        if (headerRow) {
+            op += "\n";
+            for (var i = 0; i < maxColLen.length; i++) {
+                op += "-".repeat(maxColLen[i]) + "|";
+            }
+            headerRow = false;
+        }
+        op += "\n";
+    }
     return op;
 }
 
@@ -76,13 +160,15 @@ function demarkdown(elem, ignore_extras, child_prefix) {
     if (!(tag_name in tag_dict)) return result;
 
     // check we are allowed to decode the tag
-    if (! tag_dict[tag_name].markdownable && node_type != 3) {
+    if ((! tag_dict[tag_name].markdownable) && node_type != 3) {
         return result;
     }
 
     // check if it is a special tag (i.e. TOC)
     if (tag_name == 'div' && elem.hasClass("toc")) {
         return "\n[TOC]\n\n";
+    } else if ( tag_name == 'table' ) {
+        return demarkdown_table(elem);
     }
 
     // open the tag
