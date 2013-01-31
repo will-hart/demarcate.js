@@ -7,6 +7,7 @@ textarea#demarcate {
     width: 100%;
     font-size: 1.2em;
     max-height: 500px;
+    height: 1em;
 }
 
 div#demarcate_toolbar {
@@ -15,7 +16,7 @@ div#demarcate_toolbar {
     min-height: 35px;
     margin-bottom: 40px;
     border-top: 1px solid #303030;
-    border-bottom: 1px solid #303030;
+    background: #EEE;
 }
 
 div#demarcate_toolbar a, div#demarcate_toolbar a:visited, div#demarcate_toolbar p {

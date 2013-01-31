@@ -377,15 +377,44 @@ function replace_tag(id) {
 function save_and_new_editor_area() {
     // create another element of the same type after this one
     var tag_name = current_demarcate_element.get(0).tagName.toLowerCase();
-    var new_elem = $("<" + tag_name + "/>");
-    new_elem.insertAfter(current_demarcate_element);
+    var new_elem = null;
+
+    // handle table rows differently
+    if (tag_name == "td" || tag_name == "th") {
+        new_elem = get_next_table_cell(current_demarcate_element);
+
+    } else {
+        new_elem = $("<" + tag_name + "/>");
+        new_elem.insertAfter(current_demarcate_element);
+    }
 
     // force a save on the previous element
     $("#demarcate_save").click();
 
     // add the class after saving to prevent it being immediately pruned
-    new_elem.addClass("demarcate_temporary");
-    new_elem.click();   
+    if (tag_name != "td" && tag_name != "th") {
+        new_elem.addClass("demarcate_temporary");
+    }
+
+    if (new_elem !== null) {
+        new_elem.click();
+    }
+}
+
+/* 
+ * Find the next editable table cell in a table and returns it
+ */
+function get_next_table_cell(elem) {
+    var next_td = elem.nextAll("td, th");
+    if (next_td.length == 0) {
+        var next_tr = elem.parent("tr").nextAll("tr");
+        if (next_tr.length == 0) {
+            return null;
+        } else {
+            return next_tr.find("th, td").first();
+        }
+    }
+    return next_td
 }
 
 /* 
