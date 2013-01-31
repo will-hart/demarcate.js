@@ -80,6 +80,11 @@ function demarkdown(elem, ignore_extras, child_prefix) {
         return result;
     }
 
+    // check if it is a special tag (i.e. TOC)
+    if (tag_name == 'div' && elem.hasClass("toc")) {
+        return "\n[TOC]\n\n";
+    }
+
     // open the tag
     if (! ignore_extras || tag_dict[tag_name].force_prefix) {
         result += tag_dict[tag_name].prefix;
