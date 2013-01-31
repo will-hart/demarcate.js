@@ -1,10 +1,10 @@
 demarcate.js
 ============
 
-**Version 1.1.1**
+**Version 1.1.2**
 
 demarcate.js is an in-place Markdown Editor under development by 
-[William Hart](http://www.williamhart.info) for [textr](http://to-textr.com/).
+[William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/).
 The editor works directly on the DOM, tags with a textarea for editing and then
 closing returning the markdown "code" when requested.  It uses the 
 [showdown js library](https://github.com/coreyti/showdown) to render markdown 
@@ -18,14 +18,13 @@ they just click on a DOM element and start typing!
 LIMITATIONS
 ===============
 
-Support for extensions such as footnotes and tables is not implemented, and 
-list functionality is also limited with ordered lists only partially supported.
+Support for extensions such as footnotes is not implemented.  Additionally 
 
 USAGE
 ===========
 
 The `index.html` file in the editor shows a sample implementation of demarcate. 
-It can be [viewed here](http://will-hart.github.com/demarcate.js/).  
+It can be seen at [http://will-hart.github.com/demarcate.js/](http://will-hart.github.com/demarcate.js/).  
 
 Two files need to be included in order to use demarcate - one js and one CSS file:
 
@@ -79,3 +78,33 @@ CONTRIBUTING
 ===============
 
 Contributions and suggestions are welcome - fill out an issue or submit a pull request.
+
+
+CHANGE LOG 
+===============
+
+`+` - new feature         
+`~` - revised feature        
+`-` - removed feature        
+`*` - bug fix
+
+Version 1.1.2
+--------------
+
+- `+` Added support for editing and converting tables.  Currently new rows cannot be added
+- `+` Added support for `<br>` tags, by ending a line with four or more spaces
+- `+` Use `alt + up arrow` and `alt + down arrow` to navigate between blocks being edited
+- `+` Deployment Python script to make minifying js easier
+
+- `~` Update example page - its ugly but shows demarcate's capablities
+- `~` Shift editor underneath text area
+- `~` Minor style updates to toolbar
+- `~` Preformat textarea to match format of block being edited
+
+- `*` Unknown tags errors not correctly trapped
+- `*` Textarea now resizes correctly when first editing
+
+Version 1.1.1
+--------------
+
+Initial "production" version for [http://to-textr.com/](http://to-textr.com/)
