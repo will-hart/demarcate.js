@@ -123,7 +123,6 @@ function demarkdown_table(elem) {
         for (var c = 0; c < row.length; c++) {
             var cellLen = row[c].length;
             var padding = maxColLen[c] - cellLen;
-            console.log(cellLen + "," + padding);
             op += row[c] + " ".repeat(padding) + "|";
         }
         
@@ -137,7 +136,7 @@ function demarkdown_table(elem) {
         }
         op += "\n";
     }
-    return op;
+    return op + "\n\n";
 }
 
 /*
