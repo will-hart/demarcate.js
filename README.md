@@ -88,21 +88,24 @@ CHANGE LOG
 `-` - removed feature        
 `*` - bug fix
 
+Version 1.1.3
+--------------
+
+
+
 Version 1.1.2
 --------------
 
-- `+` Added support for editing and converting tables.  Currently new rows cannot be added
-- `+` Added support for `<br>` tags, by ending a line with four or more spaces
-- `+` Use `alt + up arrow` and `alt + down arrow` to navigate between blocks being edited
-- `+` Deployment Python script to make minifying js easier
-
-- `~` Update example page - its ugly but shows demarcate's capablities
-- `~` Shift editor underneath text area
-- `~` Minor style updates to toolbar
-- `~` Preformat textarea to match format of block being edited
-
-- `*` Unknown tags errors not correctly trapped
-- `*` Textarea now resizes correctly when first editing
+`+` Added support for editing and converting tables.  Currently new rows cannot be added      
+`+` Added support for `<br>` tags, by ending a line with four or more spaces      
+`+` Use `alt + up arrow` and `alt + down arrow` to navigate between blocks being edited      
+`+` Deployment Python script to make minifying js easier      
+`~` Update example page - its ugly but shows demarcate's capablities      
+`~` Shift editor underneath text area      
+`~` Minor style updates to toolbar      
+`~` Preformat textarea to match format of block being edited      
+`*` Unknown tags errors not correctly trapped      
+`*` Textarea now resizes correctly when first editing      
 
 Version 1.1.1
 --------------
