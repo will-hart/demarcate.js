@@ -465,12 +465,17 @@ function enable_demarcate_toolbar_handlers() {
                         curr_value + tag_dict[tag_name].postfix;
             }
         }
+
         var new_elem = $(modifyHtml(curr_value));
 
         // update the html element and save a reference to the new elem
-        new_elem.insertBefore(current_demarcate_element);
-        current_demarcate_element.remove();
-        current_demarcate_element = new_elem;
+        if (tag_name == "th" || tag_name == "td") {
+            current_demarcate_element.html(new_elem.html());
+        } else {
+            new_elem.insertBefore(current_demarcate_element);
+            current_demarcate_element.remove();
+            current_demarcate_element = new_elem;
+        }
 
         // close the editor and send the update event
         hide_editor(e)
