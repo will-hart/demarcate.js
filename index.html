@@ -12,57 +12,73 @@
             div#container, div#output {
                 width: 42%;
                 padding: 2%;
-                margin: auto;
+                margin: 70px auto;
                 float: left;
                 border: 1px solid #ccc;
+                overflow: hidden;
             }
 
             div#output {
-                background: #666;
-                color: white;
+                background: #EEE;
+                color: #303030;
                 margin-left: 2%;
+                font-size: 0.9em;
+                line-height: 1.3;
             }
 
-            div#instructions h1 {
-                margin-right: 20px;
-            }
-
-            .clearfix { clear:both; }
-
-            div#instructions p {
-                color: #0047FF;
-                font-style: italic;
-            }
-            
-            div#instructions {
-                border: 1px solid #666;
-                background: #ccc;
-                margin-bottom: 10px;
+            .toc {
+                background: #EEE;
                 padding: 10px;
-                display:none;
             }
+
+            pre {
+                white-space: pre-wrap;       /* css-3 */
+                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+                white-space: -pre-wrap;      /* Opera 4-6 */
+                white-space: -o-pre-wrap;    /* Opera 7 */
+                word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            }
+
+            div#output strong, h1.header strong {
+                color: #D22;
+            }
+
+            h1.header { 
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #303030;
+                color: white;
+                margin: 0;
+                padding: 10px;
+                display:block;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            h3 { text-align: center; }
+            h4 { text-align: right; }
         </style>
     </head>
 
     <body>
-        <h1 class="show_instructions">demarcate.js (click here for instructions)</h1>
-        <div id="instructions">
-            <p>Note: this demo is running from the 'develop' branch.  Click to close these instructions.  </p>
-            <br class="clearfix" />
-            <ul>
-                <li>Click on an element in the left hand box below to edit.</li>
-                <li>Click outside the editor or hit <strong>shift + enter</strong> to save and close.</li>
-                <li>Hit <strong>enter</strong> inside the editor to save, close and add a new paragraph.</li>
-                <li>Hit <strong>escape</strong> to cancel editing.  Note that if the style of element has changed, cancel won't undo this</li>
-                <li>Use <strong>ctrl + space</strong> to cycle between element styles</li>
-                <li>Use <strong>ctrl + enter</strong> when in a <code>pre</code> code block to add a new line</li>
-                <li>When the editor box closes, the markdown will appear in the right hand box.</li>
-            </ul>
-        </div>
+        <h1 class="header">demarcate<strong>.js</strong> demo page</h1>
 
         <div id="container">
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
+            
+            <h1>Table of contents</h1>
+
+            <div class="toc">
+                <ul>
+                    <li><a href="#supported-elements">Supported Elements</a></li>
+                    <li><a href="#partially-supported-elements">Partially Supported Elements</a></li>
+                    <li><a href="#unsupported-elements">Unsupported Elements</a></li>
+                </ul>
+            </div>
+
+            <p><strong>Note</strong>:<br /> A <code>div</code> with class <code>toc</code> is automatically converted to a <code>TOC</code> Markdown tag</p>
+
+            <h2 id="supported-elements">Supported Elements</h2>
             <h3>Heading 3</h3>
             <h4>Heading 4</h4>
             <h5>Heading 5</h5>
@@ -76,7 +92,6 @@
 
             <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
 
-            <hr>
 
             <ul>
                 <li>What about lists? </li>
@@ -84,11 +99,80 @@
                 <li>At least a couple of items</li>
             </ul>
 
-            <hr />
+            <hr>
+            
+            <h2 id="partially-supported-elements">Partially Supported Elements</h2>
+            <h3>Tables</h3>
+            <p>
+                Tables cells can be edited, however new rows cannot be added Only tables with 
+                a top row header and <code>colspan</code> and <code>rowspan</code> of 1 are supported.
+            </p>
+
+            <table>
+                <thead>
+                    <tr><th>Item 1 - various lengths</th><th>Item 2</th></tr>
+                </thead>
+                <tbody>
+                <tr><td>Item A1</td><td>But not currently colspans</td></tr>
+                <tr><td>Item B1</td><td>Item B2</td></tr>
+                <tr><td>Item C1</td><td>(<strong>or</strong> rowspans)</td></tr>
+                </tbody>
+            </table>
+
+            <hr>
+
+            <h2 id="unsupported-elements">Unsupported Elements</h2>
+            <p>These elements are completely unsupported and may be removed from the document if edited using demarcate</p>
+            
+            <h3>Footnotes<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></h3>
+
+
+            <h3>Source Code</h3>
+            <div class="codehilite"><pre><span class="c1">// select all &quot;div&quot; elements &lt;div&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
+
+<span class="c1">// select all &quot;div&quot; elements with class &quot;myclass&quot; e.g &lt;div class=&quot;myclass&quot;&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div.myclass&quot;</span><span class="p">)</span>
+
+<span class="c1">// select any element with id &quot;myid&quot; (e.g. &lt;h1 id=&quot;myid&quot;&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#myid&quot;</span><span class="p">)</span>
+
+<span class="c1">// select only the &quot;div&quot; element with the id &quot;myid&quot; - i.e.</span>
+<span class="c1">// will ignore &lt;h1 id=&quot;myid&quot;&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div#myid&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+
+    <div class="footnote">
+        <hr />
+        <ol>
+        <li id="fn:a">
+            <p>Footnotes aren't currently working&#160;<a class="footnote-backref" href="#fnref:a" rev="footnote" title="Jump back to footnote 1 in the text">^</a></p>
+        </li>
+        </ol>
+    </div>
+
         </div>
 
         <div id="output">
-            Click this box to render markdown
+            <strong>Note</strong> this demo is running from the 'develop' branch.
+
+            <h2>Usage Notes</h2>
+            <ul>
+                <li>Click on an element in the left hand box to edit.</li>
+                <li>Click outside the editor or hit <strong>shift + enter</strong> to save and close.</li>
+                <li>Hit <strong>enter</strong> inside the editor to save, close and add a new paragraph.</li>
+                <li>In a code box <strong>enter</strong> adds a new line - hit <strong>ctrl+enter</strong> to save and start a new block</li>
+                <li>Hit <strong>escape</strong> to cancel editing.  Note that if the style of element has changed, cancel won't undo this</li>
+                <li>Use <strong>ctrl + space</strong> to cycle between element styles</li>
+                <li>Use <strong>alt+up</strong> and <strong>alt+down</strong> to navigate between editable elements.</li>
+            </ul>
+            
+            <h2>See it in action</h2>
+            <p>
+                See demarcate in action (creating screenplays, documents and slide shows) at <a href="http://to-textr.com/demarcate/">http://to-textr.com/demarcate/</a>
+            </p>
         </div>
 
         <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
@@ -114,22 +198,7 @@
                 // new lines are replaced with <br> tags for rending in browser
                 $(document).bind('demarcate_editor_closed', function(e, elem) {
                     var op = demarcate_dom_root.demarcate();
-                    op = op.replace(/\n/g, '<br/>');
-                    $("#output").html(op);
-                });
-                
-                $("#output").click( function() {
-                    $(this).fadeOut(300, function() { $(this).trigger('demarcate_editor_closed'); });
-                    $(this).slideDown();
-                });
-                
-                // unrelated - click to close instructions
-                $("h1.show_instructions").click( function() {
-                    $("#instructions").slideDown();
-                });
-                
-                $("#instructions").click( function() { 
-                    $("#instructions").slideUp();
+                    $("#output").html($("<pre />", {text: op}));
                 });
             });
         </script>
