@@ -52,91 +52,30 @@
         <h1 class="header">demarcate<strong>.js</strong> demo page</h1>
 
         <div id="container">
-             <p><a href="http://to-textr.com/e/">Try it out here</a>, or read on for more information</p>
-<h2 id="demarcatejs-is">demarcate.js is...</h2>
-<ul>
-<li>in place editing of paragaphs, headings and lists and exporting to Markdown</li>
-<li>easily adding new paragraphs, lists and code blocks</li>
-<li>automatically saving these changes as you type</li>
-<li>a lean interface whilst remaining full featured</li>
-<li>accessing the browsers native spellchecking</li>
-</ul>
-<h2 id="demarcatejs-is-not">demarcate.js is not...</h2>
-<ul>
-<li>a replacement for the full markdown editing functionality of textr - this can still be accessed via the 'edit' link for any textr</li>
-<li>set up to edit article properties - click the edit link to change title, category, tags and layout</li>
-<li>going to create world peace<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></li>
-</ul>
-<h2 id="quick-links">Quick links</h2>
-<p>Either keep reading, or there are a couple of links you can use to find out more:</p>
-<blockquote>
-<ul>
-<li>Just <a href="http://to-textr.com/e/">create a new textr</a> here and have a play (registration is not required but allows access to additional features<sup id="fnref:b"><a class="footnote-ref" href="#fn:b" rel="footnote">2</a></sup>)</li>
-<li>Have a look at the <a href="http://will-hart.github.com/demarcate.js/">lightweight demo on github</a> </li>
-<li>Track the development or download <a href="http://github.com/will-hart/demarcate.js">from github</a> </li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="the-need">The need</h2>
-<p>The <code>demarcate.js</code> editor grew out of feedback given to the initial stages of textr's development.  A lot of people without a programming background said:</p>
-<blockquote>
-<p>Thats great, but I could never write a document in a programming language</p>
-</blockquote>
-<p>After explaining a few times how straightforward Markdown can be, I realised that there was a need for a WYSIWG Markdown editor.  Responding to this feedback, I started to look around for a lightweight, open source editor for Markdown that I could use for basic text editing.  It quickly became apparent that there weren't a whole lot of options!</p>
-<p>Most sites use a raw markdown box with a side by side preview, which is what you will see if you hit the <code>edit</code> button in a textr you have permission to modify.</p>
-<p>demarcate.js attempts to take this to the next level, by editing in almost exactly as it will look when its a finished product!</p>
-<h2 id="how-to-use-it">How to use it</h2>
-<h4 id="the-basics">The basics</h4>
-<p>Using demarcate.js is pretty straightforward.  Elements in a page which can be edited in place change colour when you hover your mouse over them.  On this site, the background goes light grey.  If you then click on that area, a text box will pop up and you can enter the new value.</p>
-<p>If you hit <code>enter</code>, <code>control+enter</code>, or <code>shift+enter</code>, you save the current block you are working on and insert a new one directly below so you can just keep typing straight away.  The different types of<code>enter</code>combinations work in different ways:</p>
-<ul>
-<li><strong>enter</strong> - adds a new line in a code-block, or starts a new block everywhere else.</li>
-<li><strong>shift+enter</strong> - closes and saves the current block you are editing.</li>
-<li><strong>ctrl+enter</strong> - closes and saves the current block and adds a new one directly below it.<sup id="fnref:c"><a class="footnote-ref" href="#fn:c" rel="footnote">3</a></sup></li>
-<li><strong>escape</strong> - cancels the current editing process.<sup id="fnref:d"><a class="footnote-ref" href="#fn:d" rel="footnote">4</a></sup></li>
-</ul>
-<h2 id="setting-block-types">Setting block types</h2>
-<p>Above the text editing area there are a number of buttons which allow you to select which type of content you are changing.  This can be:</p>
-<ul>
-<li>headings sized from 1 (largest) to 6 (smallest),</li>
-<li>paragraphs of text</li>
-<li>blocks of code</li>
-<li>preformatted blocks of highlighted source code</li>
-<li>blockquotes, and</li>
-<li>lists</li>
-</ul>
-<p>You can set a block type either by clicking on the button above the text editing area, or by clicking <strong>ctrl+space</strong> to cycle through styles.  The style currently in user has a square around it in the toolbar</p>
-<h2 id="reordering-content">Reordering Content</h2>
-<p>demarcate.js makes it very easy to reorder content simply by clicking on the block you want to move and then using the up and down arrows to reorder.  List items stay contained within lists and items can't move out of the page.</p>
-<h2 id="more-advanced-markdown">More advanced Markdown</h2>
-<p>Whilst you can write basic Markdown in an element, as demarcate.js is still relatively new (and also to make sure it is relatively lightweight) it doesn't support all markdown features.  If you are after the full Markdown experience, then textr still allows you to use the raw editor, and has the same live preview functionality so you can see what you are creating.</p>
-<p>In addition, many Markdown styles that you apply in your regular editor (for instance <code>**</code> for bold) still work in demarcate.  In this early version they will show up in the newly edited text as <code>**</code>, however <strong>after you refresh the page textr will apply the correct formatting</strong>.</p>
-<h2 id="the-rough-edges">The rough edges</h2>
-<p>Yes, there are some rough edges to demarcate, however development is ongoing... currently, you probably need to be aware that:</p>
-<ul>
-<li>List support is still relatively new (ordered/numbered lists are not supported)</li>
-<li>White space is munched up in some circumstances</li>
-<li>complicated blocks like highlighted source code can be broken if edited by demarcate.js</li>
-</ul>
-<h2 id="about-textr">About textr</h2>
-<p>Textr is a free online writing tool, designed to make it easy to write and share fiction or non-fiction documents (including scientific and mathematical documents).  It uses Markdown as the basis for its documents.  <a href="http://to-textr.com/about">Find out more</a></p>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:a">
-<p>(on its own)&#160;<a class="footnote-backref" href="#fnref:a" rev="footnote" title="Jump back to footnote 1 in the text">^</a></p>
-</li>
-<li id="fn:b">
-<p>Only registered users may save private textrs or synchronise with their Dropbox account&#160;<a class="footnote-backref" href="#fnref:b" rev="footnote" title="Jump back to footnote 2 in the text">^</a></p>
-</li>
-<li id="fn:c">
-<p>This is there so you can continue to edit code blocks normally (enter for new lines) whilst still keeping your hands away from the mouse when you want to shift to editing a new block.&#160;<a class="footnote-backref" href="#fnref:c" rev="footnote" title="Jump back to footnote 3 in the text">^</a></p>
-</li>
-<li id="fn:d">
-<p>If you have made changes to the type of block being edited, it is no longer possible to cancel changes.&#160;<a class="footnote-backref" href="#fnref:d" rev="footnote" title="Jump back to footnote 4 in the text">^</a></p>
-</li>
-</ol>
-</div>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+
+            <p>Some more text</p>
+
+            <blockquote>
+                <p>A <code>blockquote</code> with some further <strong>strong</strong> and <em>em'd</em> text to test our capabilities.</p>
+            </blockquote>
+
+            <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
+
+            <hr>
+
+            <ul>
+                <li>What about lists? </li>
+                <li>Even some <a href="index.html">links inside lists</a>?</li>
+                <li>At least a couple of items</li>
+            </ul>
+
+            <hr />
         </div>
 
         <div id="output">
