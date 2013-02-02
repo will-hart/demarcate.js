@@ -1,204 +1,73 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>demarcate.js demo</title>
-
+        <title>About demarcate.js</title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/demarcate.css">
+        
         <style type="text/css">
-            body, html { margin: 0; font-family: 'Open Sans', sans-serif; }
-            body { padding: 30px; }
+            h1 > strong { background: #303030; color: white; font-style: normal; padding: 6px 2px 6px 6px; border-radius: 1px; }
+            h1 > strong + em { font-style: normal; color: #A22; background: white; padding: 6px 6px 6px 2px; }
+            body { background: #DDD; font-family: 'Open Sans', sans-serif; color: #444; padding: 3em; font-size: 120%; }
+            #container { width:70%; min-width: 300px; margin: auto; }
+            h1 { margin-bottom: 3em; }
+            h1, h2, h3, h4, h5 { text-align: center; margin: 2em auto auto auto; }
+            p { line-height: 1.6; text-align: justify; }
+            p + p { margin-top: 1.5em; }
+            h1 + p, h2 + p { font-size: 1.1em; }
+            pre { margin: auto; padding: 1em; background: #303030; color: white; font-size: 1.2em; width: 60%; overflow-x: auto; }
+            p code { background: white; padding: 4px; border-radius: 4px; font-size: 1.1em; }
+            a, a:visited { color: #A22; text-decoration: none; }
+            a:hover { text-decoration: underline; }
+            blockquote { border-left: 5px solid #A22; padding-left: 1em; font-style: italic; }
 
-            div#container, div#output {
-                width: 42%;
-                padding: 2%;
-                margin: 70px auto;
-                float: left;
-                border: 1px solid #ccc;
-                overflow: hidden;
-            }
-
-            div#output {
-                background: #EEE;
-                color: #303030;
-                margin-left: 2%;
-                font-size: 0.9em;
-                line-height: 1.3;
-            }
-
-            .toc {
-                background: #EEE;
-                padding: 10px;
-            }
-
-            pre {
-                white-space: pre-wrap;       /* css-3 */
-                white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-                white-space: -pre-wrap;      /* Opera 4-6 */
-                white-space: -o-pre-wrap;    /* Opera 7 */
-                word-wrap: break-word;       /* Internet Explorer 5.5+ */
-            }
-
-            div#output strong, h1.header strong {
-                color: #D22;
-            }
-
-            h1.header { 
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: #303030;
-                color: white;
-                margin: 0;
-                padding: 10px;
-                display:block;
-                width: 100%;
-                max-width: 100%;
-            }
-
-            h3 { text-align: center; }
-            h4 { text-align: right; }
         </style>
     </head>
-
     <body>
-        <h1 class="header">demarcate<strong>.js</strong> demo page</h1>
-
         <div id="container">
-            
-            <h1>Table of contents</h1>
-
-            <div class="toc">
-                <ul>
-                    <li><a href="#supported-elements">Supported Elements</a></li>
-                    <li><a href="#partially-supported-elements">Partially Supported Elements</a></li>
-                    <li><a href="#unsupported-elements">Unsupported Elements</a></li>
-                </ul>
-            </div>
-
-            <p><strong>Note</strong>:<br /> A <code>div</code> with class <code>toc</code> is automatically converted to a <code>TOC</code> Markdown tag</p>
-
-            <h2 id="supported-elements">Supported Elements</h2>
-            <h3>Heading 3</h3>
-            <h4>Heading 4</h4>
-            <h5>Heading 5</h5>
-            <h6>Heading 6</h6>
-
-            <p>Some more text</p>
-
-            <blockquote>
-                <p>A <code>blockquote</code> with some further <strong>strong</strong> and <em>em'd</em> text to test our capabilities.</p>
-            </blockquote>
-
-            <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
-
-
-            <ul>
-                <li>What about lists? </li>
-                <li>Even some <a href="index.html">links inside lists</a>?</li>
-                <li>At least a couple of items</li>
-            </ul>
-
-            <hr>
-            
-            <h2 id="partially-supported-elements">Partially Supported Elements</h2>
-            <h3>Tables</h3>
+            <h1>About <strong>demarcate</strong><em>.js</em></h1>
             <p>
-                Tables cells can be edited, however new rows cannot be added Only tables with 
-                a top row header and <code>colspan</code> and <code>rowspan</code> of 1 are supported.
+                demarcate.js is a jQuery based editor for Markdown.  
+                It lets you edit directly in a page and generate Markdown from the HTML elements. 
+                demarcate.js is under development by 
+                <a href="http://www.williamhart.info/pages/demarcatejs.html">William Hart</a> for the 
+                online publishing service <a href="http://to-textr.com/">to-textr</a>.  It supports 
+                many basic Markdown functions, however support for extensions is still limited.
+                The library is offered under the <code>GPLv3</code> license
             </p>
-
-            <table>
-                <thead>
-                    <tr><th>Item 1 - various lengths</th><th>Item 2</th></tr>
-                </thead>
-                <tbody>
-                <tr><td>Item A1</td><td>But not currently colspans</td></tr>
-                <tr><td>Item B1</td><td>Item B2</td></tr>
-                <tr><td>Item C1</td><td>(<strong>or</strong> rowspans)</td></tr>
-                </tbody>
-            </table>
-
-            <hr>
-
-            <h2 id="unsupported-elements">Unsupported Elements</h2>
-            <p>These elements are completely unsupported and may be removed from the document if edited using demarcate</p>
             
-            <h3>Footnotes<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></h3>
-
-
-            <h3>Source Code</h3>
-            <div class="codehilite"><pre><span class="c1">// select all &quot;div&quot; elements &lt;div&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
-
-<span class="c1">// select all &quot;div&quot; elements with class &quot;myclass&quot; e.g &lt;div class=&quot;myclass&quot;&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div.myclass&quot;</span><span class="p">)</span>
-
-<span class="c1">// select any element with id &quot;myid&quot; (e.g. &lt;h1 id=&quot;myid&quot;&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#myid&quot;</span><span class="p">)</span>
-
-<span class="c1">// select only the &quot;div&quot; element with the id &quot;myid&quot; - i.e.</span>
-<span class="c1">// will ignore &lt;h1 id=&quot;myid&quot;&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div#myid&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-
-    <div class="footnote">
-        <hr />
-        <ol>
-        <li id="fn:a">
-            <p>Footnotes aren't currently working&#160;<a class="footnote-backref" href="#fnref:a" rev="footnote" title="Jump back to footnote 1 in the text">^</a></p>
-        </li>
-        </ol>
-    </div>
-
-        </div>
-
-        <div id="output">
-            <strong>Note</strong> this demo is running from the 'develop' branch.
-
-            <h2>Usage Notes</h2>
-            <ul>
-                <li>Click on an element in the left hand box to edit.</li>
-                <li>Click outside the editor or hit <strong>shift + enter</strong> to save and close.</li>
-                <li>Hit <strong>enter</strong> inside the editor to save, close and add a new paragraph.</li>
-                <li>In a code box <strong>enter</strong> adds a new line - hit <strong>ctrl+enter</strong> to save and start a new block</li>
-                <li>Hit <strong>escape</strong> to cancel editing.  Note that if the style of element has changed, cancel won't undo this</li>
-                <li>Use <strong>ctrl + space</strong> to cycle between element styles</li>
-                <li>Use <strong>alt+up</strong> and <strong>alt+down</strong> to navigate between editable elements.</li>
-            </ul>
-            
-            <h2>See it in action</h2>
+            <h3>Where to get started</h3>
             <p>
-                See demarcate in action (creating screenplays, documents and slide shows) at <a href="http://to-textr.com/demarcate/">http://to-textr.com/demarcate/</a>
+                Have a look at the following links to see how demarcate.js works:
+            </p>
+            <ol>
+                <li>
+                    The <a href="technical.html">technical demo</a> shows what demarcate.js currently supports.
+                </li>
+                <li>
+                    The <a href="editor.html">'pretty' editor demo</a> shows how demarcate.js can be
+                    a light weight 'zen' editor for your site
+                </li>
+                <li>
+                    demarcate.js can be a basic HTML to Markdown convertor. <a href="#" id="preview_markdown">View the Markdown for this page</a>
+                </li>
+                <li>
+                    demarcate.js is in action at <a href="http://to-textr.com">to-textr.com</a>
+                </li>
+            </ol>
+            <p>
+                Finally, if you have any feedback, queries or issues, visit the 
+                <a href="https://github.com/will-hart/demarcate.js">github page</a> or 
+                <a href="https://twitter.com/intent/tweet?screen_name=wlhart" class="twitter-mention-button" data-related="wlhart">Tweet to @wlhart</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </p>
         </div>
-
-        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-        <script src="js/jquery.autosize.js" type="text/javascript"></script>
         
-        <!-- Include demarcate.js -->
-        <script src="js/showdown.min.js" type="text/javascript"></script>
-        <script src="js/demarcate.js" type="text/javascript"></script>
-        <script type="text/javascript">
-
-            /* 
-             * The following code is all that is required to get demarcate running
-             * on your web page.  To get the rendered output you can call demarcate()
-             * on any div.
-             */
-            $(document).ready( function() {
-                // Enable all whitelisted elements in the '#container' dom element
-                // for demarcation.  
-                $('#container').enable_demarcate();
-
-                // bind a handler to the 'demarcate_editor_closed' event.  This allows
-                // the rendered markdown to be immediately placed in the '#output' div.
-                // new lines are replaced with <br> tags for rending in browser
-                $(document).bind('demarcate_editor_closed', function(e, elem) {
-                    var op = demarcate_dom_root.demarcate();
-                    $("#output").html($("<pre />", {text: op}));
+        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+        <script src="js/demarcate.min.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+                $("#preview_markdown").click( function() {
+                    alert(demarkdown($("#container")));
                 });
             });
         </script>
