@@ -44,7 +44,7 @@ var tag_dict = {
     'th':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
     'td':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
     'br':         {editable: false, markdownable: true, prefix: '    \n', postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
-    'img':        {editable: false, markdownable: true, prefix: '![',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
+    'img':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
     '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
 };
 
@@ -284,7 +284,7 @@ demarcate.enable = function(elem) {
 };
 
 
-/* 
+/*
  * Disconnects all demarcate event handlers from the given element
  * to allow toggling of editing functionality
  */
@@ -414,6 +414,23 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
     }
 
     /*
+     * Handle creating markdown from images
+     *   Typical format - ![alt](url "optional title")
+     */
+    var demarkdownImage = function(elem) {
+        var alt = elem.attr("alt");
+        var title = elem.attr("title");
+        var url = elem.attr("src");
+        var op = " ![" + alt + "](" + url;
+
+        if (title != "") {
+            op += title;
+        }
+
+        return op + ") ";
+    }
+
+    /*
      * Recursively reverse the md
      markdown of the element
      * and its child objects
@@ -442,6 +459,8 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
             return "\n[TOC]\n\n";
         } else if ( tag_name == 'table' ) {
             return demarkdownTable(elem);
+        } else if ( tag_name == 'img' ) {
+            return demarkdownImage(elem);
         }
 
         // open the tag
