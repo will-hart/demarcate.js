@@ -65,20 +65,6 @@ demarcate.enable = function(elem) {
     demarcate.current_editor = null;
     demarcate.current_element = null;
 
-    /* 
-     * A mouseup handler that checks if the toolbar or editor was clicked.
-     * If not, it hides the editor.  
-     */
-    var demarcateClickElsewhereSave = function (e) {
-        if (demarcate.current_editor == null) return;
-        var tb = $("#demarcate_toolbar");
-        if (!demarcate.current_editor.is(e.target) && 
-                !tb.is(e.target) && 
-                tb.has(e.target).length === 0) {
-            demarcate.close_editor();
-        }
-    };
-
     /*
      * Maps an editor keypress to a specific action
      */
@@ -152,13 +138,15 @@ demarcate.enable = function(elem) {
 
         // update the editor css
         demarcate.current_editor.css("font", demarcate.current_element.css("font"))
-                .css("border", demarcate.current_element.css("border"))
+                .css("lineHeight", elem.css("lineHeight"))
                 .css("margin", demarcate.current_element.css("margin"))
                 .css("textAlign", demarcate.current_element.css("textAlign"));
-        if (! demarcate.current_editor.autosize === undefined) {
-            demarcate.current_editor.autosize();
+
+        // hook up jquery.autosize.js if present
+        if (typeof demarcate.current_editor != undefined) {
+            demarcate.current_editor.autosize({'append': '\n'});
         }
-        
+
         // set the current button classes and focus back on the editor
         demarcate.toolbarSetActive();
         demarcate.current_editor.focus();
@@ -173,7 +161,7 @@ demarcate.enable = function(elem) {
         $(document).on('keydown', '#demarcate', mapKeyPress);
 
         // handle clicking outside the div
-        $(document).bind('mousedown', demarcateClickElsewhereSave);
+        $(document).bind('mousedown', demarcate.clickElsewhereSave);
 
         // cancel button
         $(document).on('click', '#demarcate_cancel', function(e) {
@@ -281,12 +269,14 @@ demarcate.enable = function(elem) {
 
             // add a DOMNodeInserted event - not supported in all browsers
             // deprecated in some!
+            // TODO: Why not just do this in the "save / add new" functions???
             $(document).on('DOMNodeInserted', live_selector, function(e) {
                 $(e.target).addClass("demarcate_editable");
             });
         }
     }
 
+    // set up the editor
     enableDemarcateToolbarHandlers();
     demarcate.addEditPlaceholder();
     elem.trigger("demarcate_editor_enabled");
@@ -298,7 +288,42 @@ demarcate.enable = function(elem) {
  * to allow toggling of editing functionality
  */
 demarcate.disable = function (elem) {
-    throw new Error("Disabling demarcate not yet implemented - see github issue #16");
+
+    // Clear out the element tags
+    if (demarcate.current_editor != null) {
+        demarcate.close_editor();
+    }
+    demarcate.current_editor = null;
+    demarcate.current_element = null;
+    
+    // unbind event handlers
+    $(document).off('keydown', '#demarcate');
+    $(document).unbind('mousedown', demarcate.clickElsewhereSave);
+    $(document).off('click', '#demarcate_cancel');
+    $(document).off('click', '#demarcate_save');
+    $(document).off('mouseover', '.demarcate_style');
+    $(document).off('mouseout', '.demarcate_style');
+    $(document).off('click', '.demarcate_style');
+    $(document).off('click', '#demarcate_down');
+    $(document).off('click', '#demarcate_up');
+
+    // unbind all 'edit' click events
+    var elem_id = demarcate.dom_root.attr("id");
+    for (var tag_name in tag_dict) {
+        if (tag_dict[tag_name].editable) {
+            var selector = "#" + elem_id + tag_dict[tag_name].selector_type + tag_name;
+            $(document).off('click', selector);
+        }
+    }
+
+    // remove editable classes
+    $(".demarcate_editable").removeClass("demarcate_editable");
+
+    // remove any temporary elements
+    $(".demarcate_temporary").remove();
+
+    // clear the DOM element
+    demarcate.dom_root = null;
 };
 
 
@@ -514,8 +539,8 @@ demarcate.edit = function(elem) {
                 id: 'demarcate'
             }).css("font", elem.css("font"))
                 .css("outline", "none")
-                .css("border", elem.css("border"))
                 .css("margin", elem.css("margin"))
+                .css("lineHeight", elem.css("lineHeight"))
                 .css("textAlign", elem.css("textAlign"));
             var tb = generateToolbar();
 
@@ -742,6 +767,20 @@ demarcate.toolbarSetActive = function () {
     $("#demarcate_" + tag_name).addClass("active");
 };
 
+
+/* 
+ * A mouseup handler that checks if the toolbar or editor was clicked.
+ * If not, it hides the editor.  
+ */
+demarcate.clickElsewhereSave = function (e) {
+    if (demarcate.current_editor == null) return;
+    var tb = $("#demarcate_toolbar");
+    if (!demarcate.current_editor.is(e.target) && 
+            !tb.is(e.target) && 
+            tb.has(e.target).length === 0) {
+        demarcate.close_editor();
+    }
+};
 
 /* 
  * a jquery extension for textrarea elements which inserts some
