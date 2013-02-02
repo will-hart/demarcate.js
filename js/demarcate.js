@@ -96,6 +96,7 @@ demarcate.enable = function(elem) {
                     demarcate.close_editor(true, true);
                 }
             }
+
         } else if (e.keyCode == 32) { // ctrl+space  >>  cycle element types
             // check for control space
             if (e.ctrlKey) {
@@ -107,12 +108,15 @@ demarcate.enable = function(elem) {
                     $("div#demarcate_toolbar a.demarcate_style").first().click();
                 }
             }
+
         } else if (e.keyCode == 27) { //escape
             e.preventDefault();
             demarcate.close_editor(false);
+
         } else if (e.keyCode == 9) { // tab - add four spaces
             e.preventDefault();
             demarcate.current_editor.insertAtCaret("    ");
+
         } else if (e.keyCode == 40) { // down arrow - navigate to the next editable area
             if (e.altKey) {
                 var next = $("#demarcate_toolbar").next(".demarcate_editable");
@@ -121,6 +125,7 @@ demarcate.enable = function(elem) {
                     next.first().click();
                 }
             }
+
         } else if (e.keyCode == 38) { // up arrow - navigate to the next editable area
             if (e.altKey) {
                 var previous = demarcate.current_element.prev(".demarcate_editable");
@@ -155,8 +160,7 @@ demarcate.enable = function(elem) {
         }
         
         // set the current button classes and focus back on the editor
-        //TODO - handle highlighting the correct toolbar button on style change
-        //toolbarSetActive();
+        demarcate.toolbarSetActive();
         demarcate.current_editor.focus();
     }
 
@@ -260,7 +264,6 @@ demarcate.enable = function(elem) {
             live_selector = "#" + elem_id + 
                     tag_dict[tag_name].selector_type + tag_name;
 
-            console.log("Enabled editing: " + live_selector);
             $(document).on('click', live_selector, function(e) {
                 // avoid trying to edit toolbar items
                 if ($("#demarcate_toolbar").has(e.target).length > 0 ||
@@ -490,27 +493,6 @@ demarcate.edit = function(elem) {
     }
 
     /* 
-     * Sets an 'active' class for the toolbar item that matches the 
-     * current editing class
-     */
-    var toolbarSetActive = function () {
-        var tag_name = "";
-
-        // get the type of tag we are editing
-        if (demarcate.current_element == null) {
-            return;
-        } else {
-            tag_name = demarcate.current_element.get(0).tagName.toLowerCase();
-        }
-
-        // remove old active tags
-        $(".demarcate_style").removeClass("active");
-
-        // apply new active tags
-        $("#demarcate_" + tag_name).addClass("active");
-    }
-
-    /* 
      * Display an editor textarea
      */
     var display_editor = function (elem) {
@@ -547,7 +529,7 @@ demarcate.edit = function(elem) {
 
             // insert the markdown into the editor and focus 
             // on the last character. Set toolbar buttons to active
-            toolbarSetActive();
+            demarcate.toolbarSetActive();
 
             // set the value of the textarea
             ed.val($.trim(md));
@@ -571,8 +553,7 @@ demarcate.edit = function(elem) {
  * Closes the demarcate editor
  */
 demarcate.close_editor = function(save_changes, open_new) {
-    console.log(save_changes);
-    console.log(open_new);
+
     // save changes by default
     if (save_changes === undefined || save_changes === null) {
         save_changes = true;
@@ -582,8 +563,7 @@ demarcate.close_editor = function(save_changes, open_new) {
     if (open_new === undefined || open_new === null) {
         open_new = false;
     }
-    console.log(save_changes);
-    console.log(open_new);
+
     /*
      * Performs a number of manipulations on the edited string before adding 
      * it back into the DOM.  For instance:
@@ -738,6 +718,28 @@ demarcate.addEditPlaceholder = function () {
                 text: 'Click to add a new block'
         })
     );
+};
+
+
+/* 
+ * Sets an 'active' class for the toolbar item that matches the 
+ * current editing class
+ */
+demarcate.toolbarSetActive = function () {
+    var tag_name = "";
+
+    // get the type of tag we are editing
+    if (demarcate.current_element == null) {
+        return;
+    } else {
+        tag_name = demarcate.current_element.get(0).tagName.toLowerCase();
+    }
+
+    // remove old active tags
+    $(".demarcate_style").removeClass("active");
+
+    // apply new active tags
+    $("#demarcate_" + tag_name).addClass("active");
 };
 
 
