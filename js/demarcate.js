@@ -304,6 +304,9 @@ function display_editor(elem) {
             ed.autosize({'append': '\n'});
         }
         ed.focus();
+        
+        // scroll the top of the editor to the middle of the screen
+        $("html, body").scrollTop(current_demarcate_editor.offset().top);
     }
 }
 
