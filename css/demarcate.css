@@ -61,7 +61,3 @@ div#demarcate_toolbar a.active {
     background: #EEE;
     cursor: pointer;
 }
-
-.demarcate_droppable {
-    border: 1px dashed #ccc;
-}
