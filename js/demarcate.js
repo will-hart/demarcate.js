@@ -44,6 +44,7 @@ var tag_dict = {
     'th':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
     'td':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
     'br':         {editable: false, markdownable: true, prefix: '    \n', postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
+    'img':        {editable: false, markdownable: true, prefix: '![',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
     '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
 };
 
