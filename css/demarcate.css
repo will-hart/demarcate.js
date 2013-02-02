@@ -8,6 +8,7 @@ textarea#demarcate {
     font-size: 1.2em;
     max-height: 500px;
     height: 1em;
+    background: none; 
 }
 
 div#demarcate_toolbar {
