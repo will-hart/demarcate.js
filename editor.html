@@ -41,12 +41,12 @@
             }
         
             $(document).ready( function() {
-                $('#edit_me').enable_demarcate();
+                demarcate.enable($('#edit_me'));
                 
                 $("#render").click( function (e) {
                     e.preventDefault();
                     $("#preview").remove();  // prevent stacking previews
-                    var md = demarcate_dom_root.demarcate().replace(/\n/g,"<br>");
+                    var md = demarcate.demarcate().replace(/\n/g,"<br>");
                     var prev = $("<div />", { id: "preview", html: md });
                     $("body").append(prev);
                 });
