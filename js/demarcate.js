@@ -260,6 +260,7 @@ demarcate.enable = function(elem) {
             live_selector = "#" + elem_id + 
                     tag_dict[tag_name].selector_type + tag_name;
 
+            console.log("Enabled editing: " + live_selector);
             $(document).on('click', live_selector, function(e) {
                 // avoid trying to edit toolbar items
                 if ($("#demarcate_toolbar").has(e.target).length > 0 ||
@@ -270,7 +271,7 @@ demarcate.enable = function(elem) {
                 }
 
                 // display an editor
-                demarcate.edit(elem);
+                demarcate.edit($(this));
             });
 
             $(live_selector).addClass("demarcate_editable");
@@ -284,6 +285,7 @@ demarcate.enable = function(elem) {
     }
 
     enableDemarcateToolbarHandlers();
+    demarcate.addEditPlaceholder();
     elem.trigger("demarcate_editor_enabled");
 };
 
@@ -525,7 +527,7 @@ demarcate.edit = function(elem) {
         if (tag_name in tag_dict) {
 
             // create the new text editor - ignore front matter
-            var md = demarkdown(elem, true, "");
+            var md = demarcate.demarcate(elem, true, "");
             var ed = $("<textarea />", {
                 id: 'demarcate'
             }).css("font", elem.css("font"))
@@ -560,6 +562,8 @@ demarcate.edit = function(elem) {
             $("html, body").scrollTop(demarcate.current_editor.offset().top);
         }
     }
+
+    display_editor(elem);
 };
 
 
@@ -567,7 +571,8 @@ demarcate.edit = function(elem) {
  * Closes the demarcate editor
  */
 demarcate.close_editor = function(save_changes, open_new) {
-
+    console.log(save_changes);
+    console.log(open_new);
     // save changes by default
     if (save_changes === undefined || save_changes === null) {
         save_changes = true;
@@ -577,7 +582,8 @@ demarcate.close_editor = function(save_changes, open_new) {
     if (open_new === undefined || open_new === null) {
         open_new = false;
     }
-
+    console.log(save_changes);
+    console.log(open_new);
     /*
      * Performs a number of manipulations on the edited string before adding 
      * it back into the DOM.  For instance:
@@ -647,7 +653,7 @@ demarcate.close_editor = function(save_changes, open_new) {
         // removes this class to prevent new elements from being 
         // removed.
         $(".demarcate_temporary").remove();
-        addEditPlaceholder();
+        demarcate.addEditPlaceholder();
     }
 
     /* 
@@ -699,19 +705,6 @@ demarcate.close_editor = function(save_changes, open_new) {
         }
     }
 
-    /* 
-     * Ensures users always have a "click me to edit" box 
-     * at the end of the demarate editable region
-     */
-    var addEditPlaceholder = function () {
-        demarcate.dom_root.append(
-            $('<p />', {
-                    class: 'demarcate_temporary',
-                    text: 'Click to add a new block'
-            })
-        );
-    }
-
     /*
      * Handle the various types of saving:
      *    --> CANCEL meaning no changes are saved
@@ -719,8 +712,8 @@ demarcate.close_editor = function(save_changes, open_new) {
      *    --> SAVE meaning changes are saved and all editors are closed
     */
     if (save_changes) {
-        if (create_new) {
-            close_editor();
+        if (open_new) {
+            createNewEditor();
         } else {
             doSave();
             hideEditor();
@@ -731,6 +724,20 @@ demarcate.close_editor = function(save_changes, open_new) {
 
     // raise an event so markdown can be pushed back to server if required
     $(document).trigger('demarcate_editor_closed', [demarcate.current_element]);
+};
+
+
+/* 
+ * Ensures users always have a "click me to edit" box 
+ * at the end of the demarate editable region
+ */
+demarcate.addEditPlaceholder = function () {
+    demarcate.dom_root.append(
+        $('<p />', {
+                class: 'demarcate_temporary',
+                text: 'Click to add a new block'
+        })
+    );
 };
 
 
