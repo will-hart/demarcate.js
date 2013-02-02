@@ -334,6 +334,7 @@ function hide_editor(e) {
     // removes this class to prevent new elements from being 
     // removed.
     $(".demarcate_temporary").remove();
+    add_edit_placeholder();
 }
 
 /* 
@@ -393,6 +394,7 @@ function save_and_new_editor_area() {
 
     // force a save on the previous element
     $("#demarcate_save").click();
+    $(".demarcate_temporary").remove();
 
     // add the class after saving to prevent it being immediately pruned
     if (tag_name != "td" && tag_name != "th") {
@@ -417,7 +419,21 @@ function get_next_table_cell(elem) {
             return next_tr.find("th, td").first();
         }
     }
-    return next_td
+    return next_td;
+}
+
+/* 
+ * Ensures users always have a "click me to edit" box 
+ * at the end of the demarate editable region
+ */
+function add_edit_placeholder() {
+    console.log("doing");
+    demarcate_dom_root.append(
+        $('<p />', {
+                class: 'demarcate_temporary',
+                text: 'Click to add a new block'
+        })
+    );
 }
 
 /* 
@@ -635,19 +651,7 @@ function enable_demarcate_toolbar_handlers() {
         }
 
         enable_demarcate_toolbar_handlers();
-
-        // if our editor box is empty, add an initial 'edit me' paragraph
-        // add a class to ensure this isn't parsed by the demarkdown function
-        if (demarcate_dom_root.is(":empty") ||
-                $.trim(demarcate_dom_root.html()) == "") {
-
-            demarcate_dom_root.append(
-                $('<p />', {
-                        class: 'demarcate_temporary',
-                        text: 'Click me to start editing'
-                })
-            );
-        }
+        add_edit_placeholder();
     };
 })( jQuery );
 
