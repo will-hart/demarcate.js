@@ -90,7 +90,10 @@
                 <p>A <code>blockquote</code> with some further <strong>strong</strong> and <em>em'd</em> text to test our capabilities.</p>
             </blockquote>
 
-            <p>Some text <a href="asdf.html">with embedded link</a> and more text</p>
+            <p>
+                Some text <a href="asdf.html">with embedded link</a> and more text, 
+                and even some images: <img src="http://placehold.it/150x150" alt="placeholder image" title="a title">
+            </p>
 
 
             <ul>
@@ -191,13 +194,13 @@
             $(document).ready( function() {
                 // Enable all whitelisted elements in the '#container' dom element
                 // for demarcation.  
-                $('#container').enable_demarcate();
+                demarcate.enable($('#container'));
 
                 // bind a handler to the 'demarcate_editor_closed' event.  This allows
                 // the rendered markdown to be immediately placed in the '#output' div.
                 // new lines are replaced with <br> tags for rending in browser
                 $(document).bind('demarcate_editor_closed', function(e, elem) {
-                    var op = demarcate_dom_root.demarcate();
+                    var op = demarcate.demarcate();
                     $("#output").html($("<pre />", {text: op}));
                 });
             });

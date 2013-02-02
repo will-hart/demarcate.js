@@ -424,7 +424,7 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
         var op = " ![" + alt + "](" + url;
 
         if (title != "") {
-            op += title;
+            op += " \"" + title + "\"";
         }
 
         return op + ") ";
@@ -501,6 +501,9 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
         return result;
     }
     
+    if (elem === undefined) {
+        elem = demarcate.dom_root;
+    }
     return demarkdown(elem, ignore_extras, child_prefix);
 };
 
