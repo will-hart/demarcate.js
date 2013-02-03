@@ -288,7 +288,7 @@ demarcate.enable = function(elem) {
  * Disconnects all demarcate event handlers from the given element
  * to allow toggling of editing functionality
  */
-demarcate.disable = function (elem) {
+demarcate.disable = function () {
 
     // Clear out the element tags
     if (demarcate.current_editor != null) {
@@ -846,7 +846,7 @@ demarcate.clickElsewhereSave = function (e) {
  */
 (function ( $ ) {
     $.fn.enable_demarcate = function() {
-        return demarcate.enable(this);
+        demarcate.enable(this);
     }
 })(jQuery);
 
@@ -855,6 +855,6 @@ demarcate.clickElsewhereSave = function (e) {
  */
 (function ( $ ) {
     $.fn.disable_demarcate = function() {
-        return demarcate.disable(this);
+        demarcate.disable();
     }
 })(jQuery);
