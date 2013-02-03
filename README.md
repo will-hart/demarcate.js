@@ -1,27 +1,28 @@
-demarcate.js
-============
+# demarcate.js
 
-**Version 1.1.2**
+**Version 1.1.3**
 
 demarcate.js is an in-place Markdown Editor under development by 
-[William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/).
-The editor works directly on the DOM, tags with a textarea for editing and then
-closing returning the markdown "code" when requested.  It uses the 
+[William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
+and released under an MIT license.  The editor works directly on the DOM, tags with a textarea 
+for editing and then closing returning the markdown "code" when requested.  It uses the 
 [showdown js library](https://github.com/coreyti/showdown) to render markdown 
 in the browser once it has been entered.
 
 demarcate.js allows you to apply your own stylesheets to a document and then have users
-edit it using simple textareas.  Users are not required to know markdown, instead
-they just click on a DOM element and start typing!
+edit it directly.  Users are not required to know markdown, instead they just click on a 
+DOM element and start typing!
 
+## LIMITATIONS
 
-LIMITATIONS
-===============
+Currently not all Markdown syntax is supported.  In particular:
 
-Support for extensions such as footnotes is not implemented.  Additionally 
+- Footnotes are not implemented [[#13](https://github.com/will-hart/demarcate.js/issues/13)].
+- Source code formatted with pygments not decoded correctly [[#9](https://github.com/will-hart/demarcate.js/issues/9)].
+- Mathjax equations halt rendering. [[#8](https://github.com/will-hart/demarcate.js/issues/8)].
 
-USAGE
-===========
+## USAGE
+
 
 The `index.html` file in the editor shows a sample implementation of demarcate. 
 It can be seen at [http://will-hart.github.com/demarcate.js/](http://will-hart.github.com/demarcate.js/).  
@@ -64,8 +65,7 @@ is successfully closed and the changes are saved.  You can listen to this event 
     });
 
 
-LICENSE
-==========
+## LICENSE
 
 This software is now released under an MIT license.  
 
@@ -79,36 +79,35 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-CONTRIBUTING
-===============
+## CONTRIBUTING
 
 Contributions and suggestions are welcome - fill out an issue or submit a pull request.
 
 
-CHANGE LOG 
-===============
+##CHANGE LOG 
 
 `+` - new feature         
 `~` - revised feature        
 `-` - removed feature        
 `*` - bug fix
 
-Version 1.1.3
---------------
+### Version 1.1.3
 
+
+`+` Released under the MIT license       
 `+` Support image tags             
 `+` [Documentation](http://will-hart.github.com/demarcate.js/doc/index.html) launched     
 `+` Improved [github pages](http://will-hart.github.com/demarcate.js) to have a 'pretty' and a 'technical' demo         
 `+` Allow disabling of an editor so editing can be toggled on and off        
-`~` Scroll editor to top of screen so you can write forever without using the mouse             
+`~` Scroll editor to near the top of the screen so you can write forever without using the mouse             
 `~` Complete refactor of the code to maintain separation from other js libraries       
 `*` Various minor changes and improvements        
 
 
 
 
-Version 1.1.2
---------------
+### Version 1.1.2
+
 
 `+` Added support for editing and converting tables.  Currently new rows cannot be added      
 `+` Added support for `<br>` tags, by ending a line with four or more spaces      
@@ -121,7 +120,6 @@ Version 1.1.2
 `*` Unknown tags errors not correctly trapped      
 `*` Textarea now resizes correctly when first editing      
 
-Version 1.1.1
---------------
+### Version 1.1.1
 
 Initial "production" version for [http://to-textr.com/](http://to-textr.com/)

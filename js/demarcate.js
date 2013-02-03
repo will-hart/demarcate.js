@@ -1,5 +1,5 @@
 /*************************************************************************
-*      DemarcateJS v1.1.3dev is an in-place Markdown editor and decoder  *
+*      DemarcateJS v1.1.3 is an in-place Markdown editor and decoder     *
 *                                                                        *
 *      It was written by William Hart (http://www.williamhart.info) to   *
 *      run on "textr" (http://to-textr.com/) a new Markdown enabled      *
