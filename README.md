@@ -23,52 +23,64 @@ Currently not all Markdown syntax is supported.  In particular:
 
 ## USAGE
 
+**For developers, a [API documentation](http://will-hart.github.com/demarcate.js/docs) is available**
 
-The `index.html` file in the editor shows a sample implementation of demarcate. 
-It can be seen at [http://will-hart.github.com/demarcate.js/](http://will-hart.github.com/demarcate.js/).  
+The `editor.html` file shows a sample implementation of demarcate. It can be seen
+running at [http://will-hart.github.com/demarcate.js/](http://will-hart.github.com/demarcate.js/).  
 
-Two files need to be included in order to use demarcate - one js and one CSS file:
+In short, two files need to be included in order to use demarcate - one js and 
+one CSS file.  Also make sure you have the required images in and `img` directory.
 
     <link rel="stylesheet" href="css/demarcate.css">
-    <script src="js/showdown.min.js" type="text/javascript"></script>
-    <script src="js/demarcate.js" type="text/javascript"></script>
+    <script src="js/demarcate.min.js" type="text/javascript"></script>
 
-> **NOTE** the minified version of demarcate includes the showdown library automatically 
-so if you include the minified version you do not need to include showdown separately.
+> **NOTE** the minified version of demarcate.js includes all js dependencies
 
-You may wish to use a plugin like [jquery.autosize.js](http://www.jacklmoore.com/autosize)
-to allow the text editor fields to resize as you type.  (This is not a requirement)
-
-Next you need to add a script tag to the bottom of your page.  Use a jquery selector 
-to pick an DOM tree section to act as the in-place editor.  This is done as follows:
+Next you need to add a script tag to the bottom of your page.  Use a jquery
+selector to pick an DOM tree section to act as the in-place editor.  This is 
+done as follows:
 
     $('#container').enable_demarcate();
 
-Every valid object (specified in the `editor_whitelist` array) within the `#container` 
-DOM element will have the in place editing behaviour attached to it (i.e. click to edit).
+Alternative javascript syntax is available which performs the same task:
+
+    demarcate.enable($("#container"));
+
+Every valid object (specified in the `editor_whitelist` array) within the 
+`#container` DOM element will have the in place editing behaviour attached to 
+it (i.e. click to edit).
 
 To get the markdown from the elements, you can use the `demarcate()` function:
 
-    var markdown = demarcate_dom_root.demarcate();
+    // use this for any element
+    $("#any_element").demarcate();
+        
+    // or
+    var markdown = demarcate.demarcate($("#any_element"));
+    
+    // or for the Markdown from the current editor
+    var markdown = demarcate.demarcate();
+    
 
-Note that the `demarcate_dom_root` variable is automatically set to whatever you specified
-when you called `enable_demarcate`.  You can then use this markdown in an ajax call or 
-however you want to utilise it.  
-
-Demarcate provides a `demarcate_editor_closed` event which is fired whenever an editor 
-is successfully closed and the changes are saved.  You can listen to this event using 
-`bind` and automatically push the changes up to your server using ajax.  For instance:
+Demarcate provides a number of events that can be subscribed to, enabling your 
+application to respond to editor actions.  In particular the 
+`demarcate_editor_closed` event which is fired whenever an editor is successfully
+closed and the changes are saved.  You can listen to this event using `bind` 
+and automatically push the changes up to your server using ajax.  For instance:
 
     $(document).bind('demarcate_editor_closed', function(e, elem) {
-        var md = demarcate_dom_root.demarcate();
+        var md = demarcate.demarcate();
         $.post('http://my/api/url/', md});
     });
 
+View the [API documentation](http://will-hart.github.com/demarcate.js/docs)  for
+more details.
 
 ## LICENSE
 
 This software is now released under an MIT license.  
 
+-----------
 
 Copyright (C) 2013 William Hart (http://www.williamhart.info/)
 
