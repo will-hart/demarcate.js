@@ -33,19 +33,20 @@
         <script src="js/jquery.autosize.js" type="text/javascript"></script>
         
         <!-- Include demarcate.min.js - showdown is included already in this file -->
-        <script src="js/demarcate.min.js" type="text/javascript"></script>
+        <script src="js/showdown.min.js" type="text/javascript"></script>
+        <script src="js/demarcate.js" type="text/javascript"></script>
         <script type="text/javascript">
             var hide_preview = function() {
                 $("#preview").remove();
             }
         
             $(document).ready( function() {
-                $('#edit_me').enable_demarcate();
+                demarcate.enable($('#edit_me'));
                 
                 $("#render").click( function (e) {
                     e.preventDefault();
                     $("#preview").remove();  // prevent stacking previews
-                    var md = demarcate_dom_root.demarcate().replace(/\n/g,"<br>");
+                    var md = demarcate.demarcate().replace(/\n/g,"<br>");
                     var prev = $("<div />", { id: "preview", html: md });
                     $("body").append(prev);
                 });
