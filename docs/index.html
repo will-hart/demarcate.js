@@ -180,71 +180,6 @@
                     </tr>
 
 
-                    <tr>
-                        <td class="docs">
-                            <div class="dox">
-                                <div class="summary">
-                                    <div class="pilwrap" id="demarcate.enable">
-                                        <h3>
-                                            <a href="#demarcate.enable" class="pilcrow">&#182;</a>
-                                            demarcate.enable
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div class="body">
-                                    <p>
-                                        take a jQuery dom element and set it up for demarcate editing.  This applies a class
-                                        of <code>demarcate_editable</code> to every element which can be edited and binds all
-                                        the necessary event handlers.
-                                    </p>
-                                </div>
-                                <div class="details">
-                                    <div class="dox_tag_title">Params</div>
-                                    <div class="dox_tag_detail">
-                                        <span class="dox_tag_name">elem</span>
-                                        <span class="dox_type">jQuery object</span>
-                                        <span>The top level DOM object you want to edit with demarcate.js</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="code highlight">
-                            <div class="highlight">
-                                <pre><span class="n">demarcate</span><span class="p">.</span><span class="n">enable</span><span class="p">(</span><span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">);</span>
-<span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">).</span><span class="n">enable_demarcate</span><span class="p">();</span></pre>
-                            </div>
-                        </td>
-                    </tr>
-
-
-
-                    <tr>
-                        <td class="docs">
-                            <div class="dox">
-                                <div class="summary">
-                                    <div class="pilwrap" id="demarcate.disable">
-                                        <h3>
-                                            <a href="#demarcate.disable" class="pilcrow">&#182;</a>
-                                            demarcate.disable
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div class="body">
-                                    <p>
-                                        disables the demarcate.js editor, unbinding all event handlers and removing all
-                                        demarcate.js css classes.  Allows toggling of editing on and off.
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="code highlight">
-                            <div class="highlight">
-                                <pre><span class="n">demarcate</span><span class="p">.</span><span class="n">disable</span><span class="p">();</span>
-<span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">).</span><span class="n">disable_demarcate</span><span class="p">();</span></pre>
-                            </div>
-                        </td>
-                    </tr>
-
 
 
                     <tr>
@@ -286,6 +221,147 @@
 <span class="c1">// get the Markdown for any element</span>
 <span class="n">demarcate</span><span class="p">(</span><span class="c">$</span><span class="p">(</span><span class="s">&quot;#any_element&quot;</span><span class="p">));</span>
 <span class="c">$</span><span class="p">(</span><span class="s">&quot;#any_element&quot;</span><span class="p">).</span><span class="n">demarcate</span><span class="p">();</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.disable">
+                                        <h3>
+                                            <a href="#demarcate.disable" class="pilcrow">&#182;</a>
+                                            demarcate.disable
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        disables the demarcate.js editor, unbinding all event handlers and removing all
+                                        demarcate.js css classes.  Allows toggling of editing on and off.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="n">demarcate</span><span class="p">.</span><span class="n">disable</span><span class="p">();</span>
+<span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">).</span><span class="n">disable_demarcate</span><span class="p">();</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.enable">
+                                        <h3>
+                                            <a href="#demarcate.enable" class="pilcrow">&#182;</a>
+                                            demarcate.enable
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        take a jQuery dom element and set it up for demarcate editing.  This applies a class
+                                        of <code>demarcate_editable</code> to every element which can be edited and binds all
+                                        the necessary event handlers.
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Params</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_tag_name">elem</span>
+                                        <span class="dox_type">jQuery object</span>
+                                        <span>The top level DOM object you want to edit with demarcate.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="n">demarcate</span><span class="p">.</span><span class="n">enable</span><span class="p">(</span><span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">);</span>
+<span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">).</span><span class="n">enable_demarcate</span><span class="p">();</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.isActive">
+                                        <h3>
+                                            <a href="#demarcate.isActive" class="pilcrow">&#182;</a>
+                                            demarcate.isActive
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        Helps determine if demarcate.js is currently editing a block.  
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Return</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_type">boolean</span>
+                                        <span><code>true</code> if currently editing a block, <code>false</code> otherwise</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c">// for instance</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">demarcate</span><span class="p">.</span><span class="n">isActive</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">demarcate</span><span class="p">.</span><span class="n">save</span><span class="p">();</span>
+<span class="p">}</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.isEnabled">
+                                        <h3>
+                                            <a href="#demarcate.isEnabled" class="pilcrow">&#182;</a>
+                                            demarcate.isEnabled
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        Helps determine if demarcate.js is "enabled" meaning that it is set up for 
+                                        blocks to be clicked on and edited.  Calling <code>demarcate.enable()</code>
+                                        sets this state to true.
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Return</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_type">boolean</span>
+                                        <span><code>true</code> if currently enabled for editing, <code>false</code> otherwise</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c">// for instance</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">demarcate</span><span class="p">.</span><span class="n">isEnabled</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">demarcate</span><span class="p">.</span><span class="n">disable</span><span class="p">();</span>
+<span class="p">}</span></pre>
                             </div>
                         </td>
                     </tr>
