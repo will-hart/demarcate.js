@@ -60,57 +60,11 @@
                 </li>
             </ol>
             <p>
-                I'm keen to hear any feedback, queries or issues.  Get in touch via twitter or raise an issue / pull request on the 
-                <a href="https://github.com/will-hart/demarcate.js">github site</a>.  
-                <a href="https://twitter.com/intent/tweet?screen_name=wlhart&text=%23demarcatejs" class="twitter-mention-button" data-related="wlhart">Tweet to @wlhart</a>
+                I'm keen to hear any feedback, queries or issues.  Get in touch via twitter - <a href="https://twitter.com/intent/tweet?screen_name=wlhart&text=%23demarcatejs" class="twitter-mention-button" data-related="wlhart">Tweet to @wlhart</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </p>
-            <hr>
-            
-            <h3>Integrating into your site</h3>
-            <p>
-                <blockquote>Editing is not currently supported on mobile browsers and is untested in Internet Explorer</blockquote>
-            </p>
-            <p>
-                Integrating into your website only requires a few lines of code.  The editor uses your site's CSS styles for styling text,
-                however the editor itself requires a small CSS stylesheet.  Include this by putting 
-                <code>&lt;link rel="stylesheet" href="css/demarcate.min.css"&gt;</code>
-                somewhere in your head.
-            </p>
-
-            <p>
-                The minified demarcate.js source includes the dependencies `jquery.autosize.js` and `showdown`.  
-                These are not included in the full `demarcate.js` file so would need to be included separately.  
-                Presuming you are after a "production" deployment, you need to include jQuery and <code>demarcate.min.js</code> 
-                files somewhere near the end of your <code>&lt;body&gt;</code> section:
-            </p>
-
-            <pre>&lt;script src="http://code.jquery.com/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;
-&lt;script src="js/demarcate.min.js" type="text/javascript"&gt;&lt;/script&gt;</pre>
-
-            <p>
-                Finally, demarcate can be enabled on a given DOM element and its children, and the raw markdown
-                can be retrieved whenever an editor block is closed:
-            </p>
-            
-            <pre>&lt;script&gt;
-    $(document).ready(function(){
-        demarcate.enable($("#my_edit_area"));
-        $(document).bind("demarcate_editor_closed", function() {
-            alert(demarcate.demarcate());
-        });
-    });
-&lt;/script&gt;</pre>
+             - or raise an issue / pull request on the 
+                <a href="https://github.com/will-hart/demarcate.js">github site</a>.  
+                </p>
         </div>
-        
-        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-        <script src="js/demarcate.min.js" type="text/javascript"></script>
-        <script>
-            $(document).ready(function(){
-                $("#preview_markdown").click( function() {
-                    alert(demarkdown($("#container")));
-                });
-            });
-        </script>
     </body>
 </html>
