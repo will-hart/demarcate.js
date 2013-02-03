@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>demarcate.js WYSIWYG Markdown Editor Documentation</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" media="all" href="doc-style.css" />
+    </head>
+    <body>
+        <div id="container">
+            <div class="background highlight"></div>
+            <table cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td class="docs">
+                            <div class="pilwrap" id="demarcate.js">
+                                <h1>
+                                    <a href="#demarcate.js" class="pilcrow">&#182;</a>
+                                    demarcate.js 1.1.3
+                                </h1>
+                            </div>
+                            <div class="pilwrap" id="a-wysiwyg-markdown-editor">
+                                <h3>
+                                    <a href="#a-wysiwyg-markdown-editor" class="pilcrow">&#182;</a>
+                                    <em>A WYSIWYG Markdown Editor from <a href="http://williamhart.info/">Will Hart</a></em>
+                                </h3>
+                            </div>
+
+                            <p>
+                                demarcate.js is an MIT licensed, jQuery backed library for editing web pages "in place" and genearting
+                                Markdown from the resulting HTML.  
+                            </p>
+                            <p>
+                                This documentation is for developers and describes how to install and utilise demarcate.js.  For instructions
+                                for using demarcate.js, have a look at the <a href="manual.html">user manual</a>
+                            </p>
+                            <ul>
+                                <li>
+                                    <p>
+                                        <strong><a href="#installation">Installation</a></strong>: 
+                                        the files you need to include to install demarcate.js in your web page.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong><a href="#methods">Methods</a></strong>: the methods demarcate.js exposes.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong><a href="#events">Events</a></strong>: the events demarcate.js exposes.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong><a href="#styling">Styling</a></strong>: how to override the deault editor styles.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong><a href="deploy.html">Deployment</a></strong>: how to rebuild the minified docs.
+                                    </p>
+                                </li>
+                            </ul>
+                        </td>
+                        <td class="code highlight">&nbsp;</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="installation">
+                                        <h2>
+                                            <a href="#installation" class="pilcrow">&#182;</a>
+                                            Installation
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        To install textr in a web page you need to include one CSS file, two image files
+                                        and one javascript file.  demarcate.js depends on a couple of dependencies
+                                    </p>
+                                    <p>
+                                        <ul>
+                                            <li>showdown</li>
+                                            <li>jquery.autosize.js</li>
+                                        </ul>
+                                    </p>
+                                    <p>
+                                        The overall directory structure should look like this:
+                                        <ul>
+                                            <li>js/
+                                                <ul>
+                                                    <li><a href="../js/demarcate.min.js">demarcate.min.js</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>css/
+                                                <ul>
+                                                    <li><a href="../css/demarcate.min.css">demarcate.min.css</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>img/
+                                                <ul>
+                                                    <li><a href="../img/demarcate_separator.png">demarcate_separator.png</a></li>
+                                                    <li><a href="../img/demarcate_sprite.png">demarcate_sprite.png</a></li>
+                                                </ul>
+                                            </li>
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c">&lt;!-- the minified version includes dependencies --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/demarcate.min.css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/demarcate.min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+                                </pre>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="docs">
+                            <div>
+                                <div class="body">
+                                    <p>
+                                        If you include the minified (<code>demarcate.min.js</code>) file provided on the github repository, then
+                                        these dependencies are included by default.  If you include the uncompressed file (<code>demarcate.js</code>)
+                                        then you will need to include these yourself. 
+                                    </p>
+                                    <p>
+                                        Don't forget to include jQuery as well!
+                                    </p>
+                                    <p>
+                                        For development you may wish to include the full demarcate.js source as opposed to the minfied version.
+                                        In this case, you need to include all the dependencies.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c">&lt;!-- the development version requires dependencies to be included --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/demarcate.min.css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery.min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/jquery.autosize.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/showdown.min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/demarcate.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+                                </pre>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="methods">
+                                        <h2>
+                                            <a href="#methods" class="pilcrow">&#182;</a>
+                                            Methods
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        demarcate.js exposes two main methods - <code>enable()</code> and <code>disable()</code>
+                                        that can be used to control when the editor appears and which elements in the DOM can be edited. 
+                                    </p>
+                                    <p>
+                                        A third method, <code>demarcate()</code> is used to retrieve the HTML from a given element.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">&nbsp;</td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.enable">
+                                        <h3>
+                                            <a href="#demarcate.enable" class="pilcrow">&#182;</a>
+                                            demarcate.enable
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        take a jQuery dom element and set it up for demarcate editing.  This applies a class
+                                        of <code>demarcate_editable</code> to every element which can be edited and binds all
+                                        the necessary event handlers.
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Params</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_tag_name">elem</span>
+                                        <span class="dox_type">jQuery object</span>
+                                        <span>The top level DOM object you want to edit with demarcate.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="n">demarcate</span><span class="p">.</span><span class="n">enable</span><span class="p">(</span><span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">);</span>
+<span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">).</span><span class="n">enable_demarcate</span><span class="p">();</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.disable">
+                                        <h3>
+                                            <a href="#demarcate.disable" class="pilcrow">&#182;</a>
+                                            demarcate.disable
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        disables the demarcate.js editor, unbinding all event handlers and removing all
+                                        demarcate.js css classes.  Allows toggling of editing on and off.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="n">demarcate</span><span class="p">.</span><span class="n">disable</span><span class="p">();</span>
+<span class="c">$</span><span class="p">(</span><span class="s">&quot;#dom_to_edit&quot;</span><span class="p">).</span><span class="n">disable_demarcate</span><span class="p">();</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.demarcate">
+                                        <h3>
+                                            <a href="#demarcate.demarcate" class="pilcrow">&#182;</a>
+                                            demarcate.demarcate
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        Takes the given jQuery DOM element and converts the HTML to Markdown.
+                                        The given element does not have to be the demarcate editor.  
+                                    </p>
+                                    <p>
+                                        If no element is provided, the Markdown from the current editor will be 
+                                        returned.
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Params</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_tag_name">elem</span>
+                                        <span class="dox_type">jQuery object</span>
+                                        <span>The top level DOM object you want to edit with demarcate.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c1">// get the Markdown from the current editor</span>
+<span class="n">demarcate</span><span class="p">.</span><span class="n">demarcate</span><span class="p">();</span>
+
+<span class="c1">// get the Markdown for any element</span>
+<span class="n">demarcate</span><span class="p">(</span><span class="c">$</span><span class="p">(</span><span class="s">&quot;#any_element&quot;</span><span class="p">));</span>
+<span class="c">$</span><span class="p">(</span><span class="s">&quot;#any_element&quot;</span><span class="p">).</span><span class="n">demarcate</span><span class="p">();</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="events">
+                                        <h2>
+                                            <a href="#events" class="pilcrow">&#182;</a>
+                                            Events
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        demarcate.js triggers several events to allow your web page to respond 
+                                        to actions made by the user or editor.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">&nbsp;</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate_editor_closed">
+                                        <h3>
+                                            <a href="#demarcate_editor_closed" class="pilcrow">&#182;</a>
+                                            demarcate_editor_closed
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        Triggered when an editor is closed, either because of the user cancelling changes or
+                                         cancelling changes or closing and saving a block.
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Raised When</div>
+                                    <div class="dox_tag_detail">
+                                        <span>An editor block is closed or saved</span>
+                                    </div>
+
+                                    <div class="dox_tag_title">Provides</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_tag_name">elem</span>
+                                        <span class="dox_type">jQuery object</span>
+                                        <span>The element that was edited</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c">// bind to the editor closed event and push the resulting Markdown to a server</span>
+<span class="c">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;demarcate_editor_closed&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">elem</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">op</span> <span class="o">=</span> <span class="nx">demarcate</span><span class="p">.</span><span class="nx">demarcate</span><span class="p">();</span>
+    <span class="nx">ajax_to_server</span><span class="p">(op);</span>
+<span class="p">});</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate_editor_enabled">
+                                        <h3>
+                                            <a href="#demarcate_editor_enabled" class="pilcrow">&#182;</a>
+                                            demarcate_editor_enabled
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        Triggered when an editor is enabled using <code>demarcate.enable()</code>
+                                    </p>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Raised When</div>
+                                    <div class="dox_tag_detail">
+                                        <span>An DOM element is enabled for demarcate.js editing</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">&nbsp;</div>
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="styling">
+                                        <h2>
+                                            <a href="#styling" class="pilcrow">&#182;</a>
+                                            Styling
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        demarcate.js uses two images and a stylesheet for editor styles.  
+                                        <code>img/demarcate_sprite.png</code> contains all the editor icons
+                                        images in a 6x6 grid.  Each icon is 24x24 pixels, the top three rows are
+                                        default icons and the bottom three rows are <code>mouseover</code> icons.
+                                        You can edit these icons and overwrite with your own images.  The basis for
+                                        these icons is <code>img/icons.svg</code>.
+                                    </p>
+                                    <p>
+                                        Additionally you can replace <code>img/demarcate_separator.png</code>
+                                        with a custom separator image.
+                                    </p>
+                                    <p>
+                                        You can also apply your own styles in <code>css/demarcate.css</code>
+                                        as long as you maintain the class names.  You may wish to review the 
+                                        <a href="deploy.html">deployment</a> documentation to review how to 
+                                        quickly generate minified javascript and css files for deployment.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">&nbsp;</td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
