@@ -1039,6 +1039,23 @@ demarcate.toolbarSetActive = function () {
 };
 
 
+/*
+ * Returns 'true' if the a demarcate editor is currently
+ * enabled and false otherwise
+ */
+demarcate.isEnabled = function() {
+    return !(demarcate.dom_root === null);
+}
+
+
+/* 
+ * Returns true if demarcate is currently editing a block
+ * and false otherwise
+ */
+demarcate.isActive = function() { 
+    return !(demarcate.current_element === null);
+}
+
 /* 
  * A mouseup handler that checks if the toolbar or editor was clicked.
  * If not, it hides the editor.  
