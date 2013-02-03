@@ -20,32 +20,280 @@ var demarcate = {};
 /*
  * Dictionary of tags to include
  */
-var tag_dict = {
-    'div':        {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'span':       {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'h1':         {editable: true,  markdownable: true, prefix: '# ',     postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'h2':         {editable: true,  markdownable: true, prefix: '## ',    postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'h3':         {editable: true,  markdownable: true, prefix: '### ',   postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'h4':         {editable: true,  markdownable: true, prefix: '#### ',  postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'h5':         {editable: true,  markdownable: true, prefix: '##### ', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'h6':         {editable: true,  markdownable: true, prefix: '###### ',postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'li':         {editable: true,  markdownable: true, prefix: '- ',     postfix: '\n',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
-    'ul':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true,  force_prefix: false, selector_type: ' > '},
-    'ol':         {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: true,  force_prefix: false, selector_type: ' > '},
-    'blockquote': {editable: true,  markdownable: true, prefix: '>',      postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'pre':        {editable: true,  markdownable: true, prefix: '    ',   postfix: '\n',  post_newline: true,  childprefix: '    ', allow_newline: true , force_prefix: false, selector_type: ' > '},
-    'code':       {editable: true,  markdownable: true, prefix: ' `',     postfix: '` ',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
-    'a':          {editable: false, markdownable: true, prefix: ' [',     postfix: ']',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
-    'hr':         {editable: true,  markdownable: true, prefix: '------', postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
-    'em':         {editable: false, markdownable: true, prefix: ' *',     postfix: '* ',  post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
-    'strong':     {editable: false, markdownable: true, prefix: ' **',    postfix: '** ', post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true , selector_type: ' > '},
-    'p':          {editable: true,  markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'table':      {editable: false, markdownable: true, prefix: '',       postfix: '\n',  post_newline: true,  childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' > '},
-    'th':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
-    'td':         {editable: true,  markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
-    'br':         {editable: false, markdownable: true, prefix: '    \n', postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
-    'img':        {editable: false, markdownable: true, prefix: '',       postfix: '',   post_newline: false, childprefix: '',     allow_newline: false, force_prefix: true,  selector_type: ' '  },
-    '_text':      {editable: false, markdownable: true, prefix: '',       postfix: '',    post_newline: false, childprefix: '',     allow_newline: false, force_prefix: false, selector_type: ' '  },
+var _tag_dict = {
+    'div': {
+        editable: false, 
+        markdownable: true, 
+        prefix: '',
+        postfix: '',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'span': {
+        editable: false,
+        markdownable: true,
+        prefix: '',
+        postfix: '',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'h1': {
+        editable: true, 
+        markdownable: true, 
+        prefix: '# ', 
+        postfix: '\n', 
+        post_newline: true, 
+        childprefix: '', 
+        allow_newline: false, 
+        force_prefix: false, 
+        selector_type: ' > '
+    },
+    'h2': {
+        editable: true, 
+        markdownable: true, 
+        prefix: '## ', 
+        postfix: '\n', 
+        post_newline: true, 
+        childprefix: '', 
+        allow_newline: false, 
+        force_prefix: false, 
+        selector_type: ' > '},
+    'h3': {
+        editable: true, 
+        markdownable: true, 
+        prefix: '### ', 
+        postfix: '\n', 
+        post_newline: true, 
+        childprefix: '', 
+        allow_newline: false, 
+        force_prefix: false, 
+        selector_type: ' > '
+    },
+    'h4': {
+        editable: true,
+        markdownable: true,
+        prefix: '#### ',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'h5': {
+        editable: true,
+        markdownable: true,
+        prefix: '##### ',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'h6': {
+        editable: true,
+        markdownable: true,
+        prefix: '###### ',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'li': {
+        editable: true,
+        markdownable: true,
+        prefix: '- ',
+        postfix: '\n',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: true ,
+        selector_type: ' > '
+    },
+    'ul': {
+        editable: true,
+        markdownable: true,
+        prefix: '',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: true,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'ol': {
+        editable: true,
+        markdownable: true,
+        prefix: '',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: true,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'blockquote': {
+        editable: true,
+        markdownable: true,
+        prefix: '>',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'pre': {
+        editable: true,
+        markdownable: true,
+        prefix: '    ',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '    ',
+        allow_newline: true,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'code': {
+        editable: true,
+        markdownable: true,
+        prefix: ' `',
+        postfix: '` ',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: true ,
+        selector_type: ' > '
+    },
+    'a': {
+        editable: false,
+        markdownable: true,
+        prefix: ' [',
+        postfix: ']',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: true ,
+        selector_type: ' > '
+    },
+    'hr': {
+        editable: true,
+        markdownable: true,
+        prefix: '------',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: true ,
+        selector_type: ' > '
+    },
+    'em': {
+        editable: false,
+        markdownable: true,
+        prefix: ' *',
+        postfix: '* ',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: true ,
+        selector_type: ' > '
+    },
+    'strong': {
+        editable: false,
+        markdownable: true,
+        prefix: ' **',
+        postfix: '** ',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: true ,
+        selector_type: ' > '
+    },
+    'p': {
+        editable: true,
+        markdownable: true,
+        prefix: '',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'table': {
+        editable: false,
+        markdownable: true,
+        prefix: '',
+        postfix: '\n',
+        post_newline: true,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' > '
+    },
+    'th': {
+        editable: true,
+        markdownable: true, 
+        prefix: '',
+        postfix: '',
+        post_newline: false,
+        childprefix: '',
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' '
+    },
+    'td': {
+        editable: true,  
+        markdownable: true, 
+        prefix: '',       
+        postfix: '',    
+        post_newline: false, 
+        childprefix: '',     
+        allow_newline: false, 
+        force_prefix: false, 
+        selector_type: ' '  
+    },
+    'br': {
+        editable: false, 
+        markdownable: true, 
+        prefix: '    \n', 
+        postfix: '',    
+        post_newline: false, 
+        childprefix: '',     
+        allow_newline: false, 
+        force_prefix: true,  
+        selector_type: ' '
+    },
+    'img': {
+        editable: false,
+        markdownable: true, 
+        prefix: '', 
+        postfix: '', 
+        post_newline: false, 
+        childprefix: '',     
+        allow_newline: false, 
+        force_prefix: true,  
+        selector_type: ' '  },
+    '_text': {
+        editable: false, 
+        markdownable: true, 
+        prefix: '', 
+        postfix: '', 
+       post_newline: false, 
+       childprefix: '', 
+       allow_newline: false, 
+       force_prefix: false, 
+       selector_type: ' '
+   },
 };
 
 /* 
@@ -77,7 +325,7 @@ demarcate.enable = function(elem) {
             } else if (e.ctrlKey) { // ctrl key held - save and create new
                 demarcate.close_editor(true, true);
             } else { // new line if editing elem allows newlines, otherwise save and new
-                if (tag_dict[demarcate.current_element.get(0).tagName.toLowerCase()].allow_newline) {
+                if (_tag_dict[demarcate.current_element.get(0).tagName.toLowerCase()].allow_newline) {
                     demarcate.current_editor.insertAtCaret("\n");
                 } else {
                     demarcate.close_editor(true, true);
@@ -194,7 +442,7 @@ demarcate.enable = function(elem) {
             var target_tag = $(this).attr('id').replace("demarcate_", "");
 
             // check this is an allowable tag
-            if (target_tag in tag_dict) {
+            if (target_tag in _tag_dict) {
                 // handle lists
                 var current_tag = demarcate.current_element.get(0).tagName.toLowerCase();
                 var parent_tag = demarcate.current_element.parent().get(0).tagName.toLowerCase();
@@ -248,10 +496,10 @@ demarcate.enable = function(elem) {
 
     // finally add permanent event handlers for clicking editable elements
     var elem_id = elem.attr('id');
-    for (var tag_name in tag_dict) {
-        if (tag_dict[tag_name].editable) {
+    for (var tag_name in _tag_dict) {
+        if (_tag_dict[tag_name].editable) {
             live_selector = "#" + elem_id + 
-                    tag_dict[tag_name].selector_type + tag_name;
+                    _tag_dict[tag_name].selector_type + tag_name;
 
             $(document).on('click', live_selector, function(e) {
                 // avoid trying to edit toolbar items
@@ -310,9 +558,9 @@ demarcate.disable = function () {
 
     // unbind all 'edit' click events
     var elem_id = demarcate.dom_root.attr("id");
-    for (var tag_name in tag_dict) {
-        if (tag_dict[tag_name].editable) {
-            var selector = "#" + elem_id + tag_dict[tag_name].selector_type + tag_name;
+    for (var tag_name in _tag_dict) {
+        if (_tag_dict[tag_name].editable) {
+            var selector = "#" + elem_id + _tag_dict[tag_name].selector_type + tag_name;
             $(document).off('click', selector);
         }
     }
@@ -446,11 +694,11 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
         // do not parse temporary dom elements
         if (elem.hasClass("demarcate_temporary")) return result;
 
-        // check if the element is in the tag_dict
-        if (!(tag_name in tag_dict)) return result;
+        // check if the element is in the _tag_dict
+        if (!(tag_name in _tag_dict)) return result;
 
         // check we are allowed to decode the tag
-        if ((! tag_dict[tag_name].markdownable) && node_type != 3) {
+        if ((! _tag_dict[tag_name].markdownable) && node_type != 3) {
             return result;
         }
 
@@ -464,8 +712,8 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
         }
 
         // open the tag
-        if (! ignore_extras || tag_dict[tag_name].force_prefix) {
-            result += tag_dict[tag_name].prefix;
+        if (! ignore_extras || _tag_dict[tag_name].force_prefix) {
+            result += _tag_dict[tag_name].prefix;
         }
 
         // add any text inside text nodes
@@ -477,18 +725,18 @@ demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
         }
 
         // add child elements
-        result += tag_dict[tag_name].childprefix;
+        result += _tag_dict[tag_name].childprefix;
         $.each(elem.contents(), function(index, value) {
             result += demarkdown($(value), ignore_extras, "");
         });
 
         // close the tag
-        if (! ignore_extras || tag_dict[tag_name].force_prefix) {
-            result += tag_dict[tag_name].postfix;
+        if (! ignore_extras || _tag_dict[tag_name].force_prefix) {
+            result += _tag_dict[tag_name].postfix;
         }
 
         // apply a new line if required
-        if (tag_dict[tag_name].post_newline) {
+        if (_tag_dict[tag_name].post_newline) {
             result += '\n';
         }
 
@@ -554,7 +802,7 @@ demarcate.edit = function(elem) {
         var tag_name = elem.get(0).tagName.toLowerCase();
 
         // double check we are allowed to edit this
-        if (tag_name in tag_dict) {
+        if (tag_name in _tag_dict) {
 
             // create the new text editor - ignore front matter
             var md = demarcate.demarcate(elem, true, "");
@@ -641,8 +889,8 @@ demarcate.close_editor = function(save_changes, open_new) {
 
         if (curr_value != "") {
             if (tag_name != "hr") {
-                curr_value = tag_dict[tag_name].prefix + tag_dict[tag_name].childprefix +
-                        curr_value + tag_dict[tag_name].postfix;
+                curr_value = _tag_dict[tag_name].prefix + _tag_dict[tag_name].childprefix +
+                        curr_value + _tag_dict[tag_name].postfix;
             }
         }
 
