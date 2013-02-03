@@ -1,5 +1,5 @@
 /*************************************************************************
-*      DemarcateJS v1.1.3 is an in-place Markdown editor and decoder     *
+*      DemarcateJS v1.1.4dev is an in-place Markdown editor and decoder  *
 *                                                                        *
 *      It was written by William Hart (http://www.williamhart.info) to   *
 *      run on "textr" (http://to-textr.com/) a new Markdown enabled      *
@@ -1038,6 +1038,23 @@ demarcate.toolbarSetActive = function () {
     $("#demarcate_" + tag_name).addClass("active");
 };
 
+
+/*
+ * Returns 'true' if the a demarcate editor is currently
+ * enabled and false otherwise
+ */
+demarcate.isEnabled = function() {
+    return !(demarcate.dom_root === null);
+}
+
+
+/* 
+ * Returns true if demarcate is currently editing a block
+ * and false otherwise
+ */
+demarcate.isActive = function() { 
+    return !(demarcate.current_element === null);
+}
 
 /* 
  * A mouseup handler that checks if the toolbar or editor was clicked.
