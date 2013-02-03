@@ -67,11 +67,16 @@ is successfully closed and the changes are saved.  You can listen to this event 
 LICENSE
 ==========
 
-Currently the software is only available under GPLv3 - whilst I'm not the biggest 
-fan of this license as it is quite restrictive, whilst demarcate is being put together
-I would like to keep this license so that any contributions can improve the editor.
+This software is now released under an MIT license.  
 
-If the software reaches sufficient maturity it will also be released under a BSD license.
+
+Copyright (C) 2013 William Hart (http://www.williamhart.info/)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 CONTRIBUTING
@@ -90,6 +95,15 @@ CHANGE LOG
 
 Version 1.1.3
 --------------
+
+`+` Support image tags             
+`+` [Documentation](http://will-hart.github.com/demarcate.js/doc/index.html) launched     
+`+` Improved [github pages](http://will-hart.github.com/demarcate.js) to have a 'pretty' and a 'technical' demo         
+`+` Allow disabling of an editor so editing can be toggled on and off        
+`~` Scroll editor to top of screen so you can write forever without using the mouse             
+`~` Complete refactor of the code to maintain separation from other js libraries       
+`*` Various minor changes and improvements        
+
 
 
 
