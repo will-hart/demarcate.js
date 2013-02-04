@@ -359,8 +359,8 @@ demarcate.enable = function(elem) {
                     demarcate.close_editor();
                     next.first().click();
                 }
-            } else if (e.ctrlKey) { // ctrl+up move the block up
-                $("#demarcate_up").click();
+            } else if (e.ctrlKey) { // ctrl+down move the block down
+                $("#demarcate_down").click();
             }
 
         } else if (e.keyCode == 38) { // up arrow - navigate to the next editable area
@@ -370,8 +370,8 @@ demarcate.enable = function(elem) {
                     demarcate.close_editor();
                     previous.first().click();
                 }
-            } else if (e.ctrlKey) { // ctrl+down move the block down
-                $("#demarcate_down").click();
+            } else if (e.ctrlKey) { // ctrl+up move the block up
+                $("#demarcate_up").click();
             }
         }
     };
