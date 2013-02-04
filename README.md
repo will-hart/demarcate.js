@@ -1,6 +1,6 @@
 # demarcate.js
 
-**Version 1.1.3**
+**Version 1.1.4dev**
 
 demarcate.js is an in-place Markdown Editor under development by 
 [William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
@@ -24,7 +24,7 @@ Currently not all Markdown syntax is supported.  In particular:
 ## USAGE
 
 **For developers, API documentation is available:**    
-- [v1.1.3 - stable](http://www.williamhart.info/static/demarcate/doc/)    
+- [v1.1.3 - stable](http://www.williamhart.info/static/demarcate/docs/)    
 - [develop branch](http://will-hart.github.com/demarcate.js/docs) 
 
 The `editor.html` file shows a sample implementation of demarcate. It can be seen
@@ -100,10 +100,16 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 
 ##CHANGE LOG 
 
-`+` - new feature         
-`~` - revised feature        
-`-` - removed feature        
-`*` - bug fix
+`+` new feature         
+`~` revised feature        
+`-` removed feature        
+`*` bug fix
+
+### Version 1.1.4
+
+`+` Use `ctrl + up arrow` and `ctrl + down arrow` to reorder the current block up or down      
+`+` Add `isActive()` and `isEnabled()` methods to check editor state     
+
 
 ### Version 1.1.3
 
