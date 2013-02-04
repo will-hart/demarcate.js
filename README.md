@@ -23,7 +23,9 @@ Currently not all Markdown syntax is supported.  In particular:
 
 ## USAGE
 
-**For developers, a [API documentation](http://will-hart.github.com/demarcate.js/docs) is available**
+**For developers, API documentation is available:**    
+- [v1.1.3 - stable](http://www.williamhart.info/static/demarcate/docs/)    
+- [develop branch](http://will-hart.github.com/demarcate.js/docs) 
 
 The `editor.html` file shows a sample implementation of demarcate. It can be seen
 running at [http://will-hart.github.com/demarcate.js/](http://will-hart.github.com/demarcate.js/).  
