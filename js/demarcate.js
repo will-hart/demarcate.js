@@ -465,6 +465,9 @@ demarcate.enable = function(elem) {
                 } else {
                     replaceTag(target_tag);
                 }
+
+                // make sure the autosize mirrored box has the same line-height and font
+                $(".autosizejs").css("font", elem.css("font"));
             } else {
                 if (target_tag == 'help') {
                     alert(
