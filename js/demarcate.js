@@ -29,7 +29,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '', '');
+            return demarcate.markdown.base(elem, '', '');
         },
     },
     'span': {
@@ -39,7 +39,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '', '');
+            return demarcate.markdown.base(elem, '', '');
         },
     },
     'h1': {
@@ -49,7 +49,7 @@ var _tag_dict = {
         force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '# ', '\n');
+            return demarcate.markdown.base(elem, '# ', '\n\n');
         },
     },
     'h2': {
@@ -59,7 +59,7 @@ var _tag_dict = {
         force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '## ', '\n');
+            return demarcate.markdown.base(elem, '## ', '\n\n');
         },
     },
     'h3': {
@@ -69,7 +69,7 @@ var _tag_dict = {
         force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '### ', '\n');
+            return demarcate.markdown.base(elem, '### ', '\n\n');
         },
     },
     'h4': {
@@ -79,7 +79,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '#### ', '\n');
+            return demarcate.markdown.base(elem, '#### ', '\n\n');
         },
     },
     'h5': {
@@ -89,7 +89,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '##### ', '\n');
+            return demarcate.markdown.base(elem, '##### ', '\n\n');
         },
     },
     'h6': {
@@ -99,7 +99,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '###### ', '\n');
+            return demarcate.markdown.base(elem, '###### ', '\n\n');
         },
     },
     'li': {
@@ -109,7 +109,7 @@ var _tag_dict = {
         force_prefix: true ,
         selector_type: ' ',
         process: function(elem) {
-            demarcate.markdown.base(elem);
+            return demarcate.markdown.base(elem);
         },
     },
     'ul': {
@@ -119,7 +119,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.list(elem, 'unordered');
+            return demarcate.markdown.list(elem, 'unordered');
         },
     },
     'ol': {
@@ -129,7 +129,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.list(elem, 'ordered');
+            return demarcate.markdown.list(elem, 'ordered');
         },
     },
     'blockquote': {
@@ -139,7 +139,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '> ', '\n');
+            return demarcate.markdown.base(elem, '> ', '\n\n');
         },
     },
     'pre': {
@@ -149,7 +149,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.code(elem, '', '\n');
+            return demarcate.markdown.code(elem, '', '\n\n');
         },
     },
     'code': {
@@ -159,7 +159,7 @@ var _tag_dict = {
         force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.code(elem, '', '\n');
+            return demarcate.markdown.code(elem, '', '\n');
         },
     },
     'a': {
@@ -169,7 +169,7 @@ var _tag_dict = {
         force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.link(elem, ' [', '] ');
+            return demarcate.markdown.link(elem);
         },
     },
     'hr': {
@@ -179,7 +179,7 @@ var _tag_dict = {
         force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '------', '\n');
+            return demarcate.markdown.base(elem, '------', '\n\n');
         },
     },
     'em': {
@@ -189,7 +189,7 @@ var _tag_dict = {
         force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, ' *', '* ');
+            return demarcate.markdown.base(elem, ' *', '* ');
         },
     },
     'strong': {
@@ -199,7 +199,7 @@ var _tag_dict = {
         force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, ' **', '** ');
+            return demarcate.markdown.base(elem, ' **', '** ');
         },
     },
     'p': {
@@ -209,7 +209,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '', '\n');
+            return demarcate.markdown.base(elem, '', '\n\n');
         },
     },
     'table': {
@@ -219,7 +219,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
-            demarcate.markdown.table(elem);
+            return demarcate.markdown.table(elem);
         },
     },
     'th': {
@@ -249,7 +249,7 @@ var _tag_dict = {
         force_prefix: true,  
         selector_type: ' ',
         process: function(elem) {
-            demarcate.markdown.base(elem, '    \n', '');
+            return demarcate.markdown.base(elem, '    \n', '');
         },
     },
     'img': {
@@ -259,7 +259,7 @@ var _tag_dict = {
         force_prefix: true,
         selector_type: ' ',
         process: function(elem) {
-            demarcate.markdown.image(elem, '', '\n');
+            return demarcate.markdown.image(elem);
         },
     },
     '_text': {
@@ -269,7 +269,7 @@ var _tag_dict = {
         force_prefix: false,
         selector_type: ' ',
         process: function(elem) {
-            return elem === undefined ? "" : elem.textContent;
+            return elem === undefined ? "" : $.trim(elem.text());
         },
    },
 };
@@ -317,7 +317,7 @@ demarcate.markdown.list = function(elem, type) {
     $(elem).children("li").each( function() { 
         // add the list item
         if (type == 'ordered') {
-            result += str(count) + ". ";
+            result += count + ". ";
             count++;
         } else {
             result += "- ";
@@ -326,7 +326,7 @@ demarcate.markdown.list = function(elem, type) {
         // add the child elements
         result += demarcate.markdown.parseChildren($(this)) + "\n";
     });
-    return result;
+    return result + "\n";
 };
 
 /* 
@@ -337,49 +337,6 @@ demarcate.markdown.list = function(elem, type) {
 demarcate.markdown.code = function(elem) {
     console.log("code");
     return "";
-};
-
-/* 
- * parseChildren takes an element and selects the correct
- * processor function from the tag_dict to return Markdown
- * from these child dom elements
- *
- *   "elem" is a jQuery DOM element
- */
-demarcate.markdown.parseChildren = function(elem) {
-    console.log("parsechildren");
-    // set up a result object
-    var result = "";
-
-    // traverse the contents, converting each using its "process"
-    // function defined in the _tag_dict
-    $.each(elem.contents(), function(index, value) {
-        // get the tag name
-        var node = $(value).get(0);
-        var node_type = node.nodeType;
-        var tag_name = node_type == 3 ? '_text' : node.tagName.toLowerCase();
-
-        // do not parse temporary dom elements
-        if (elem.hasClass("demarcate_temporary")) return;
-
-        // check if the element is in the _tag_dict
-        if (!(tag_name in _tag_dict)) return;
-
-        // check we are allowed to decode the tag
-        if ((! _tag_dict[tag_name].markdownable) && node_type != 3) {
-            return;
-        }
-
-        // check if it is a special tag (i.e. TOC)
-        if (tag_name == 'div' && elem.hasClass("toc")) {
-            result += "\n[TOC]\n\n";
-            return;
-        }
-
-        result += _tag_dict[tag_name].process($(node));
-    });
-
-    return result;
 };
 
 /* 
@@ -428,7 +385,7 @@ demarcate.markdown.table = function (elem) {
             }
 
             // store the contents
-            cells[row][col] = demarkdown($(this));
+            cells[row][col] = demarcate.markdown.parseChildren($(this));
 
             col++;
         });
@@ -480,6 +437,49 @@ demarcate.markdown.image = function(elem) {
 
     return op + ") ";
 }
+
+/* 
+ * parseChildren takes an element and selects the correct
+ * processor function from the tag_dict to return Markdown
+ * from these child dom elements
+ *
+ *   "elem" is a jQuery DOM element
+ */
+demarcate.markdown.parseChildren = function(elem) {
+    console.log("parsechildren");
+    // set up a result object
+    var result = "";
+
+    // traverse the contents, converting each using its "process"
+    // function defined in the _tag_dict
+    $.each(elem.contents(), function(index, value) {
+        // get the tag name
+        var node = $(value).get(0);
+        var node_type = node.nodeType;
+        var tag_name = node_type == 3 ? '_text' : node.tagName.toLowerCase();
+
+        // do not parse temporary dom elements
+        if (elem.hasClass("demarcate_temporary")) return;
+
+        // check if the element is in the _tag_dict
+        if (!(tag_name in _tag_dict)) return;
+
+        // check we are allowed to decode the tag
+        if ((! _tag_dict[tag_name].markdownable) && node_type != 3) {
+            return;
+        }
+
+        // check if it is a special tag (i.e. TOC)
+        if (tag_name == 'div' && elem.hasClass("toc")) {
+            result += "\n[TOC]\n\n";
+            return;
+        }
+
+        result += _tag_dict[tag_name].process($(node));
+    });
+
+    return result;
+};
 
 
 /* 
