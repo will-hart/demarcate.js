@@ -103,8 +103,16 @@
             </ul>
 
             <hr>
-            
+
             <h2 id="partially-supported-elements">Partially Supported Elements</h2>
+            <h3>Ordered Lists</h3>
+            <ol>
+                <li>Ordered lists can be</li>
+                <li>Edited and new rows added</li>
+                <li>But you can't yet create</li>
+                <li>A completely new ordered list</li>
+            </ol>
+
             <h3>Tables</h3>
             <p>
                 Tables cells can be edited, however new rows cannot be added Only tables with 
@@ -122,16 +130,12 @@
                 </tbody>
             </table>
 
-            <hr>
-
-            <h2 id="unsupported-elements">Unsupported Elements</h2>
-            <p>These elements are completely unsupported and may be removed from the document if edited using demarcate</p>
-            
-            <h3>Footnotes<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></h3>
-
-
             <h3>Source Code</h3>
-            <div class="codehilite"><pre><span class="c1">// select all &quot;div&quot; elements &lt;div&gt;</span>
+            <p>
+                Markdown is returned but editing not currently possible
+            </p>
+            <div class="codehilite">
+                <pre><span class="c1">// select all &quot;div&quot; elements &lt;div&gt;</span>
 <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">)</span>
 
 <span class="c1">// select all &quot;div&quot; elements with class &quot;myclass&quot; e.g &lt;div class=&quot;myclass&quot;&gt;</span>
@@ -142,8 +146,17 @@
 
 <span class="c1">// select only the &quot;div&quot; element with the id &quot;myid&quot; - i.e.</span>
 <span class="c1">// will ignore &lt;h1 id=&quot;myid&quot;&gt;</span>
-<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div#myid&quot;</span><span class="p">)</span>
-</pre></div>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;div#myid&quot;</span><span class="p">)</span></pre>
+</div>
+
+            <hr>
+
+            <h2 id="unsupported-elements">Unsupported Elements</h2>
+            <p>These elements are completely unsupported and may be removed from the document if edited using demarcate</p>
+            
+            <h3>Footnotes<sup id="fnref:a"><a class="footnote-ref" href="#fn:a" rel="footnote">1</a></sup></h3>
+
+
 
 
 

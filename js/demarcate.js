@@ -14,8 +14,9 @@
 *                                                                        *
 *************************************************************************/
 
-// global namespace
+// namespaces
 var demarcate = {};
+demarcate.markdown = {};
 
 /*
  * Dictionary of tags to include
@@ -24,277 +25,490 @@ var _tag_dict = {
     'div': {
         editable: false, 
         markdownable: true, 
-        prefix: '',
-        postfix: '',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '', '');
+        },
     },
     'span': {
         editable: false,
         markdownable: true,
-        prefix: '',
-        postfix: '',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '', '');
+        },
     },
     'h1': {
         editable: true, 
         markdownable: true, 
-        prefix: '# ', 
-        postfix: '\n', 
-        post_newline: true, 
-        childprefix: '', 
         allow_newline: false, 
         force_prefix: false, 
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '# ', '\n\n');
+        },
     },
     'h2': {
         editable: true, 
         markdownable: true, 
-        prefix: '## ', 
-        postfix: '\n', 
-        post_newline: true, 
-        childprefix: '', 
         allow_newline: false, 
         force_prefix: false, 
-        selector_type: ' > '},
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '## ', '\n\n');
+        },
+    },
     'h3': {
         editable: true, 
         markdownable: true, 
-        prefix: '### ', 
-        postfix: '\n', 
-        post_newline: true, 
-        childprefix: '', 
         allow_newline: false, 
         force_prefix: false, 
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '### ', '\n\n');
+        },
     },
     'h4': {
         editable: true,
         markdownable: true,
-        prefix: '#### ',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '#### ', '\n\n');
+        },
     },
     'h5': {
         editable: true,
         markdownable: true,
-        prefix: '##### ',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '##### ', '\n\n');
+        },
     },
     'h6': {
         editable: true,
         markdownable: true,
-        prefix: '###### ',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '###### ', '\n\n');
+        },
     },
     'li': {
         editable: true,
         markdownable: true,
-        prefix: '- ',
-        postfix: '\n',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: true ,
-        selector_type: ' > '
+        selector_type: ' ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem);
+        },
     },
     'ul': {
-        editable: true,
+        editable: false,
         markdownable: true,
-        prefix: '',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: true,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.list(elem, 'unordered');
+        },
     },
     'ol': {
-        editable: true,
+        editable: false,
         markdownable: true,
-        prefix: '',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: true,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.list(elem, 'ordered');
+        },
     },
     'blockquote': {
         editable: true,
         markdownable: true,
-        prefix: '>',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '> ', '\n\n');
+        },
     },
     'pre': {
         editable: true,
         markdownable: true,
-        prefix: '    ',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '    ',
         allow_newline: true,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.code(elem, '', '\n\n');
+        },
     },
     'code': {
         editable: true,
         markdownable: true,
-        prefix: ' `',
-        postfix: '` ',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: true ,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.code(elem, '', '\n');
+        },
     },
     'a': {
         editable: false,
         markdownable: true,
-        prefix: ' [',
-        postfix: ']',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: true ,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.link(elem);
+        },
     },
     'hr': {
         editable: true,
         markdownable: true,
-        prefix: '------',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: true ,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '------', '\n\n');
+        },
     },
     'em': {
         editable: false,
         markdownable: true,
-        prefix: ' *',
-        postfix: '* ',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: true ,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, ' *', '* ');
+        },
     },
     'strong': {
         editable: false,
         markdownable: true,
-        prefix: ' **',
-        postfix: '** ',
-        post_newline: false,
-        childprefix: '',
         allow_newline: false,
         force_prefix: true ,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, ' **', '** ');
+        },
     },
     'p': {
         editable: true,
         markdownable: true,
-        prefix: '',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '', '\n\n');
+        },
     },
     'table': {
         editable: false,
         markdownable: true,
-        prefix: '',
-        postfix: '\n',
-        post_newline: true,
-        childprefix: '',
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' > '
+        selector_type: ' > ',
+        process: function(elem) {
+            return demarcate.markdown.table(elem);
+        },
     },
     'th': {
         editable: true,
-        markdownable: true, 
-        prefix: '',
-        postfix: '',
-        post_newline: false,
-        childprefix: '',
+        markdownable: true,
         allow_newline: false,
         force_prefix: false,
-        selector_type: ' '
+        selector_type: ' ',
+        process: function(elem) { 
+            return "";
+        }
     },
     'td': {
-        editable: true,  
-        markdownable: true, 
-        prefix: '',       
-        postfix: '',    
-        post_newline: false, 
-        childprefix: '',     
-        allow_newline: false, 
-        force_prefix: false, 
-        selector_type: ' '  
+        editable: true,
+        markdownable: true,
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' ',
+        process: function(elem) {
+            return "";
+        }
     },
     'br': {
         editable: false, 
-        markdownable: true, 
-        prefix: '    \n', 
-        postfix: '',    
-        post_newline: false, 
-        childprefix: '',     
+        markdownable: true,
         allow_newline: false, 
         force_prefix: true,  
-        selector_type: ' '
+        selector_type: ' ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '    \n', '');
+        },
     },
     'img': {
         editable: false,
-        markdownable: true, 
-        prefix: '', 
-        postfix: '', 
-        post_newline: false, 
-        childprefix: '',     
-        allow_newline: false, 
-        force_prefix: true,  
-        selector_type: ' '  },
-    '_text': {
+        markdownable: true,
+        allow_newline: false,
+        force_prefix: true,
+        selector_type: ' ',
+        process: function(elem) {
+            return demarcate.markdown.image(elem);
+        },
+    },
+    'span': {
         editable: false, 
-        markdownable: true, 
-        prefix: '', 
-        postfix: '', 
-       post_newline: false, 
-       childprefix: '', 
-       allow_newline: false, 
-       force_prefix: false, 
-       selector_type: ' '
+        markdownable: true,
+        allow_newline: false, 
+        force_prefix: true,
+        selector_type: ' ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '', '');
+        },
+    },
+    '_text': {
+        editable: false,
+        markdownable: true,
+        allow_newline: false,
+        force_prefix: false,
+        selector_type: ' ',
+        process: function(elem) {
+            return elem === undefined ? "" : $.trim(elem.text());
+        },
    },
 };
+
+
+/* 
+ * The basic demarkdown function - takes an element, 
+ * wraps it with a prefix and postfix and recursively 
+ * calls a demarkdown on the innerHTML
+ *
+ *   "elem" is a jQuery DOM element
+ *   "prefix", "postfiX" are strings to be appended to the demarkdown
+ *
+ */
+demarcate.markdown.base = function(elem, prefix, postfix) {
+    var result = prefix;
+
+    // demarkdown child elements
+    result += demarcate.markdown.parseChildren(elem);
+
+    // add the postfix
+    return result + postfix;
+};
+
+/* 
+ * Generates a link tag from a link element
+ */
+demarcate.markdown.link = function(elem) {
+    var result = " [";
+    result += demarcate.markdown.parseChildren(elem);
+    return result + "](" + elem.attr("href") + ") ";
+};
+
+/* 
+ * Generats an ordered or unordered list from the elements.
+ * Uses 'parseChildren' to parse list elements.
+ */
+demarcate.markdown.list = function(elem, type) {
+    var count = 1;
+    var result = "";
+
+    $(elem).children("li").each( function() { 
+        // add the list item
+        if (type == 'ordered') {
+            result += count + ". ";
+            count++;
+        } else {
+            result += "- ";
+        }
+
+        // add the child elements
+        result += demarcate.markdown.parseChildren($(this)) + "\n";
+    });
+    return result + "\n";
+};
+
+/* 
+ * Intelligently parses code blocks - either single tag or larger
+ * div > pre > code style blocks, removing syntax highlighting span tags
+ * where appropriate whilst maintaining whitespace.
+ */
+demarcate.markdown.code = function(elem) {
+
+    // work out what kind of tag we have
+    var tag_name = elem.get(0).nodeType == 3 ? '_text' : elem.get(0).tagName.toLowerCase();
+    var result = "";
+
+    // first check if it is just a single "<code>my code</code>" 
+    // style code block, or a code block in a <pre> with no span 
+    // style formatting
+    if (elem.children().length == 0) {
+        if (tag_name == "code") {
+            return " `" + elem.text() + "` ";
+        }
+    }
+
+    // otherwise we need to parse the text, stripping all element tags 
+    // inside that are used for formatting.  Each line should be indented
+    // by four spaces and whitespace should be maintained
+    return "\n\n" + 
+                ("    " + elem.text()).replace(/\n/g, "\n    ") + "\n\n";
+};
+
+/* 
+ * Table generator - build up a markdown table from the HTML.
+ * Colspan and Rowspan not currently supported
+ */
+demarcate.markdown.table = function (elem) {
+
+    /* 
+     * Extend string prototype to easily manage table padding
+     */
+    var repeatStr = function(str, num)
+    {
+        return new Array(num + 1).join(str);
+    }
+    
+    // store column lengths
+    var maxColLen = [];
+    var rowLen = 0;
+    var cells = [];
+    var op = "";
+    var headerRow = true;
+    var col = 0;
+    var row = 0;
+
+    // build up the cell array in memory and track max cell length
+    // first traverse each row
+    elem.find("tr").each( function() {
+        cells[row] = [];
+        col = 0;
+
+        // then each cell in each row
+        $(this).children().each( function() {
+            // get the text
+            var contents = $(this).text();
+            var contentLen = contents.length;
+
+            // store max length
+            if (maxColLen.length <= col) {
+                maxColLen.push(contentLen);
+            } else {
+                if (contentLen > maxColLen[col]) {
+                    maxColLen[col] = contentLen;
+                }
+            }
+
+            // store the contents
+            cells[row][col] = demarcate.markdown.parseChildren($(this));
+
+            col++;
+        });
+        row++;
+    });
+
+    // calculate the row length
+    for (var r = 0; r < maxColLen.length; r++) {
+        rowLen += maxColLen[r] + 1; // "pipe character column delimiter"
+    }
+
+    // now build up the output MD
+    for (var r = 0; r < cells.length; r++) {
+        // write the cell contents
+        var row = cells[r];
+        for (var c = 0; c < row.length; c++) {
+            var cellLen = row[c].length;
+            var padding = maxColLen[c] - cellLen;
+            op += row[c] + repeatStr(" ", padding) + "|";
+        }
+        
+        // write the '=' signs under the top row
+        if (headerRow) {
+            op += "\n";
+            for (var i = 0; i < maxColLen.length; i++) {
+                op += repeatStr("-", maxColLen[i]) + "|";
+            }
+            headerRow = false;
+        }
+        op += "\n";
+    }
+    return op + "\n\n";
+}
+
+/*
+ * Handle creating markdown from images
+ *   Typical format - ![alt](url "optional title")
+ */
+demarcate.markdown.image = function(elem) {
+    var alt = elem.attr("alt");
+    var title = elem.attr("title");
+    var url = elem.attr("src");
+    var op = " ![" + alt + "](" + url;
+
+    if (title != "") {
+        op += " \"" + title + "\"";
+    }
+
+    return op + ") ";
+}
+
+/* 
+ * parseChildren takes an element and selects the correct
+ * processor function from the tag_dict to return Markdown
+ * from these child dom elements
+ *
+ *   "elem" is a jQuery DOM element
+ */
+demarcate.markdown.parseChildren = function(elem) {
+    // set up a result object
+    var result = "";
+
+    // traverse the contents, converting each using its "process"
+    // function defined in the _tag_dict
+    $.each(elem.contents(), function(index, value) {
+        // get the tag name
+        var node = $(value);
+        var node_type = node.get(0).nodeType;
+        var tag_name = node_type == 3 ? '_text' : node.get(0).tagName.toLowerCase();
+
+        // if this is not a plain text node perform ssome additional
+        // checks such as looking for a TOC, checking if our tag name
+        // is specified in the _tag_dict and if it is allowed to be 
+        // returned as Markdown ("markdownable")
+        if (tag_name != "_text") {
+            // do not parse temporary dom elements
+            if (node.hasClass("demarcate_temporary")) return;
+
+            // check if the element is in the _tag_dict
+            if (!(tag_name in _tag_dict)) return;
+
+            // check we are allowed to decode the tag
+            if ((! _tag_dict[tag_name].markdownable) ) {
+                return;
+            }
+
+            // check if it is a special tag (i.e. TOC)
+            if (tag_name == 'div' && node.hasClass("toc")) {
+                result += "\n[TOC]\n\n";
+                return;
+            }
+        }
+
+        // process the node and return the resultss
+        result += _tag_dict[tag_name].process(node);
+    });
+
+    return result;
+};
+
 
 /* 
  * Enables a given dom element and its children for editing using demarcate
@@ -359,6 +573,8 @@ demarcate.enable = function(elem) {
                     demarcate.close_editor();
                     next.first().click();
                 }
+            } else if (e.ctrlKey) { // ctrl+down move the block down
+                $("#demarcate_down").click();
             }
 
         } else if (e.keyCode == 38) { // up arrow - navigate to the next editable area
@@ -368,6 +584,8 @@ demarcate.enable = function(elem) {
                     demarcate.close_editor();
                     previous.first().click();
                 }
+            } else if (e.ctrlKey) { // ctrl+up move the block up
+                $("#demarcate_up").click();
             }
         }
     };
@@ -461,6 +679,9 @@ demarcate.enable = function(elem) {
                 } else {
                     replaceTag(target_tag);
                 }
+
+                // make sure the autosize mirrored box has the same line-height and font
+                $(".autosizejs").css("font", elem.css("font"));
             } else {
                 if (target_tag == 'help') {
                     alert(
@@ -579,180 +800,16 @@ demarcate.disable = function () {
 /*
  * Returns Markdown from the html of a given element
  */
-demarcate.demarcate = function (elem, ignore_extras, child_prefix) {
-
-    /* 
-     * Extend string prototype to easily manage table padding
-     */
-    var repeatStr = function(str, num)
-    {
-        return new Array(num + 1).join(str);
-    }
-
-    /* 
-     * Table generator - build up a markdown table from the HTML.
-     * Colspan and Rowspan not currently supported
-     */
-    var demarkdownTable = function (elem) {
-
-        // store column lengths
-        var maxColLen = [];
-        var rowLen = 0;
-        var cells = [];
-        var op = "";
-        var headerRow = true;
-        var col = 0;
-        var row = 0;
-
-        // build up the cell array in memory and track max cell length
-        // first traverse each row
-        elem.find("tr").each( function() {
-            cells[row] = [];
-            col = 0;
-
-            // then each cell in each row
-            $(this).children().each( function() {
-                // get the text
-                var contents = $(this).text();
-                var contentLen = contents.length;
-
-                // store max length
-                if (maxColLen.length <= col) {
-                    maxColLen.push(contentLen);
-                } else {
-                    if (contentLen > maxColLen[col]) {
-                        maxColLen[col] = contentLen;
-                    }
-                }
-
-                // store the contents
-                cells[row][col] = demarkdown($(this));
-
-                col++;
-            });
-            row++;
-        });
-
-        // calculate the row length
-        for (var r = 0; r < maxColLen.length; r++) {
-            rowLen += maxColLen[r] + 1; // "pipe character column delimiter"
-        }
-
-        // now build up the output MD
-        for (var r = 0; r < cells.length; r++) {
-            // write the cell contents
-            var row = cells[r];
-            for (var c = 0; c < row.length; c++) {
-                var cellLen = row[c].length;
-                var padding = maxColLen[c] - cellLen;
-                op += row[c] + repeatStr(" ", padding) + "|";
-            }
-            
-            // write the '=' signs under the top row
-            if (headerRow) {
-                op += "\n";
-                for (var i = 0; i < maxColLen.length; i++) {
-                    op += repeatStr("-", maxColLen[i]) + "|";
-                }
-                headerRow = false;
-            }
-            op += "\n";
-        }
-        return op + "\n\n";
-    }
-
-    /*
-     * Handle creating markdown from images
-     *   Typical format - ![alt](url "optional title")
-     */
-    var demarkdownImage = function(elem) {
-        var alt = elem.attr("alt");
-        var title = elem.attr("title");
-        var url = elem.attr("src");
-        var op = " ![" + alt + "](" + url;
-
-        if (title != "") {
-            op += " \"" + title + "\"";
-        }
-
-        return op + ") ";
-    }
-
-    /*
-     * Recursively reverse the md
-     markdown of the element
-     * and its child objects
-     */
-    var demarkdown = function (elem, ignore_extras, child_prefix) {
-
-        // work out what we are looking at
-        var node = elem.get(0);
-        var node_type = node.nodeType;
-        var tag_name = node_type == 3 ? '_text' : node.tagName.toLowerCase();
-        var result = "";
-
-        // do not parse temporary dom elements
-        if (elem.hasClass("demarcate_temporary")) return result;
-
-        // check if the element is in the _tag_dict
-        if (!(tag_name in _tag_dict)) return result;
-
-        // check we are allowed to decode the tag
-        if ((! _tag_dict[tag_name].markdownable) && node_type != 3) {
-            return result;
-        }
-
-        // check if it is a special tag (i.e. TOC)
-        if (tag_name == 'div' && elem.hasClass("toc")) {
-            return "\n[TOC]\n\n";
-        } else if ( tag_name == 'table' ) {
-            return demarkdownTable(elem);
-        } else if ( tag_name == 'img' ) {
-            return demarkdownImage(elem);
-        }
-
-        // open the tag
-        if (! ignore_extras || _tag_dict[tag_name].force_prefix) {
-            result += _tag_dict[tag_name].prefix;
-        }
-
-        // add any text inside text nodes
-        if (node_type == 3) {
-            if ($.trim(node.nodeValue) == "") {
-                return "";
-            }
-            result += $.trim(node.nodeValue);
-        }
-
-        // add child elements
-        result += _tag_dict[tag_name].childprefix;
-        $.each(elem.contents(), function(index, value) {
-            result += demarkdown($(value), ignore_extras, "");
-        });
-
-        // close the tag
-        if (! ignore_extras || _tag_dict[tag_name].force_prefix) {
-            result += _tag_dict[tag_name].postfix;
-        }
-
-        // apply a new line if required
-        if (_tag_dict[tag_name].post_newline) {
-            result += '\n';
-        }
-
-        // apply special behaviour for <a> tags
-        if (tag_name == 'a') {
-            result = " " + result + "(" + elem.attr('href') + ") ";
-        }
-
-        // return the result
-        return result;
-    }
-    
+demarcate.demarcate = function (elem) {
+    // if an element is passed demarcate this, otherwise we use the default
+    // dom_root being edited. 
     if (elem === undefined) {
         elem = demarcate.dom_root;
     }
-    return demarkdown(elem, ignore_extras, child_prefix);
+
+    // "demarkdown" the selected element through recursive dom traversal
+    result = demarcate.markdown.parseChildren(elem);
+    return result;
 };
 
 
@@ -861,10 +918,8 @@ demarcate.close_editor = function(save_changes, open_new) {
     }
 
     /*
-     * Performs a number of manipulations on the edited string before adding 
-     * it back into the DOM.  For instance:
-     *   - Strips html tags from the textareas to prevent injection
-     *   - Restores links from []() syntax to <a></a> syntax
+     * Performs a number of manipulations, including stripping HTML
+     * tags and generating proper HTML from the Markdown built up
      */
     var modifyHtml = function (str){
         // remove HTML tags
@@ -886,15 +941,10 @@ demarcate.close_editor = function(save_changes, open_new) {
         // get the current editor and wrap in the correct outer tag
         var tag_name = demarcate.current_element.get(0).tagName.toLowerCase();
         var curr_value = demarcate.current_editor.val(); 
+        var new_elem = $("<" + tag_name + "/>", { text: curr_value });
 
-        if (curr_value != "") {
-            if (tag_name != "hr") {
-                curr_value = _tag_dict[tag_name].prefix + _tag_dict[tag_name].childprefix +
-                        curr_value + _tag_dict[tag_name].postfix;
-            }
-        }
-
-        var new_elem = $(modifyHtml(curr_value));
+        // generate the markdown so showdown can build a proper HTML element
+        var html_value = modifyHtml(curr_value);
 
         // update the html element and save a reference to the new elem
         if (tag_name == "th" || tag_name == "td") {
