@@ -704,18 +704,27 @@ demarcate.enable = function(elem) {
                 var current_tag = demarcate.current_element.get(0).tagName.toLowerCase();
                 var parent_tag = demarcate.current_element.parent().get(0).tagName.toLowerCase();
 
-                if (current_tag == 'li' && target_tag != 'ul') {
-                    // moving a list item out of a list
-                    par = demarcate.current_element.parent();
-                    demarcate.current_element.detach().insertAfter(par);
-                    replaceTag(target_tag);
+                if (current_tag == 'li') {
+                    var par = demarcate.current_element.parent();
 
-                } else if (current_tag != 'li' && target_tag == 'ul') {
+                    if (target_tag != 'ul' && target_tag != 'ol') {
+                        // handle moving a list item out of a list
+                        demarcate.current_element.detach().insertAfter(par);
+                        replaceTag(target_tag);
+                    } else {
+                        // handle changing the list type
+                        par.replaceWith($("<" + target_tag + ">" + par.html() + "</" + target_tag + ">"));
+                    }
+
+                } else if (current_tag != 'li' && (target_tag == 'ul' || target_tag == 'ol')) {
+                    // start a new list inserting a new list of type 'tag_type'
+                    // and creating and editing a new li element within it.
                     var list = $("<" + target_tag + "/>");
                     list.insertBefore(demarcate.current_element);
                     demarcate.current_element.appendTo(list);
                     replaceTag('li');
                 } else {
+                    // general tag replacement
                     replaceTag(target_tag);
                 }
 
@@ -870,10 +879,10 @@ demarcate.edit = function(elem) {
         toolbar.append($("<a />",  {id: 'demarcate_h5',         class: 'demarcate_style', href:"#" }));
         toolbar.append($("<a />",  {id: 'demarcate_h6',         class: 'demarcate_style', href:"#" }));
         toolbar.append($("<a />",  {id: 'demarcate_p',          class: 'demarcate_style', href:"#" }));
-        toolbar.append($("<a />",  {id: 'demarcate_code',       class: 'demarcate_style', href:"#" }));
-        toolbar.append($("<a />",  {id: 'demarcate_pre',        class: 'demarcate_style', href:"#" }));
         toolbar.append($("<a />",  {id: 'demarcate_blockquote', class: 'demarcate_style', href:"#" }));
         toolbar.append($("<a />",  {id: 'demarcate_ul',         class: 'demarcate_style', href:"#" }));
+        toolbar.append($("<a />",  {id: 'demarcate_ol',       class: 'demarcate_style', href:"#" }));
+        toolbar.append($("<a />",  {id: 'demarcate_pre',        class: 'demarcate_style', href:"#" }));
         toolbar.append($("<p/>"));
         toolbar.append($("<a />",  {id: 'demarcate_up',         class: 'demarcate_style', href:"#" }));
         toolbar.append($("<a />",  {id: 'demarcate_down',       class: 'demarcate_style', href:"#" }));
@@ -967,6 +976,7 @@ demarcate.close_editor = function(save_changes, open_new) {
         // convert using showdown
         var convertor = new Showdown.converter();
         var op = convertor.makeHtml(strippedText);
+
         return op;
     }
 
@@ -983,7 +993,7 @@ demarcate.close_editor = function(save_changes, open_new) {
         var new_elem = $("<" + tag_name + "/>", { text: curr_value });
 
         // generate the markdown so showdown can build a proper HTML element
-        var html_value = modifyHtml(curr_value);
+        new_elem.html(modifyHtml(curr_value));
 
         // update the html element and save a reference to the new elem
         if (tag_name == "th" || tag_name == "td") {
