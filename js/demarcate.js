@@ -26,7 +26,6 @@ var _tag_dict = {
         editable: false, 
         markdownable: true, 
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '');
@@ -36,7 +35,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '');
@@ -46,7 +44,6 @@ var _tag_dict = {
         editable: true, 
         markdownable: true, 
         allow_newline: false, 
-        force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '# ', '\n\n');
@@ -56,7 +53,6 @@ var _tag_dict = {
         editable: true, 
         markdownable: true, 
         allow_newline: false, 
-        force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '## ', '\n\n');
@@ -66,7 +62,6 @@ var _tag_dict = {
         editable: true, 
         markdownable: true, 
         allow_newline: false, 
-        force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '### ', '\n\n');
@@ -76,7 +71,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '#### ', '\n\n');
@@ -86,7 +80,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '##### ', '\n\n');
@@ -96,7 +89,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '###### ', '\n\n');
@@ -106,7 +98,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.base(elem);
@@ -116,7 +107,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: true,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.list(elem, 'unordered');
@@ -126,7 +116,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: true,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.list(elem, 'ordered');
@@ -136,7 +125,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '> ', '\n\n');
@@ -146,7 +134,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: true,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.code(elem, '', '\n\n');
@@ -156,7 +143,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.code(elem, '', '\n');
@@ -166,7 +152,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.link(elem);
@@ -176,7 +161,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '------', '\n\n');
@@ -186,7 +170,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, ' *', '* ');
@@ -196,7 +179,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, ' **', '** ');
@@ -206,7 +188,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '\n\n');
@@ -216,7 +197,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.table(elem);
@@ -226,7 +206,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' ',
         process: function(elem) { 
             return "";
@@ -236,7 +215,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' ',
         process: function(elem) {
             return "";
@@ -246,7 +224,6 @@ var _tag_dict = {
         editable: false, 
         markdownable: true,
         allow_newline: false, 
-        force_prefix: true,  
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '    \n', '');
@@ -256,7 +233,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true,
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.image(elem);
@@ -266,17 +242,24 @@ var _tag_dict = {
         editable: false, 
         markdownable: true,
         allow_newline: false, 
-        force_prefix: true,
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '');
+        },
+    },
+    'sup': {
+        editable: false, 
+        markdownable: true,
+        allow_newline: false,
+        selector_type: ' ',
+        process: function(elem) {
+            return demarcate.markdown.footnote(elem);
         },
     },
     '_text': {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' ',
         process: function(elem) {
             return elem === undefined ? "" : $.trim(elem.text());
@@ -308,6 +291,10 @@ demarcate.markdown.base = function(elem, prefix, postfix) {
  * Generates a link tag from a link element
  */
 demarcate.markdown.link = function(elem) {
+    // check if we have a footnote backref
+    if (elem.hasClass("footnote-backref")) return "";
+
+    // otherwise parse the link as usual
     var result = " [";
     result += demarcate.markdown.parseChildren(elem);
     return result + "](" + elem.attr("href") + ") ";
@@ -441,7 +428,7 @@ demarcate.markdown.table = function (elem) {
         op += "\n";
     }
     return op + "\n\n";
-}
+};
 
 /*
  * Handle creating markdown from images
@@ -458,7 +445,54 @@ demarcate.markdown.image = function(elem) {
     }
 
     return op + ") ";
-}
+};
+
+/* 
+ * Processes a footnote into markdown.  This is READONLY
+ * New footnotes cannot be directly created (although you can
+ * write the correct footnote code to paragraphs).  This just
+ * ensures that footnotes aren't gobbled when demarcate parses
+ * the markdown from HTML
+ */
+demarcate.markdown.footnote = function(elem) {
+    // get the id, should be in the form "fnref:{FootNoteName}"
+    var id = elem.attr("id");
+
+    // split out the footnote name
+    var fn_name = id.split(":");
+
+    // check we have two components and the first is "fnref"
+    if (fn_name.length !== 2 || fn_name[0] !== "fnref") return "";
+
+    // build the footnote tag
+    return " [^" + fn_name[1] + "] ";
+};
+
+/* 
+ * Takes a footnote list (a list of footnote details usually included
+ * at the bottom of the document) and builds up a line separated
+ * Markdown representation of this list.
+ */
+demarcate.markdown.footnote_list = function(elem) {
+    var result = "";
+
+    // loop through each child li element and build up a 
+    // footnote detail section in Markdown
+    elem.children("ol").children("li").each( function(idx, val) {
+        // get the footnote id, checking for errors
+        var fn_name = $(val).attr("id").split(":");
+        if (fn_name.length !== 2 || fn_name[0] !== "fn") return;
+
+        // next we build up the tag leader
+        result += "[^" + fn_name[1] + "]: ";
+
+        // parse the remainder of the result
+        result += demarcate.markdown.parseChildren($(val));
+        result += "\n\n";
+    });
+
+    return result;
+};
 
 /* 
  * parseChildren takes an element and selects the correct
@@ -496,9 +530,14 @@ demarcate.markdown.parseChildren = function(elem) {
             }
 
             // check if it is a special tag (i.e. TOC)
-            if (tag_name == 'div' && node.hasClass("toc")) {
-                result += "\n[TOC]\n\n";
-                return;
+            if (tag_name == 'div') {
+                if (node.hasClass("toc")) {
+                    result += "\n[TOC]\n\n";
+                    return;
+                } else if (node.hasClass("footnote")) {
+                    result += demarcate.markdown.footnote_list(node);
+                    return;
+                }
             }
         }
 
