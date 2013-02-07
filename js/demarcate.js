@@ -134,16 +134,16 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: true,
-        selector_type: ' > ',
+        selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.code(elem, '', '\n\n');
         },
     },
     'code': {
-        editable: true,
+        editable: false,
         markdownable: true,
         allow_newline: false,
-        selector_type: ' > ',
+        selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.code(elem, '', '\n');
         },
@@ -329,7 +329,6 @@ demarcate.markdown.list = function(elem, type) {
  * where appropriate whilst maintaining whitespace.
  */
 demarcate.markdown.code = function(elem) {
-
     // work out what kind of tag we have
     var tag_name = elem.get(0).nodeType == 3 ? '_text' : elem.get(0).tagName.toLowerCase();
     var result = "";
@@ -865,8 +864,14 @@ demarcate.demarcate = function (elem) {
         elem = demarcate.dom_root;
     }
 
+    // get the tag name and parse approppriately 
+    var tag_name = elem.get(0).nodeType == 3 ? "_text" : elem.get(0).tagName.toLowerCase();
+
+    // check we are allowed to parse this type
+    if (!(tag_name in _tag_dict)) return "";
+
     // "demarkdown" the selected element through recursive dom traversal
-    result = demarcate.markdown.parseChildren(elem);
+    result = _tag_dict[tag_name].process(elem);
     return result;
 };
 
@@ -920,7 +925,14 @@ demarcate.edit = function(elem) {
         if (tag_name in _tag_dict) {
 
             // create the new text editor - ignore front matter
-            var md = demarcate.demarcate(elem, true, "");
+            var md = "";
+            if (tag_name == "pre") {
+                md = demarcate.markdown.code(elem);
+            } else {
+                md = demarcate.markdown.parseChildren(elem);
+            }
+
+            // create an editor for manipulating the DOM contents
             var ed = $("<textarea />", {
                 id: 'demarcate'
             }).css("font", elem.css("font"))
@@ -943,7 +955,7 @@ demarcate.edit = function(elem) {
             demarcate.toolbarSetActive();
 
             // set the value of the textarea
-            ed.val($.trim(md));
+            ed.val(md);
 
             // hook up jquery.autosize.js if present
             if (typeof elem.autosize != undefined) {
@@ -1003,7 +1015,9 @@ demarcate.close_editor = function(save_changes, open_new) {
         var raw_html = modifyHtml(curr_value);
 
         // trim unwanted wrapping paragraph tags
-        raw_html = raw_html.substring(3, raw_html.length - 4);
+        if (raw_html.substring(0, 3) == "<p>") {
+            raw_html = raw_html.substring(3, raw_html.length - 4);
+        }
 
         // generate the markdown so showdown can build a proper HTML element
         new_elem.html(raw_html);
