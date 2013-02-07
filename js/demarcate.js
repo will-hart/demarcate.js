@@ -308,9 +308,9 @@ demarcate.markdown.base = function(elem, prefix, postfix) {
  * Generates a link tag from a link element
  */
 demarcate.markdown.link = function(elem) {
-    var result = "[";
+    var result = " [";
     result += demarcate.markdown.parseChildren(elem);
-    return result + "](" + elem.attr("href") + ")";
+    return result + "](" + elem.attr("href") + ") ";
 };
 
 /* 
@@ -352,7 +352,7 @@ demarcate.markdown.code = function(elem) {
     // style formatting
     if (elem.children().length == 0) {
         if (tag_name == "code") {
-            return "`" + elem.text() + "`";
+            return " `" + elem.text() + "` ";
         }
     }
 
