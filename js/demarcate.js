@@ -262,7 +262,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' ',
         process: function(elem) {
-            return elem === undefined ? "" : $.trim(elem.text());
+            return elem === undefined ? "" : $.trim(elem.text().replace(/\n/g, " ").replace(/\s{2,}/g, ' '));
         },
    },
 };
