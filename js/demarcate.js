@@ -712,8 +712,18 @@ demarcate.enable = function(elem) {
                         demarcate.current_element.detach().insertAfter(par);
                         replaceTag(target_tag);
                     } else {
-                        // handle changing the list type
-                        par.replaceWith($("<" + target_tag + ">" + par.html() + "</" + target_tag + ">"));
+                        // handle changing the list type - this is more
+                        // tricky than it seems as we need to make sure our 
+                        // currently edited element ends up in the same place
+                        // it started in, despite replacing the outer parent 
+                        // node within the dom.  The simplest way to do this is
+                        // to close/ save the editor, change the parent tag and
+                        // reopen the editor again.
+                        var idx = par.index(demarcate.current_element);
+                        demarcate.close_editor();
+                        var new_list = $("<" + target_tag + ">" + par.html() + "</" + target_tag + ">");
+                        par.replaceWith(new_list);
+                        new_list.children("li").get(idx-1).click();
                     }
 
                 } else if (current_tag != 'li' && (target_tag == 'ul' || target_tag == 'ol')) {
