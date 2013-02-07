@@ -475,28 +475,35 @@ demarcate.markdown.parseChildren = function(elem) {
     // function defined in the _tag_dict
     $.each(elem.contents(), function(index, value) {
         // get the tag name
-        var node = $(value).get(0);
-        var node_type = node.nodeType;
-        var tag_name = node_type == 3 ? '_text' : node.tagName.toLowerCase();
+        var node = $(value);
+        var node_type = node.get(0).nodeType;
+        var tag_name = node_type == 3 ? '_text' : node.get(0).tagName.toLowerCase();
 
-        // do not parse temporary dom elements
-        if (elem.hasClass("demarcate_temporary")) return;
+        // if this is not a plain text node perform ssome additional
+        // checks such as looking for a TOC, checking if our tag name
+        // is specified in the _tag_dict and if it is allowed to be 
+        // returned as Markdown ("markdownable")
+        if (tag_name != "_text") {
+            // do not parse temporary dom elements
+            if (node.hasClass("demarcate_temporary")) return;
 
-        // check if the element is in the _tag_dict
-        if (!(tag_name in _tag_dict)) return;
+            // check if the element is in the _tag_dict
+            if (!(tag_name in _tag_dict)) return;
 
-        // check we are allowed to decode the tag
-        if ((! _tag_dict[tag_name].markdownable) && node_type != 3) {
-            return;
+            // check we are allowed to decode the tag
+            if ((! _tag_dict[tag_name].markdownable) ) {
+                return;
+            }
+
+            // check if it is a special tag (i.e. TOC)
+            if (tag_name == 'div' && node.hasClass("toc")) {
+                result += "\n[TOC]\n\n";
+                return;
+            }
         }
 
-        // check if it is a special tag (i.e. TOC)
-        if (tag_name == 'div' && elem.hasClass("toc")) {
-            result += "\n[TOC]\n\n";
-            return;
-        }
-
-        result += _tag_dict[tag_name].process($(node));
+        // process the node and return the resultss
+        result += _tag_dict[tag_name].process(node);
     });
 
     return result;
