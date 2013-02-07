@@ -823,7 +823,7 @@ demarcate.disable = function () {
     }
     demarcate.current_editor = null;
     demarcate.current_element = null;
-    
+
     // unbind event handlers
     $(document).off('keydown', '#demarcate');
     $(document).unbind('mousedown', demarcate.clickElsewhereSave);
@@ -986,7 +986,6 @@ demarcate.close_editor = function(save_changes, open_new) {
         // convert using showdown
         var convertor = new Showdown.converter();
         var op = convertor.makeHtml(strippedText);
-
         return op;
     }
 
@@ -999,14 +998,18 @@ demarcate.close_editor = function(save_changes, open_new) {
         
         // get the current editor and wrap in the correct outer tag
         var tag_name = demarcate.current_element.get(0).tagName.toLowerCase();
-        var curr_value = demarcate.current_editor.val(); 
-        var new_elem = $("<" + tag_name + "/>", { text: curr_value });
+        var curr_value = demarcate.current_editor.val();
+        var new_elem = $("<" + tag_name + "/>");
+        var raw_html = modifyHtml(curr_value);
+
+        // trim unwanted wrapping paragraph tags
+        raw_html = raw_html.substring(3, raw_html.length - 4);
 
         // generate the markdown so showdown can build a proper HTML element
-        new_elem.html(modifyHtml(curr_value));
+        new_elem.html(raw_html);
 
         // update the html element and save a reference to the new elem
-        if (tag_name == "th" || tag_name == "td") {
+        if (tag_name == "th" || tag_name == "td" || tag_name == "li") {
             demarcate.current_element.html(new_elem.html());
         } else {
             new_elem.insertBefore(demarcate.current_element);
