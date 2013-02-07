@@ -262,6 +262,16 @@ var _tag_dict = {
             return demarcate.markdown.image(elem);
         },
     },
+    'span': {
+        editable: false, 
+        markdownable: true,
+        allow_newline: false, 
+        force_prefix: true,
+        selector_type: ' ',
+        process: function(elem) {
+            return demarcate.markdown.base(elem, '', '');
+        },
+    },
     '_text': {
         editable: false,
         markdownable: true,
@@ -285,7 +295,6 @@ var _tag_dict = {
  *
  */
 demarcate.markdown.base = function(elem, prefix, postfix) {
-    console.log("base");
     var result = prefix;
 
     // demarkdown child elements
@@ -299,7 +308,6 @@ demarcate.markdown.base = function(elem, prefix, postfix) {
  * Generates a link tag from a link element
  */
 demarcate.markdown.link = function(elem) {
-    console.log("link");
     var result = "[";
     result += demarcate.markdown.parseChildren(elem);
     return result + "](" + elem.attr("href") + ")";
@@ -310,7 +318,6 @@ demarcate.markdown.link = function(elem) {
  * Uses 'parseChildren' to parse list elements.
  */
 demarcate.markdown.list = function(elem, type) {
-    console.log("list");
     var count = 1;
     var result = "";
 
@@ -335,8 +342,25 @@ demarcate.markdown.list = function(elem, type) {
  * where appropriate whilst maintaining whitespace.
  */
 demarcate.markdown.code = function(elem) {
-    console.log("code");
-    return "";
+
+    // work out what kind of tag we have
+    var tag_name = elem.get(0).nodeType == 3 ? '_text' : elem.get(0).tagName.toLowerCase();
+    var result = "";
+
+    // first check if it is just a single "<code>my code</code>" 
+    // style code block, or a code block in a <pre> with no span 
+    // style formatting
+    if (elem.children().length == 0) {
+        if (tag_name == "code") {
+            return "`" + elem.text() + "`";
+        }
+    }
+
+    // otherwise we need to parse the text, stripping all element tags 
+    // inside that are used for formatting.  Each line should be indented
+    // by four spaces and whitespace should be maintained
+    return "\n\n" + 
+                ("    " + elem.text()).replace(/\n/g, "\n    ") + "\n\n";
 };
 
 /* 
@@ -345,7 +369,6 @@ demarcate.markdown.code = function(elem) {
  */
 demarcate.markdown.table = function (elem) {
 
-    console.log("table");
     /* 
      * Extend string prototype to easily manage table padding
      */
@@ -425,7 +448,6 @@ demarcate.markdown.table = function (elem) {
  *   Typical format - ![alt](url "optional title")
  */
 demarcate.markdown.image = function(elem) {
-    console.log("image");
     var alt = elem.attr("alt");
     var title = elem.attr("title");
     var url = elem.attr("src");
@@ -446,7 +468,6 @@ demarcate.markdown.image = function(elem) {
  *   "elem" is a jQuery DOM element
  */
 demarcate.markdown.parseChildren = function(elem) {
-    console.log("parsechildren");
     // set up a result object
     var result = "";
 
@@ -781,7 +802,6 @@ demarcate.demarcate = function (elem) {
 
     // "demarkdown" the selected element through recursive dom traversal
     result = demarcate.markdown.parseChildren(elem);
-    console.log("--\n\t" + result);
     return result;
 };
 
