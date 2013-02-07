@@ -26,7 +26,6 @@ var _tag_dict = {
         editable: false, 
         markdownable: true, 
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '');
@@ -36,7 +35,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '');
@@ -46,7 +44,6 @@ var _tag_dict = {
         editable: true, 
         markdownable: true, 
         allow_newline: false, 
-        force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '# ', '\n\n');
@@ -56,7 +53,6 @@ var _tag_dict = {
         editable: true, 
         markdownable: true, 
         allow_newline: false, 
-        force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '## ', '\n\n');
@@ -66,7 +62,6 @@ var _tag_dict = {
         editable: true, 
         markdownable: true, 
         allow_newline: false, 
-        force_prefix: false, 
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '### ', '\n\n');
@@ -76,7 +71,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '#### ', '\n\n');
@@ -86,7 +80,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '##### ', '\n\n');
@@ -96,7 +89,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '###### ', '\n\n');
@@ -106,7 +98,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.base(elem);
@@ -116,7 +107,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: true,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.list(elem, 'unordered');
@@ -126,7 +116,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: true,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.list(elem, 'ordered');
@@ -136,7 +125,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '> ', '\n\n');
@@ -146,7 +134,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: true,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.code(elem, '', '\n\n');
@@ -156,7 +143,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.code(elem, '', '\n');
@@ -166,7 +152,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.link(elem);
@@ -176,7 +161,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '------', '\n\n');
@@ -186,7 +170,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, ' *', '* ');
@@ -196,7 +179,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true ,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, ' **', '** ');
@@ -206,7 +188,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '\n\n');
@@ -216,7 +197,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' > ',
         process: function(elem) {
             return demarcate.markdown.table(elem);
@@ -226,7 +206,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' ',
         process: function(elem) { 
             return "";
@@ -236,7 +215,6 @@ var _tag_dict = {
         editable: true,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' ',
         process: function(elem) {
             return "";
@@ -246,7 +224,6 @@ var _tag_dict = {
         editable: false, 
         markdownable: true,
         allow_newline: false, 
-        force_prefix: true,  
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '    \n', '');
@@ -256,7 +233,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: true,
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.image(elem);
@@ -266,7 +242,6 @@ var _tag_dict = {
         editable: false, 
         markdownable: true,
         allow_newline: false, 
-        force_prefix: true,
         selector_type: ' ',
         process: function(elem) {
             return demarcate.markdown.base(elem, '', '');
@@ -276,7 +251,6 @@ var _tag_dict = {
         editable: false,
         markdownable: true,
         allow_newline: false,
-        force_prefix: false,
         selector_type: ' ',
         process: function(elem) {
             return elem === undefined ? "" : $.trim(elem.text());
