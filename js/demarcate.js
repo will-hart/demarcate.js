@@ -918,19 +918,26 @@ demarcate.edit = function(elem) {
             return;
         }
 
+        // get the elem we are editing
         elem = $(elem);
+
+        // work out what tag it is
         var tag_name = elem.get(0).tagName.toLowerCase();
 
         // double check we are allowed to edit this
         if (tag_name in _tag_dict) {
 
-            // create the new text editor - ignore front matter
+            // if we are editing a temporary element then we should have an 
+            // empty textarea
             var md = "";
-            if (tag_name == "pre") {
-                md = demarcate.markdown.code(elem);
-            } else {
-                md = demarcate.markdown.parseChildren(elem);
-            }
+            if (!elem.hasClass("demarcate_temporary")) {
+                // if we are not looking at a temporary element, parse accordingly
+                if (tag_name == "pre") {
+                    md = demarcate.markdown.code(elem);
+                } else {
+                    md = demarcate.markdown.parseChildren(elem);
+                }
+            } 
 
             // create an editor for manipulating the DOM contents
             var ed = $("<textarea />", {
