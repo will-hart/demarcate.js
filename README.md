@@ -107,9 +107,16 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 
 ### Version 1.1.4
 
+`+` Support syntax highlighted (e.g. pygments) source code          
+`+` Support `<ol>` tags         
+`+` Partial support for footnotes - can be created and are present in generated markdown but not rendered in place       
+`+` Provide gzipped versions of CSS and javascript         
 `+` Use `ctrl + up arrow` and `ctrl + down arrow` to reorder the current block up or down      
 `+` Add `isActive()` and `isEnabled()` methods to check editor state     
-
+`~` Add "version since" to API documentation         
+`*` Edit box autosizes correctly on changing style type        
+`*` Fix white space around <a> and <code> tags      
+`*` Editing caret now placed correctly after newline insertion
 
 ### Version 1.1.3
 
