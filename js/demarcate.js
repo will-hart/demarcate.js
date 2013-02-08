@@ -677,6 +677,7 @@ demarcate.enable = function(elem) {
 
         // save button
         $(document).on('click', '#demarcate_save', function(e) {
+            e.preventDefault();
             demarcate.close_editor();
         });
 
@@ -1020,6 +1021,9 @@ demarcate.close_editor = function(save_changes, open_new) {
         var curr_value = demarcate.current_editor.val();
         var new_elem = $("<" + tag_name + "/>");
         var raw_html = modifyHtml(curr_value);
+
+        // remove temporary tag from element
+        demarcate.current_element.removeClass("demarcate_temporary");
 
         // trim unwanted wrapping paragraph tags
         if (raw_html.substring(0, 3) == "<p>") {
