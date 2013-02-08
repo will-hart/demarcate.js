@@ -17,9 +17,7 @@ DOM element and start typing!
 
 Currently not all Markdown syntax is supported.  In particular:
 
-- Footnotes are not implemented [[#13](https://github.com/will-hart/demarcate.js/issues/13)].
-- Source code formatted with pygments not decoded correctly [[#9](https://github.com/will-hart/demarcate.js/issues/9)].
-- Mathjax equations halt rendering. [[#8](https://github.com/will-hart/demarcate.js/issues/8)].
+- Mathjax equations in the HTML halt rendering. [[#8](https://github.com/will-hart/demarcate.js/issues/8)].
 
 ## USAGE
 
