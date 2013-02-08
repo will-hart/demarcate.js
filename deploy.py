@@ -12,6 +12,7 @@ a GPLv3 license from
 """
 from jsmin import jsmin
 from cssmin import cssmin
+import gzip
 
 if __name__ == "__main__":
     op = ""
@@ -24,10 +25,7 @@ if __name__ == "__main__":
 
     print "   >> Minifying jQuery.autosize Dependency"
     with open("js/jquery.autosize.js","r") as ats:
-        op = jsmin(ats.read())
-
-    with open("js/showdown.min.js","r") as sd:
-        op = jsmin(sd.read())
+        op += jsmin(ats.read())
 
     print "   >> Minifying Demarcate Library"
     with open("js/demarcate.js", "r") as dm:
@@ -36,6 +34,9 @@ if __name__ == "__main__":
     print " <<   Writing minified text to js/demarcate.min.js"
     with open("js/demarcate.min.js", "w") as dm_min:
         dm_min.write(op)
+    print " <<   Writing minified + gzipped text to js/demarcate.min.js.gz"
+    with gzip.open("js/demarcate.min.js.gz", "w") as dm_min:
+        dm_min.write(op)
 
     print "Javascript complete.\n\nMoving on to CSS\n   >> Minifying demarcate.css"
     with open("css/demarcate.css", "r") as cs:
@@ -43,6 +44,9 @@ if __name__ == "__main__":
 
     print " <<   Writing demarcate.min.css"
     with open("css/demarcate.min.css", "w") as cs_min:
+        cs_min.write(op)
+    print " <<   Writing demarcate.min.css.gz"
+    with gzip.open("css/demarcate.min.css.gz", "w") as cs_min:
         cs_min.write(op)
 
     print "\nAll done!\n\n"
