@@ -1,6 +1,6 @@
 # demarcate.js
 
-**Version 1.1.4dev**
+**Version 1.1.4**
 
 demarcate.js is an in-place Markdown Editor under development by 
 [William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
