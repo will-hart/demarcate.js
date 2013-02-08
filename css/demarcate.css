@@ -1,3 +1,19 @@
+/*************************************************************************
+*      DemarcateJS v1.1.4 is an in-place Markdown editor and decoder     *
+*                                                                        *
+*      It was written by William Hart (http://www.williamhart.info) to   *
+*      run on "textr" (http://to-textr.com/) a new Markdown enabled      *
+*      platform to allow writing and sharing of online text              *
+*                                                                        *
+*                                                                        *
+*      This code is provided under a GPLv3 License                       *
+*               http://www.gnu.org/licenses/gpl-3.0.html                 *
+*      It is also hosted on github:                                      *
+*               http://will-hart.github.com/demarcate                    *
+*      Contributions welcome!                                            *
+*                                                                        *
+*************************************************************************/
+
 .demarcate_hide {
     display: none;
 }
