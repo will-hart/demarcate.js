@@ -22,7 +22,7 @@ Currently not all Markdown syntax is supported.  In particular:
 ## USAGE
 
 **For developers, API documentation is available:**    
-- [v1.1.3 - stable](http://www.williamhart.info/static/demarcate/docs/)    
+- [v1.1.4 - stable](http://www.williamhart.info/static/demarcate/docs/)    
 - [develop branch](http://will-hart.github.com/demarcate.js/docs) 
 
 The `editor.html` file shows a sample implementation of demarcate. It can be seen
