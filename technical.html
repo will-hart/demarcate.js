@@ -232,11 +232,9 @@
                     if (render_markdown) {
                         $("#toggle_output_type").html("Switch to Markdown Output");
                         demarcate.setRenderer("rst");
-                        console.log("Set output type to 'rst'");
                     } else {
                         $("#toggle_output_type").html("Switch to RST Output");
                         demarcate.setRenderer("markdown");
-                        console.log("Set output type to 'markdown'");
                     }
                     render_markdown = !render_markdown;
                     update_output();
