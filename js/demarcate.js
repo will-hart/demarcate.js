@@ -357,7 +357,7 @@ demarcate.markdown.code = function(elem) {
 demarcate.markdown.table = function (elem) {
 
     /* 
-     * Extend string prototype to easily manage table padding
+     * Helper function to easily manage table rendering
      */
     var repeatStr = function(str, num)
     {

@@ -11,7 +11,6 @@
 /* Add an entry point which generates RST from HTML */
 demarcate.rst = {};
 
-
 /* 
  * The basic rst function - takes an element, 
  * wraps it with a prefix and postfix and recursively 
@@ -22,10 +21,39 @@ demarcate.rst = {};
  *
  */
 demarcate.rst.base = function(elem, prefix, postfix) {
-    var result = prefix;
 
-    // demarkdown child elements
-    result += demarcate.rst.parseChildren(elem);
+    /* 
+     * Heading postfixes
+     */
+    var headings = {
+        1: "=",
+        2: "-",
+        3: "+",
+        4: "~",
+        5: "*",
+        6: "^"
+    };
+    
+    /* 
+     * Helper function to easily manage table rendering
+     */
+    var repeatStr = function(str, num)
+    {
+        return new Array(num + 1).join(str);
+    }
+
+    // set up the result variable and get the body
+    var result = "";
+    var body = demarcate.rst.parseChildren(elem);
+    
+    // headings are handled differently in rest
+    if (prefix[0] == "#") {
+        // HEADING MODE!! Start by counting the number of #s in the prefix
+        var hdrNum = prefix.length - 1;
+        result = body + "\n" + repeatStr(headings[hdrNum], body.length);
+    } else {
+        result = prefix + body;
+    }
 
     // add the postfix
     return result + postfix;
