@@ -17,6 +17,7 @@
 // namespaces
 var demarcate = {};
 demarcate.markdown = {};
+demarcate.render = demarcate.markdown;
 
 /*
  * Dictionary of tags to include
@@ -28,7 +29,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '', '');
+            return demarcate.render.base(elem, '', '');
         },
     },
     'span': {
@@ -37,7 +38,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '', '');
+            return demarcate.render.base(elem, '', '');
         },
     },
     'h1': {
@@ -46,7 +47,7 @@ var _tag_dict = {
         allow_newline: false, 
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '# ', '\n\n');
+            return demarcate.render.base(elem, '# ', '\n\n');
         },
     },
     'h2': {
@@ -55,7 +56,7 @@ var _tag_dict = {
         allow_newline: false, 
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '## ', '\n\n');
+            return demarcate.render.base(elem, '## ', '\n\n');
         },
     },
     'h3': {
@@ -64,7 +65,7 @@ var _tag_dict = {
         allow_newline: false, 
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '### ', '\n\n');
+            return demarcate.render.base(elem, '### ', '\n\n');
         },
     },
     'h4': {
@@ -73,7 +74,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '#### ', '\n\n');
+            return demarcate.render.base(elem, '#### ', '\n\n');
         },
     },
     'h5': {
@@ -82,7 +83,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '##### ', '\n\n');
+            return demarcate.render.base(elem, '##### ', '\n\n');
         },
     },
     'h6': {
@@ -91,7 +92,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '###### ', '\n\n');
+            return demarcate.render.base(elem, '###### ', '\n\n');
         },
     },
     'li': {
@@ -100,7 +101,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.base(elem);
+            return demarcate.render.base(elem);
         },
     },
     'ul': {
@@ -109,7 +110,7 @@ var _tag_dict = {
         allow_newline: true,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.list(elem, 'unordered');
+            return demarcate.render.list(elem, 'unordered');
         },
     },
     'ol': {
@@ -118,7 +119,7 @@ var _tag_dict = {
         allow_newline: true,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.list(elem, 'ordered');
+            return demarcate.render.list(elem, 'ordered');
         },
     },
     'blockquote': {
@@ -127,7 +128,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '> ', '\n\n');
+            return demarcate.render.base(elem, '> ', '\n\n');
         },
     },
     'pre': {
@@ -136,7 +137,7 @@ var _tag_dict = {
         allow_newline: true,
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.code(elem, '', '\n\n');
+            return demarcate.render.code(elem, '', '\n\n');
         },
     },
     'code': {
@@ -145,7 +146,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.code(elem, '', '\n');
+            return demarcate.render.code(elem, '', '\n');
         },
     },
     'a': {
@@ -154,7 +155,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.link(elem);
+            return demarcate.render.link(elem);
         },
     },
     'hr': {
@@ -163,7 +164,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '------', '\n\n');
+            return demarcate.render.base(elem, '------', '\n\n');
         },
     },
     'em': {
@@ -172,7 +173,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, ' *', '* ');
+            return demarcate.render.base(elem, ' *', '* ');
         },
     },
     'strong': {
@@ -181,7 +182,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, ' **', '** ');
+            return demarcate.render.base(elem, ' **', '** ');
         },
     },
     'p': {
@@ -190,7 +191,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '', '\n\n');
+            return demarcate.render.base(elem, '', '\n\n');
         },
     },
     'table': {
@@ -199,7 +200,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' > ',
         process: function(elem) {
-            return demarcate.markdown.table(elem);
+            return demarcate.render.table(elem);
         },
     },
     'th': {
@@ -226,7 +227,7 @@ var _tag_dict = {
         allow_newline: false, 
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '    \n', '');
+            return demarcate.render.base(elem, '    \n', '');
         },
     },
     'img': {
@@ -235,7 +236,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.image(elem);
+            return demarcate.render.image(elem);
         },
     },
     'span': {
@@ -244,7 +245,7 @@ var _tag_dict = {
         allow_newline: false, 
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.base(elem, '', '');
+            return demarcate.render.base(elem, '', '');
         },
     },
     'sup': {
@@ -253,7 +254,7 @@ var _tag_dict = {
         allow_newline: false,
         selector_type: ' ',
         process: function(elem) {
-            return demarcate.markdown.footnote(elem);
+            return demarcate.render.footnote(elem);
         },
     },
     '_text': {
@@ -1207,6 +1208,23 @@ demarcate.clickElsewhereSave = function (e) {
     }
 };
 
+/*
+ * Sets the renderer used by demarcate.js.  Options currently include
+ *   > "markdown"
+ *   > "rst"
+ *
+ * Default is "markdown" - set when demarcate is first loaded
+ */
+demarcate.setRenderer = function(renderer) {
+    if (renderer == "markdown") {
+        demarcate.render = demarcate.markdown;
+    } else if (renderer == "rst") {
+        demarcate.render = demarcate.rst;
+    } else {
+        throw Error("Unknown rendering type - " + renderer + ".  Use 'markdown' or 'rst'");
+    }
+};
+
 /* 
  * a jquery extension for textrarea elements which inserts some
  * text at the caret position.
@@ -1230,10 +1248,11 @@ demarcate.clickElsewhereSave = function (e) {
     }
 })(jQuery);
 
-// Set caret position easily in jQuery
-// Written by and Copyright of Luke Morton, 2011
-// Licensed under MIT
-// https://gist.github.com/DrPheltRight/1007907
+/* Set caret position easily in jQuery
+ * Written by and Copyright of Luke Morton, 2011
+ * Licensed under MIT
+ * https://gist.github.com/DrPheltRight/1007907
+ */
 (function ($) {
     // Behind the scenes method deals with browser
     // idiosyncrasies and such

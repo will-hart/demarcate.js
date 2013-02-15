@@ -353,10 +353,10 @@
                                     </p>
                                 </div>
                                 <div class="details">
-                                    <div class="dox_tag_title">Return</div>
+                                    <div class="dox_tag_title">Params</div>
                                     <div class="dox_tag_detail">
-                                        <span class="dox_type">boolean</span>
-                                        <span><code>true</code> if currently enabled for editing, <code>false</code> otherwise</span>
+                                        <span class="dox_type">string</span>
+                                        <span>The rendering engine to use for Markdown</span>
                                     </div>
                                 </div>
                             </div>
@@ -367,6 +367,48 @@
 <span class="k">if</span> <span class="p">(</span><span class="n">demarcate</span><span class="p">.</span><span class="n">isEnabled</span><span class="p">())</span> <span class="p">{</span>
     <span class="n">demarcate</span><span class="p">.</span><span class="n">disable</span><span class="p">();</span>
 <span class="p">}</span></pre>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="docs">
+                            <div class="dox">
+                                <div class="summary">
+                                    <div class="pilwrap" id="demarcate.setRenderer">
+                                        <h3>
+                                            <a href="#demarcate.isActive" class="pilcrow">&#182;</a>
+                                            demarcate.setRenderer
+                                        </h3>
+                                        <h5>Since v1.1.5</h5>
+                                    </div>
+                                </div>
+                                <div class="body">
+                                    <p>
+                                        Specify the renderer used to generate demarcate output. Allowable options are:                                        
+                                    </p>
+                                    <ul>
+                                        <li><code>markdown</code> - generate Markdown</li>
+                                        <li><code>rst</code> - generate RestructuredText</li>
+                                    </ul>
+                                </div>
+                                <div class="details">
+                                    <div class="dox_tag_title">Return</div>
+                                    <div class="dox_tag_detail">
+                                        <span class="dox_type">boolean</span>
+                                        <span><code>true</code> if currently editing a block, <code>false</code> otherwise</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="code highlight">
+                            <div class="highlight">
+                                <pre><span class="c1">// Use Markdown (this is the default)</span>
+<span class="n">setRenderer</span><span class="p">(</span><span class="s">&quot;markdown&quot;</span><span class="p">);</span>
+
+<span class="c1">// Use Restructured Text</span>
+<span class="n">setRenderer</span><span class="p">(</span><span class="s">&quot;rst&quot;</span><span class="p">);</span></pre>
                             </div>
                         </td>
                     </tr>
