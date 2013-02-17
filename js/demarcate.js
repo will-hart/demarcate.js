@@ -518,7 +518,10 @@ demarcate.markdown.parseChildren = function(elem) {
         // returned as Markdown ("markdownable")
         if (tag_name != "_text") {
             // do not parse temporary dom elements
-            if (node.hasClass("demarcate_temporary")) return;
+            if (node.hasClass("demarcate_temporary") ||
+                node.attr("id") == "demarcate_toolbar") {
+                return;
+            }
 
             // check if the element is in the _tag_dict
             if (!(tag_name in _tag_dict)) return;
