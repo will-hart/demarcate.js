@@ -6,8 +6,7 @@
 *      platform to allow writing and sharing of online text              *
 *                                                                        *
 *                                                                        *
-*      This code is provided under a GPLv3 License                       *
-*               http://www.gnu.org/licenses/gpl-3.0.html                 *
+*      This code is provided under the MIT license                       *
 *      It is also hosted on github:                                      *
 *               http://will-hart.github.com/demarcate                    *
 *      Contributions welcome!                                            *
