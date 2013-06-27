@@ -5,7 +5,7 @@ may need to
     pip install jsmin
 
 Part of the demarcate.js bundle available under
-a GPLv3 license from
+the MIT license
 
     https://github.com/will-hart/demarcate.js
 
