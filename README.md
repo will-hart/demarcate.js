@@ -113,7 +113,7 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 `+` Add `isActive()` and `isEnabled()` methods to check editor state     
 `~` Add "version since" to API documentation         
 `*` Edit box autosizes correctly on changing style type        
-`*` Fix white space around <a> and <code> tags      
+`*` Fix white space around `<a>` and `<code>` tags      
 `*` Editing caret now placed correctly after newline insertion
 
 ### Version 1.1.3
