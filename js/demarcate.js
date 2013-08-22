@@ -25,7 +25,7 @@
 	/* 
 	 * Initialises the passed DOM element as a demarcate editor
 	 */
-	var editor,	
+	var editor = null,	
 		parse,
 		dirty = false,
 		
@@ -33,7 +33,7 @@
 			dirty = true;
 		},
 		
-		openEditor = function() {
+		openEditor = function(hideMenu) {
 			var event = new CustomEvent("demarcateEditorEnabled", {
 					"detail": { 
 						"editor": editor
@@ -42,7 +42,9 @@
 			
 			// create the editor and set 
 			editor.contentEditable = true;
-			createEditorMenu();
+			
+			// create the menu if requested
+			if (hideMenu !== undefined && hideMenu) createEditorMenu();
 			
 			// bind the "input" event
 			editor.addEventListener("input", setDirty);
@@ -62,7 +64,8 @@
 					"detail": { 
 						"editor": editor
 					}
-				});
+				}),
+				menus = d.getElementsByClassName("demarcate-menu");
 			
 			// turn off the editor
 			editor.contentEditable = false;
@@ -76,7 +79,7 @@
 			editor.dispatchEvent(event);
 			
 			// remove the menu
-			d.getElementsByClassName("demarcate-menu")[0].remove();
+			if (menus.length > 0) menus[0].remove();				
 			
 			// unset variables
 			dirty = false;
@@ -180,9 +183,25 @@
 			}
 		};
 	
-	demarcate.enable = function (elem) { 
+	/* 
+	 * Sets up a demarcate editor on the given HTML DOM element.  If true is passed as
+	 * an optional second argument, then no menu will be created.  This is useful for 
+	 * using demarcate "silently" as an HTML to Markdown convertor.
+	 */
+	demarcate.enable = function (elem, hideMenu) { 
+		if (editor !== null) {
+			demarcate.disable();
+		}
+		
 		editor = elem;
-		openEditor();
+		openEditor(hideMenu);
+	};
+	
+	/* 
+	 * Closes a markdown editor
+	 */
+	demarcate.disable = function () { 
+		closeEditor();
 	};
 	
 	/* 
