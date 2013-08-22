@@ -26,20 +26,29 @@
 	 * Initialises the passed DOM element as a demarcate editor
 	 */
 	var editor,	
-		parser,
+		parse,
 		dirty = false,
 		
 		setDirty = function () {
 			dirty = true;
 		},
 		
-		initEditor = function() {
+		openEditor = function() {
+			var event = new CustomEvent("demarcateEditorEnabled", {
+					"detail": { 
+						"editor": editor
+					}
+				});
+			
 			// create the editor and set 
 			editor.contentEditable = true;
 			createEditorMenu();
 			
 			// bind the "input" event
 			editor.addEventListener("input", setDirty);
+			
+			// raise the opened event
+			editor.dispatchEvent(event);
 		},
 		
 		/*
@@ -116,7 +125,7 @@
 			menu.className = "demarcate-menu";
 			
 			menu.appendChild(createMenuButton("X", function () { 
-				closeEditor();
+				demarcate.disable();
 			}, "Stop editing"));
 			menu.appendChild(createMenuButton("B", function () { 
 				demarcate.apply("bold"); 
@@ -164,9 +173,15 @@
 		
 		// create a demarcate object
 		demarcate = function(elem) {
-			editor = elem;
-			initEditor();
+			if (elem !== undefined) {
+				demarcate.enable(elem);
+			}
 		};
+	
+	demarcate.enable = function (elem) { 
+		editor = elem;
+		openEditor();
+	};
 	
 	/* 
 	 * Applies the given formatting or command
@@ -181,6 +196,20 @@
 	 */
 	demarcate.html = function () { 
 		return editor.innerHTML;
+	};
+	
+	/*
+	 * DEPRECATED METHOD - use demarcate.parse(elem) intead
+	 */
+	demarcate.demarcate = funciton(elem) {
+		return demarcate.parse(elem);
+	}
+	
+	/*
+	 * Returns true if the editor has been enabled, false otherwise
+	 */
+	demarcate.isEnabled = function() {
+		return editor === null || editor.contentEditable === false;
 	};
 	
 	/* 
@@ -289,7 +318,7 @@
 ( function(demarcate) {
 	"use strict";
 	
-	var parser = function (elem) { 
+	var parse = function (elem) { 
 			// if an element is passed demarcate this, otherwise we use the editor
 			if (elem === undefined) elem = editor;
 
@@ -774,5 +803,5 @@
 	
 		
 	// save the markdown parser
-	demarcate.parser = parser;
+	demarcate.parse = parse;
 })(window.demarcate);
