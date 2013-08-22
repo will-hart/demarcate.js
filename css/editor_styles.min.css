@@ -1,8 +1,10 @@
+#preview{position:fixed;top:1em;left:1em;right:1em;bottom:1em;padding:2em;color:white;background:#141414;overflow:auto;z-index:99;font-size:0.8em;}
 html,body{font-family:'Monda',sans-serif;color:#303030;background:#eee;}
 body{min-width:340px;max-width:960px;margin:2em auto 0 auto;line-height:1.8;font-size:1.1em;}
 pre,code{font-family:'Ubuntu Mono',sans-serif;border-radius:0.3em;font-size:1.1em;}
 pre{background:#303030;color:#eee;padding:1em;line-height:1.2;}
 code{background:white;padding:0.5em;margin-left:0.4em;margin-right:0.4em;}
+#edit_me{outline:none;}
 @media only screen and (max-width:1100px){body{max-width:650px;}}
 @media only screen and (min-width:480px) and (max-width:767px){body{max-width:400px;}}
 @media only screen and (max-width:480px){body{max-width:250px;}}
