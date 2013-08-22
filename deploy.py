@@ -23,10 +23,6 @@ if __name__ == "__main__":
     with open("js/showdown.min.js","r") as sd:
         op = jsmin(sd.read())
 
-    print "   >> Minifying jQuery.autosize Dependency"
-    with open("js/jquery.autosize.js","r") as ats:
-        op += jsmin(ats.read())
-
     print "   >> Minifying Demarcate Library"
     with open("js/demarcate.js", "r") as dm:
         op += jsmin(dm.read())

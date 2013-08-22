@@ -11,6 +11,19 @@ p, h1, h2, h3, h4, h5, h6 {
 h1 {
   margin-top: 40px; }
 
+.well { 
+	background: #EEE;
+	border: 1px solid #CCC;
+}
+
+.deprecated { 
+	color: #AAA !important;
+}
+  
+.deprecation-notice {
+	color: #A22 !important;
+}
+
 #tree, #headings {
   position: absolute;
   top: 30px;

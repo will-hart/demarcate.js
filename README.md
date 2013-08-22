@@ -1,17 +1,27 @@
 # demarcate.js
 
-**Version 1.1.4**
+**Version 2.0**
+
+In short:
+	
+> demarcate.js allows you to edit an HTML document "in place", using the CSS styles of your page.  Users
+are not required to know markdown, instead they just click on a DOM element and start typing! When finished
+you can access the edited markdown through javascript.
+
+**VERSION 2.0 will result in a couple of API changes which are detailed below.**
 
 demarcate.js is an in-place Markdown Editor under development by 
 [William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
-and released under an MIT license.  The editor works directly on the DOM, tags with a textarea 
-for editing and then closing returning the markdown "code" when requested.  It uses the 
-[showdown js library](https://github.com/coreyti/showdown) to render markdown 
-in the browser once it has been entered.
+and released under an MIT license.  As of version 2.0, a complete redesign was undertaken with
+the following goals:
+	
+1. Remove `jQuery` dependency
+2. Remove `showdown.js` dependency
+3. Support mobile browsers
+4. Provide a richer, more "desktop" like UI
+5. Improve modularity of the parser so additional markup languages can be supported (RST?!)
 
-demarcate.js allows you to apply your own stylesheets to a document and then have users
-edit it directly.  Users are not required to know markdown, instead they just click on a 
-DOM element and start typing!
+Demarcate has **no external dependencies**.
 
 ## LIMITATIONS
 
@@ -19,7 +29,61 @@ Currently not all Markdown syntax is supported.  In particular:
 
 - Mathjax equations in the HTML halt rendering. [[#8](https://github.com/will-hart/demarcate.js/issues/8)].
 
+## VERSION 2.0 BREAKING CHANGES
+
+A number of API changes were made.  The most important of these is that now demarcate expects all DOM 
+elements received in function arguments to be native DOM elements, not jQuery ones.  In some cases
+CSS selectors can now be passed instead of jQuery elements:
+	
+	// no longer supported:
+	demarcate.enable($("#any_element"));
+	
+	// instead use
+	demarcate.enable(document.getElementById("any_element"));
+	
+
+jQuery helper functions no longer work: 
+	
+	// the following jQuery style function calls are deprecated and have been removed
+	$("#any_element").demarcate();
+	$("#any_element").disable_demarcate();
+	
+The `isActive` function call is no longer relevant and has been removed. `isEnabled` still returns `true` if 
+the editor is enabled and false otherwise.
+
+To better reflect the modularity of decoding, (i.e. as other formats could be supported in the future)
+	
+	// The following is deprecated and will be removed in the future.
+	demarcate.demarcate()
+	
+	// instead use:
+	demarcate.parse()
+
+Events have also been renamed to reflect javascript code standards:
+	
+	demarcate_editor_closed >> demarcateEditorClosed
+    demarcate_editor_enabled >> demarcateEditorEnabled
+
+The editor object in events can be accessed as follows:
+	
+	document.addEventListener('demarcateEditorEnabled', function(e) {
+		var editor = e.detail.editor;
+		
+		// do something with the editor
+	});
+	
+Or using jQuery:
+	
+	$(window).on('demarcateEditorEnabled', '#demarcate', function (e) {
+		var editor = e.detail.editor;
+		
+		// do something with the editor
+	});
+
+
 ## USAGE
+
+** NOTE THIS SECTION STILL RELATES TO 1.1.4 - UPDATES TO 2.0 WILL FOLLOW**
 
 **For developers, API documentation is available:**    
 - [v1.1.4 - stable](http://www.williamhart.info/static/demarcate/docs/)    
