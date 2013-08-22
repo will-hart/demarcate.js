@@ -87,18 +87,20 @@
                                     <p>
                                         To install textr in a web page you need to include one CSS file (<code>demarcate.min.css</code>) and 
 										one javascript file (<code>demarcate.min.js</code>).  demarcate.js has <strong>one optional</strong>
-										dependency (<a href="http://bitwalker.github.io/keys.js/">keys.js</a> can be used for shortcut keys).
+										dependency (<a href="https://github.com/madrobby/keymaster">keymaster.js</a> can be used for shortcut keys).
                                     </p>
                                 </div>
                             </div>
                         </td>
                         <td class="code highlight">
                             <div class="highlight">
-                                <pre><span class="c">&lt;!-- include demarcate like this: --&gt;</span>
+                                <pre><span class="c">&lt;!-- Optionally include keys.js BEFORE demarcate - https://github.com/madrobby/keymaster --&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/keys.min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- include demarcate like this: --&gt;</span>
 <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/demarcate.min.css&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;js/demarcate.min.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-<span class="c">&lt;!-- Optionally include keys.js - http://bitwalker.github.io/keys.js/ --&gt;</span>
                                 </pre>
                             </div>
                         </td>
