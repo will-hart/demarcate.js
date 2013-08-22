@@ -16,13 +16,12 @@ and released under an MIT license.  As of version 2.0, a complete redesign was u
 the following goals:
 	
 1. Remove `jQuery` dependency
-2. Support mobile browsers
-3. Provide a richer, more "desktop" like UI
-4. Improve modularity of the parser so additional markup languages can be supported (RST?!)
+2. Remove `showdown.js` dependency
+3. Support mobile browsers
+4. Provide a richer, more "desktop" like UI
+5. Improve modularity of the parser so additional markup languages can be supported (RST?!)
 
-Demarcate uses the [showdown js library](https://github.com/coreyti/showdown) to render markdown 
-in the browser once it has been entered.
-
+Demarcate has **no external dependencies**.
 
 ## LIMITATIONS
 

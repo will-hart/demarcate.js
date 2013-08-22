@@ -13,10 +13,6 @@
 *                                                                        *
 *************************************************************************/
 
-#demarcate { 
-	outline: none;
-}
-
 .demarcate-menu {
 	position: fixed;
 	top: 0;

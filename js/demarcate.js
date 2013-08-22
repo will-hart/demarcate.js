@@ -257,7 +257,17 @@
 	 * DEPRECATED METHOD - use demarcate.parse(elem) intead
 	 */
 	demarcate.demarcate = function(elem) {
-		return demarcate.parse(elem);
+		// check we have jQuery
+		if ($ === undefined) {
+			console.log("Unable to parse using demarcate.demarcate() - jQuery not installed.  Note demacate.demarcate is deprecated, refer to the docs for demarcate.parse()");
+			return "";
+		}
+		
+		if (elem === undefined) {
+			return demarcate.parse();
+		}
+		
+		return demarcate.parse(elem.get(0));
 	}
 	
 	/*
