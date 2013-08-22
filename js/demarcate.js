@@ -27,10 +27,37 @@
 	 */
 	var editor = null,	
 		parse,
-		dirty = false,
+		dirtyCounter = 0,
+		timeoutId = 0,
+		event = null,
 		
 		setDirty = function () {
-			dirty = true;
+			dirtyCounter++;
+			
+			clearTimeout(timeoutId);
+			
+			if (dirtyCounter > 10) {
+				editorUpdated();
+			} else { 
+				timeoutId = setTimeout(function () { 
+					editorUpdated(); 
+				}, 5000);
+			}
+		},
+		
+		editorUpdated = function () { 
+			dirtyCounter = 0;
+			clearTimeout(timeoutId);
+			
+			// notify subscribers
+			event = new CustomEvent("demarcateEditorUpdated", {
+				"detail": { 
+					"editor": editor
+				},
+				bubbles: true,
+				cancelable: true
+			});
+			editor.dispatchEvent(event);
 		},
 		
 		openEditor = function(hideMenu) {
@@ -82,7 +109,6 @@
 			if (menus.length > 0) menus[0].remove();				
 			
 			// unset variables
-			dirty = false;
 			editor = null;
 			demarcate.parse.editor = null;
 			return md;
@@ -459,7 +485,19 @@
 					return process(elem, ' *', '* ');
 				},
 			},
+			'i': {
+				markdownable: true,
+				process: function(elem) {
+					return process(elem, ' *', '* ');
+				},
+			},
 			'strong': {
+				markdownable: true,
+				process: function(elem) {
+					return process(elem, ' **', '** ');
+				},
+			},
+			'b': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, ' **', '** ');
@@ -563,7 +601,7 @@
 			// otherwise parse the link as usual
 			var result = " [";
 			result += parseChildren(elem);
-			return result + "](" + elem.attr("href") + ") ";
+			return result + "](" + elem.getAttribute("href") + ") ";
 		},
 
 		/* 
@@ -638,7 +676,8 @@
 				op = "",
 				headerRow = true,
 				col = 0,
-				rows = elem.getElementsByTagName("tr");
+				rows = elem.getElementsByTagName("tr"),
+				children;
 
 			// build up the cell array in memory and track max cell length
 			// first traverse each row
@@ -700,9 +739,9 @@
 		 *   Typical format - ![alt](url "optional title")
 		 */
 		image = function(elem) {
-			var alt = elem.attr("alt");
-			var title = elem.attr("title");
-			var url = elem.attr("src");
+			var alt = elem.getAttribute("alt");
+			var title = elem.getAttribute("title");
+			var url = elem.getAttribute("src");
 			var op = " ![" + alt + "](" + url;
 
 			if (title != "") {
@@ -741,10 +780,15 @@
 		footnoteList = function(elem) {
 			var result = "",
 				children = elem.getElementsByTagName("ol"),
-				subchildren = [];
+				subchildren = [],
+				tmp;
 				
 			for (var i = 0; i < children.length; ++i) {
-				subchildren = subchildren.concat(children[i].getElementsByTagName("li"));
+				tmp = children[i].getElementsByTagName("li");
+				
+				for (var j = 0; j < tmp.length; ++j) {
+					subchildren.push(tmp[j]);
+				}				
 			}
 
 			// loop through each child li element and build up a 
