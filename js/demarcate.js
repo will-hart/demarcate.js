@@ -49,6 +49,7 @@
 			
 			// raise the opened event
 			editor.dispatchEvent(event);
+			demarcate.parse.editor = editor;
 		},
 		
 		/*
@@ -79,7 +80,8 @@
 			
 			// unset variables
 			dirty = false;
-			editor = null;			
+			editor = null;
+			demarcate.parse.editor = null;
 			return md;
 		},
 		
@@ -201,7 +203,7 @@
 	/*
 	 * DEPRECATED METHOD - use demarcate.parse(elem) intead
 	 */
-	demarcate.demarcate = funciton(elem) {
+	demarcate.demarcate = function(elem) {
 		return demarcate.parse(elem);
 	}
 	
@@ -315,12 +317,12 @@
 	w.demarcate = demarcate;
 })(this, window, document);
 
-( function(demarcate) {
+(function(demarcate) {
 	"use strict";
 	
 	var parse = function (elem) { 
 			// if an element is passed demarcate this, otherwise we use the editor
-			if (elem === undefined) elem = editor;
+			if (elem === undefined) elem = parse.editor;
 
 			// get the tag name and parse approppriately 
 			var tagName = elem.nodeType == 3 ? "_text" : elem.tagName.toLowerCase();
@@ -339,55 +341,55 @@
 			'div': {
 				markdownable: true, 
 				process: function(elem) {
-					return parse(elem, '', '');
+					return process(elem, '', '');
 				},
 			},
 			'span': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '', '');
+					return process(elem, '', '');
 				},
 			},
 			'h1': {
 				markdownable: true, 
 				process: function(elem) {
-					return parse(elem, '# ', '\n\n');
+					return process(elem, '# ', '\n\n');
 				},
 			},
 			'h2': {
 				markdownable: true, 
 				process: function(elem) {
-					return parse(elem, '## ', '\n\n');
+					return process(elem, '## ', '\n\n');
 				},
 			},
 			'h3': {
 				markdownable: true, 
 				process: function(elem) {
-					return parse(elem, '### ', '\n\n');
+					return process(elem, '### ', '\n\n');
 				},
 			},
 			'h4': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '#### ', '\n\n');
+					return process(elem, '#### ', '\n\n');
 				},
 			},
 			'h5': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '##### ', '\n\n');
+					return process(elem, '##### ', '\n\n');
 				},
 			},
 			'h6': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '###### ', '\n\n');
+					return process(elem, '###### ', '\n\n');
 				},
 			},
 			'li': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem);
+					return process(elem);
 				},
 			},
 			'ul': {
@@ -405,7 +407,7 @@
 			'blockquote': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '> ', '\n\n');
+					return process(elem, '> ', '\n\n');
 				},
 			},
 			'pre': {
@@ -429,25 +431,25 @@
 			'hr': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '------', '\n\n');
+					return process(elem, '------', '\n\n');
 				},
 			},
 			'em': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, ' *', '* ');
+					return process(elem, ' *', '* ');
 				},
 			},
 			'strong': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, ' **', '** ');
+					return process(elem, ' **', '** ');
 				},
 			},
 			'p': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '', '\n\n');
+					return process(elem, '', '\n\n');
 				},
 			},
 			'table': {
@@ -471,7 +473,7 @@
 			'br': {
 				markdownable: true,
 				process: function(elem) {
-					return parse(elem, '    \n', '');
+					return process(elem, '    \n', '');
 				},
 			},
 			'img': {
@@ -528,7 +530,7 @@
 		 *   "prefix", "postfix" are strings to be appended to the demarkdown
 		 *
 		 */
-		parse = function(elem, prefix, postfix) {
+		process = function(elem, prefix, postfix) {
 			return prefix + parseChildren(elem) + postfix;
 		},
 
@@ -801,7 +803,8 @@
 			return result;
 		};
 	
-		
+	parse.editor = null;	
+	
 	// save the markdown parser
 	demarcate.parse = parse;
 })(window.demarcate);
