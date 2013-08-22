@@ -29,7 +29,7 @@ Currently not all Markdown syntax is supported.  In particular:
 
 - Mathjax equations in the HTML halt rendering. [[#8](https://github.com/will-hart/demarcate.js/issues/8)].
 
-## VERSION 2.0 BREAKING CHANGES
+## UPGRADING TO 2.0 FROM 1.x.x
 
 A number of API changes were made.  The most important of these is that now demarcate expects all DOM 
 elements received in function arguments to be native DOM elements, not jQuery ones.  In some cases
@@ -40,6 +40,9 @@ CSS selectors can now be passed instead of jQuery elements:
 	
 	// instead use
 	demarcate.enable(document.getElementById("any_element"));
+	
+	// or 
+	demarcate.enable($("#any_element").get(0));
 	
 
 jQuery helper functions no longer work: 
