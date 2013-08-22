@@ -30,6 +30,7 @@
 		dirtyCounter = 0,
 		timeoutId = 0,
 		event = null,
+		originalOutline = "",
 		
 		setDirty = function () {
 			dirtyCounter++;
@@ -79,6 +80,10 @@
 			// raise the opened event
 			editor.dispatchEvent(event);
 			demarcate.parse.editor = editor;
+			
+			// remove "outline" on the editr cos its gross
+			originalOutline = editor.style.outline;
+			editor.style.outline = "none";
 		},
 		
 		/*
@@ -106,7 +111,10 @@
 			editor.dispatchEvent(event);
 			
 			// remove the menu
-			if (menus.length > 0) menus[0].remove();				
+			if (menus.length > 0) menus[0].remove();
+			
+			// reset the outline style
+			editor.style.outline = originalOutline;
 			
 			// unset variables
 			editor = null;
