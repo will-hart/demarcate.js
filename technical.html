@@ -215,7 +215,7 @@
                 // bind a handler to the 'demarcate_editor_closed' event.  This allows
                 // the rendered markdown to be immediately placed in the '#output' div.
                 // new lines are replaced with <br> tags for rending in browser
-                $(document).bind('demarcateEditorClosed', "#container", function(e, elem) {
+                $(document).on('demarcateEditorUpdated', function(e, elem) {
                     var op = demarcate.parse();
 					console.log("Writing output");
                     $("#output").html($("<pre />", {text: op}));
