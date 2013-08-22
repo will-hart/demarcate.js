@@ -8,7 +8,7 @@ In short:
 are not required to know markdown, instead they just click on a DOM element and start typing! When finished
 you can access the edited markdown through javascript.
 
-**VERSION 2.0 will result in a couple of API changes which are detailed below. **
+**VERSION 2.0 will result in a couple of API changes which are detailed below.**
 
 demarcate.js is an in-place Markdown Editor under development by 
 [William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
