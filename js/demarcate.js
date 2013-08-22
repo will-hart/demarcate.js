@@ -72,7 +72,7 @@
 			editor.contentEditable = true;
 			
 			// create the menu if requested
-			if (hideMenu !== undefined && hideMenu) createEditorMenu();
+			if (hideMenu === undefined || !hideMenu) createEditorMenu();
 			
 			// bind the "input" event
 			editor.addEventListener("input", setDirty);

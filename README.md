@@ -21,7 +21,7 @@ the following goals:
 4. Provide a richer, more "desktop" like UI
 5. Improve modularity of the parser so additional markup languages can be supported (RST?!)
 
-Demarcate has **no external dependencies**.
+Demarcate has one optional dependency - [keys.js](http://bitwalker.github.io/keys.js/).
 
 ## LIMITATIONS
 
