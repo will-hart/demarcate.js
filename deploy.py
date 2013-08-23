@@ -19,9 +19,9 @@ if __name__ == "__main__":
 
     # put in showdown dependency
     print "\n\n\nBuilding demarcate.js Dependencies:\n\nGenerating minified javascripts"
-    print "   >> Minifying Showdown Dependency"
-    with open("js/showdown.min.js","r") as sd:
-        op = jsmin(sd.read())
+    print "   >> Minifying keymaster.js Dependency"
+    with open("js/keys.min.js","r") as km:
+        op = jsmin(km.read())
 
     print "   >> Minifying Demarcate Library"
     with open("js/demarcate.js", "r") as dm:
