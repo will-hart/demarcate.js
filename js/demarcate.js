@@ -32,6 +32,17 @@
 		event = null,
 		originalOutline = "",
 		
+		fireEvent = function (name, detail) {
+			var evt; 
+			
+			if (d.createEventObject != undefined) { // IE
+				// Custom events in IE are totally broken and are currently unsupported
+			} else { // other browsers
+				evt = new CustomEvent(name, detail);
+				editor.dispatchEvent(evt);
+			}
+		},
+		
 		setDirty = function () {
 			dirtyCounter++;
 			
@@ -51,23 +62,16 @@
 			clearTimeout(timeoutId);
 			
 			// notify subscribers
-			event = new CustomEvent("demarcateEditorUpdated", {
+			fireEvent("demarcateEditorUpdated", {
 				"detail": { 
 					"editor": editor
 				},
 				bubbles: true,
 				cancelable: true
 			});
-			editor.dispatchEvent(event);
 		},
 		
-		openEditor = function(hideMenu) {
-			var event = new CustomEvent("demarcateEditorEnabled", {
-					"detail": { 
-						"editor": editor
-					}
-				});
-			
+		openEditor = function(hideMenu) {			
 			// create the editor and set 
 			editor.contentEditable = true;
 			
@@ -75,10 +79,20 @@
 			if (hideMenu === undefined || !hideMenu) createEditorMenu();
 			
 			// bind the "input" event
-			editor.addEventListener("input", setDirty);
+			if (editor.addEventListener) {
+				editor.addEventListener("input", setDirty); // Everybody else
+			} else {
+				// IE custom events make my eyes bleed
+				// http://dean.edwards.name/weblog/2009/03/callbacks-vs-events/
+			}
 			
 			// raise the opened event
-			editor.dispatchEvent(event);
+			fireEvent("demarcateEditorEnabled", {
+					"detail": { 
+						"editor": editor
+					}
+				});
+
 			demarcate.parse.editor = editor;
 			
 			// remove "outline" on the editr cos its gross
@@ -92,11 +106,6 @@
 		 */
 		closeEditor = function(getMarkdown) { 
 			var md = "",
-				event = new CustomEvent("demarcateEditorClosed", {
-					"detail": { 
-						"editor": editor
-					}
-				}),
 				menus = d.getElementsByClassName("demarcate-menu");
 			
 			// turn off the editor
@@ -108,7 +117,11 @@
 			}
 			
 			// raise editor closed event
-			editor.dispatchEvent(event);
+			fireEvent("demarcateEditorClosed", {
+					"detail": { 
+						"editor": editor
+					}
+				})
 			
 			// remove the menu
 			if (menus.length > 0) menus[0].remove();
