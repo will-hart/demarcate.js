@@ -1,4 +1,4 @@
-.demarcate-menu{position:fixed;top:0;left:0;bottom:0;width:50px;background:#303030;color:#eee;-moz-box-shadow:inset -5px 0 1px #202020;-webkit-box-shadow:inset -5px 0 1px #202020;box-shadow:inset -5px 0 1px #202020;}
+.demarcate-menu{position:fixed;top:0;left:0;bottom:0;width:50px;height:100%;background:#303030;color:#eee;-moz-box-shadow:inset -5px 0 1px #202020;-webkit-box-shadow:inset -5px 0 1px #202020;box-shadow:inset -5px 0 1px #202020;}
 .demarcate-menu-button{width:100%;display:block;text-align:center;color:white;text-decoration:none;}
 .demarcate-menu-button:hover{background:#eee;color:#303030;}
 .demarcate-menu-button:first-of-type{color:rgb(37,194,37);font-weight:bolder;}
