@@ -98,6 +98,9 @@
 			// remove "outline" on the editr cos its gross
 			originalOutline = editor.style.outline;
 			editor.style.outline = "none";
+			
+			// focus on the editor
+			focusEditor();
 		},
 		
 		/*
