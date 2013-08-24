@@ -405,133 +405,133 @@
 				markdownable: true, 
 				process: function(elem) {
 					return process(elem, '', '');
-				},
+				}
 			},
 			'span': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '', '');
-				},
+				}
 			},
 			'h1': {
 				markdownable: true, 
 				process: function(elem) {
 					return process(elem, '# ', '\n\n');
-				},
+				}
 			},
 			'h2': {
 				markdownable: true, 
 				process: function(elem) {
 					return process(elem, '## ', '\n\n');
-				},
+				}
 			},
 			'h3': {
 				markdownable: true, 
 				process: function(elem) {
 					return process(elem, '### ', '\n\n');
-				},
+				}
 			},
 			'h4': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '#### ', '\n\n');
-				},
+				}
 			},
 			'h5': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '##### ', '\n\n');
-				},
+				}
 			},
 			'h6': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '###### ', '\n\n');
-				},
+				}
 			},
 			'li': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem);
-				},
+				}
 			},
 			'ul': {
 				markdownable: true,
 				process: function(elem) {
 					return list(elem, 'unordered');
-				},
+				}
 			},
 			'ol': {
 				markdownable: true,
 				process: function(elem) {
 					return list(elem, 'ordered');
-				},
+				}
 			},
 			'blockquote': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '> ', '\n\n');
-				},
+				}
 			},
 			'pre': {
 				markdownable: true,
 				process: function(elem) {
 					return code(elem);
-				},
+				}
 			},
 			'code': {
 				markdownable: true,
 				process: function(elem) {
 					return code(elem);
-				},
+				}
 			},
 			'a': {
 				markdownable: true,
 				process: function(elem) {
 					return link(elem);
-				},
+				}
 			},
 			'hr': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '------', '\n\n');
-				},
+				}
 			},
 			'em': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, ' *', '* ');
-				},
+				}
 			},
 			'i': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, ' *', '* ');
-				},
+				}
 			},
 			'strong': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, ' **', '** ');
-				},
+				}
 			},
 			'b': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, ' **', '** ');
-				},
+				}
 			},
 			'p': {
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '', '\n\n');
-				},
+				}
 			},
 			'table': {
 				markdownable: true,
 				process: function(elem) {
 					return table(elem);
-				},
+				}
 			},
 			'th': {
 				markdownable: true,
@@ -549,26 +549,26 @@
 				markdownable: true,
 				process: function(elem) {
 					return process(elem, '    \n', '');
-				},
+				}
 			},
 			'img': {
 				markdownable: true,
 				process: function(elem) {
 					return image(elem);
-				},
+				}
 			},
 			'sup': {
 				markdownable: true,
 				process: function(elem) {
 					return footnote(elem);
-				},
+				}
 			},
 			'_text': {
 				markdownable: true,
 				process: function(elem) {
 					return elem === undefined ? "" : getTextFromNode(elem);
-				},
-		   },
+				}
+		   }
 		},
 		
 		
