@@ -20,7 +20,7 @@ h1 {
 	color: #AAA !important;
 }
   
-.deprecation-notice {
+.deprecation-notice, .unsupported-notice {
 	color: #A22 !important;
 }
 

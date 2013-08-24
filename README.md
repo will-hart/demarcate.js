@@ -21,9 +21,12 @@ the following goals:
 4. Provide a richer, more "desktop" like UI
 5. Improve modularity of the parser so additional markup languages can be supported (RST?!)
 
-Demarcate has one optional dependency - [keymaster.js](https://github.com/madrobby/keymaster).
+Demarcate has one optional dependency - [keymaster.js](https://github.com/madrobby/keymaster).  This is 
+automatically included in the minified version.
 
 ## LIMITATIONS
+
+Internet Explorer is a bit of a nightmare to work with... support is currently patchy and not very thoroughly tested.
 
 Currently not all Markdown syntax is supported.  In particular:
 
