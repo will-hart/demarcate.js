@@ -1,5 +1,7 @@
 # demarcate.js
 
+**NOTE** Version 2.0 is well underway with a whole host of improvements.  Have a look at the develop branch for more.
+
 **Version 1.1.4**
 
 demarcate.js is an in-place Markdown Editor under development by 
