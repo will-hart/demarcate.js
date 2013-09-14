@@ -420,7 +420,7 @@
 			'div': {
 				markdownable: true, 
 				process: function(elem) {
-					return process(elem, '', '');
+					return process(elem, '\n', '\n');
 				}
 			},
 			'span': {
@@ -432,37 +432,37 @@
 			'h1': {
 				markdownable: true, 
 				process: function(elem) {
-					return process(elem, '# ', '\n\n');
+					return process(elem, '# ', '\n');
 				}
 			},
 			'h2': {
 				markdownable: true, 
 				process: function(elem) {
-					return process(elem, '## ', '\n\n');
+					return process(elem, '## ', '\n');
 				}
 			},
 			'h3': {
 				markdownable: true, 
 				process: function(elem) {
-					return process(elem, '### ', '\n\n');
+					return process(elem, '### ', '\n');
 				}
 			},
 			'h4': {
 				markdownable: true,
 				process: function(elem) {
-					return process(elem, '#### ', '\n\n');
+					return process(elem, '#### ', '\n');
 				}
 			},
 			'h5': {
 				markdownable: true,
 				process: function(elem) {
-					return process(elem, '##### ', '\n\n');
+					return process(elem, '##### ', '\n');
 				}
 			},
 			'h6': {
 				markdownable: true,
 				process: function(elem) {
-					return process(elem, '###### ', '\n\n');
+					return process(elem, '###### ', '\n');
 				}
 			},
 			'li': {
@@ -486,7 +486,7 @@
 			'blockquote': {
 				markdownable: true,
 				process: function(elem) {
-					return process(elem, '> ', '\n\n');
+					return process(elem, '\n> ', '\n');
 				}
 			},
 			'pre': {
@@ -510,7 +510,7 @@
 			'hr': {
 				markdownable: true,
 				process: function(elem) {
-					return process(elem, '------', '\n\n');
+					return process(elem, '------', '\n');
 				}
 			},
 			'em': {
@@ -540,7 +540,7 @@
 			'p': {
 				markdownable: true,
 				process: function(elem) {
-					return process(elem, '', '\n\n');
+					return process(elem, '\n', '\n');
 				}
 			},
 			'table': {
@@ -644,7 +644,7 @@
 		 */
 		list = function(elem, type) {
 			var count = 1,
-				result = "",
+				result = "\n",
 				children = elem.getElementsByTagName("li");
 
 			for (var i = 0; i < children.length; ++i) {
@@ -685,8 +685,8 @@
 			// otherwise we need to parse the text, stripping all element tags 
 			// inside that are used for formatting.  Each line should be indented
 			// by four spaces and whitespace should be maintained
-			return "\n\n" + 
-						("    " + getTextFromNode(elem, true, true)).replace(/\n/g, "\n    ") + "\n\n";
+			return "\n" + 
+						("    " + getTextFromNode(elem, true, true)).replace(/\n/g, "\n    ") + "\n";
 		},
 
 		/* 
@@ -765,7 +765,7 @@
 				}
 				op += "\n";
 			}
-			return op + "\n\n";
+			return op + "\n";
 		},
 
 		/*
@@ -838,7 +838,7 @@
 
 				// parse the remainder of the result
 				result += parseChildren(subchildren[i]);
-				result += "\n\n";
+				result += "\n";
 			}
 
 			return result;
@@ -884,7 +884,7 @@
 					// check if it is a special tag (i.e. TOC)
 					if (tagName == 'div') {
 						if (hasClass(node, "toc")) {
-							result += "\n[TOC]\n\n";
+							result += "\n[TOC]\n";
 							continue;
 						} else if (hasClass(node, "footnote")) {
 							result += footnoteList(node);
