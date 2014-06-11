@@ -3,7 +3,7 @@
 **Version 1.1.4**
 
 demarcate.js is an in-place Markdown Editor under development by 
-[William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
+[William Hart](http://www.williamhart.info) for a now expired domain
 and released under an MIT license.  The editor works directly on the DOM, tags with a textarea 
 for editing and then closing returning the markdown "code" when requested.  It uses the 
 [showdown js library](https://github.com/coreyti/showdown) to render markdown 
@@ -149,4 +149,4 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 
 ### Version 1.1.1
 
-Initial "production" version for [http://to-textr.com/](http://to-textr.com/)
+Initial "production" version
