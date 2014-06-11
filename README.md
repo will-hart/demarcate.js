@@ -10,9 +10,8 @@ you can access the edited markdown through javascript.
 
 **VERSION 2.0 will result in a couple of API changes which are detailed below.**
 
-demarcate.js is an in-place Markdown Editor under development by 
-[William Hart](http://www.williamhart.info) for [http://to-textr.com/](http://to-textr.com/) 
-and released under an MIT license.  As of version 2.0, a complete redesign was undertaken with
+demarcate.js is an in-place Markdown Editor by [William Hart](http://www.williamhart.info), 
+released under an MIT license.  As of version 2.0, a complete redesign was undertaken with
 the following goals:
 	
 1. Remove `jQuery` dependency
@@ -217,4 +216,4 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 
 ### Version 1.1.1
 
-Initial "production" version for [http://to-textr.com/](http://to-textr.com/)
+Initial "production" version
