@@ -866,8 +866,16 @@ demarcate.demarcate = function (elem) {
     }
 
     // get the tag name and parse approppriately 
-    var tag_name = elem.get(0).nodeType == 3 ? "_text" : elem.get(0).tagName.toLowerCase();
+    var tagName;
 
+    if (node_type == 3) {
+        tagName = '_text';
+    } else {
+        // No tag name, nothing to convert.
+        if(!node.tagName) continue;
+        tagName = node.tagName.toLowerCase();
+    }
+                
     // check we are allowed to parse this type
     if (!(tag_name in _tag_dict)) return "";
 
