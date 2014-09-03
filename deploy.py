@@ -5,7 +5,7 @@ may need to
     pip install jsmin
 
 Part of the demarcate.js bundle available under
-a GPLv3 license from
+an MIT license from
 
     https://github.com/will-hart/demarcate.js
 
@@ -18,23 +18,32 @@ if __name__ == "__main__":
     op = ""
 
     # put in showdown dependency
-    print "\n\n\nBuilding demarcate.js Dependencies:\n\nGenerating minified javascripts"
-    print "   >> Minifying keymaster.js Dependency"
-    with open("js/keys.min.js","r") as km:
-        op = jsmin(km.read())
+    print "\n\n\nBuilding demarcate.js Dependencies:\n"
+    print "Generating minified javascripts"
 
     print "   >> Minifying Demarcate Library"
-    with open("js/demarcate.js", "r") as dm:
-        op += jsmin(dm.read())
+    with open("lib/demarcate.js", "r") as dm:
+        op = jsmin(dm.read())
 
     print " <<   Writing minified text to js/demarcate.min.js"
-    with open("js/demarcate.min.js", "w") as dm_min:
-        dm_min.write(op)
-    print " <<   Writing minified + gzipped text to js/demarcate.min.js.gz"
-    with gzip.open("js/demarcate.min.js.gz", "w") as dm_min:
+    with open("lib/demarcate.min.js", "w") as dm_min:
         dm_min.write(op)
 
-    print "Javascript complete.\n\nMoving on to CSS\n   >> Minifying demarcate.css"
+    print " <<   Writing minified + gzipped text to js/demarcate.min.js.gz"
+    with gzip.open("lib/demarcate.min.js.gz", "w") as dm_min:
+        dm_min.write(op)
+
+    print "   >> Minifying optional keymaster.js Dependency"
+    with open("bower_components/keymaster/keymaster.js", "r") as km:
+        op = jsmin(km.read())
+
+    print " <<   Writing minified demarcate + keymaster text to " + \
+        "js/demarcate_keys.min.js"
+    with gzip.open("lib/demarcate_keys.min.js", "w") as dm_min:
+        dm_min.write(op)
+
+    print "Javascript complete.\n\nMoving on to CSS"
+    print ">> Minifying demarcate.css"
     with open("css/demarcate.css", "r") as cs:
         op = cssmin(cs.read())
 
