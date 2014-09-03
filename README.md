@@ -220,4 +220,4 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 
 ### Version 1.1.1
 
-Initial "production" version for [http://to-textr.com/](http://to-textr.com/)
+Initial "production" version
