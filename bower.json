@@ -1,6 +1,6 @@
 {
   "name": "demarcate",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/will-hart/demarcate.js",
   "authors": [
     "Will Hart <will@williamhart.info>"
@@ -28,6 +28,5 @@
   ],
   "dependencies": {
     "keymaster": "~1.6.2"
-  },
-  "private": true
+  }
 }

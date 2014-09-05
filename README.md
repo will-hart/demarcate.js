@@ -1,4 +1,4 @@
-**Version 2.0.0**
+**Version 2.0.1**
 
 TLDR:
 	
@@ -152,6 +152,9 @@ Contributions have been received from:
 `~` revised feature        
 `-` removed feature        
 `*` bug fix
+
+### Version 2.0.1
+`+` Add to bower.io
 
 ### Version 2.0.0
 `+` Complete rewrite to remove all required dependencies
