@@ -135,7 +135,7 @@ function createMenuButton(text, action, tooltip) {
     button.title = tooltip;
     button.className = "demarcate-menu-button";
     button.onclick = function (e) { 
-        e.stopPropagation();
+        e.preventDefault();
         action();
         focusEditor();
     };
@@ -310,57 +310,57 @@ if (typeof key !== 'undefined') {
     
     // setup commands for formatting
     key("ctrl+shift+b", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.apply("bold"); 
     });
     key("ctrl+shift+i",function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.apply("italic"); 
     });
 
     // set up command for block types
     key("ctrl+shift+1", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.heading(1); 
     });
     key("ctrl+shift+2", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.heading(2); 
     });
     key("ctrl+shift+3", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.heading(3); 
     });
     key("ctrl+shift+4", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.heading(4); 
     });
     key("ctrl+shift+5", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.heading(5); 
     });
     key("ctrl+shift+6", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.heading(6); 
     });
     key("ctrl+shift+space", function (e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.transform("p"); 
     });
     key("ctrl+shift+u", function(e, h) {
-        e.stopPropagation(); 
+        e.preventDefault(); 
         demarcate.insert("ul"); 
     });
     key("ctrl+shift+l", function(e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.insert("ol"); 
     });
     key("ctrl+shift+h", function(e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.insert("hr"); 
     });
     key("ctrl+shift+q", function(e, h) { 
-        e.stopPropagation();
+        e.preventDefault();
         demarcate.transform("blockquote"); 
     });
 }
