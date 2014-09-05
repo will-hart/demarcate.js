@@ -28,6 +28,5 @@
   ],
   "dependencies": {
     "keymaster": "~1.6.2"
-  },
-  "private": true
+  }
 }

@@ -21,6 +21,5 @@
   },
   "devDependencies": {},
   "preferGlobal": true,
-  "private": true,
   "license": "MIT"
 }
