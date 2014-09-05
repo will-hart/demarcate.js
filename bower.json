@@ -6,7 +6,7 @@
     "Will Hart <will@williamhart.info>"
   ],
   "description": "A web based Markdown editor",
-  "main": "js/demarcate.js",
+  "main": "bin/demarcate.js",
   "moduleType": [
     "amd",
     "globals"
