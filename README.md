@@ -2,13 +2,15 @@
 
 **Version 2.0**
 
-In short:
+TLDR:
 	
 > demarcate.js allows you to edit an HTML document "in place", using the CSS styles of your page.  Users
 are not required to know markdown, instead they just click on a DOM element and start typing! When finished
 you can access the edited markdown through javascript.
 
-**VERSION 2.0 was a rewrite with some breaking changes. These are detailed below.**
+**VERSION 2.0 was a complete rewrite with some breaking changes. These are detailed below.**
+
+------------
 
 demarcate.js is an in-place Markdown Editor developed by 
 [William Hart](http://www.williamhart.info) and released under an MIT license.  As of version 2.0, 
@@ -20,52 +22,57 @@ a complete redesign was undertaken with the following goals:
 4. Provide a richer, more "desktop" like UI
 5. Improve modularity of the parser so additional markup languages can be supported as plugins
 
-Demarcate has one optional dependency - [keymaster.js](https://github.com/madrobby/keymaster).  This 
+Demarcate has one *optional* dependency - [keymaster.js](https://github.com/madrobby/keymaster).  This 
 is automatically detected and used if installed and provides shortcut keys for formatting options.
 
 ## LIMITATIONS
 
-Internet Explorer is a bit of a nightmare to work with... support is currently patchy and not very thoroughly tested.
-
-Currently not all Markdown syntax is supported.  In particular:
-
-- Mathjax equations in the HTML halt rendering. [[#8](https://github.com/will-hart/demarcate.js/issues/8)].
+Support for custom events in  IE was pretty patchy and not very thoroughly tested. 
 
 ## INSTALLATION
 
-> todo
+There are two options - as of version 2.0.0 you can install through bower:
+
+    bower install demarcate
+
+Then include the standalone files in your browser,
+
+    <script src="bower_components/demarcate/bin/demarcate.js"></script>
+
+You can also build from source by downloading the repository and then:
+
+    cd /unzipped/demarcate/repo/path/
+    browserify src/main.js > bin/demarcate.js
 
 ## UPGRADING TO 2.0 FROM 1.x.x
 
-A number of API changes were made.  The most important of these is that now demarcate expects all DOM 
-elements received in function arguments to be native DOM elements, not jQuery ones.  In some cases
+A number of API changes were made. The most important of these is that now demarcate expects all DOM 
+elements received in function arguments to be native DOM elements, not jQuery ones. In some cases
 CSS selectors can now be passed instead of jQuery elements:
 
 	// no longer supported:
-	demarcate.enable($("#any_element"));
-	
-	// instead use
-	demarcate.enable(document.getElementById("any_element"));
+	//     demarcate.enable($("#any_element"));
+	// use
+	demarcate.enable(document.getElementById("any_element_id"));
 	
 	// or 
 	demarcate.enable($("#any_element").get(0));
-	
 
 jQuery helper functions no longer work: 
 	
 	// the following jQuery style function calls are deprecated and have been removed
-	$("#any_element").demarcate();
-	$("#any_element").disable_demarcate();
+	// $("#any_element").demarcate();
+	// $("#any_element").disable_demarcate();
 	
 The `isActive` function call is no longer relevant and has been removed. `isEnabled` still returns `true` if 
 the editor is enabled and false otherwise.
 
 To better reflect the modularity of decoding, (i.e. as other formats could be supported in the future)
 	
-	// The following is deprecated and will be removed in the future.
-	demarcate.demarcate()
+	// The following is deprecated.
+	// demarcate.demarcate()
 	
-	// instead use:
+	// use:
 	demarcate.parse()
 
 Events have also been renamed to reflect javascript code standards (naming was a result of too much Python):
@@ -175,6 +182,11 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 `~` revised feature        
 `-` removed feature        
 `*` bug fix
+
+### Version 2.0.0
+`+` Complete rewrite to remove all required dependencies
+`+` Optional (terrible and crappy) CSS for styling the menu and editor
+`+` Supports mobile browsers
 
 ### Version 1.1.4
 
