@@ -1,6 +1,4 @@
-# demarcate.js
-
-**Version 2.0**
+**Version 2.0.1**
 
 TLDR:
 	
@@ -9,8 +7,6 @@ are not required to know markdown, instead they just click on a DOM element and 
 you can access the edited markdown through javascript.
 
 **VERSION 2.0 was a complete rewrite with some breaking changes. These are detailed below.**
-
-------------
 
 demarcate.js is an in-place Markdown Editor developed by 
 [William Hart](http://www.williamhart.info) and released under an MIT license.  As of version 2.0, 
@@ -141,10 +137,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 ## CONTRIBUTING
 
 Contributions and suggestions are welcome - fill out an issue or submit a pull request.
+
+Contributions have been received from:
+
+ - dvetten
 
 
 ##CHANGE LOG 
@@ -153,6 +152,9 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 `~` revised feature        
 `-` removed feature        
 `*` bug fix
+
+### Version 2.0.1
+`+` Add to bower.io
 
 ### Version 2.0.0
 `+` Complete rewrite to remove all required dependencies
@@ -183,9 +185,6 @@ Contributions and suggestions are welcome - fill out an issue or submit a pull r
 `~` Scroll editor to near the top of the screen so you can write forever without using the mouse             
 `~` Complete refactor of the code to maintain separation from other js libraries       
 `*` Various minor changes and improvements        
-
-
-
 
 ### Version 1.1.2
 
