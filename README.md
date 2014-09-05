@@ -39,7 +39,12 @@ Then include the standalone files in your browser,
 
     <script src="bower_components/demarcate/bin/demarcate.js"></script>
 
-You can also build from source by downloading the repository and then:
+You can also build from source by downloading the repository and running it
+through node's browserify. Install browserify withL
+
+    npm install -g browserify
+
+Then build demarcate with 
 
     cd /unzipped/demarcate/repo/path/
     browserify src/main.js > bin/demarcate.js
@@ -99,62 +104,28 @@ Or optionally using jQuery:
 
 ## USAGE
 
-** NOTE THIS SECTION STILL RELATES TO 1.1.4 - UPDATES TO 2.0 WILL FOLLOW**
-
-**For developers, API documentation is available:**    
-- [v1.1.4 - stable](http://www.williamhart.info/static/demarcate/docs/)    
-- [develop branch](http://will-hart.github.com/demarcate.js/docs) 
-
 The `editor.html` file shows a sample implementation of demarcate. It can be seen
 running at [http://will-hart.github.com/demarcate.js/](http://will-hart.github.com/demarcate.js/).  
 
-In short, two files need to be included in order to use demarcate - one js and 
-one CSS file.  Also make sure you have the required images in and `img` directory.
+Only one file needs to be included in order to use demarcate - the demarcate.js file. You may 
+*optionally* include some CSS to style the menu. Crappy samples are available in the css directory.
 
-    <link rel="stylesheet" href="css/demarcate.css">
-    <script src="js/demarcate.min.js" type="text/javascript"></script>
+    <script src="bower_components/demarcate/bin/demarcate.min.js" type="text/javascript"></script>
 
-> **NOTE** the minified version of demarcate.js includes all js dependencies
+Next you need to add a script tag to the bottom of your page to enable the editor. For example:
 
-Next you need to add a script tag to the bottom of your page.  Use a jquery
-selector to pick an DOM tree section to act as the in-place editor.  This is 
-done as follows:
+    <script type="text/javascript>
+        demarcate.enable(document.getElementById("any_element_id"));
+        // or with jQuery: demarcate.enable($("#any_element_id").get(0));
+    </script>
 
-    $('#container').enable_demarcate();
+To get the markdown from the editor, you can use the `demarcate.parse()` function. You may
+want to link this to the `demarcateEditorUpdated` event to get live updates:
 
-Alternative javascript syntax is available which performs the same task:
-
-    demarcate.enable($("#container"));
-
-Every valid object (specified in the `editor_whitelist` array) within the 
-`#container` DOM element will have the in place editing behaviour attached to 
-it (i.e. click to edit).
-
-To get the markdown from the elements, you can use the `demarcate()` function:
-
-    // use this for any element
-    $("#any_element").demarcate();
-        
-    // or
-    var markdown = demarcate.demarcate($("#any_element"));
-    
-    // or for the Markdown from the current editor
-    var markdown = demarcate.demarcate();
-    
-
-Demarcate provides a number of events that can be subscribed to, enabling your 
-application to respond to editor actions.  In particular the 
-`demarcate_editor_closed` event which is fired whenever an editor is successfully
-closed and the changes are saved.  You can listen to this event using `bind` 
-and automatically push the changes up to your server using ajax.  For instance:
-
-    $(document).bind('demarcate_editor_closed', function(e, elem) {
-        var md = demarcate.demarcate();
-        $.post('http://my/api/url/', md});
+    $(document).on('demarcateEditorUpdated', function(e, elem) {
+        var markdown = demarcate.parse();
+        console.log(markdown);
     });
-
-View the [API documentation](http://will-hart.github.com/demarcate.js/docs)  for
-more details.
 
 ## LICENSE
 
