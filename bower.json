@@ -1,0 +1,33 @@
+{
+  "name": "demarcate",
+  "version": "2.0.0",
+  "homepage": "https://github.com/will-hart/demarcate.js",
+  "authors": [
+    "Will Hart <will@williamhart.info>"
+  ],
+  "description": "A web based Markdown editor",
+  "main": "bin/demarcate.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "markdown",
+    "editor",
+    "wysiwyg",
+    "html",
+    "markdown"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "keymaster": "~1.6.2"
+  },
+  "private": true
+}

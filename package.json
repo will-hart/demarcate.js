@@ -1,0 +1,26 @@
+{
+  "name": "demarcate",
+  "version": "2.0.0",
+  "description": "A web based Markdown editor",
+  "author": "Will Hart <will@williamhart.info>",
+  "main": "src/demarcate.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/will-hart/demarcate.js"
+  },
+  "bugs": {
+    "url": "https://github.com/will-hart/demarcate.js/issues"
+  },
+  "keywords": [
+    "nodejitsu",
+    "example",
+    "browsenpm"
+  ],
+  "dependencies": {
+    "keymaster": "~1.6.2"
+  },
+  "devDependencies": {},
+  "preferGlobal": true,
+  "private": true,
+  "license": "MIT"
+}
