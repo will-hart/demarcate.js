@@ -175,31 +175,19 @@
         </div>
 
         <div id="output">
-            <strong>Note</strong> this demo is running from the 'develop' branch.
-
             <h2>Usage Notes</h2>
             <ul>
-                <li>Click on an element in the left hand box to edit.</li>
-                <li>Click outside the editor or hit <strong>shift + enter</strong> to save and close.</li>
-                <li>Hit <strong>enter</strong> inside the editor to save, close and add a new paragraph.</li>
-                <li>In a code box <strong>enter</strong> adds a new line - hit <strong>ctrl+enter</strong> to save and start a new block</li>
-                <li>Hit <strong>escape</strong> to cancel editing.  Note that if the style of element has changed, cancel won't undo this</li>
-                <li>Use <strong>ctrl + space</strong> to cycle between element styles</li>
-                <li>Use <strong>alt+up</strong> and <strong>alt+down</strong> to navigate between editable elements.</li>
+                <li>Edit items in the left hand section</li>
+                <li>Use the tool bar on the right hand side to manage formatting styles</li>
+                <li>Try it in a mobile browser as well!</li>li>
             </ul>
-            
-            <h2>See it in action</h2>
-            <p>
-                See demarcate in action (creating screenplays, documents and slide shows) at <a href="http://to-textr.com/demarcate/">http://to-textr.com/demarcate/</a>
-            </p>
         </div>
 
-        <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-        <script src="js/jquery.autosize.js" type="text/javascript"></script>
-        
+		<!-- jQuery imported for DOM manipulations but not required -->
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
         <!-- Include demarcate.js -->
-        <script src="js/showdown.min.js" type="text/javascript"></script>
-        <script src="js/demarcate.js" type="text/javascript"></script>
+        <script src="bin/demarcate.sa.js" type="text/javascript"></script>
         <script type="text/javascript">
 
             /* 
@@ -210,13 +198,14 @@
             $(document).ready( function() {
                 // Enable all whitelisted elements in the '#container' dom element
                 // for demarcation.  
-                demarcate.enable($('#container'));
+                demarcate.enable($('#container').get(0));
 
                 // bind a handler to the 'demarcate_editor_closed' event.  This allows
                 // the rendered markdown to be immediately placed in the '#output' div.
                 // new lines are replaced with <br> tags for rending in browser
-                $(document).bind('demarcate_editor_closed', function(e, elem) {
-                    var op = demarcate.demarcate();
+                $(document).on('demarcateEditorUpdated', function(e, elem) {
+                    var op = demarcate.parse();
+					console.log("Writing output");
                     $("#output").html($("<pre />", {text: op}));
                 });
             });
