@@ -9,7 +9,7 @@ var editor = null,
  function fireEvent(name, detail) {
     var evt; 
     
-    if (document.createEventObject != undefined) { // IE
+    if (document.createEventObject !== undefined) { // IE
         // Custom events in IE are totally broken and are currently unsupported
         // sorry IE
     } else { // other browsers
@@ -96,10 +96,10 @@ function closeEditor(getMarkdown) {
     
     // raise editor closed event
     fireEvent("demarcateEditorClosed", {
-            "detail": { 
-                "editor": editor
-            }
-        })
+        "detail": { 
+            "editor": editor
+        }
+    });
     
     // remove the menu
     if (menus.length > 0) menus[0].remove();
@@ -162,7 +162,7 @@ function createEditorMenu() {
     }, "Makes text bold (CTRL+B)"));
     menu.appendChild(createMenuButton("I", function () { 
         demarcate.apply("italic");
-    }, "Makes text italic (CTRL+I)"));;
+    }, "Makes text italic (CTRL+I)"));
     menu.appendChild(createMenuButton("H1", function () { 
         demarcate.heading(1);
     }, "Set heading level 1 (CTRL+SHIFT+1)"));
@@ -202,7 +202,7 @@ function createEditorMenu() {
 }
 
 // create a demarcate object
-function demarcate() {};
+function demarcate() {}
 demarcate.parse = markdownParser;
 
 /* 
@@ -217,14 +217,14 @@ demarcate.enable = function (elem, hideMenu) {
     
     editor = elem;
     openEditor(hideMenu);
-}
+};
 
 /* 
  * Closes a markdown editor
  */
 demarcate.disable = function () { 
     closeEditor();
-}
+};
 
 /* 
  * Applies the given formatting or command
@@ -232,14 +232,14 @@ demarcate.disable = function () {
 demarcate.apply = function (fmt, val) {
     document.execCommand(fmt, false, val);
     focusEditor();
-}
+};
 
 /* 
  * Returns the HTML from the editor 
  */
 demarcate.html = function () { 
     return editor.innerHTML;
-}
+};
 
 /*
  * DEPRECATED METHOD - use demarcate.parse(elem) intead
@@ -258,14 +258,14 @@ demarcate.demarcate = function(elem) {
     }
     
     return demarcate.parse(elem.get(0));
-}
+};
 
 /*
  * Returns true if the editor has been enabled, false otherwise
  */
 demarcate.isEnabled = function() {
     return editor === null || editor.contentEditable === false;
-}
+};
 
 /* 
  * Gathers the inner HTML of the current tag and wraps it inside 
@@ -274,7 +274,7 @@ demarcate.isEnabled = function() {
  */
 demarcate.transform = function (tag) {
     demarcate.apply("formatblock", "<" + tag + ">");
-}
+};
 
 /*
  * Inserts a list or paragraph at the current cursor position
@@ -289,7 +289,7 @@ demarcate.insert = function (tag) {
     } else {
         console.log("demarcate.insert could not insert unknown tag - " + tag);
     }
-}
+};
 
 /*
  * Sets heading level for the given text
@@ -298,11 +298,11 @@ demarcate.heading = function (level) {
     // rough validation
     if (level < 1 || level > 6) return;
     demarcate.transform("H" + level);
-}
+};
 
 demarcate.clearFormats = function () {
     demarcate.apply("removeFormat");
-}
+};
 
 /*
  * add shortcut keys (only if requirement "keys.js" is satisfied)
@@ -393,7 +393,7 @@ var tagDict = {
     'div': {
         markdownable: true, 
         process: function(elem) {
-            return process(elem, '\n', '\n');
+            return process(elem, '', '');
         }
     },
     'span': {
@@ -483,7 +483,7 @@ var tagDict = {
     'hr': {
         markdownable: true,
         process: function(elem) {
-            return process(elem, '------', '\n');
+            return process(elem, '\n------', '\n');
         }
     },
     'em': {
@@ -505,6 +505,12 @@ var tagDict = {
         }
     },
     'b': {
+        markdownable: true,
+        process: function(elem) {
+            return process(elem, ' **', '** ');
+        }
+    },
+    'u': {
         markdownable: true,
         process: function(elem) {
             return process(elem, ' **', '** ');
@@ -673,10 +679,10 @@ function table(elem) {
     var repeatStr = function(str, num)
     {
         return new Array(num + 1).join(str);
-    }
+    },
     
-    // store column lengths
-    var maxColLen = [],
+        // store column lengths
+        maxColLen = [],
         rowLen = 0,
         cells = [],
         op = "",
@@ -718,7 +724,7 @@ function table(elem) {
     }
 
     // now build up the output MD
-    for (var r = 0; r < cells.length; r++) {
+    for (r = 0; r < cells.length; r++) {
         // write the cell contents
         var row = cells[r];
         for (var c = 0; c < row.length; c++) {
@@ -730,7 +736,7 @@ function table(elem) {
         // write the '=' signs under the top row
         if (headerRow) {
             op += "\n";
-            for (var i = 0; i < maxColLen.length; i++) {
+            for (i = 0; i < maxColLen.length; i++) {
                 op += repeatStr("-", maxColLen[i]) + "|";
             }
             headerRow = false;
@@ -748,9 +754,14 @@ function image(elem) {
     var alt = elem.getAttribute("alt");
     var title = elem.getAttribute("title");
     var url = elem.getAttribute("src");
+
+    if (alt === null) {
+        alt = url;
+    }
+
     var op = " ![" + alt + "](" + url;
 
-    if (title != "") {
+    if (title !== null) {
         op += " \"" + title + "\"";
     }
 
@@ -799,7 +810,7 @@ function footnoteList(elem) {
 
     // loop through each child li element and build up a 
     // footnote detail section in Markdown
-    for (var i = 0; i < subchildren.length; ++i) {
+    for (i = 0; i < subchildren.length; ++i) {
         
         // get the footnote id, checking for errors
         var fn_name = subchildren[i].id.split(":");
