@@ -19,7 +19,7 @@ var tagDict = {
     'div': {
         markdownable: true, 
         process: function(elem) {
-            return process(elem, '\n', '\n');
+            return process(elem, '', '');
         }
     },
     'span': {

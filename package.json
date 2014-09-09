@@ -19,7 +19,14 @@
   "dependencies": {
     "keymaster": "~1.6.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "jsdom": "^1.0.0-pre.6",
+    "mocha": "^1.21.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
   "preferGlobal": true,
   "license": "MIT"
 }
