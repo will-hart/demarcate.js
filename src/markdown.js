@@ -136,6 +136,12 @@ var tagDict = {
             return process(elem, ' **', '** ');
         }
     },
+    'u': {
+        markdownable: true,
+        process: function(elem) {
+            return process(elem, ' **', '** ');
+        }
+    },
     'p': {
         markdownable: true,
         process: function(elem) {
@@ -374,9 +380,14 @@ function image(elem) {
     var alt = elem.getAttribute("alt");
     var title = elem.getAttribute("title");
     var url = elem.getAttribute("src");
+
+    if (alt === null) {
+        alt = url;
+    }
+    
     var op = " ![" + alt + "](" + url;
 
-    if (title != "") {
+    if (title !== null) {
         op += " \"" + title + "\"";
     }
 
