@@ -57,6 +57,14 @@ describe(md, function() {
     it("should convert strong to double stars", function () {
         markdownSpecTest("<strong>Something strong</strong>", " **Something strong** ", "strong");
     });
+ 
+    it("should convert b to double stars", function () {
+        markdownSpecTest("<b>Something strong</b>", " **Something strong** ", "b");
+    });
+
+    it("should treat underline as bold", function() {
+        markdownSpecTest("<u>Something strong</u>", " **Something strong** ", "u");
+    });
 
     it("should convert em to single stars", function() { 
         markdownSpecTest("<i>Something em</i>", " *Something em* ", "i");
@@ -116,11 +124,55 @@ describe(md, function() {
 
     it("should handle hrs by inserting dashes", function() {
         markdownSpecTest("<div><p>Test</p><hr><p>Second paragraph</p></div>",
-            "\nTest\n\n------\n\nSecond paragraph\n", "div")
+            "\nTest\n\n------\n\nSecond paragraph\n", "div");
     });
 
     it("should handle hrs in paragraphs", function() {
         markdownSpecTest("<div><p>Test<hr>Second paragraph</p></div>",
-            "\nTest\n\n------\nSecond paragraph\n\n", "div")
+            "\nTest\n\n------\nSecond paragraph\n\n", "div");
+    });
+
+    it("should handle code tags", function() {
+        markdownSpecTest("<code>some code</code>", " `some code` ", "code");
+    });
+
+    it("should handle code in a paragraph", function() {
+        markdownSpecTest("<p>Some Text with <code>code</code></p>", 
+            "\nSome Text with `code` \n", "p");
+    });
+
+    it("should space indent preformatted blocks", function() {
+        markdownSpecTest("<pre>My pre</pre>", "\n    My pre\n", "pre");
+    });
+
+    it("should keep whitespace in preformatted blocks", function() {
+        markdownSpecTest("<pre>  My pre\n    line</pre>", 
+            "\n    My pre\n        line\n", "pre");
+    });
+
+    it("should handle breaks", function() {
+        markdownSpecTest("<p>A test<br>of breaks</p>", "\nA test    \nof breaks\n", "p");
+    });
+
+    it("should handle unclosed tags", function() {
+        markdownSpecTest("<p>Unclosed tag", "\nUnclosed tag\n", "p");
+    });
+
+    it("should handle image tags", function() {
+        markdownSpecTest("<img src='123.png' alt='test'>", " ![test](123.png) ", "img");
+    });
+
+    it("should use image name as alt where none supplied", function() {
+        markdownSpecTest("<img src='123.png'>", " ![123.png](123.png) ", "img");
+    });
+
+    it("should handle title tags", function() {
+        markdownSpecTest("<img src='123.png' alt='123' title='456' />", 
+            " ![123](123.png \"456\") ", "img");
+    });
+
+    it("should handle simple tables", function() {
+        markdownSpecTest("<table><thead><tr><th>Header</th></tr></thead><tbody><tr><td>Body</td></tr></tbody></table>",
+            "Header|\n------|\nBody  |\n\n", "table");
     });
 });
