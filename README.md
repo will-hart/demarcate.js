@@ -159,10 +159,10 @@ Contributions have been received from:
 
 ### Version 2.0.2
 
-`*` Fix image tags with no title showing `"null"`
-`*` Fix incorrect reference in technical editor demo
-`+` Some `mocha` unit tests at last
-`~` Minor changes to new lines and whitespace due to unit tests
+`*` Fix image tags with no title showing `"null"`    
+`*` Fix incorrect reference in technical editor demo    
+`+` Some `mocha` unit tests at last    
+`~` Minor changes to new lines and whitespace due to unit tests    
 
 ### Version 2.0.1
 
