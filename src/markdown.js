@@ -305,10 +305,10 @@ function table(elem) {
     var repeatStr = function(str, num)
     {
         return new Array(num + 1).join(str);
-    }
+    },
     
-    // store column lengths
-    var maxColLen = [],
+        // store column lengths
+        maxColLen = [],
         rowLen = 0,
         cells = [],
         op = "",
@@ -350,7 +350,7 @@ function table(elem) {
     }
 
     // now build up the output MD
-    for (var r = 0; r < cells.length; r++) {
+    for (r = 0; r < cells.length; r++) {
         // write the cell contents
         var row = cells[r];
         for (var c = 0; c < row.length; c++) {
@@ -362,7 +362,7 @@ function table(elem) {
         // write the '=' signs under the top row
         if (headerRow) {
             op += "\n";
-            for (var i = 0; i < maxColLen.length; i++) {
+            for (i = 0; i < maxColLen.length; i++) {
                 op += repeatStr("-", maxColLen[i]) + "|";
             }
             headerRow = false;
@@ -384,7 +384,7 @@ function image(elem) {
     if (alt === null) {
         alt = url;
     }
-    
+
     var op = " ![" + alt + "](" + url;
 
     if (title !== null) {
@@ -436,7 +436,7 @@ function footnoteList(elem) {
 
     // loop through each child li element and build up a 
     // footnote detail section in Markdown
-    for (var i = 0; i < subchildren.length; ++i) {
+    for (i = 0; i < subchildren.length; ++i) {
         
         // get the footnote id, checking for errors
         var fn_name = subchildren[i].id.split(":");
