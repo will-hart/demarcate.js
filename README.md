@@ -1,4 +1,8 @@
-**Version 2.0.0**
+**Version 2.0.2**
+
+Master: [![Master Build Status](https://travis-ci.org/will-hart/demarcate.js.svg?branch=master)](https://travis-ci.org/will-hart/demarcate.js)
+
+Develop: [![Develop Build Status](https://travis-ci.org/will-hart/demarcate.js.svg?branch=develop)](https://travis-ci.org/will-hart/demarcate.js)
 
 TLDR:
     
@@ -153,7 +157,19 @@ Contributions have been received from:
 `-` removed feature        
 `*` bug fix
 
+### Version 2.0.2
+
+`*` Fix image tags with no title showing `"null"`
+`*` Fix incorrect reference in technical editor demo
+`+` Some `mocha` unit tests at last
+`~` Minor changes to new lines and whitespace due to unit tests
+
+### Version 2.0.1
+
+`+` Add to bower.io
+
 ### Version 2.0.0
+
 `+` Complete rewrite to remove all required dependencies
 `+` Optional (terrible and crappy) CSS for styling the menu and editor
 `+` Supports mobile browsers

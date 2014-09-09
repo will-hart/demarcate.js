@@ -8,7 +8,7 @@ var editor = null,
  function fireEvent(name, detail) {
     var evt; 
     
-    if (document.createEventObject != undefined) { // IE
+    if (document.createEventObject !== undefined) { // IE
         // Custom events in IE are totally broken and are currently unsupported
         // sorry IE
     } else { // other browsers
@@ -95,10 +95,10 @@ function closeEditor(getMarkdown) {
     
     // raise editor closed event
     fireEvent("demarcateEditorClosed", {
-            "detail": { 
-                "editor": editor
-            }
-        })
+        "detail": { 
+            "editor": editor
+        }
+    });
     
     // remove the menu
     if (menus.length > 0) menus[0].remove();
@@ -161,7 +161,7 @@ function createEditorMenu() {
     }, "Makes text bold (CTRL+B)"));
     menu.appendChild(createMenuButton("I", function () { 
         demarcate.apply("italic");
-    }, "Makes text italic (CTRL+I)"));;
+    }, "Makes text italic (CTRL+I)"));
     menu.appendChild(createMenuButton("H1", function () { 
         demarcate.heading(1);
     }, "Set heading level 1 (CTRL+SHIFT+1)"));
@@ -201,7 +201,7 @@ function createEditorMenu() {
 }
 
 // create a demarcate object
-function demarcate() {};
+function demarcate() {}
 demarcate.parse = markdownParser;
 
 /* 
@@ -216,14 +216,14 @@ demarcate.enable = function (elem, hideMenu) {
     
     editor = elem;
     openEditor(hideMenu);
-}
+};
 
 /* 
  * Closes a markdown editor
  */
 demarcate.disable = function () { 
     closeEditor();
-}
+};
 
 /* 
  * Applies the given formatting or command
@@ -231,14 +231,14 @@ demarcate.disable = function () {
 demarcate.apply = function (fmt, val) {
     document.execCommand(fmt, false, val);
     focusEditor();
-}
+};
 
 /* 
  * Returns the HTML from the editor 
  */
 demarcate.html = function () { 
     return editor.innerHTML;
-}
+};
 
 /*
  * DEPRECATED METHOD - use demarcate.parse(elem) intead
@@ -257,14 +257,14 @@ demarcate.demarcate = function(elem) {
     }
     
     return demarcate.parse(elem.get(0));
-}
+};
 
 /*
  * Returns true if the editor has been enabled, false otherwise
  */
 demarcate.isEnabled = function() {
     return editor === null || editor.contentEditable === false;
-}
+};
 
 /* 
  * Gathers the inner HTML of the current tag and wraps it inside 
@@ -273,7 +273,7 @@ demarcate.isEnabled = function() {
  */
 demarcate.transform = function (tag) {
     demarcate.apply("formatblock", "<" + tag + ">");
-}
+};
 
 /*
  * Inserts a list or paragraph at the current cursor position
@@ -288,7 +288,7 @@ demarcate.insert = function (tag) {
     } else {
         console.log("demarcate.insert could not insert unknown tag - " + tag);
     }
-}
+};
 
 /*
  * Sets heading level for the given text
@@ -297,11 +297,11 @@ demarcate.heading = function (level) {
     // rough validation
     if (level < 1 || level > 6) return;
     demarcate.transform("H" + level);
-}
+};
 
 demarcate.clearFormats = function () {
     demarcate.apply("removeFormat");
-}
+};
 
 /*
  * add shortcut keys (only if requirement "keys.js" is satisfied)
