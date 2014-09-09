@@ -113,4 +113,14 @@ describe(md, function() {
         markdownSpecTest("<blockquote>Test quote</blockquote>",
             "\n> Test quote\n", "blockquote");
     });
+
+    it("should handle hrs by inserting dashes", function() {
+        markdownSpecTest("<div><p>Test</p><hr><p>Second paragraph</p></div>",
+            "\nTest\n\n------\n\nSecond paragraph\n", "div")
+    });
+
+    it("should handle hrs in paragraphs", function() {
+        markdownSpecTest("<div><p>Test<hr>Second paragraph</p></div>",
+            "\nTest\n\n------\nSecond paragraph\n\n", "div")
+    });
 });

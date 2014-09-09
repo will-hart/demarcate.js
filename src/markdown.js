@@ -109,7 +109,7 @@ var tagDict = {
     'hr': {
         markdownable: true,
         process: function(elem) {
-            return process(elem, '------', '\n');
+            return process(elem, '\n------', '\n');
         }
     },
     'em': {
