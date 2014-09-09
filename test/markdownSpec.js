@@ -108,4 +108,9 @@ describe(md, function() {
             "\nOne\n\nTwo\n", "span");
 
     });
+
+    it("should handle blockquotes", function() {
+        markdownSpecTest("<blockquote>Test quote</blockquote>",
+            "\n> Test quote\n", "blockquote");
+    });
 });
