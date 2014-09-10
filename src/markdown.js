@@ -31,37 +31,37 @@ var tagDict = {
     'h1': {
         markdownable: true, 
         process: function(elem) {
-            return process(elem, '# ', '\n');
+            return process(elem, '# ', '\n\n');
         }
     },
     'h2': {
         markdownable: true, 
         process: function(elem) {
-            return process(elem, '## ', '\n');
+            return process(elem, '## ', '\n\n');
         }
     },
     'h3': {
         markdownable: true, 
         process: function(elem) {
-            return process(elem, '### ', '\n');
+            return process(elem, '### ', '\n\n');
         }
     },
     'h4': {
         markdownable: true,
         process: function(elem) {
-            return process(elem, '#### ', '\n');
+            return process(elem, '#### ', '\n\n');
         }
     },
     'h5': {
         markdownable: true,
         process: function(elem) {
-            return process(elem, '##### ', '\n');
+            return process(elem, '##### ', '\n\n');
         }
     },
     'h6': {
         markdownable: true,
         process: function(elem) {
-            return process(elem, '###### ', '\n');
+            return process(elem, '###### ', '\n\n');
         }
     },
     'li': {

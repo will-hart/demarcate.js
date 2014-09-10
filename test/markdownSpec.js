@@ -21,27 +21,27 @@ describe(md, function() {
     });
  
     it("should convert H1 headings to hashes with newline", function() {
-        markdownSpecTest("<h1>Heading 1</h1>", "# Heading 1\n", "h1");
+        markdownSpecTest("<h1>Heading 1</h1>", "# Heading 1\n\n", "h1");
     });
 
     it("should convert H2 headings to hashes with newline", function() {
-        markdownSpecTest("<h2>Heading 2</h2>", "## Heading 2\n", "h2");
+        markdownSpecTest("<h2>Heading 2</h2>", "## Heading 2\n\n", "h2");
     });
 
     it("should convert H3 headings to hashes with newline", function() {
-        markdownSpecTest("<h3>Heading 3</h3>", "### Heading 3\n", "h3");
+        markdownSpecTest("<h3>Heading 3</h3>", "### Heading 3\n\n", "h3");
     });
 
     it("should convert H4 headings to hashes with newline", function() {
-        markdownSpecTest("<h4>Heading 4</h4>", "#### Heading 4\n", "h4");
+        markdownSpecTest("<h4>Heading 4</h4>", "#### Heading 4\n\n", "h4");
     });
 
     it("should convert H5 headings to hashes with newline", function() {
-        markdownSpecTest("<h5>Heading 5</h5>", "##### Heading 5\n", "h5");
+        markdownSpecTest("<h5>Heading 5</h5>", "##### Heading 5\n\n", "h5");
     });
 
     it("should convert H6 headings to hashes with newline", function() {
-        markdownSpecTest("<h6>Heading 6</h6>", "###### Heading 6\n", "h6");
+        markdownSpecTest("<h6>Heading 6</h6>", "###### Heading 6\n\n", "h6");
     });
 
     it("should convert links to markdown", function () {
