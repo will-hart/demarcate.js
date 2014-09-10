@@ -31,6 +31,8 @@ Support for custom events in  IE was pretty patchy and not very thoroughly teste
 
 ## INSTALLATION
 
+### bower
+
 There are two options - as of version 2.0.0 you can install through bower:
 
     bower install demarcate
@@ -39,8 +41,10 @@ Then include the standalone files in your browser,
 
     <script src="bower_components/demarcate/bin/demarcate.js"></script>
 
-You can also build from source by downloading the repository and running it
-through node's browserify. Install browserify withL
+A minified version is also available, `demarcate.min.js`. You can also build
+from source by downloading the repository and running it through node's browserify. 
+
+Install browserify with:
 
     npm install -g browserify
 
@@ -48,6 +52,14 @@ Then build demarcate with
 
     cd /unzipped/demarcate/repo/path/
     browserify src/main.js > bin/demarcate.js
+    
+### Directly
+
+You can also download the repository directly, copy one of the files from the `bin` 
+directory - `demacate.js` or `demarcate.min.js` - to your javascript assets directly
+and include as normal. For example:
+
+    <script src="static/js/demarcate.min.js"></script>
 
 ## UPGRADING TO 2.0 FROM 1.x.x
 
@@ -127,30 +139,46 @@ want to link this to the `demarcateEditorUpdated` event to get live updates:
         console.log(markdown);
     });
 
-## LICENSE
-
-This software is now released under an MIT license.  
-
------------
-
-Copyright (C) 2013 William Hart (http://www.williamhart.info/)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 ## CONTRIBUTING
 
-Contributions and suggestions are welcome - fill out an issue or submit a pull request.
+Contributions and suggestions are welcome - fill out an issue or submit a pull request. As of v2.0.0 
+contributions should have passing unit tests added in the `test/` folder before they can be merged.
 
 Contributions have been received from:
 
- - dvetten
+ - @dvetten, who improved `nodeType` handling
 
+Thanks!
 
-##CHANGE LOG 
+## TESTING
+
+Let's face it I was a bit slack with testing in the initial versions of demarcate. With the release of 2.0.0 I decided 
+to get myself into gear and have implemented some basic unit tests for the parser and editor. There are a number
+of specs for `Markdown >> HTML`, however as yet there is no spec for `HTML >> Markdown`. 
+
+Tests are built using `mocha` and `chai`. Tests also require `jsdom`. This can be problematic installing on Windows, as you require both Visual Studio and Python 2.7 installed. Luckily I have both, and managed to install JSDom by specifying my Visual Studio version: 
+
+    npm install -g jsdom --msvs_version=2012
+
+You can run the tests by typing the following into the command line:
+
+    mocha
+    
+Or alternatively 
+
+    npm test
+
+## ROADMAP
+
+There are some vague ideas I have. I make no guarantees about timing or even if they will ever land.
+Suggestions / improvements / contributions welcome.
+
+- Improve the slightly shoddy menu
+- Add the ability to specify options to the editor
+- Convert the parser to a "plugin" system, with parser specified in options
+- Investigate different parsers
+
+## CHANGE LOG 
 
 `+` new feature         
 `~` revised feature        
@@ -159,10 +187,10 @@ Contributions have been received from:
 
 ### Version 2.0.2
 
-`*` Fix image tags with no title showing `"null"`
-`*` Fix incorrect reference in technical editor demo
-`+` Some `mocha` unit tests at last
-`~` Minor changes to new lines and whitespace due to unit tests
+`*` Fix image tags with no title showing `"null"`    
+`*` Fix incorrect reference in technical editor demo    
+`+` Some `mocha` unit tests at last    
+`~` Minor changes to new lines and whitespace due to unit tests    
 
 ### Version 2.0.1
 
@@ -216,3 +244,19 @@ Contributions have been received from:
 ### Version 1.1.1
 
 Initial "production" version
+
+
+
+## LICENSE
+
+This software is now released under an MIT license.  
+
+-----------
+
+Copyright (C) 2013 William Hart (http://www.williamhart.info/)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
