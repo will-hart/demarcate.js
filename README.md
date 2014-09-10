@@ -185,6 +185,9 @@ Suggestions / improvements / contributions welcome.
 `-` removed feature        
 `*` bug fix
 
+### Version 2.0.3
+`+` Improve new line handling after headings    
+
 ### Version 2.0.2
 
 `*` Fix image tags with no title showing `"null"`    
